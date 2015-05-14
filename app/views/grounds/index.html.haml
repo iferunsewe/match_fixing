@@ -1,0 +1,25 @@
+%h1 Listing grounds
+
+%table
+  %thead
+    %tr
+      %th Address
+      %th Name
+      %th Image
+      %th
+      %th
+      %th
+
+  %tbody
+    - @grounds.each do |ground|
+      %tr
+        %td= ground.address
+        %td= ground.name
+        %td= ground.image
+        %td= link_to 'Show', ground
+        %td= link_to 'Edit', edit_ground_path(ground)
+        %td= link_to 'Destroy', ground, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Ground', new_ground_path

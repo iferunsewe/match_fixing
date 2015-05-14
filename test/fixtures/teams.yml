@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  hometown: MyString
+  wins: MyString
+  losses: MyString
+  draws: MyString
+  rating: 1
+  seeking_players: false
+
+two:
+  name: MyString
+  hometown: MyString
+  wins: MyString
+  losses: MyString
+  draws: MyString
+  rating: 1
+  seeking_players: false

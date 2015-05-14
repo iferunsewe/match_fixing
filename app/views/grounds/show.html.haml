@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Address:
+  = @ground.address
+%p
+  %b Name:
+  = @ground.name
+%p
+  %b Image:
+  = @ground.image
+
+= link_to 'Edit', edit_ground_path(@ground)
+\|
+= link_to 'Back', grounds_path

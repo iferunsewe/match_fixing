@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2015-05-14 00:00:38
+  status: MyString
+  team_a_score: 1
+  team_b_score: 1
+  team_a_id: 1
+  team_b_id: 1
+
+two:
+  date: 2015-05-14 00:00:38
+  status: MyString
+  team_a_score: 1
+  team_b_score: 1
+  team_a_id: 1
+  team_b_id: 1
