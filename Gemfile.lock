@@ -338,6 +338,7 @@ DEPENDENCIES
   carrierwave
   carrierwave-aws
   coffee-rails (~> 4.1.0)
+  devise
   devise_token_auth
   fog
   haml-rails
