@@ -30,6 +30,16 @@ class DeviseCreatePlayers < ActiveRecord::Migration
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
+      ## Manually added fields
+      t.string :name
+      t.date :dob
+      t.string :position
+      t.string :hometown
+      t.integer :rating
+      t.captain :boolean
+      t.float :weight
+      t.float :height
+      t.references :team, index: true
 
       t.timestamps
     end
