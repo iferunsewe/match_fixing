@@ -49,12 +49,22 @@ ActiveRecord::Schema.define(version: 20150528201324) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "name"
+    t.date     "dob"
+    t.string   "position"
+    t.string   "hometown"
+    t.integer  "rating"
+    t.boolean  "captain"
+    t.float    "weight"
+    t.float    "height"
+    t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "players", ["email"], name: "index_players_on_email", unique: true, using: :btree
   add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true, using: :btree
+  add_index "players", ["team_id"], name: "index_players_on_team_id", using: :btree
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"

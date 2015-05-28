@@ -36,7 +36,7 @@ class DeviseCreatePlayers < ActiveRecord::Migration
       t.string :position
       t.string :hometown
       t.integer :rating
-      t.captain :boolean
+      t.boolean :captain
       t.float :weight
       t.float :height
       t.references :team, index: true
