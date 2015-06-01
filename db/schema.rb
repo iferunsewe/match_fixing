@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150528201324) do
 
   create_table "matches", force: :cascade do |t|
     t.datetime "date"
-    t.string   "status"
+    t.boolean  "status"
     t.integer  "team_a_score"
     t.integer  "team_b_score"
     t.integer  "team_a_id"

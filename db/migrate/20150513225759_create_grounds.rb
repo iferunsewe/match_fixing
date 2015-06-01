@@ -1,8 +1,8 @@
 class CreateGrounds < ActiveRecord::Migration
   def change
     create_table :grounds do |t|
+      t.string :name
       t.text :address
-      t.text :name
       t.text :image
       t.references :match, index: true
 

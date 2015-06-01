@@ -9,20 +9,18 @@
   .field
     = f.label :date
     = f.datetime_select :date
+
+  = f.hidden_field :team_a_id, :value => current_player.team.id
   .field
-    = f.label :status
-    = f.text_field :status
-  .field
-    = f.label :team_a_score
-    = f.number_field :team_a_score
-  .field
-    = f.label :team_b_score
-    = f.number_field :team_b_score
-  .field
-    = f.label :team_a_id
-    = f.number_field :team_a_id
-  .field
-    = f.label :team_b_id
-    = f.number_field :team_b_id
+    = f.label :opponent
+    = f.collection_select :team_b_id, @match.show_teams_unless_current_team(current_player), :id, :name
+  = f.fields_for :ground do |g|
+    .field
+      = g.label :ground
+      = g.text_field :name
+    .field
+      = g.label :address
+      = g.text_area :address
   .actions
     = f.submit 'Save'
+

@@ -10,11 +10,13 @@ class MatchesController < ApplicationController
   # GET /matches/1
   # GET /matches/1.json
   def show
+
   end
 
   # GET /matches/new
   def new
     @match = Match.new
+    @match.ground = Ground.new
   end
 
   # GET /matches/1/edit
@@ -69,6 +71,11 @@ class MatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
-      params.require(:match).permit(:date, :status, :team_a_score, :team_b_score, :team_a_id, :team_b_id)
+      params.require(:match).permit(:date, :status, :team_a_score, :team_b_score, :team_a_id,
+                                    :team_b_id, ground_attributes: [:address, :name, :image])
+    end
+
+    def ground_params
+      params.require(:ground).permit(:address, :name, :image)
     end
 end
