@@ -8,4 +8,9 @@ class Player < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :team
+
+  def age(dob)
+    now = Date.today
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+  end
 end
