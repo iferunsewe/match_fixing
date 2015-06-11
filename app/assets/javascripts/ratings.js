@@ -13,7 +13,7 @@ $('#player_rating').raty({
 });
 
 
-})
+})h
 //railsAjax = {};
 //
 //
