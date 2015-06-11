@@ -6,7 +6,7 @@ class CreateTeams < ActiveRecord::Migration
       t.string :wins
       t.string :losses
       t.string :draws
-      t.integer :rating
+      t.integer :rating_id
       t.boolean :seeking_players
 
       t.timestamps null: false

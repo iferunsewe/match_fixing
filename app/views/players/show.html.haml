@@ -3,4 +3,37 @@
 
 = link_to "Fancy a match?", new_match_path
 
-= render 'matches/index'
+-#= render 'matches/index'
+
+%p
+  %b Age:
+  = @player.dob
+%p
+  %b Position:
+  = @player.position
+%p
+  %b Hometown:
+  = @player.hometown
+%p
+  %b Weight:
+  = @player.weight
+%p
+  %b Height:
+  = @player.height
+%p
+  %b Rating
+  #player_rating
+
+  -#= @player.average_rating
+-#= form_for @player.ratings do |f|
+-#  - if @player.errors.any?
+-#    #error_explanation
+-#      %h2= "#{pluralize(@player.errors.count, "error")} prohibited this rating from being saved:"
+-#      %ul
+-#        - @player.errors.full_messages.each do |msg|
+-#          %li= msg
+-#
+-#  = f.fields_for :value do |r|
+-#    .field
+-#      = r.select :value, 1..5
+-#      = r.submit

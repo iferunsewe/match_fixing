@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528201324) do
+ActiveRecord::Schema.define(version: 20150610204218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "grounds", force: :cascade do |t|
+    t.string   "name"
     t.text     "address"
-    t.text     "name"
     t.text     "image"
     t.integer  "match_id"
     t.datetime "created_at", null: false
@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 20150528201324) do
     t.date     "dob"
     t.string   "position"
     t.string   "hometown"
-    t.integer  "rating"
     t.boolean  "captain"
     t.float    "weight"
     t.float    "height"
@@ -66,16 +65,29 @@ ActiveRecord::Schema.define(version: 20150528201324) do
   add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true, using: :btree
   add_index "players", ["team_id"], name: "index_players_on_team_id", using: :btree
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "player_id"
+    t.integer  "team_id"
+    t.integer  "score",      default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "ratings", ["player_id"], name: "index_ratings_on_player_id", using: :btree
+  add_index "ratings", ["team_id"], name: "index_ratings_on_team_id", using: :btree
+
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.string   "hometown"
     t.string   "wins"
     t.string   "losses"
     t.string   "draws"
-    t.integer  "rating"
+    t.integer  "rating_id"
     t.boolean  "seeking_players"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "ratings", "players"
+  add_foreign_key "ratings", "teams"
 end

@@ -75,7 +75,4 @@ class MatchesController < ApplicationController
                                     :team_b_id, ground_attributes: [:address, :name, :image])
     end
 
-    def ground_params
-      params.require(:ground).permit(:address, :name, :image)
-    end
 end

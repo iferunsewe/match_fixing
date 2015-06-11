@@ -35,7 +35,6 @@ class DeviseCreatePlayers < ActiveRecord::Migration
       t.date :dob
       t.string :position
       t.string :hometown
-      t.integer :rating
       t.boolean :captain
       t.float :weight
       t.float :height
