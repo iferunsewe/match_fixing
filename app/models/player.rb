@@ -10,7 +10,12 @@ class Player < ActiveRecord::Base
   belongs_to :team
   has_many :ratings
 
-  # accepts_nested_attributes_for :ratings
+  accepts_nested_attributes_for :ratings
+
+  def average_rating
+    ratings.sum(:score) / ratings.size
+  end
+
   # def average_rating(rating)
     # ratings = []
     # ratings << rating

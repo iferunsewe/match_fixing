@@ -1,19 +1,44 @@
-$(document).ready(function(){
+//ratingsSection = {};
+//
+//ratingsSection.getScore = function(ratingId, ratingScore){
+//    $.ajax({
+//        url: '/ratings/' + ratingId,
+//        type: 'PATCH',
+//        data: {score: ratingScore},
+//        dataType: "json"
+//    }).success(function(data){
+//        console.log(data)
+//    });
+//};
+//
+//$(document).ready(function(){
+//    $('#player_rating').raty(
+//        path: '/assets'
+//        'click', ratingsSection.getScore
+//    )
+//});
 
-$('#player_rating').raty({
-    score: <%= @rating.score %>,
-    path: '/assets',
-    click: function(score, evt) {
-    $.ajax({
-        url: '/ratings/' + <%= @rating.id %>,
-        type: 'PATCH',
-        data: { score: score }
-    });
-    }
-});
 
 
-})h
+
+
+//$(document).ready(function(){
+//
+//    $('#player_rating').raty({
+//        score: <%= @rating.score %>,
+//        path: '/assets',
+//        click: function(score, evt) {
+//        $.ajax({
+//            url: '/ratings/' + <%= @rating.id %>,
+//            type: 'PATCH',
+//            data: { score: score }
+//        });
+//        }
+//    });
+//
+//});
+
+
 //railsAjax = {};
 //
 //

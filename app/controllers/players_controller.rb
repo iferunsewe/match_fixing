@@ -10,7 +10,7 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
     # @matches = Match.all
     # @match = Match.find(params[:id])
-    @rating = Rating.where(player_id: @player.id)
+    @rating = Rating.where(player_id: current_player.id)
   end
 
 
@@ -18,14 +18,6 @@ class PlayersController < ApplicationController
   end
 
   def update
-    # Updating the average rating of player
-    # if params[:player][:rating].present?
-    #   binding.pry
-    #   new_rating = params[:player][:rating].to_i
-    #   params[:player][:rating] = @player.average_rating(new_rating)
-    # end
-    # @player.ratings = Rating.new
-
     respond_to do |format|
       if @player.update(player_params)
         format.html { redirect_to @player, notice: 'Player was successfully updated.' }
@@ -57,5 +49,4 @@ class PlayersController < ApplicationController
     params.require(:player).permit(:name, :dob, :position, :hometown, :captain,
                                    :weight,:height, :password, :email)
   end
-
 end
