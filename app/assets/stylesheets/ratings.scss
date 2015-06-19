@@ -1,0 +1,25 @@
+li.star_rating{
+  background: url("star-off.png");
+  width: 16px;
+  height: 16px;
+  display: block;
+  float: left;
+}
+
+//.off{
+//  @extend .star_rating;
+//
+//}
+
+.on{
+  @extend .star_rating;
+  background: url("star-on.png");
+}
+
+//.on{
+//  background: url("star-on.png");
+//  width: 16px;
+//  height: 16px;
+//  display: block;
+//  float: left;
+//}

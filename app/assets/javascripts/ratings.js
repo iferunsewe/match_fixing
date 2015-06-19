@@ -1,4 +1,4 @@
-//ratingsSection = {};
+
 //
 //ratingsSection.getScore = function(ratingId, ratingScore){
 //    $.ajax({
@@ -70,7 +70,27 @@
 //    })
 //}
 //
-//$(document).ready(function(){
-//    $('#up').on('click', railsAjax.Vote);
-//    $('#down').on('click', railsAjax.Vote);
-//})
+
+$(document).ready(function(){
+    $('.star_rating').click(function(){
+        var star = $(this);
+        var form_id = $(this).attr('data-form-id');
+        var stars = $(this).attr('data-stars');
+
+        for(i=1; i=5; i++){
+            if(i<= stars){
+                $('#' + player_id + '_' + i).addClass('on');
+            }else{
+                $('#' + player_id + '_' + i).removeClass('on');
+            }
+        }
+
+        $('#' + form_id +'stars').val(stars)
+        $.ajax({
+            method: 'POST',
+            url: $('#' + form_id).attr('action'),
+            data: $('#' + form_id).serialize()
+        });
+    });
+});
+
