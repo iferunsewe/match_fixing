@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20150610204218) do
   create_table "ratings", force: :cascade do |t|
     t.integer  "player_id"
     t.integer  "team_id"
-    t.integer  "score",      default: 0
+    t.integer  "stars",      default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

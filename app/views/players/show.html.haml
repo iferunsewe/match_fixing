@@ -23,24 +23,10 @@
 %p
   %b Rating
   #player_ratings
-    = form_id = "player#{@player.id}_rating"
-    = form_for @player.ratings.last || @player.ratings.build, html: {id: "player#{@player.id}_rating"} do |f|
+    - form_id = "player#{@player.id}_rating"
+    = form_for @player.ratings.last || @player.ratings.build, html: {id: "player#{@player.id}_rating", class: 'star_rating_form'} do |f|
       = f.hidden_field :player_id
       = f.hidden_field :stars, id: "#{form_id}_stars"
     -(1..5).each do |i|
-      %li.star_rating{"data-form-id" => form_id, "data-stars" => i, id: "#{form_id}_#{i}"}
+      = image_tag("star-off.png", class: "star_rating", "data-form-id" => form_id, "data-stars" => i, id: "#{form_id}_#{i}")
 
-
-  -#= @player.average_rating
--#= form_for @player.ratings do |f|
--#  - if @player.errors.any?
--#    #error_explanation
--#      %h2= "#{pluralize(@player.errors.count, "error")} prohibited this rating from being saved:"
--#      %ul
--#        - @player.errors.full_messages.each do |msg|
--#          %li= msg
--#
--#  = f.fields_for :value do |r|
--#    .field
--#      = r.select :value, 1..5
--#      = r.submit

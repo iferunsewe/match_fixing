@@ -1,15 +1,14 @@
+ratingsSection = {};
 
-//
-//ratingsSection.getScore = function(ratingId, ratingScore){
-//    $.ajax({
-//        url: '/ratings/' + ratingId,
-//        type: 'PATCH',
-//        data: {score: ratingScore},
-//        dataType: "json"
-//    }).success(function(data){
-//        console.log(data)
-//    });
-//};
+ratingsSection.setStars = function(form_id, stars){
+    for(i=1; i<=5; i++){
+        if(i<=stars){
+            $('#' + form_id + '_' + i).attr("src", "/assets/star-on.png");
+        } else {
+            $('#' + form_id + '_' + i).attr("src", "/assets/star-off.png");
+        }
+    }
+};
 //
 //$(document).ready(function(){
 //    $('#player_rating').raty(
@@ -76,21 +75,19 @@ $(document).ready(function(){
         var star = $(this);
         var form_id = $(this).attr('data-form-id');
         var stars = $(this).attr('data-stars');
-
-        for(i=1; i=5; i++){
-            if(i<= stars){
-                $('#' + player_id + '_' + i).addClass('on');
-            }else{
-                $('#' + player_id + '_' + i).removeClass('on');
-            }
-        }
-
-        $('#' + form_id +'stars').val(stars)
+        ratingsSection.setStars(form_id, stars);
+        $('#' + form_id + '_stars').val(stars);
         $.ajax({
             method: 'POST',
             url: $('#' + form_id).attr('action'),
             data: $('#' + form_id).serialize()
         });
+    });
+
+    $('.star_rating_form').each(function(){
+        var form_id = $(this).attr('id');
+        var stars = $('#' + form_id + '_stars').val();
+        ratingsSection.setStars(form_id, stars)
     });
 });
 
