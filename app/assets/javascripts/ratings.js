@@ -9,78 +9,23 @@ ratingsSection.setStars = function(form_id, stars){
         }
     }
 };
-//
-//$(document).ready(function(){
-//    $('#player_rating').raty(
-//        path: '/assets'
-//        'click', ratingsSection.getScore
-//    )
-//});
 
-
-
-
-
-//$(document).ready(function(){
-//
-//    $('#player_rating').raty({
-//        score: <%= @rating.score %>,
-//        path: '/assets',
-//        click: function(score, evt) {
-//        $.ajax({
-//            url: '/ratings/' + <%= @rating.id %>,
-//            type: 'PATCH',
-//            data: { score: score }
-//        });
-//        }
-//    });
-//
-//});
-
-
-//railsAjax = {};
-//
-//
-//railsAjax.getVotes = function(photoId){
-//    $.ajax({
-//        url: '/photos/' + photoId,
-//        type: 'GET',
-//        dataType: "json"
-//    }).success(function(data){
-//        $('.no_votes').html('')
-//        $('.no_votes').append(data)
-//    })
-//}
-//
-//railsAjax.Vote = function(){
-//    // event.preventDefault();
-//    var photoId = parseInt(window.location.href.split('/').pop())
-//    var $this = $(this);
-//    railsAjax.getVotes();
-//    $.ajax({
-//        url: '/votes',
-//        method: 'POST',
-//        data: {vote: {photo_id: photoId, number_of_votes: $this.data("vote")}},
-//        dataType: 'json'
-//    }).success(function(data){
-//        console.log(data);
-//        $('.thumbs').html('');
-//        railsAjax.getVotes(photoId);
-//    })
-//}
-//
 
 $(document).ready(function(){
     $('.star_rating').click(function(){
         var star = $(this);
-        var form_id = $(this).attr('data-form-id');
-        var stars = $(this).attr('data-stars');
+        var form_id = star.attr('data-form-id');
+        var stars = star.attr('data-stars');
+        var profile_name = $("h1.profile-name").text()
         ratingsSection.setStars(form_id, stars);
         $('#' + form_id + '_stars').val(stars);
         $.ajax({
             method: 'POST',
             url: $('#' + form_id).attr('action'),
             data: $('#' + form_id).serialize()
+        }).success(function(){
+            $('#player_ratings').html('');
+            $('#player_ratings').append("<p> You've rated" + profile_name + "</p>");
         });
     });
 
@@ -91,3 +36,9 @@ $(document).ready(function(){
     });
 });
 
+//}).success(function(data){
+//    $('.stars').html('');
+//    $('.stars').append('<i class = "glyphicon glyphicon-star" id ="star"></i>');
+//})
+
+//$( "div.demo-container" ).text()

@@ -13,7 +13,7 @@ class Player < ActiveRecord::Base
   accepts_nested_attributes_for :ratings
 
   def average_rating
-    ratings.sum(:score) / ratings.size
+    ratings.sum(:stars) / ratings.size
   end
 
   # def average_rating(rating)
