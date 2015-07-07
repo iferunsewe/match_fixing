@@ -20,12 +20,9 @@ ActiveRecord::Schema.define(version: 20150610204218) do
     t.string   "name"
     t.text     "address"
     t.text     "image"
-    t.integer  "match_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "grounds", ["match_id"], name: "index_grounds_on_match_id", using: :btree
 
   create_table "matches", force: :cascade do |t|
     t.datetime "date"
@@ -34,9 +31,12 @@ ActiveRecord::Schema.define(version: 20150610204218) do
     t.integer  "team_b_score"
     t.integer  "team_a_id"
     t.integer  "team_b_id"
+    t.integer  "ground_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "matches", ["ground_id"], name: "index_matches_on_ground_id", using: :btree
 
   create_table "players", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20150610204218) do
     t.integer  "player_id"
     t.integer  "team_id"
     t.integer  "stars",      default: 0
+    t.integer  "rater"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

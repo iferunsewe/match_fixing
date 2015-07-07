@@ -7,7 +7,7 @@ class CreateMatches < ActiveRecord::Migration
       t.integer :team_b_score
       t.integer :team_a_id
       t.integer :team_b_id
-
+      t.references :ground, index: true
 
       t.timestamps null: false
     end

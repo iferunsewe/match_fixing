@@ -25,7 +25,7 @@
   %b Height:
   = @player.height
 
-- if @player.id != current_player.id
+- if @player.id != current_player.id && @player.played_and_rated__before(@player, current_player) == true
   %p
     %b Rate player
     #player_ratings
@@ -35,4 +35,3 @@
         = f.hidden_field :stars, id: "#{form_id}_stars"
       -(1..5).each do |i|
         = image_tag("star-off.png", class: "star_rating", "data-form-id" => form_id, "data-stars" => i, id: "#{form_id}_#{i}", alt:"star_rating")
-

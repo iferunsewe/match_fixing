@@ -4,6 +4,7 @@ class CreateRatings < ActiveRecord::Migration
       t.references :player, index: true, foreign_key: true
       t.references :team, index: true, foreign_key: true
       t.integer :stars, default: 0
+      t.integer :rater
 
 
       t.timestamps null: false
