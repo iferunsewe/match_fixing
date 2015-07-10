@@ -1,5 +1,7 @@
 class Ground < ActiveRecord::Base
-  attr_accessible :address, :name, :image
+  attr_accessible :address, :name, :image, :ground_attributes
 
-  belongs_to :match
+  has_many :matches
+
+  accepts_nested_attributes_for :matches
 end

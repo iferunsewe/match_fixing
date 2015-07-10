@@ -1,36 +1,41 @@
-%h1
+%h1.profile-name
   = @player.name
+  - if @player.ratings != []
+    -(1..@player.average_rating).each do |i|
+      = image_tag("star-on.png")
+
 
 %h2
   = @player.team.name
 = link_to "Fancy a match?", new_match_path
 
-= render 'matches/index'
+-#= render 'matches/index'
 
 %p
-  %b Age
-  = @player.age(@player.dob)
+  %b Age:
+  = @player.dob
 %p
-  %b Position
+  %b Position:
   = @player.position
 %p
-  %b Hometown
+  %b Hometown:
   = @player.hometown
 %p
-  %b Rating
-  = @player.rating
-%p
-  %b Captain
-  = @player.captain
-%p
-  %b Weight
+  %b Weight:
   = @player.weight
 %p
-  %b Height
+  %b Height:
   = @player.height
 
+- match = Match.where({team_a_id: [@player.team.id, current_player.team.id], team_b_id: [@player.team.id,current_player.team.id]})
+- if @player.id != current_player.id && match != [] &&  @player.played_and_rated__before(@player, current_player) == true
+  %p
+    %b Rate player
+    #player_ratings
+      - form_id = "player#{@player.id}_rating"
+      = form_for @player.ratings.build, html: {id: "player#{@player.id}_rating", class: 'star_rating_form'} do |f|
+        = f.hidden_field :player_id
+        = f.hidden_field :stars, id: "#{form_id}_stars"
+      -(1..5).each do |i|
+        = image_tag("star-off.png", class: "star_rating", "data-form-id" => form_id, "data-stars" => i, id: "#{form_id}_#{i}", alt:"star_rating")
 
-
-= link_to 'Edit', edit_player_path(@player)
-\|
-= link_to 'Back', player_path(@player)

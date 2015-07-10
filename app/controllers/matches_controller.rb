@@ -72,10 +72,7 @@ class MatchesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
       params.require(:match).permit(:date, :status, :team_a_score, :team_b_score, :team_a_id,
-                                    :team_b_id, ground_attributes: [:address, :name, :image])
+                                    :team_b_id)
     end
 
-    def ground_params
-      params.require(:ground).permit(:address, :name, :image)
-    end
 end
