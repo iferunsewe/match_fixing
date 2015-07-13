@@ -3,26 +3,43 @@
 %p
   %b Name:
   = @team.name
+  - if @team.average_rating(@team) != 0
+    -(1..@team.average_rating(@team)).each do |i|
+      = image_tag("star-on.png")
+  - else
+    %p Team not rated yet
+  %p
+    = @team.players.map do |player|
+      = player.name
+
 %p
   %b Hometown:
   = @team.hometown
 %p
   %b Wins:
-  = @team.wins(@team)
+  = @team.wins
 %p
   %b Losses:
-  = @team.losses(@team)
+  = @team.losses
 %p
   %b Draws:
-  = @team.draws(@team)
+  = @team.draws
 
 %p
   %b Seeking players:
   = @team.seeking_players
 %p
   %b Matches:
-  = @team.seeking_players
+  - if @team.matches != []
+    = @team.matches.map do |match|
+      = match.team_a.name
+      vs
+      = match.team_b.name
+  - else
+    %p No matches scheduled
 
+
+%br
 = link_to 'Edit', edit_team_path(@team)
 \|
 = link_to 'Back', teams_path

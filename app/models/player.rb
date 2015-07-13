@@ -8,13 +8,18 @@ class Player < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :team
+
   has_many :ratings
 
   accepts_nested_attributes_for :ratings
 
   # The method calculates the average stars a player has received so it can be shown on their profile
   def average_rating
-    ratings.sum(:stars) / ratings.size
+    if ratings != []
+      ratings.sum(:stars) / ratings.size
+    else
+      0
+    end
   end
 
   # Decides whether players can rate other players. Conditions are:
@@ -22,8 +27,13 @@ class Player < ActiveRecord::Base
   def played_and_rated__before(player_a, player_b, match) #Player profile and current player logged in
       current_player_ratings = Rating.where(player_id: player_a.id, rater: player_b.id)
       # Finds any existing ratings corresponding to the player ids and checks if they were before the last played match
+<<<<<<< HEAD
       rating_after_match = Rating.where(player_id: player_a.id, rater: player_b.id).where("created_at < ?", match.last.date)
       if current_player_ratings.size < 1 || rating_after_match != []
+=======
+      rating = Rating.where(player_id: [player_a.id, player_b.id], rater:[player_a.id, player_b.id]).where("created_at < ?", match.last.date)
+      if (match != [] && rating == []) || (match != [] && rating != [])
+>>>>>>> cdbee603a4a33b52c249ab27af361910abaac3de
         true
       else
         false

@@ -5,6 +5,8 @@
       = image_tag("star-on.png")
 
 
+%h2
+  = @player.team.name
 = link_to "Fancy a match?", new_match_path
 
 -#= render 'matches/index'
@@ -27,6 +29,7 @@
 
 - match = Match.where({team_a_id: [@player.team.id, current_player.team.id], team_b_id: [@player.team.id, current_player.team.id], status: true})
 - if @player.id != current_player.id && match != [] && @player.played_and_rated__before(@player, current_player, match) == true
+
   %p
     %b Rate player
     #player_ratings
@@ -36,3 +39,4 @@
         = f.hidden_field :stars, id: "#{form_id}_stars"
       -(1..5).each do |i|
         = image_tag("star-off.png", class: "star_rating", "data-form-id" => form_id, "data-stars" => i, id: "#{form_id}_#{i}", alt:"star_rating")
+
