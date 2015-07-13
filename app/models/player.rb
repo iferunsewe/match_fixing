@@ -29,7 +29,7 @@ class Player < ActiveRecord::Base
       match = Match.where({team_a_id: [player_a.team.id, player_b.team.id], team_b_id: [player_a.team.id, player_b.team.id], status: true})
       # Finds any existing ratings corresponding to the player ids and checks if they were before the last played match
       rating = Rating.where(player_id: [player_a.id, player_b.id], rater:[player_a.id, player_b.id]).where("created_at < ?", match.last.date)
-      if match != [] || (match != [] && rating != [])
+      if (match != [] && rating == []) || (match != [] && rating != [])
         true
       else
         false

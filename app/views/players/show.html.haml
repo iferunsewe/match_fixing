@@ -28,6 +28,7 @@
   = @player.height
 
 - match = Match.where({team_a_id: [@player.team.id, current_player.team.id], team_b_id: [@player.team.id,current_player.team.id]})
+
 - if @player.id != current_player.id && match != [] &&  @player.played_and_rated__before(@player, current_player) == true
   %p
     %b Rate player
