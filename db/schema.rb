@@ -27,13 +27,13 @@ ActiveRecord::Schema.define(version: 20150610204218) do
   create_table "matches", force: :cascade do |t|
     t.datetime "date"
     t.boolean  "status"
-    t.integer  "team_a_score"
-    t.integer  "team_b_score"
+    t.integer  "team_a_score", default: 0
+    t.integer  "team_b_score", default: 0
     t.integer  "team_a_id"
     t.integer  "team_b_id"
     t.integer  "ground_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "matches", ["ground_id"], name: "index_matches_on_ground_id", using: :btree
@@ -80,13 +80,15 @@ ActiveRecord::Schema.define(version: 20150610204218) do
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.string   "hometown"
-    t.string   "wins"
-    t.string   "losses"
-    t.string   "draws"
+    t.integer  "played",          default: 0
+    t.integer  "wins",            default: 0
+    t.integer  "losses",          default: 0
+    t.integer  "draws",           default: 0
+    t.integer  "points",          default: 0
     t.integer  "rating_id"
     t.boolean  "seeking_players"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_foreign_key "ratings", "players"

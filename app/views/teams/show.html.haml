@@ -8,16 +8,14 @@
   = @team.hometown
 %p
   %b Wins:
-  = @team.wins
+  = @team.wins(@team)
 %p
   %b Losses:
-  = @team.losses
+  = @team.losses(@team)
 %p
   %b Draws:
-  = @team.draws
-%p
-  %b Rating:
-  = @team.rating
+  = @team.draws(@team)
+
 %p
   %b Seeking players:
   = @team.seeking_players

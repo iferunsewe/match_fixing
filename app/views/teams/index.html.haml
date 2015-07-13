@@ -10,7 +10,7 @@
       %th Draws
       -#%th Rating
       %th Seeking players
-      %th
+      %th Points
       %th
       %th
 
@@ -24,6 +24,7 @@
         %td= team.draws
         -#%td= team.rating
         %td= team.seeking_players
+        %td= team.points
         %td= link_to 'Show', team
         %td= link_to 'Edit', edit_team_path(team)
         %td= link_to 'Destroy', team, :method => :delete, :data => { :confirm => 'Are you sure?' }
