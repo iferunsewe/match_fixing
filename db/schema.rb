@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610204218) do
+ActiveRecord::Schema.define(version: 20150719210745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,13 +27,14 @@ ActiveRecord::Schema.define(version: 20150610204218) do
   create_table "matches", force: :cascade do |t|
     t.datetime "date"
     t.boolean  "status"
-    t.integer  "team_a_score", default: 0
-    t.integer  "team_b_score", default: 0
+    t.integer  "team_a_score",     default: 0
+    t.integer  "team_b_score",     default: 0
     t.integer  "team_a_id"
     t.integer  "team_b_id"
     t.integer  "ground_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "man_of_the_match"
   end
 
   add_index "matches", ["ground_id"], name: "index_matches_on_ground_id", using: :btree
@@ -59,6 +60,8 @@ ActiveRecord::Schema.define(version: 20150610204218) do
     t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "foot"
+    t.string   "specialities"
   end
 
   add_index "players", ["email"], name: "index_players_on_email", unique: true, using: :btree
@@ -89,6 +92,8 @@ ActiveRecord::Schema.define(version: 20150610204218) do
     t.boolean  "seeking_players"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.string   "philosophy"
+    t.string   "kit"
   end
 
   add_foreign_key "ratings", "players"

@@ -1,6 +1,7 @@
 class Player < ActiveRecord::Base
   attr_accessible :name, :dob, :position, :hometown, :rating_id,
-                  :captain, :weight,:height, :password, :email, :remember_me, :team_id
+                  :captain, :weight,:height, :password, :email, :remember_me, :team_id,
+                  :foot, :specialities, :password_confirmation
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

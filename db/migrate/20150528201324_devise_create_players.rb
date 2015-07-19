@@ -38,6 +38,9 @@ class DeviseCreatePlayers < ActiveRecord::Migration
       t.boolean :captain
       t.float :weight
       t.float :height
+
+
+
       t.references :team, index: true
 
       t.timestamps

@@ -1,5 +1,5 @@
 class Ground < ActiveRecord::Base
-  attr_accessible :address, :name, :image, :ground_attributes
+  attr_accessible :address, :name, :image
 
   has_many :matches
 

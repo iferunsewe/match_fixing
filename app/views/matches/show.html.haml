@@ -2,26 +2,59 @@
 
 %p
   %b Date:
-  = @match.date
+  = @match.date.to_s(:long)
 %p
   %b Status:
   = @match.display_status(@match.status)
--#%p
--#  %b Team a score:
--#  = @match.team_a_score
--#%p
--#  %b Team b score:
--#  = @match.team_b_score
-%p
-  %b Team a:
-  = @match.team_a.name
-%p
-  %b Team b:
-  = @match.team_b.name
 
+%p
+  %b Home:
+  = @match.team_a.name
+  - if @match.status
+    = @match.team_a_score
+  vs
+  %b Away:
+  = @match.team_b.name
+  - if @match.status
+    = @match.team_b_score
+
+%h3 HOME
+%table
+  %thead
+    %tr
+      %th Players
+      %th Goals
+      %th Rating
+
+%tbody
+  - @match.team_a.players.each do |player|
+    %tr
+      %td= player.name
+      %td= player.id
+      %td= player.team_id
+      %br
+
+%h3 Away
+%table
+  %thead
+    %tr
+      %th Players
+      %th Goals
+      %th Rating
+
+%tbody
+  - @match.team_b.players.each do |player|
+    %tr
+      %td= player.name
+      %td= player.id
+      %td= player.team_id
+      %br
+
+%br
 %p
   %b Ground:
   = @match.ground.name
+
 = link_to 'Edit', edit_match_path(@match)
 \|
 = link_to 'Back', matches_path

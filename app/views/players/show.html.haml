@@ -7,7 +7,8 @@
 
 %h2
   = @player.team.name
-= link_to "Fancy a match?", new_match_path
+= link_to "Fancy a match?", new_match_path |
+= link_to "Create a Team?", new_team_path
 
 -#= render 'matches/index'
 
@@ -21,11 +22,11 @@
   %b Hometown:
   = @player.hometown
 %p
-  %b Weight:
-  = @player.weight
+  %b Foot:
+  = @player.foot
 %p
-  %b Height:
-  = @player.height
+  %b Specialities:
+  = @player.specialities
 
 - match = Match.where({team_a_id: [@player.team.id, current_player.team.id], team_b_id: [@player.team.id, current_player.team.id], status: true})
 - if @player.id != current_player.id && match != [] && @player.played_and_rated__before(@player, current_player, match) == true

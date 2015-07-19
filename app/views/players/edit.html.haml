@@ -7,17 +7,22 @@
           %li= msg
 
   .field
-    = f.label :age
-    = f.integer :position
+    = f.label :date_of_birth
+    = date_select "player", "dob", { start_year: 100.years.ago.year, end_year: Date.today.year, default: Date.today}
   .field
     = f.label :position
-    = f.string :position
+    = f.text_field :position
   .field
     = f.label :hometown
-    = f.string :hometown
+    = f.text_field :hometown
   .field
-    = f.label :weight
-    = f.string :weight
+    = f.label :specialities
+    = f.text_field :specialities
   .field
-    = f.label :height
-    = f.string :height
+    = f.label :foot
+    = f.select :foot, ["Right", "Left"]
+  .field
+    = f.label :team
+    = f.collection_select :team_id, Team.all, :id, :name
+  .actions
+    = f.submit 'Save'

@@ -2,6 +2,10 @@ class PlayersController < ApplicationController
   # before_filter :authenticate_player!
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
+  def create
+    Player.create(user_params)
+  end
+
   def index
     @players = Player.all
   end
@@ -47,6 +51,6 @@ class PlayersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def player_params
     params.require(:player).permit(:name, :dob, :position, :hometown, :captain,
-                                   :weight,:height, :password, :email)
+                                   :weight,:height, :password, :email, :foot, :specialities, :team_id)
   end
 end
