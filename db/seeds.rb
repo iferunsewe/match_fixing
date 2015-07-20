@@ -5,11 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-T1 = Team.create!(name: 'The Neville wears Prada')
-T2 = Team.create!(name: 'Petr Cech Yourself' )
-T3 = Team.create!(name: 'Rodallega Bombs')
-T4 = Team.create!(name: 'Chamakh My Pitch Up')
-T5 = Team.create!(name: 'Ruud Van Nipplejoy')
+T1 = Team.create!(name: 'The Neville wears Prada', hometown: 'Jesmond')
+T2 = Team.create!(name: 'Petr Cech Yourself', hometown: 'Jesmond')
+T3 = Team.create!(name: 'Rodallega Bombs', hometown: 'Jesmond')
+T4 = Team.create!(name: 'Chamakh My Pitch Up', hometown: 'Jesmond')
+T5 = Team.create!(name: 'Ruud Van Nipplejoy', hometown: 'Jesmond')
 
 P1 = Player.create!(name: 'Dmitry Kombarov', team_id: T1.id, email: 'test1@email.com', password: 'password')
 P2 = Player.create!(name: 'Glen Johnson', team_id: T2.id, email: 'test2@email.com', password: 'password')
