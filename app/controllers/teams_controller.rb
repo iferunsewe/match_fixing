@@ -5,6 +5,7 @@ class TeamsController < ApplicationController
   # GET /teams.json
   def index
     @teams = Team.all
+    # Used for calculating the stats for the leadertable
     @teams.map do |team|
       team.update(wins: team.calc_wins(team), losses: team.calc_losses(team), draws: team.calc_draws(team), points: team.calc_points)
     end
@@ -29,6 +30,9 @@ class TeamsController < ApplicationController
   # POST /teams.json
   def create
     @team = Team.new(team_params)
+    # Adds the player creating the team to the created team and makes them captain by default
+    @team.players << current_player
+    @team.players[0].captain = true
     respond_to do |format|
       if @team.save
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
@@ -72,6 +76,9 @@ class TeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:name, :hometown, :wins, :losses, :draws, :rating, :seeking_players, :kit, :philosophy)
+      params.require(:team).permit(:name, :hometown, :wins, :losses, :draws, :rating,
+                                   :seeking_players, :kit, :philosophy,
+                                   player_attributes: [:name, :dob, :position, :hometown, :captain,
+                                                       :weight,:height, :foot, :specialities])
     end
 end

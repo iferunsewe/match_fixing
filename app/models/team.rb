@@ -8,6 +8,8 @@ class Team < ActiveRecord::Base
   has_many :players
   has_many :ratings
 
+  accepts_nested_attributes_for :players
+
   def calc_wins(team)
     wins = Match.where(team_a_id: team.id).where("team_a_score > team_b_score")
     @wins = wins.size
@@ -43,4 +45,9 @@ class Team < ActiveRecord::Base
     players_ratings.sum / players_ratings.size
   end
 
+  def players_names(team)
+    team.players.map do |player|
+      player.name
+    end
+  end
 end
