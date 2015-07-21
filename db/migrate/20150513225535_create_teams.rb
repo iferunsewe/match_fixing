@@ -10,6 +10,7 @@ class CreateTeams < ActiveRecord::Migration
       t.integer :points, default: 0
       t.integer :rating_id
       t.boolean :seeking_players
+      t.string :philosophy
 
       t.timestamps null: false
     end

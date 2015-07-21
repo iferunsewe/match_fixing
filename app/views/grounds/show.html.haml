@@ -10,6 +10,34 @@
   %b Image:
   = @ground.image
 
+%p
+  %b Matches
+
+%table
+  %thead
+    %tr
+      %th Date
+      %th Status
+      %th Team a score
+      %th Team b score
+      %th Team a
+      %th Team b
+      %th
+      %th
+      %th
+      %th
+
+  - binding.pry
+  - @ground.matches.each do |match|
+    %tr
+      %td= match.date
+      %td= @match.display_status(match.status)
+      %td= match.team_a_score
+      %td= match.team_b_score
+      %td= link_to match.team_a.name, team_path(match.team_a)
+      %td= link_to match.team_b.name, team_path(match.team_b)
+      %td= link_to 'Show', match
+
 = link_to 'Edit', edit_ground_path(@ground)
 \|
 = link_to 'Back', grounds_path
