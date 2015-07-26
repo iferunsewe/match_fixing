@@ -56,11 +56,7 @@ ActiveRecord::Schema.define(version: 20150719210745) do
     t.string   "hometown"
     t.boolean  "captain"
     t.string   "specialties"
-    t.string   "foot"
-    t.string   "specialiaties"
     t.boolean  "man_of_the_match"
-    t.integer  "goals"
-    t.integer  "appearances"
     t.float    "weight"
     t.float    "height"
     t.integer  "team_id"
@@ -68,6 +64,8 @@ ActiveRecord::Schema.define(version: 20150719210745) do
     t.datetime "updated_at"
     t.string   "foot"
     t.string   "specialities"
+    t.integer  "goals",                  default: 0
+    t.integer  "appearances",            default: 0
   end
 
   add_index "players", ["email"], name: "index_players_on_email", unique: true, using: :btree
@@ -96,7 +94,6 @@ ActiveRecord::Schema.define(version: 20150719210745) do
     t.integer  "points",          default: 0
     t.integer  "rating_id"
     t.boolean  "seeking_players"
-    t.string   "philosophy"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.string   "philosophy"

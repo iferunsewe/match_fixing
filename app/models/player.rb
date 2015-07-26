@@ -1,7 +1,7 @@
 class Player < ActiveRecord::Base
   attr_accessible :name, :dob, :position, :hometown, :rating_id,
                   :captain, :weight,:height, :password, :email, :remember_me, :team_id,
-                  :foot, :specialities, :password_confirmation
+                  :foot, :specialities, :password_confirmation, :appearances, :goals
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -34,5 +34,9 @@ class Player < ActiveRecord::Base
       else
         false
       end
+  end
+
+  def calc_apps(player)
+    apps = player.team.matches.size
   end
 end
