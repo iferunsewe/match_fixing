@@ -56,8 +56,6 @@ ActiveRecord::Schema.define(version: 20150719210745) do
     t.string   "hometown"
     t.boolean  "captain"
     t.string   "specialties"
-    t.string   "foot"
-    t.string   "specialiaties"
     t.boolean  "man_of_the_match"
     t.integer  "goals"
     t.integer  "appearances"
@@ -96,7 +94,6 @@ ActiveRecord::Schema.define(version: 20150719210745) do
     t.integer  "points",          default: 0
     t.integer  "rating_id"
     t.boolean  "seeking_players"
-    t.string   "philosophy"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.string   "philosophy"

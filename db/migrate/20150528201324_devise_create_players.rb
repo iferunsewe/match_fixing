@@ -38,8 +38,6 @@ class DeviseCreatePlayers < ActiveRecord::Migration
       t.boolean :captain
       t.string :specialties
       t.string :position
-      t.string :foot
-      t.string :specialiaties
       t.boolean :man_of_the_match
       t.integer :goals
       t.integer :appearances
