@@ -39,8 +39,6 @@ class DeviseCreatePlayers < ActiveRecord::Migration
       t.string :specialties
       t.string :position
       t.boolean :man_of_the_match
-      t.integer :goals
-      t.integer :appearances
       t.float :weight
       t.float :height
 

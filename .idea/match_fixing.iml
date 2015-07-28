@@ -116,7 +116,10 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+<<<<<<< HEAD
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
+=======
+>>>>>>> 8cc5f8c2f183c481fd0ca8d2251ed0fc4ded782b
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

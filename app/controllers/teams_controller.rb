@@ -1,15 +1,10 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :update_team_stats, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
-    # Used for calculating the stats for the leadertable
-    @teams.map do |team|
-      team.update(wins: team.calc_wins(team), losses: team.calc_losses(team), draws: team.calc_draws(team), points: team.calc_points)
-    end
-    @teams = @teams.order(points: :desc)
   end
 
   # GET /teams/1
@@ -80,5 +75,14 @@ class TeamsController < ApplicationController
                                    :seeking_players, :kit, :philosophy,
                                    player_attributes: [:name, :dob, :position, :hometown, :captain,
                                                        :weight,:height, :foot, :specialities])
+    end
+
+    def update_team_stats
+      # Used for calculating the stats for the leadertable
+      @teams = Team.all
+      @teams.map do |team|
+        team.update(wins: team.calc_wins(team), losses: team.calc_losses(team), draws: team.calc_draws(team), points: team.calc_points)
+      end
+      @teams = @teams.order(points: :desc)
     end
 end

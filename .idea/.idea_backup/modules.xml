@@ -3,11 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/match_fixing.iml" filepath="$PROJECT_DIR$/.idea/match_fixing.iml" />
-<<<<<<< HEAD
-=======
       <module fileurl="file://$PROJECT_DIR$/.idea/match_fixing.iml" filepath="$PROJECT_DIR$/.idea/match_fixing.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/match_fixing.iml" filepath="$PROJECT_DIR$/.idea/match_fixing.iml" />
->>>>>>> 8cc5f8c2f183c481fd0ca8d2251ed0fc4ded782b
     </modules>
   </component>
 </project>

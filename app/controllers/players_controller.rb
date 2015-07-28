@@ -2,6 +2,8 @@ class PlayersController < ApplicationController
   # before_filter :authenticate_player!
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
+  # ADD BEFORE ACTION FOR UPDATING PLAYER STATS
+
   def create
     Player.create(user_params)
   end
