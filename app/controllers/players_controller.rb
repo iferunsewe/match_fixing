@@ -1,8 +1,7 @@
 class PlayersController < ApplicationController
-  # before_filter :authenticate_player!
+  before_filter :authenticate_player!
   before_action :set_player, only: [:show, :edit, :update, :destroy]
-
-  # ADD BEFORE ACTION FOR UPDATING PLAYER STATS
+  load_and_authorize_resource
 
   def create
     Player.create(user_params)
@@ -15,7 +14,7 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     # @matches = Match.all
-    # @match = Match.find(params[:id])
+    # @match = Match.find(params[:id]
     @rating = Rating.where(player_id: current_player.id)
   end
 
@@ -54,5 +53,9 @@ class PlayersController < ApplicationController
   def player_params
     params.require(:player).permit(:name, :dob, :position, :hometown, :captain,
                                    :weight,:height, :password, :email, :foot, :specialities, :team_id)
+  end
+
+  def set_player_rating
+
   end
 end

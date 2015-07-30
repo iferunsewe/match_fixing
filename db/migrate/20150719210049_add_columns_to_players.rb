@@ -4,5 +4,6 @@ class AddColumnsToPlayers < ActiveRecord::Migration
     add_column :players, :specialities, :string
     add_column :players, :goals, :integer, default: 0
     add_column :players, :appearances, :integer, default: 0
+    add_column :players, :admin, :boolean
   end
 end

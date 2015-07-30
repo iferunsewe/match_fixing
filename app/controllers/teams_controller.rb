@@ -1,7 +1,8 @@
 class TeamsController < ApplicationController
+  before_filter :authenticate_player!, except: [:index]
   before_action :set_team, only: [:show, :edit, :update, :destroy]
   before_action :update_team_stats, only: [:index, :show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
   # GET /teams
   # GET /teams.json
   def index
@@ -27,7 +28,9 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     # Adds the player creating the team to the created team and makes them captain by default
     @team.players << current_player
-    @team.players[0].captain = true
+    first_player = @team.players[0]
+    first_player.captain = true
+    first_player.role = "Captain"
     respond_to do |format|
       if @team.save
         format.html { redirect_to @team, notice: 'Team was successfully created.' }

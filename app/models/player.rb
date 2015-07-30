@@ -2,6 +2,8 @@ class Player < ActiveRecord::Base
   attr_accessible :name, :dob, :position, :hometown, :rating_id,
                   :captain, :weight,:height, :password, :email, :remember_me, :team_id,
                   :foot, :specialities, :password_confirmation, :appearances, :goals
+  before_save :defaults
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -36,7 +38,20 @@ class Player < ActiveRecord::Base
       end
   end
 
+  # Calculates the appearances for each player
   def calc_apps(player)
     apps = player.team.matches.size
+  end
+
+  private
+
+  # Sets the default role for each user. Had to it here instead of migration because otherwise it couldn't be overriden by seed data
+  def defaults
+    if self.name == "Alex Ames" || self.name == "Ife Runsewe"
+      self.admin ||= true
+    else
+      self.admin ||= false
+      nil #^Leaving a false value on the stack means the model will not be saved.^
+    end
   end
 end

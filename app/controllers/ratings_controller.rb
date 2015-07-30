@@ -1,5 +1,7 @@
 class RatingsController < ApplicationController
+  before_filter :authenticate_player!
   before_action :set_rating, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /ratings
   # GET /ratings.json

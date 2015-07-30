@@ -53,7 +53,6 @@ group :development do
 end
 gem 'carrierwave'
 gem 'ransack'
-gem 'cancancan'
 gem 'fog'
 gem 'haml-rails'
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -63,3 +62,4 @@ gem 'devise_token_auth'
 gem 'carrierwave-aws'
 gem 'protected_attributes'
 gem 'devise'
+gem 'cancancan', '~> 1.10'

@@ -1,3 +1,16 @@
+%h1.profile-name
+  = @player.name
+  - if @player.ratings != []
+    -(1..@player.average_rating).each do |i|
+      = image_tag("star-on.png")
+
+
+%h2
+  - if @player.team.nil?
+    Free Agent
+  - else
+    = @player.team.name
+
 = form_for @player do |f|
   - if @player.errors.any?
     #error_explanation
@@ -24,5 +37,9 @@
   .field
     = f.label :team
     = f.collection_select :team_id, Team.all, :id, :name
+  - if user_is_admin?
+    .field
+      = f.label :captain
+      = f.select :captain, [["Yes", true], ["No", false]]
   .actions
     = f.submit 'Save'
