@@ -10,10 +10,11 @@
     = f.label :date
     = f.datetime_select :date
 
-  = f.hidden_field :team_a_id, :value => current_player.team.id
+  -#= f.hidden_field :team_a_id, :value => current_player.team.id #ADD THIS IN WHEN WE WANT TO LET TEAMS ARRANGE MATCHES
   .field
-    = f.label :opponent
-    = f.collection_select :team_b_id, @match.show_teams_unless_current_team(current_player), :id, :name
+    = f.collection_select :team_a_id, Team.all, :id, :name, {:prompt => 'Choose Home Team'}
+  .field
+    = f.collection_select :team_b_id, Team.all, :id, :name, {:prompt => 'Choose Away Team'}
   = f.fields_for :ground do |g|
     .field
       = g.label :ground

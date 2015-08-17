@@ -44,6 +44,8 @@
 
 
 %br
-= link_to 'Edit', edit_team_path(@team)
-\|
+
+- if user_is_admin?
+  = link_to 'Edit', edit_team_path(@team)
+  \|
 = link_to 'Back', teams_path

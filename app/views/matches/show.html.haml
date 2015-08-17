@@ -54,7 +54,7 @@
 %p
   %b Ground:
   = @match.ground.name
-
-= link_to 'Edit', edit_match_path(@match)
-\|
+- if user_is_admin?
+  = link_to 'Edit', edit_match_path(@match)
+  \|
 = link_to 'Back', matches_path

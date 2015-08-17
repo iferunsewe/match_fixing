@@ -13,10 +13,17 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:notice] = "Access denied!"
-    redirect_to root_url
+    go_back
   end
 
   protected
+
+  def go_back #Redirect user to previous page
+    redirect_to :back
+    rescue ActionController::RedirectBackError
+      redirect_to root_path
+  end
+
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
