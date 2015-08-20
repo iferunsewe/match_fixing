@@ -1,7 +1,7 @@
 class Player < ActiveRecord::Base
   attr_accessible :name, :dob, :position, :hometown, :rating_id,
                   :captain, :weight,:height, :password, :email, :remember_me, :team_id,
-                  :foot, :specialities, :password_confirmation, :appearances, :goals
+                  :foot, :specialities, :password_confirmation
   before_save :defaults
 
 
@@ -11,8 +11,8 @@ class Player < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :team
-
   has_many :ratings
+  has_many :stats
 
   accepts_nested_attributes_for :ratings
 

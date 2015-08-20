@@ -2,6 +2,38 @@
 
 = render 'form'
 
+%h3 HOME - Players
+%table
+  %thead
+    %tr
+      %th Players
+      %th Goals
+      %th Rating
+
+%tbody
+  - @match.team_a.players.each do |player|
+    %tr
+      %td= player.name
+      %br
+
+
+
+%h3 Away - Players
+%table
+  %thead
+    %tr
+      %th Players
+      %th Goals
+      %th Rating
+
+%tbody
+  - @match.team_b.players.each do |player|
+    %tr
+      %td= player.name
+      %br
+
+
+
 = link_to 'Show', @match
 \|
 = link_to 'Back', matches_path

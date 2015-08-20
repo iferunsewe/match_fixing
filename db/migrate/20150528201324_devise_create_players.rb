@@ -37,7 +37,6 @@ class DeviseCreatePlayers < ActiveRecord::Migration
       t.string :hometown
       t.boolean :captain, default: false
       t.string :position
-      t.boolean :man_of_the_match, default: false
       t.float :weight
       t.float :height
 

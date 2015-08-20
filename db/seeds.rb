@@ -31,6 +31,8 @@ P15 = Player.create!(name: 'Gervinho', team_id: T5.id, email: 'test15@email.com'
 p16 = Player.create!(name: 'Ife Runsewe', email: 'iferunsewe@email.com', password: 'password', admin: true)
 p17 = Player.create!(name: 'Alex Ames', email: 'alexames@email.com', password: 'password', admin: true)
 
+
+
 g1 = Ground.create!(name: "St James Park", address: "Barrack Road, Newcastle upon Tyne, NE1 4ST", image: File.open(File.join(Rails.root,"/app/assets/images/st-james-park.jpg")))
 
 m1 = Match.create!(date: DateTime.parse("01/08/2015 15:00"), status: false, team_a_score: nil, team_b_score: nil, team_a_id: T1.id, team_b_id: T3.id, ground_id: g1.id)

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  appearances: 
+  goals: 
+  man_of_the_match: false
+
+two:
+  appearances: 
+  goals: 
+  man_of_the_match: false
