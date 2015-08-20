@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :leagues
   devise_for :players, controllers: {
     sessions: 'players/sessions'
   }
