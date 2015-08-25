@@ -1,60 +1,81 @@
-%p#notice= notice
 
-%p
-  %b Date:
-  = @match.date.to_s(:long)
-%p
-  %b Status:
-  = @match.display_status(@match.status)
+.match_container.col-sm-12
+  .match_home.col-sm-6
+    %h3.text-center HOME
+    %h1.text-center= @match.team_a.name
+    .row
+      .col-xs-6.col-xs-offset-3
+        %img.img-responsive.img-circle{:src => "/assets/grass4.png"}
+          .circle-inner
+            .score-text
+              - if @match.status
+                = @match.team_a_score
+              - else
+                2
+    .table-responsive
+      %table.table.no-border
+        %thead
+          %tr
+            %th Players
+            %th Goals
+            %th Rating
 
-%p
-  %b Home:
-  = @match.team_a.name
-  - if @match.status
-    = @match.team_a_score
-  vs
-  %b Away:
-  = @match.team_b.name
-  - if @match.status
-    = @match.team_b_score
+        %tbody
+          - @match.team_a.players.each do |player|
+            %tr
+              %td= player.name
+              %td
+                -for i in 0..player.id
+                  %span.glyphicon.glyphicon-globe
+              %td
+                -for i in 0..player.team_id
+                  %span.glyphicon.glyphicon-star-empty
+              %br
 
-%h3 HOME
-%table
-  %thead
-    %tr
-      %th Players
-      %th Goals
-      %th Rating
+  .match_away.col-sm-6
+    %h3.text-center Away
+    %h1.text-center= @match.team_b.name
+    .row
+      .col-xs-6.col-xs-offset-3
+        %img.img-responsive.img-circle{:src => "/assets/grass4.png"}
+          .circle-inner
+            .score-text
+              - if @match.status
+                = @match.team_b_score
+              - else
+                2
+    .table-responsive
+      %table.table.no-border
+        %thead
+          %tr
+            %th Players
+            %th Goals
+            %th Rating
 
-%tbody
-  - @match.team_a.players.each do |player|
-    %tr
-      %td= player.name
-      %td= player.id
-      %td= player.team_id
-      %br
+        %tbody
+          - @match.team_b.players.each do |player|
+            %tr
+              %td= player.name
+              %td
+                -for i in 0..player.id
+                  %span.glyphicon.glyphicon-globe
+              %td
+                -for i in 0..player.team_id
+                  %span.glyphicon.glyphicon-star-empty
+              %br
 
-%h3 Away
-%table
-  %thead
-    %tr
-      %th Players
-      %th Goals
-      %th Rating
+    %br
+    %p
+      %b Ground:
+      = @match.ground.name
+    %p
+      %b Date:
+      = @match.date.to_s(:long)
+    %p
+      %b Status:
+      = @match.display_status(@match.status)
 
-%tbody
-  - @match.team_b.players.each do |player|
-    %tr
-      %td= player.name
-      %td= player.id
-      %td= player.team_id
-      %br
 
-%br
-%p
-  %b Ground:
-  = @match.ground.name
-
-= link_to 'Edit', edit_match_path(@match)
-\|
-= link_to 'Back', matches_path
+  = link_to 'Edit', edit_match_path(@match)
+  \|
+  = link_to 'Back', matches_path

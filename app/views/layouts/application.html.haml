@@ -3,22 +3,62 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title MatchFixing
+    %link{href: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", rel: "stylesheet", integrity: "sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==", crossorigin: "anonymous"}
+    
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %p.notice= notice
-    %p.alert= alert
-    - if player_signed_in?
-      Logged in as
-      %strong= link_to current_player.name, current_player
-      - if current_player.team != nil
-        Member of
-        %strong= link_to current_player.team.name, current_player.team
-      = link_to 'Edit account', edit_player_registration_path, :class => 'navbar-link'
-      = link_to 'Edit Profile', edit_player_path(current_player), :class => 'navbar-link'
-      = link_to "Logout", destroy_player_session_path, method: :delete, :class => 'navbar-link'
-    - else
-      = link_to "Sign up", new_player_registration_path, :class => 'navbar-link'
-      = link_to "Login", new_player_session_path, :class => 'navbar-link'
+    %nav.navbar.navbar-default
+      .container-fluid
+        / Brand and toggle get grouped for better mobile display
+        .navbar-header
+          %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar%img{}
+          %a
+            %img.pull-left.img-responsive{:src => "/assets/logo-xs.jpg"}
+        / Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li.active
+              %a{:href => "#"}
+                Link
+                %span.sr-only (current)
+            %li
+              %a{:href => "#"} Link
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                Dropdown
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  %a{:href => "#"} Action
+                %li
+                  %a{:href => "#"} Another action
+                %li
+                  %a{:href => "#"} Something else here
+                %li.divider{:role => "separator"}
+                %li
+                  %a{:href => "#"} Separated link
+                %li.divider{:role => "separator"}
+                %li
+                  %a{:href => "#"} One more separated link
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              - if player_signed_in?
+                %strong= link_to current_player.name, current_player
+                - if current_player.team != nil
+                  Member of
+                  %strong= link_to current_player.team.name, current_player.team
+              %a{:href => "#"} Link
+
+        / /.navbar-collapse
+      / /.container-fluid
+    / %p.notice= notice
+    / %p.alert= alert
+
+      
     = yield
