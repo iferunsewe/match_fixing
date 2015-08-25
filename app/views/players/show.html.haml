@@ -1,5 +1,5 @@
-%h1.profile-name
-  = @player.name
+%h1.object-name
+  =@player.name
   - if @player.ratings != []
     -(1..@player.average_rating).each do |i|
       = image_tag("star-on.png")
@@ -20,10 +20,14 @@
   = @player.dob
 %p
   %b Appearances:
-  = @player.stats.player_appearances
+  = @player.appearances(@player.id)
 %p
   %b Goals:
-  = @player.stats.player_goals
+  = @player.goals(@player.id)
+
+%p
+  %b Man of the Match:
+  = @player.motms(@player.id)
 %p
   %b Position:
   = @player.position
@@ -37,17 +41,15 @@
   %b Specialities:
   = @player.specialities
 
-- if user_is_admin? == false
-  - match = Match.where({team_a_id: [@player.team.id, current_player.team.id], team_b_id: [@player.team.id, current_player.team.id], status: true})
-  - if @player.id != current_player.id && match != [] && @player.played_and_rated__before(@player, current_player, match) == true
-
-    %p
-      %b Rate player
-      #player_ratings
-        - form_id = "player#{@player.id}_rating"
-        = form_for @player.ratings.build, html: {id: "player#{@player.id}_rating", class: 'star_rating_form'} do |f|
-          = f.hidden_field :player_id
-          = f.hidden_field :stars, id: "#{form_id}_stars"
-        -(1..5).each do |i|
-          = image_tag("star-off.png", class: "star_rating", "data-form-id" => form_id, "data-stars" => i, id: "#{form_id}_#{i}", alt:"star_rating")
+- match = Match.where({team_a_id: [@player.team.id, current_player.team.id], team_b_id: [@player.team.id, current_player.team.id], status: true})
+- if @player.id != current_player.id && match != [] && @player.played_and_rated__before(@player, current_player, match) == true
+  %p
+    %b Rate player
+    #ratings_form
+      - form_id = "player#{@player.id}_rating"
+      = form_for @player.ratings.build, html: {id: "player#{@player.id}_rating", class: 'star_rating_form'} do |f|
+        = f.hidden_field :player_id
+        = f.hidden_field :stars, id: "#{form_id}_stars"
+      -(1..5).each do |i|
+        = image_tag("star-off.png", class: "star_rating", "data-form-id" => form_id, "data-stars" => i, id: "#{form_id}_#{i}", alt:"star_rating")
 

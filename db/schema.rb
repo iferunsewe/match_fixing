@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20150820204940) do
   add_index "ratings", ["team_id"], name: "index_ratings_on_team_id", using: :btree
 
   create_table "stats", force: :cascade do |t|
-    t.boolean  "appearance",       default: false
+    t.boolean  "appearance",       default: true
     t.integer  "goals",            default: 0
     t.boolean  "man_of_the_match", default: false
     t.integer  "player_id"

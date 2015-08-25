@@ -22,7 +22,7 @@ P6 = Player.create!(name: 'Alejandro Bedoya', team_id: T1.id, email: 'test6@emai
 P7 = Player.create!(name: 'Rafael Marquez', team_id: T2.id, email: 'test7@email.com', password: 'password', captain: true)
 P8 = Player.create!(name: 'Yuya Osako', team_id: T3.id, email: 'test8@email.com', password: 'password')
 P9 = Player.create!(name: 'Andrey Eschenko', team_id: T4.id, email: 'test9@email.com', password: 'password')
-P10 = Player.create!(name: 'Andrey Eschenko', team_id: T5.id, email: 'test10@email.com', password: 'password')
+P10 = Player.create!(name: 'Mark Van Bommel', team_id: T5.id, email: 'test10@email.com', password: 'password')
 P11 = Player.create!(name: 'Daniel Van Buyten', team_id: T1.id, email: 'test11@email.com', password: 'password', captain: true)
 P12 = Player.create!(name: 'Godfrey Oboabona', team_id: T2.id, email: 'test12@email.com', password: 'password')
 P13 = Player.create!(name: 'Khosro Heydari', team_id: T3.id, email: 'test13@email.com', password: 'password')
@@ -37,8 +37,22 @@ g1 = Ground.create!(name: "St James Park", address: "Barrack Road, Newcastle upo
 
 m1 = Match.create!(date: DateTime.parse("01/08/2015 15:00"), status: false, team_a_score: nil, team_b_score: nil, team_a_id: T1.id, team_b_id: T3.id, ground_id: g1.id)
 m2 = Match.create!(date: DateTime.parse("02/01/2015 15:00"), status: true, team_a_score: 4, team_b_score: 5, team_a_id: T4.id, team_b_id: T2.id, ground_id: g1.id)
-m3 = Match.create!(date: DateTime.parse("01/07/2015 15:00"), status: true, team_a_score: 2, team_b_score: 0, team_a_id: T5.id, team_b_id: T4.id, ground_id: g1.id)
+m3 = Match.create!(date: DateTime.parse("01/07/2015 15:00"), status: true, team_a_score: 2, team_b_score: 1, team_a_id: T5.id, team_b_id: T4.id, ground_id: g1.id)
 m4 = Match.create!(date: DateTime.parse("01/08/2015 15:00"), status: false, team_a_score: nil, team_b_score: nil, team_a_id: T2.id, team_b_id: T3.id, ground_id: g1.id)
+
+# Match 2
+s1 = Stat.update(12, goals: 1)
+s2 = Stat.update(11, goals: 2, man_of_the_match: true)
+s3 = Stat.update(10, goals: 2)
+s4 = Stat.update(7, goals: 3)
+s5 = Stat.update(8, goals: 1)
+
+# Match 3
+s6 = Stat.update(16, goals: 1)
+s7 = Stat.update(15, goals: 1)
+s8 = Stat.update(13, goals: 1)
+s9 = Stat.update(14, man_of_the_match: true)
+
 
 
 

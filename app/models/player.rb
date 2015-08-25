@@ -13,8 +13,9 @@ class Player < ActiveRecord::Base
   belongs_to :team
   has_many :ratings
   has_many :stats
+  has_many :matches, through: :stats
 
-  accepts_nested_attributes_for :ratings
+  accepts_nested_attributes_for :ratings, :matches, :stats
 
   # The method calculates the average stars a player has received so it can be shown on their profile
   def average_rating
@@ -39,8 +40,17 @@ class Player < ActiveRecord::Base
   end
 
   # Calculates the appearances for each player
-  def calc_apps(player)
-    apps = player.team.matches.size
+  def appearances(player_id)
+    Stat.where(player_id: player_id, appearance:true).size
+  end
+
+  # Calculates the goals for each player
+  def goals(player_id)
+    Stat.where(player_id: player_id).sum(:goals)
+  end
+
+  def motms(player_id)
+    Stat.where(player_id: player_id, man_of_the_match: true).size
   end
 
   private

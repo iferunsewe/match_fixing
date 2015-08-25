@@ -18,7 +18,18 @@
   - if @match.status
     = @match.team_b_score
 
+
+
 %h3 HOME
+%h2 Rate team
+%b.object-name= "#{@match.team_a.name}"
+#ratings_form
+  - form_id = "team#{@match.team_a.id}_rating"
+  = form_for @match.team_a.ratings.build, html: {id: form_id, class: 'match_report_team_rating_form' } do |f|
+    = f.hidden_field :team_id
+    = f.hidden_field :stars, id: "#{form_id}_id"
+  -(1..5).each do |i|
+    = image_tag("star-off.png", class: "star_rating", "data-form-id" => form_id, "data-stars" => i, id: "#{form_id}_#{i}", alt:"star_rating")
 %table
   %thead
     %tr
@@ -30,11 +41,20 @@
   - @match.team_a.players.each do |player|
     %tr
       %td= player.name
-      %td= player.id
-      %td= player.team_id
+      %td= player.goals(player.id)
+      %td= player.average_rating
       %br
 
-%h3 Away
+%h3 AWAY
+%h2 Rate team
+%b.object-name= "#{@match.team_b.name}"
+#ratings_form
+  - form_id = "team#{@match.team_b.id}_rating"
+  = form_for @match.team_a.ratings.build, html: {id: form_id, class: 'match_report_team_rating_form' } do |f|
+    = f.hidden_field :team_id
+    = f.hidden_field :stars, id: "#{form_id}_id"
+  -(1..5).each do |i|
+    = image_tag("star-off.png", class: "star_rating", "data-form-id" => form_id, "data-stars" => i, id: "#{form_id}_#{i}", alt:"star_rating")
 %table
   %thead
     %tr
@@ -46,8 +66,8 @@
   - @match.team_b.players.each do |player|
     %tr
       %td= player.name
-      %td= player.id
-      %td= player.team_id
+      %td= player.goals(player.id)
+      %td= player.average_rating
       %br
 
 %br

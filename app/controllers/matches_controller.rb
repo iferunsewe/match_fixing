@@ -3,6 +3,9 @@ class MatchesController < ApplicationController
   before_filter :authenticate_player!
   load_and_authorize_resource
 
+
+
+
   # GET /matches
   # GET /matches.json
   def index
@@ -22,13 +25,13 @@ class MatchesController < ApplicationController
 
   # GET /matches/1/edit
   def edit
+
   end
 
   # POST /matches
   # POST /matches.json
   def create
     @match = Match.new(match_params)
-
     respond_to do |format|
       if @match.save
         format.html { redirect_to @match, notice: 'Match was successfully created.' }
@@ -72,9 +75,9 @@ class MatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
-      params.require(:match).permit(:date, :status, :team_a_score, :team_b_score, :team_a_id,
-                                    :team_b_id, :man_of_the_match, ground_attributes: [:address, :name, :image],
-                                    stat_attributes:[:goals, :appearance, :man_of_the_match]
+      params.require(:match).permit(:id, :date, :status, :team_a_score, :team_b_score, :team_a_id,
+                                    :team_b_id,:stats,  :man_of_the_match, ground_attributes: [:address, :name, :image , :id],
+                                    stats_attributes:[:goals, :appearance, :man_of_the_match, :id]
       )
     end
 
