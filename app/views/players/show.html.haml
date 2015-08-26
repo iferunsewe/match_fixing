@@ -45,11 +45,5 @@
 - if @player.id != current_player.id && match != [] && @player.played_and_rated__before(@player, current_player, match) == true
   %p
     %b Rate player
-    #ratings_form
-      - form_id = "player#{@player.id}_rating"
-      = form_for @player.ratings.build, html: {id: "player#{@player.id}_rating", class: 'star_rating_form'} do |f|
-        = f.hidden_field :player_id
-        = f.hidden_field :stars, id: "#{form_id}_stars"
-      -(1..5).each do |i|
-        = image_tag("star-off.png", class: "star_rating", "data-form-id" => form_id, "data-stars" => i, id: "#{form_id}_#{i}", alt:"star_rating")
+    = render 'rendered_pages/ratings_form', locals: {object: @player, model: 'player'}
 

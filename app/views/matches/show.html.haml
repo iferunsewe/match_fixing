@@ -21,15 +21,12 @@
 
 
 %h3 HOME
-%h2 Rate team
-%b.object-name= "#{@match.team_a.name}"
-#ratings_form
-  - form_id = "team#{@match.team_a.id}_rating"
-  = form_for @match.team_a.ratings.build, html: {id: form_id, class: 'match_report_team_rating_form' } do |f|
-    = f.hidden_field :team_id
-    = f.hidden_field :stars, id: "#{form_id}_id"
-  -(1..5).each do |i|
-    = image_tag("star-off.png", class: "star_rating", "data-form-id" => form_id, "data-stars" => i, id: "#{form_id}_#{i}", alt:"star_rating")
+- if current_player.team != @match.team_a && current_player.team == @match.team_b && @match.status && @match.played_and_rated_before(current_player, @match.team_a, @match)
+  %h2 Rate team
+  %b.object-name= "#{@match.team_a.name}"
+  #ratings_form
+    = render 'rendered_pages/ratings_form', {object: @match.team_a, model: 'team'}
+
 %table
   %thead
     %tr
@@ -46,15 +43,12 @@
       %br
 
 %h3 AWAY
-%h2 Rate team
-%b.object-name= "#{@match.team_b.name}"
-#ratings_form
-  - form_id = "team#{@match.team_b.id}_rating"
-  = form_for @match.team_a.ratings.build, html: {id: form_id, class: 'match_report_team_rating_form' } do |f|
-    = f.hidden_field :team_id
-    = f.hidden_field :stars, id: "#{form_id}_id"
-  -(1..5).each do |i|
-    = image_tag("star-off.png", class: "star_rating", "data-form-id" => form_id, "data-stars" => i, id: "#{form_id}_#{i}", alt:"star_rating")
+- if current_player.team != @match.team_b && current_player.team == @match.team_a && @match.status == true && @match.played_and_rated_before(current_player, @match.team_b, @match)
+  %h2 Rate team
+  %b.object-name= "#{@match.team_b.name}"
+  #ratings_form
+    = render 'rendered_pages/ratings_form', {object: @match.team_b, model: 'team'}
+
 %table
   %thead
     %tr

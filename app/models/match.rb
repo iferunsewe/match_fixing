@@ -23,6 +23,16 @@ class Match < ActiveRecord::Base
     match_status ? 'Confirmed' : 'Pending'
   end
 
+  def played_and_rated_before(rater, team, match)
+    current_player_ratings = Rating.where(team_id: team.id, rater: rater.id)
+    rating_after_match = Rating.where(team_id: team.id, rater: rater.id).where("created_at < ?", match.date)
+    if current_player_ratings.size < 1 || rating_after_match != []
+      true
+    else
+      false
+    end
+  end
+
   private
 
   def init_stats_for_players
