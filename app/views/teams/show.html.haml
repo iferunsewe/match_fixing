@@ -6,6 +6,7 @@
   - if @team.players != [] && @team.average_rating(@team) != 0
     -(1..@team.average_rating(@team)).each do |i|
       = image_tag("star-on.png")
+    -#%b= "#{number_with_precision(@team.average_rating(@team), precision: 2)}"
   - else
     %p Team not rated yet
 

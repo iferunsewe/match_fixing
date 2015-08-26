@@ -13,7 +13,7 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find(params[:id])
-    # @matches = Match.all
+    @matches = Match.all
     # @match = Match.find(params[:id]
     @rating = Rating.where(player_id: current_player.id)
   end

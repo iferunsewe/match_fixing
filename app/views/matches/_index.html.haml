@@ -19,7 +19,7 @@
       -if current_player.team == match.team_a || current_player.team == match.team_b
         %tr
           %td= match.date
-          %td= @match.display_status(match.status)
+          %td= match.display_status(match.status)
           %td= match.team_a_score
           %td= match.team_b_score
           %td= link_to match.team_a.name, team_path(match.team_a)

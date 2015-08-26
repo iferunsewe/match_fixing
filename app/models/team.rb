@@ -38,12 +38,14 @@ class Team < ActiveRecord::Base
     end
     points
   end
-  # Works out the average rating of a team based on their players ratings
+  # Works out the average rating of a team based on their players ratings and team ratings
   def average_rating(team)
     players_ratings = team.players.map do |player|
       player.average_rating
     end
-    players_ratings.sum / players_ratings.size
+    team_ratings_sum = players_ratings.sum + team.ratings.sum(:stars)
+    team_ratings_size = players_ratings.size + team.ratings.size
+    team_ratings_sum / team_ratings_size
   end
 
   def players_names(team)
