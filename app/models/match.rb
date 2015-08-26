@@ -20,7 +20,7 @@ class Match < ActiveRecord::Base
   end
 
   def display_status(match_status)
-    match_status ? 'Confirmed' : 'Pending'
+    match_status ? 'Played' : 'Pending'
   end
 
   def played_and_rated_before(rater, team, match)

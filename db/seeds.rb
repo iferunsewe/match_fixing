@@ -35,19 +35,19 @@ p17 = Player.create!(name: 'Alex Ames', email: 'alexames@email.com', password: '
 
 g1 = Ground.create!(name: "St James Park", address: "Barrack Road, Newcastle upon Tyne, NE1 4ST", image: File.open(File.join(Rails.root,"/app/assets/images/st-james-park.jpg")))
 
-m1 = Match.create!(date: DateTime.parse("01/08/2015 15:00"), status: false, team_a_score: nil, team_b_score: nil, team_a_id: T1.id, team_b_id: T3.id, ground_id: g1.id)
-m2 = Match.create!(date: DateTime.parse("02/01/2015 15:00"), status: true, team_a_score: 4, team_b_score: 5, team_a_id: T4.id, team_b_id: T2.id, ground_id: g1.id)
-m3 = Match.create!(date: DateTime.parse("01/07/2015 15:00"), status: true, team_a_score: 2, team_b_score: 1, team_a_id: T5.id, team_b_id: T4.id, ground_id: g1.id)
-m4 = Match.create!(date: DateTime.parse("01/08/2015 15:00"), status: false, team_a_score: nil, team_b_score: nil, team_a_id: T2.id, team_b_id: T3.id, ground_id: g1.id)
+m1 = Match.create!(date: DateTime.parse("02/01/2015 15:00"), status: true, team_a_score: 4, team_b_score: 5, team_a_id: T4.id, team_b_id: T2.id, ground_id: g1.id)
+m2 = Match.create!(date: DateTime.parse("01/07/2015 15:00"), status: true, team_a_score: 2, team_b_score: 1, team_a_id: T5.id, team_b_id: T4.id, ground_id: g1.id)
+m3 = Match.create!(date: DateTime.parse("01/08/2015 15:00"), status: false, team_a_score: nil, team_b_score: nil, team_a_id: T2.id, team_b_id: T3.id, ground_id: g1.id)
+m4 = Match.create!(date: DateTime.parse("01/08/2015 15:00"), status: false, team_a_score: nil, team_b_score: nil, team_a_id: T1.id, team_b_id: T3.id, ground_id: g1.id)
 
-# Match 2
+# Match 1
 s1 = Stat.update(12, goals: 1)
 s2 = Stat.update(11, goals: 2, man_of_the_match: true)
 s3 = Stat.update(10, goals: 2)
 s4 = Stat.update(7, goals: 3)
 s5 = Stat.update(8, goals: 1)
 
-# Match 3
+# Match 2
 s6 = Stat.update(16, goals: 1)
 s7 = Stat.update(15, goals: 1)
 s8 = Stat.update(13, goals: 1)

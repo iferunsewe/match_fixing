@@ -45,5 +45,5 @@
 - if @player.id != current_player.id && match != [] && @player.played_and_rated__before(@player, current_player, match) == true
   %p
     %b Rate player
-    = render 'rendered_pages/ratings_form', locals: {object: @player, model: 'player'}
+    = render 'rendered_pages/ratings_form', {object: @player, model: 'player'}
 

@@ -31,6 +31,7 @@ class Player < ActiveRecord::Base
   def played_and_rated__before(player_a, player_b, match) #Player profile and current player logged in
       current_player_ratings = Rating.where(player_id: player_a.id, rater: player_b.id)
       # Finds any existing ratings corresponding to the player ids and checks if they were before the last played match
+      match = match.sort_by &:date
       rating_after_match = Rating.where(player_id: player_a.id, rater: player_b.id).where("created_at < ?", match.last.date)
       if current_player_ratings.size < 1 || rating_after_match != []
         true

@@ -16,6 +16,27 @@ class ApplicationController < ActionController::Base
     go_back
   end
 
+  def after_sign_in_path_for(player)
+    ratings = Rating.where(rater: player.id)
+    matches = player.matches
+    matches_sorted_by_date = (matches.sort_by &:date)
+    last_match_played = matches_sorted_by_date.last
+    # After log in players will be redirected to the match report for the last match they have played if
+    # they haven't made a rating yet and they've played a match/matches or the date of the last rating they made
+    # is before the date of the last match they have played. If the player has two unrated matches
+    # the second to last match will be discarded as this focuses on the last match played
+    if ratings == [] && matches == []
+      player_path(current_player)
+    elsif ratings == [] && matches.size >= 1 && last_match_played.status == true
+      match_path(last_match_played.id)
+    elsif ratings != [] && (ratings.last.created_at < last_match_played.date) && last_match_played.status == true
+      match_path(last_match_played.id)
+    else
+      player_path(current_player)
+    end
+  end
+
+
   protected
 
   def go_back #Redirect user to previous page
