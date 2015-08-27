@@ -18,8 +18,8 @@
     - @matches.each do |match|
       -if current_player.team == match.team_a || current_player.team == match.team_b
         %tr
-          %td= match.date
-          %td= @match.display_status(match.status)
+          %td= match.date.to_s(:long)
+          %td= match.display_status(match.status)
           %td= match.team_a_score
           %td= match.team_b_score
           %td= link_to match.team_a.name, team_path(match.team_a)
@@ -37,7 +37,7 @@
           %td= link_to 'Destroy', match, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
-
-= link_to 'New Match', new_match_path
+- if user_is_admin?
+  = link_to 'New Match', new_match_path
 
 

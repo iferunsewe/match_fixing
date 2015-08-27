@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Appearances:
+  = @stat.appearances
+%p
+  %b Goals:
+  = @stat.goals
+%p
+  %b Man of the match:
+  = @stat.man_of_the_match
+
+= link_to 'Edit', edit_stat_path(@stat)
+\|
+= link_to 'Back', stats_path

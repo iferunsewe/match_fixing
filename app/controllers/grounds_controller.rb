@@ -72,7 +72,8 @@ class GroundsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ground_params
-      params.require(:ground).permit(:address, :name, :image, match_attributes: [:date, :status, :team_a_score, :team_b_score, :team_a_id,
+      params.require(:ground).permit(:address, :name, :image,
+                                     match_attributes: [:date, :status, :team_a_score, :team_b_score, :team_a_id,
                                                                                  :team_b_id])
     end
 end

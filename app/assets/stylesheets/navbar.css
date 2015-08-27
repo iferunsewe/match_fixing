@@ -5,3 +5,7 @@
 .navbar-header{
   background-color: black;
 }
+.navbar.navbar-default{
+  margin-bottom: 0;
+  border: none;
+}
