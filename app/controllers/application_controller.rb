@@ -25,7 +25,9 @@ class ApplicationController < ActionController::Base
     # they haven't made a rating yet and they've played a match/matches or the date of the last rating they made
     # is before the date of the last match they have played. If the player has two unrated matches
     # the second to last match will be discarded as this focuses on the last match played
-    if ratings == [] && matches == []
+    if user_is_admin?
+      root_path
+    elsif ratings == [] && matches == []
       player_path(current_player)
     elsif ratings == [] && matches.size >= 1 && last_match_played.status == true
       match_path(last_match_played.id)
