@@ -1,25 +1,34 @@
-= form_for @team do |f|
-  - if @team.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@team.errors.count, "error")} prohibited this team from being saved:"
-      %ul
-        - @team.errors.full_messages.each do |msg|
-          %li= msg
+.forms-edit.font-override
+  = form_for @team do |f|
+    - if @team.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@team.errors.count, "error")} prohibited this team from being saved:"
+        %ul
+          - @team.errors.full_messages.each do |msg|
+            %li= msg
+    .row
+      .col-md-12
+        .form-group
+          = f.label :name
+          = f.text_field :name, class: "form-control"
+      .col-md-12
+        .form-group
+          = f.label :hometown
+          = f.text_field :hometown, class: "form-control"
+      .col-md-12
+        .form-group
+          = f.label :philosophy
+          = f.text_field :philosophy, class: "form-control"
+      .col-md-12
+        .form-group
+          = f.label :kit_colours
+          = f.text_field :kit, class: "form-control"
+      .col-md-12
+        .form-group
+          = f.label :seeking_players
+          = f.check_box :seeking_players, class: "form-control"
+      .col-md-12
+        .actions.text-center
+          = link_to 'Cancel', teams_path, class: "btn btn-danger"
+          = f.submit 'Save', class: "btn btn-success"
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :hometown
-    = f.text_field :hometown
-  .field
-    = f.label :philosophy
-    = f.text_field :philosophy
-  .field
-    = f.label :kit_colours
-    = f.text_field :kit
-  .field
-    = f.label :seeking_players
-    = f.check_box :seeking_players
-  .actions
-    = f.submit 'Save'

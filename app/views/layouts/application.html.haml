@@ -7,6 +7,7 @@
     %link{href: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", rel: "stylesheet", integrity: "sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==", crossorigin: "anonymous"}
     %link{href: "https://fonts.googleapis.com/css?family=Orbitron", rel: "stylesheet", type: "text/css"}
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'black_theme', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
@@ -51,10 +52,10 @@
             %li
               - if player_signed_in?
                 %strong= link_to current_player.name, current_player
+                %strong= link_to "Log out", destroy_player_session_path, :method => :delete 
                 - if current_player.team != nil
                   Member of
                   %strong= link_to current_player.team.name, current_player.team
-              %a{:href => "#"} Link
 
         / /.navbar-collapse
       / /.container-fluid

@@ -1,0 +1,15 @@
+.about-container
+  / .col-xs-4.text-center.create-team-box
+  /   %h1 Create Team
+
+  / .col-xs-4.text-center.create-match-box
+  /   %h1 Create Match
+
+  / .col-xs-4.text-center.create-profile-box
+  /   %h1 Create Profile
+  %a{:href => "/teams/new"}
+    .col-xs-6.text-center.create-team-box
+
+  %a{:href => "/players/#{current_player.id}"}
+    .col-xs-6.text-center.create-profile-box
+    
