@@ -1,4 +1,8 @@
 .match_container
+  .row.ground
+    .col.md-12.text-center
+      = @match.ground.name
+
   .match_home.col-xs-6
     .col-xs-12.text-center
       %h3 HOME
@@ -83,12 +87,8 @@
                     %span.glyphicon.glyphicon-star-empty
                 %br
 
-  .row.group
-    .col.md-12
-      %p
-        %b Ground:
-        = @match.ground.name
-      - if user_is_admin?
-        = link_to 'Edit', edit_match_path(@match)
-        \|
-      = link_to 'Back', matches_path
+
+- if user_is_admin?
+  = link_to 'Edit', edit_match_path(@match)
+  \|
+= link_to 'Back', matches_path

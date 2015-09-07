@@ -1,0 +1,43 @@
+%h1 Listing matches
+
+.table-responsive
+  %table.table.table-hover
+    %thead
+      %tr
+        %th Date
+        %th Status
+        %th Team a score
+        %th Team b score
+        %th Team a
+        %th Team b
+        %th Ground
+        %th
+        %th
+        %th
+
+    %tbody#items
+      - combined_team_matches(@team).each do |match|
+        %tr
+          %td= match.date.to_s(:long)
+          %td= match.display_status(match.status)
+          %td= match.team_a_score
+          %td= match.team_b_score
+          %td= link_to match.team_a.name, team_path(match.team_a)
+          %td= link_to match.team_b.name, team_path(match.team_b)
+          - if match.team_a != current_player.team && match.status == nil
+            %td
+              = form_for match do |f|
+                = f.select :status, [['Accept','true'],['Reject','false']]
+                = f.submit "Match"
+          %td
+            - if match.ground.present?
+              = match.ground.name
+          %td= link_to 'Show', match
+          %td= link_to 'Edit', edit_match_path(match)
+          %td= link_to 'Destroy', match, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+- if user_is_admin?
+  = link_to 'New Match', new_match_path
+
+

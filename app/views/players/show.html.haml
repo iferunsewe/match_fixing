@@ -37,7 +37,8 @@
         %li.list-group-item.text-muted.color_override
           Actions
           %i.fa.fa-dashboard.fa-1x
-        - match = Match.where({team_a_id: [@player.team.id, current_player.team.id], team_b_id: [@player.team.id, current_player.team.id], status: true})
+        - if @player.team
+          - match = Match.where({team_a_id: [@player.team.id, current_player.team.id], team_b_id: [@player.team.id, current_player.team.id], status: true})
         - if @player.id != current_player.id && match != [] && @player.played_and_rated__before(@player, current_player, match) == true  
           %li.list-group-item.text-right.color_override_alt
             %span.pull-left

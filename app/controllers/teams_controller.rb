@@ -11,6 +11,11 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @team = Team.find(params[:id])
+    # respond_to do |format|
+    #   format.html
+    #   format.css
+    # end
   end
 
   # GET /teams/new
@@ -75,7 +80,7 @@ class TeamsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
       params.require(:team).permit(:name, :hometown, :wins, :losses, :draws, :rating,
-                                   :seeking_players, :kit, :philosophy,
+                                   :seeking_players, :kit, :primary_kit_colour, :secondary_kit_colour, :philosophy,
                                    player_attributes: [:name, :dob, :position, :hometown, :captain,
                                                        :weight,:height, :foot, :specialities])
     end

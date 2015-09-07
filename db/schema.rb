@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 20150820204940) do
     t.string   "position"
     t.string   "hometown"
     t.boolean  "captain",                default: false
-    t.boolean  "man_of_the_match",       default: false
     t.float    "weight"
     t.float    "height"
     t.integer  "team_id"
@@ -70,8 +69,6 @@ ActiveRecord::Schema.define(version: 20150820204940) do
     t.datetime "updated_at"
     t.string   "foot"
     t.string   "specialities"
-    t.integer  "goals",                  default: 0
-    t.integer  "appearances",            default: 0
     t.boolean  "admin"
   end
 
@@ -107,18 +104,23 @@ ActiveRecord::Schema.define(version: 20150820204940) do
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.string   "hometown"
-    t.integer  "played",          default: 0
-    t.integer  "wins",            default: 0
-    t.integer  "losses",          default: 0
-    t.integer  "draws",           default: 0
-    t.integer  "points",          default: 0
+    t.string   "primary_kit_colour"
+    t.string   "secondary_kit_colour"
+    t.integer  "played",               default: 0
+    t.integer  "wins",                 default: 0
+    t.integer  "losses",               default: 0
+    t.integer  "draws",                default: 0
+    t.integer  "points",               default: 0
     t.integer  "rating_id"
     t.boolean  "seeking_players"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "league_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "philosophy"
     t.string   "kit"
   end
+
+  add_index "teams", ["league_id"], name: "index_teams_on_league_id", using: :btree
 
   add_foreign_key "ratings", "players"
   add_foreign_key "ratings", "teams"

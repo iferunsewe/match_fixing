@@ -3,6 +3,8 @@ class CreateTeams < ActiveRecord::Migration
     create_table :teams do |t|
       t.string :name
       t.string :hometown
+      t.string :primary_kit_colour
+      t.string :secondary_kit_colour
       t.integer :played, default: 0
       t.integer :wins, default: 0
       t.integer :losses, default: 0

@@ -21,8 +21,12 @@
           = f.text_field :philosophy, class: "form-control"
       .col-md-12
         .form-group
-          = f.label :kit_colours
-          = f.text_field :kit, class: "form-control"
+          = f.label :primary_kit_colour
+          = f.text_field :primary_kit_colour, class: "form-control"
+      .col-md-12
+        .form-group
+          = f.label :secondary_kit_colour
+          = f.text_field :secondary_kit_colour, class: "form-control"
       .col-md-12
         .form-group
           = f.label :seeking_players

@@ -1,15 +1,25 @@
 .about-container
-  / .col-xs-4.text-center.create-team-box
-  /   %h1 Create Team
+  - if !current_player
+    %a{:href => "/players/sign_in"}
+      .col-xs-4.text-center.create-profile-box
+  - else
+    %a{:href => "/players/#{current_player.id}"}
+      .col-xs-4.text-center.create-profile-box
+  
+  .col-xs-4.text-center.logo-box
+    / .logo-box2.text-center
+    / .logo-box3.text-center
+  
+  - if current_player
+    %a{:href => "/teams/new"}
+      .col-xs-4.text-center.create-team-box
+  - else
+    %a{:href => "/teams/new"}
+      .col-xs-4.text-center.create-team-box
 
-  / .col-xs-4.text-center.create-match-box
-  /   %h1 Create Match
+  / 
+  /   .col-xs-6.text-center.create-team-box
 
-  / .col-xs-4.text-center.create-profile-box
-  /   %h1 Create Profile
-  %a{:href => "/teams/new"}
-    .col-xs-6.text-center.create-team-box
-
-  %a{:href => "/players/#{current_player.id}"}
-    .col-xs-6.text-center.create-profile-box
+  / 
+  /   .col-xs-6.text-center.create-profile-box
     

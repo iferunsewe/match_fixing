@@ -1,0 +1,18 @@
+@import "basic_styles";
+$background_color: 
+                    pink;
+
+
+
+$background_color_alt: 
+                        purple;
+
+$color: 
+          purple;
+
+
+$color_alt: 
+              pink;
+
+
+@include basic_styles($background_color,$background_color_alt,$color,$color_alt);

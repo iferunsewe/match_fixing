@@ -1,0 +1,18 @@
+@import "basic_styles";
+$background_color: 
+                    black;
+
+
+
+$background_color_alt: 
+                        yellow;
+
+$color: 
+          yellow;
+
+
+$color_alt: 
+              black;
+
+
+@include basic_styles($background_color,$background_color_alt,$color,$color_alt);

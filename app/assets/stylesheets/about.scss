@@ -3,20 +3,51 @@
 }
 
 .create-team-box{
+  border-left: 3px solid black;
   height: 100%;
   background-image: url('/assets/team.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 60%;
 }
-.create-match-box{
+.logo-box{
+  position: relative;
   background-color: black;
   height: 100%;
+  background-image: url('/assets/logo.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 .create-profile-box{
+  border-right: 3px solid black;
   height: 100%;
   background-image: url('/assets/profile.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 60%;
+}
+
+.logo-box2{
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  height: 30%;
+  background-image: url('/assets/team.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30%;
+}
+.logo-box3{
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  height: 30%;
+  bottom: 0;
+  background-image: url('/assets/team.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30%;
 }
