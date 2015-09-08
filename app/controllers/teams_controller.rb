@@ -30,7 +30,6 @@ class TeamsController < ApplicationController
     @team.players << current_player
     first_player = @team.players[0]
     first_player.captain = true
-    first_player.role = "Captain"
     respond_to do |format|
       if @team.save
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
