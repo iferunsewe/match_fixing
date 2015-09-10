@@ -8,12 +8,14 @@ class Player < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, :omniauth_providers => [:facebook]
 
   belongs_to :team
   has_many :ratings
   has_many :stats
   has_many :matches, through: :stats
+  has_many :providers, dependent: :destroy
 
   accepts_nested_attributes_for :ratings, :matches, :stats
 
@@ -53,6 +55,53 @@ class Player < ActiveRecord::Base
   def motms(player_id)
     Stat.where(player_id: player_id, man_of_the_match: true).size
   end
+
+  def self.map_authentication_to_player_properties(authentication)
+    authentication.slice(:info, :provider, :uid, :user_id)
+  end
+
+  def populate_user_fields(auth, user, kind)
+    case kind
+      when "Facebook"
+        user.name = auth.info.name if !auth.info.name.nil? && user.name.blank?
+        user.image = auth.info.image if user.image.blank?
+    end
+    user
+  end
+
+  def self.find_for_facebook_oauth(auth, signed_in_user=nil)
+    if user = signed_in_user || User.find_by_email(auth.info.email)
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.name if user.name.blank?
+      user.image = auth.info.image if user.image.blank?
+      user.save
+      user
+    else
+      where(auth.slice(:provider, :uid)).first_or_create do |user|
+        user.provider = auth.provider
+        user.uid = auth.uid
+        user.name = auth.info.name
+        user.email = auth.info.email
+        user.image = auth.info.image
+        user.password = Devise.friendly_token[0,20]
+        user.skip_confirmation! # don't require email confirmation
+      end
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if auth = session["devise.authentication"]
+        user.name = auth["info"]["first_name"] if user.name.blank?
+        user.email = auth["info"]["email"] if user.email.blank?
+        user.image = auth["info"]["image"] if user.image.blank?
+        user.skip_confirmation! if user.respond_to?(:skip_condirmation!)
+      end
+    end
+  end
+
+
 
   private
 

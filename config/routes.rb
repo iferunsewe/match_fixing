@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   resources :stats
   resources :leagues
   devise_for :players, controllers: {
-    sessions: 'players/sessions'
+    sessions: 'players/sessions',
+    omniauth_callbacks: "players/omniauth_callbacks"
   }
   resources :matches
   resources :grounds
@@ -63,4 +64,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
 end

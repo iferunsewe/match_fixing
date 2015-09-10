@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820204940) do
+ActiveRecord::Schema.define(version: 20150910220836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,11 +70,18 @@ ActiveRecord::Schema.define(version: 20150820204940) do
     t.string   "foot"
     t.string   "specialities"
     t.boolean  "admin"
+    t.text     "image"
   end
 
   add_index "players", ["email"], name: "index_players_on_email", unique: true, using: :btree
   add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true, using: :btree
   add_index "players", ["team_id"], name: "index_players_on_team_id", using: :btree
+
+  create_table "providers", force: :cascade do |t|
+    t.integer "player_id"
+    t.string  "provider"
+    t.string  "uid"
+  end
 
   create_table "ratings", force: :cascade do |t|
     t.integer  "player_id"
