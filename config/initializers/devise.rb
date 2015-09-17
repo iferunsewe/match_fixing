@@ -260,7 +260,10 @@ Devise.setup do |config|
       ENV["FACEBOOK_MF_ID"],
       ENV["FACEBOOK_MF_SECRET_ID"], {
       scope: "email",
+      display: "page",
       image_size: "normal",
       info_fields: "first_name,last_name,age_range,education,hometown,email"
   }
+
+  config.omniauth :twitter, ENV["TWITTER_MF_TOKEN"],ENV["TWITTER_MF_TOKEN_SECRET"]
 end

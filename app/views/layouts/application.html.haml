@@ -20,6 +20,7 @@
       = link_to 'Edit Profile', edit_player_path(current_player), :class => 'navbar-link'
       = link_to "Logout", destroy_player_session_path, method: :delete, :class => 'navbar-link'
     - else
+      = link_to "Sign up with twitter", player_omniauth_authorize_path(:twitter)
       = link_to "Sign up with facebook", player_omniauth_authorize_path(:facebook)
       = link_to "Sign up", new_player_registration_path, :class => 'navbar-link'
       = link_to "Login", new_player_session_path, :class => 'navbar-link'

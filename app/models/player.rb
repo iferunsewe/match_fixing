@@ -1,15 +1,16 @@
 class Player < ActiveRecord::Base
   attr_accessible :name, :dob, :position, :hometown, :rating_id,
                   :captain, :weight,:height, :password, :email, :remember_me, :team_id,
-                  :foot, :specialities, :password_confirmation
+                  :foot, :specialities, :password_confirmation, :image
   before_save :defaults
+  # after_save :player_provider_id
 
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:facebook]
+         :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
   belongs_to :team
   has_many :ratings
@@ -57,51 +58,58 @@ class Player < ActiveRecord::Base
   end
 
   def self.map_authentication_to_player_properties(authentication)
-    authentication.slice(:info, :provider, :uid, :user_id)
+    authentication.slice(:info, :provider, :uid)
   end
 
   def populate_user_fields(auth, user, kind)
     case kind
       when "Facebook"
-        user.name = auth.info.name if !auth.info.name.nil? && user.name.blank?
-        user.image = auth.info.image if user.image.blank?
+        facebook_auth_name = [auth["info"]["first_name"], auth["info"]["last_name"]].join(' ')
+        user.name = facebook_auth_name if !auth.info.name.nil? && user.name.blank?
+        user.email = auth["info"]["email"] if user.email.blank?
+        user.image = auth["info"]["image"] if user.image.blank?
+        user.skip_confirmation! if user.respond_to?(:skip_condirmation!)
+      when "Twitter"
+        user.name = auth["info"]["name"]if !auth.info.name.nil? && user.name.blank?
+        user.image = auth["info"]["image"] if user.image.blank?
+        user.skip_confirmation! if user.respond_to?(:skip_condirmation!)
     end
     user
   end
 
-  def self.find_for_facebook_oauth(auth, signed_in_user=nil)
-    if user = signed_in_user || User.find_by_email(auth.info.email)
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.name = auth.info.name if user.name.blank?
-      user.image = auth.info.image if user.image.blank?
-      user.save
-      user
-    else
-      where(auth.slice(:provider, :uid)).first_or_create do |user|
-        user.provider = auth.provider
-        user.uid = auth.uid
-        user.name = auth.info.name
-        user.email = auth.info.email
-        user.image = auth.info.image
-        user.password = Devise.friendly_token[0,20]
-        user.skip_confirmation! # don't require email confirmation
-      end
+  def self.create_player_on_kind(auth, kind)# Created this method because .save was not creating a player id so had to use .create! in this method
+    # Needed to create player id as this is what connects the provider to the player
+    case kind
+      when "Facebook"
+        facebook_auth_name = [auth["info"]["first_name"], auth["info"]["last_name"]].join(' ')
+        user_name = facebook_auth_name if !auth.info.name.nil?
+        user_email = auth["info"]["email"]
+        user_image = auth["info"]["image"]
+        user_password = Devise.friendly_token[0,20]
+        user = self.create!(name: user_name, email: user_email, image: user_image, password: user_password)
+        self.skip_confirmation! if self.respond_to?(:skip_condirmation!)
+      when "Twitter"
+        user_name = auth["info"]["name"]
+        user_image = auth["info"]["image"]
+        user_password = Devise.friendly_token[0,20]
+        user = self.create!(name: user_name, image: user_image, password: user_password)
+        self.skip_confirmation! if self.respond_to?(:skip_condirmation!)
     end
+    user
   end
+
 
   def self.new_with_session(params, session)
     super.tap do |user|
       if auth = session["devise.authentication"]
-        user.name = auth["info"]["first_name"] if user.name.blank?
+        facebook_auth_name = [auth["info"]["first_name"], auth["info"]["last_name"]].join(' ')
+        user.name = facebook_auth_name if user.name.blank?
         user.email = auth["info"]["email"] if user.email.blank?
         user.image = auth["info"]["image"] if user.image.blank?
         user.skip_confirmation! if user.respond_to?(:skip_condirmation!)
       end
     end
   end
-
-
 
   private
 
@@ -114,4 +122,9 @@ class Player < ActiveRecord::Base
       nil #^Leaving a false value on the stack means the model will not be saved.^
     end
   end
+
+  # # Sets the player_id in the relevant provdi
+  # def player_provider_id
+  #   Provider.where(email_address: self.email).first.update(player_id: self.id)
+  # end
 end

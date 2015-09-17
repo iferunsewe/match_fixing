@@ -11,6 +11,7 @@ class Players::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @player, :event => :authentication
     else
       session["devise.authentication"] = auth
+      flash[:notice] = session["devise.authentication"]
       redirect_to new_player_registration_url
     end
   end
