@@ -264,6 +264,4 @@ Devise.setup do |config|
       image_size: "normal",
       info_fields: "first_name,last_name,age_range,education,hometown,email"
   }
-
-  config.omniauth :twitter, ENV["TWITTER_MF_TOKEN"],ENV["TWITTER_MF_TOKEN_SECRET"]
 end

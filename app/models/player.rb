@@ -88,12 +88,6 @@ class Player < ActiveRecord::Base
         user_password = Devise.friendly_token[0,20]
         user = self.create!(name: user_name, email: user_email, image: user_image, password: user_password)
         self.skip_confirmation! if self.respond_to?(:skip_condirmation!)
-      when "Twitter"
-        user_name = auth["info"]["name"]
-        user_image = auth["info"]["image"]
-        user_password = Devise.friendly_token[0,20]
-        user = self.create!(name: user_name, image: user_image, password: user_password)
-        self.skip_confirmation! if self.respond_to?(:skip_condirmation!)
     end
     user
   end
