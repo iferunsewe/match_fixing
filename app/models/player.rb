@@ -45,7 +45,13 @@ class Player < ActiveRecord::Base
 
   # Calculates the appearances for each player
   def appearances(player_id)
-    Stat.where(player_id: player_id, appearance:true).size
+    appearances = 0
+    Stat.where(player_id: player_id, appearance:true).each do |stat|
+      if stat.match.status
+        appearances += 1
+      end
+    end
+    appearances
   end
 
   # Calculates the goals for each player
@@ -67,10 +73,6 @@ class Player < ActiveRecord::Base
         facebook_auth_name = [auth["info"]["first_name"], auth["info"]["last_name"]].join(' ')
         user.name = facebook_auth_name if !auth.info.name.nil? && user.name.blank?
         user.email = auth["info"]["email"] if user.email.blank?
-        user.image = auth["info"]["image"] if user.image.blank?
-        user.skip_confirmation! if user.respond_to?(:skip_condirmation!)
-      when "Twitter"
-        user.name = auth["info"]["name"]if !auth.info.name.nil? && user.name.blank?
         user.image = auth["info"]["image"] if user.image.blank?
         user.skip_confirmation! if user.respond_to?(:skip_condirmation!)
     end
@@ -103,6 +105,10 @@ class Player < ActiveRecord::Base
         user.skip_confirmation! if user.respond_to?(:skip_condirmation!)
       end
     end
+  end
+
+  def calculate_age(birthday)
+    (Date.today - birthday).to_i / 365
   end
 
   private
