@@ -10,14 +10,21 @@
     Free Agent
   - else
     = @player.team.name
-= link_to "Fancy a match?", new_match_path |
-= link_to "Create a Team?", new_team_path
+- if user_is_admin?
+  = link_to "Fancy a match?", new_match_path |
+- if @player.team.nil?
+  = link_to "Create a Team?", new_team_path
 
 = render 'matches/index'
 
 %p
   %b Age:
-  = @player.dob
+  - if @player.dob.nil? && @player.id == current_player.id
+    = link_to 'Please update age', edit_player_path
+  - elsif @player.dob.nil?
+    No registered date of birth
+  - else
+    = @player.calculate_age(@player.dob)
 %p
   %b Appearances:
   = @player.appearances(@player.id)

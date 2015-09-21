@@ -1,6 +1,6 @@
 class Team < ActiveRecord::Base
   attr_accessible :name, :hometown, :wins, :losses, :draws, :rating_id,
-                  :seeking_players, :points, :kit, :philosophy, :league_id
+                  :seeking_players, :points, :kit, :philosophy, :league_id, :played
 
   has_many(:matches, :foreign_key => :team_a_id, :dependent => :destroy)
   has_many(:reverse_team_match, :class_name => :Match, :foreign_key => :team_b_id, :dependent => :destroy)
@@ -44,7 +44,7 @@ class Team < ActiveRecord::Base
       player.average_rating
     end
     team_ratings_sum = players_ratings.sum + team.ratings.sum(:stars)
-    team_ratings_size = players_ratings.size + team.ratings.size
+    team_ratings_size = players_ratings.select{|rating| rating > 0}.size + team.ratings.size
     team_ratings_sum / team_ratings_size
   end
 
@@ -52,5 +52,9 @@ class Team < ActiveRecord::Base
     team.players.map do |player|
       player.name
     end
+  end
+
+  def calc_matches(team)
+    team.matches.where(status: true).size + team.reverse_team_match.where(status: true).size
   end
 end

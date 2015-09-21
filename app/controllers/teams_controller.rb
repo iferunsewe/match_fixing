@@ -73,7 +73,7 @@ class TeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:name, :hometown, :wins, :losses, :draws, :rating,
+      params.require(:team).permit(:name, :hometown, :played, :wins, :losses, :draws, :rating,
                                    :seeking_players, :kit, :philosophy,
                                    player_attributes: [:name, :dob, :position, :hometown, :captain,
                                                        :weight,:height, :foot, :specialities])
@@ -83,7 +83,7 @@ class TeamsController < ApplicationController
       # Used for calculating the stats for the leadertable
       @teams = Team.all
       @teams.map do |team|
-        team.update(wins: team.calc_wins(team), losses: team.calc_losses(team), draws: team.calc_draws(team), points: team.calc_points)
+        team.update(played: team.calc_matches(team) ,wins: team.calc_wins(team), losses: team.calc_losses(team), draws: team.calc_draws(team), points: team.calc_points)
       end
       @teams = @teams.order(points: :desc)
     end

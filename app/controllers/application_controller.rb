@@ -18,20 +18,20 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(player)
     ratings = Rating.where(rater: player.id)
-    matches = player.matches
-    matches_sorted_by_date = (matches.sort_by &:date)
+    played_matches = player.matches.where(status: true)
+    matches_sorted_by_date = (played_matches.sort_by &:date)
     last_match_played = matches_sorted_by_date.last
     # After log in players will be redirected to the match report for the last match they have played if
     # they haven't made a rating yet and they've played a match/matches or the date of the last rating they made
     # is before the date of the last match they have played. If the player has two unrated matches
     # the second to last match will be discarded as this focuses on the last match played
     if user_is_admin?
-      root_path
-    elsif ratings == [] && matches == []
       player_path(current_player)
-    elsif ratings == [] && matches.size >= 1 && last_match_played.status == true
+    elsif ratings == [] && played_matches == []
+      player_path(current_player)
+    elsif ratings == [] && played_matches.size >= 1
       match_path(last_match_played.id)
-    elsif ratings != [] && (ratings.last.created_at < last_match_played.date) && last_match_played.status == true
+    elsif ratings != [] && (ratings.last.created_at < last_match_played.date)
       match_path(last_match_played.id)
     else
       player_path(current_player)
@@ -53,11 +53,11 @@ class ApplicationController < ActionController::Base
   end
 
   def user_is_admin?
-    current_player.admin
+    !current_player.nil? && current_player.admin
   end
 
   def user_is_captain?
-    current_player.captain
+    !current_player.nil? && current_player.captain
   end
 
   def authenticate_player!(options={})

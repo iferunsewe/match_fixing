@@ -2,7 +2,7 @@ class CreateMatches < ActiveRecord::Migration
   def change
     create_table :matches do |t|
       t.datetime :date
-      t.boolean :status
+      t.boolean :status, default: false
       t.integer :team_a_score, default: 0
       t.integer :team_b_score, default: 0
       t.integer :team_a_id

@@ -1,12 +1,12 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @league.name
+%h1= @league.name
 %p
   %b Location:
   = @league.location
 
-= link_to 'Edit', edit_league_path(@league)
-\|
-= link_to 'Back', leagues_path
+  = render 'teams/index', {league_teams: @league.teams}
+- if user_is_admin?
+  = link_to 'Edit', edit_league_path(@league)
+  \|
+  = link_to 'Back', leagues_path

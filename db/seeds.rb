@@ -37,21 +37,45 @@ g1 = Ground.create!(name: "St James Park", address: "Barrack Road, Newcastle upo
 
 m1 = Match.create!(date: DateTime.parse("02/01/2015 15:00"), status: true, team_a_score: 4, team_b_score: 5, team_a_id: T4.id, team_b_id: T2.id, ground_id: g1.id)
 m2 = Match.create!(date: DateTime.parse("01/07/2015 15:00"), status: true, team_a_score: 2, team_b_score: 1, team_a_id: T5.id, team_b_id: T4.id, ground_id: g1.id)
-m3 = Match.create!(date: DateTime.parse("01/08/2015 15:00"), status: false, team_a_score: nil, team_b_score: nil, team_a_id: T2.id, team_b_id: T3.id, ground_id: g1.id)
-m4 = Match.create!(date: DateTime.parse("01/08/2015 15:00"), status: false, team_a_score: nil, team_b_score: nil, team_a_id: T1.id, team_b_id: T3.id, ground_id: g1.id)
+m3 = Match.create!(date: DateTime.parse("01/08/2015 15:00"), status: true, team_a_score: 3, team_b_score: 1, team_a_id: T2.id, team_b_id: T3.id, ground_id: g1.id)
+m4 = Match.create!(date: DateTime.parse("01/08/2015 15:00"), status: true, team_a_score: 0, team_b_score: 0, team_a_id: T1.id, team_b_id: T3.id, ground_id: g1.id)
+m5 = Match.create!(date: DateTime.parse("02/09/2015 15:00"), status: true, team_a_score: 8, team_b_score: 3, team_a_id: T1.id, team_b_id: T5.id, ground_id: g1.id)
+m6 = Match.create!(date: DateTime.parse("23/09/2015 15:00"), team_a_id: T4.id, team_b_id: T1.id, ground_id: g1.id)
+m7 = Match.create!(date: DateTime.parse("24/09/2015 15:00"), team_a_id: T2.id, team_b_id: T5.id, ground_id: g1.id)
+m8 = Match.create!(date: DateTime.parse("27/09/2015 15:00"), team_a_id: T2.id, team_b_id: T1.id, ground_id: g1.id)
+m9 = Match.create!(date: DateTime.parse("28/09/2015 15:00"), team_a_id: T5.id, team_b_id: T3.id, ground_id: g1.id)
+m10 = Match.create!(date: DateTime.parse("01/10/2015 15:00"), team_a_id: T3.id, team_b_id: T4.id, ground_id: g1.id)
+
+# Stat id ascend on the team_a player ids in descending order and then the same for team b. e.g. for the first match the first stat would be for
+# player 14, then player 9, then player 4 and then on team_b, player 12, player 7, player 2
 
 # Match 1
-s1 = Stat.update(12, goals: 1)
-s2 = Stat.update(11, goals: 2, man_of_the_match: true)
-s3 = Stat.update(10, goals: 2)
-s4 = Stat.update(7, goals: 3)
-s5 = Stat.update(8, goals: 1)
+s1 = Stat.update(1, goals: 1)
+s2 = Stat.update(2, goals: 2, man_of_the_match: true)
+s3 = Stat.update(3, goals: 2)
+s4 = Stat.update(4, goals: 3)
+s5 = Stat.update(5, goals: 1)
 
 # Match 2
-s6 = Stat.update(16, goals: 1)
-s7 = Stat.update(15, goals: 1)
-s8 = Stat.update(13, goals: 1)
-s9 = Stat.update(14, man_of_the_match: true)
+s6 = Stat.update(7, goals: 1)
+s7 = Stat.update(8, goals: 1)
+s8 = Stat.update(10, goals: 1)
+s9 = Stat.update(9, man_of_the_match: true)
+
+# Match 3
+s10 = Stat.update(15, goals: 2, man_of_the_match: true)
+s11 = Stat.update(13, goals: 1)
+s12 = Stat.update(17, goals: 1)
+
+# Match 4
+s13 = Stat.update(19, man_of_the_match: true)
+
+# Match 5
+s14 = Stat.update(25, goals: 4, man_of_the_match: true)
+s15 = Stat.update(26, goals: 2)
+s16 = Stat.update(27, goals: 2)
+s17 = Stat.update(29, goals: 2)
+s17 = Stat.update(30, goals: 1)
 
 
 
