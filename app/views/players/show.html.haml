@@ -1,109 +1,214 @@
-%hr/
-.container
-  .row
-    .col-sm-10
-      %h1.object-name
-        =@player.name
-        - if @player.ratings != []
-          -(1..@player.average_rating).each do |i|
-            = image_tag("star-on.png")
+/ %hr/
+/ .container
+/   .row
+/     .col-sm-10
+/       %h1.object-name
+/         =@player.name
+/         - if @player.ratings != []
+/           -(1..@player.average_rating).each do |i|
+/             = image_tag("star-on.png")
 
-    .col-sm-2
-      %a.pull-right{:href => "/users"}
-        %img.img-circle.img-responsive{:src => "http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100", :title => "profile image"}/
-  .row
-    .col-sm-3
-      / left col
-      %ul.list-group.font-override
-        %li.list-group-item.text-muted.color_override Profile
-        %span.pull-right.flag-icon.flag-icon-gr
-        %li.list-group-item.text-right.color_override_alt
-          %span.pull-left
-            %strong Age
-          =@player.dob || 18
-        %li.list-group-item.text-right.color_override_alt
-          %span.pull-left
-            %strong Hometown
-          =@player.hometown || 'London'
-        %li.list-group-item.text-right.color_override_alt
-          %span.pull-left
-            %strong Foot
-          =@player.foot || 'Right'
-        %li.list-group-item.text-right.color_override_alt
-          %span.pull-left
-            %strong Position
-          =@player.position || 'Defender'
-      %ul.list-group.font-override
-        %li.list-group-item.text-muted.color_override
-          Actions
-          %i.fa.fa-dashboard.fa-1x
-        - if @player.team
-          - match = Match.where({team_a_id: [@player.team.id, current_player.team.id], team_b_id: [@player.team.id, current_player.team.id], status: true})
-        - if @player.id != current_player.id && match != [] && @player.played_and_rated__before(@player, current_player, match) == true  
-          %li.list-group-item.text-right.color_override_alt
-            %span.pull-left
-              %strong Rate Player
-            = render 'rendered_pages/ratings_form', {object: @player, model: 'player'}
-        %li.list-group-item.text-right.color_override_alt
-          %span.pull-left
-            %strong Fancy a match
-          = link_to(new_match_path){"<i class='fa fa-arrow-right'></i>"}
-        %li.list-group-item.text-right.color_override_alt
-          %span.pull-left
-            %strong Create a Team
-          = link_to(new_team_path){"<i class='fa fa-arrow-right'></i>"}
+/     .col-sm-2
+/       %a.pull-right{:href => "/users"}
+/         %img.img-circle.img-responsive{:src => "http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100", :title => "profile image"}/
+/   .row
+/     .col-sm-3
+/       / left col
+/       %ul.list-group.font-override
+/         %li.list-group-item.text-muted.color_override Profile
+/         %span.pull-right.flag-icon.flag-icon-gr
+/         %li.list-group-item.text-right.color_override_alt
+/           %span.pull-left
+/             %strong Age
+/           =@player.dob || 18
+/         %li.list-group-item.text-right.color_override_alt
+/           %span.pull-left
+/             %strong Hometown
+/           =@player.hometown || 'London'
+/         %li.list-group-item.text-right.color_override_alt
+/           %span.pull-left
+/             %strong Foot
+/           =@player.foot || 'Right'
+/         %li.list-group-item.text-right.color_override_alt
+/           %span.pull-left
+/             %strong Position
+/           =@player.position || 'Defender'
+/       %ul.list-group.font-override
+/         %li.list-group-item.text-muted.color_override
+/           Actions
+/           %i.fa.fa-dashboard.fa-1x
+/         - if @player.team
+/           - match = Match.where({team_a_id: [@player.team.id, current_player.team.id], team_b_id: [@player.team.id, current_player.team.id], status: true})
+/         - if @player.id != current_player.id && match != [] && @player.played_and_rated__before(@player, current_player, match) == true  
+/           %li.list-group-item.text-right.color_override_alt
+/             %span.pull-left
+/               %strong Rate Player
+/             = render 'rendered_pages/ratings_form', {object: @player, model: 'player'}
+/         %li.list-group-item.text-right.color_override_alt
+/           %span.pull-left
+/             %strong Fancy a match
+/           = link_to(new_match_path){"<i class='fa fa-arrow-right'></i>"}
+/         %li.list-group-item.text-right.color_override_alt
+/           %span.pull-left
+/             %strong Create a Team
+/           = link_to(new_team_path){"<i class='fa fa-arrow-right'></i>"}
 
-      .panel.panel-default
-        .panel-heading.color_override Specialities
-        .panel-body.color_override_alt
-          %span Speedster
-          %i.fa.fa-bolt
-          %span Playmaker
-          %i.fa.fa-magic
+/       .panel.panel-default
+/         .panel-heading.color_override Specialities
+/         .panel-body.color_override_alt
+/           %span Speedster
+/           %i.fa.fa-bolt
+/           %span Playmaker
+/           %i.fa.fa-magic
 
-    / /col-3
-    .col-sm-9
-      %ul#myTab.nav.nav-tabs
-        %li.active
-          %a{"data-toggle" => "tab", :href => "#stats"} Stats
-        %li
-          %a{"data-toggle" => "tab", :href => "#matches"} Matches
-        %li
-          %a{"data-toggle" => "tab", :href => "#team"} Team
-      .tab-content
-        #stats.tab-pane.text-center.active
-          .row
-            .col-sm-6.stats-box.alt
-              %h1 Goals
-              %h2= @player.goals(@player.id)
-            .col-sm-6.stats-box
-              %h1 Appearances
-              %h2= @player.appearances(@player.id)
-          .row
-            .col-sm-6.stats-box
-              %h1 MOTM
-              %h2= @player.motms(@player.id)
-            .col-sm-6.stats-box.alt
-              %h1 Rating
-              %h2 5
-        / /tab-pane
-        #matches.tab-pane
-          = render 'matches/index'
-          %hr/
-          .row
-            .col-md-4.col-md-offset-4.text-center
-              %ul#myPager.pagination
-          / /table-resp
-          %hr/
-        / /tab-pane
-        #team.tab-pane
-          %hr/
-          %h1
-            - if @player.team.nil?
-              Free Agent
-            - else
-              = @player.team.name
-      / /tab-pane
-    / /tab-content
-  / /col-9
-/ /row
+/     / /col-3
+/     .col-sm-9
+/       %ul#myTab.nav.nav-tabs
+/         %li.active
+/           %a{"data-toggle" => "tab", :href => "#stats"} Stats
+/         %li
+/           %a{"data-toggle" => "tab", :href => "#matches"} Matches
+/         %li
+/           %a{"data-toggle" => "tab", :href => "#team"} Team
+/       .tab-content
+/         #stats.tab-pane.text-center.active
+/           .row
+/             .col-sm-6.stats-box.alt
+/               %h1 Goals
+/               %h2= @player.goals(@player.id)
+/             .col-sm-6.stats-box
+/               %h1 Appearances
+/               %h2= @player.appearances(@player.id)
+/           .row
+/             .col-sm-6.stats-box
+/               %h1 MOTM
+/               %h2= @player.motms(@player.id)
+/             .col-sm-6.stats-box.alt
+/               %h1 Rating
+/               %h2 5
+/         / /tab-pane
+/         #matches.tab-pane
+/           = render 'matches/index'
+/           %hr/
+/           .row
+/             .col-md-4.col-md-offset-4.text-center
+/               %ul#myPager.pagination
+/           / /table-resp
+/           %hr/
+/         / /tab-pane
+/         #team.tab-pane
+/           %hr/
+/           %h1
+/             - if @player.team.nil?
+/               Free Agent
+/             - else
+/               = @player.team.name
+/       / /tab-pane
+/     / /tab-content
+/   / /col-9
+/ / /row
+
+.profile-container.font-override
+  .profile-break
+  .row.profile-top.no-margin
+    .col-md-4.profile-image-col
+      .profile-image
+    .col-md-8.profile-name-rating.no-padding
+      .col-xs-12.profile-name{ :style => "padding-left:0px;padding-right:50px;" }
+        %h1.pull-left
+          =@player.name
+        %h1.pull-right
+          UK
+      .col-xs-12.profile-rating{ :style => "padding-left:0px;padding-right:50px;" }
+        %h1.pull-left
+          - if @player.ratings != []
+            -(1..@player.average_rating).each do |i|
+              = image_tag("star-on.png")
+          - else
+            -(1..5).each do |i|
+              = image_tag("star-on.png")
+        %img.pull-right.img-circle.img-responsive{:src => "/assets/uk.jpg", :title => "profile image", style: "height:50px;width:50px;"}/
+
+
+
+    / .col-xs-2.profile-nation
+    /   .col-xs-12{:style => "background-color:#49841A;padding-left:0px;"}
+    /     %h1 Brazil
+    /   .profile-nation-image
+  / .profile-break
+  .profile-bottom
+    .row.no-margin
+      .col-sm-4.profile-about
+        .row
+          .col-xs-12.profile-list-item
+            %h5
+              %span.pull-left 
+                Age
+              %span.pull-right
+                =@player.dob || 18
+        .row
+          .col-xs-12.profile-list-item
+            %h5
+              %span.pull-left 
+                Hometown
+              %span.pull-right
+                =@player.hometown || 'London'
+        .row
+          .col-xs-12.profile-list-item
+            %h5
+              %span.pull-left 
+                Foot
+              %span.pull-right
+                =@player.foot || 'Right'
+
+      .col-sm-8.profile-stats
+        .row.profile-tabs.text-center.no-margin
+          .col-xs-4.profile-tab{"data-toggle" => "tab", :href => "#stats"}
+            %p Stats
+          .col-xs-4.profile-tab{"data-toggle" => "tab", :href => "#matches"}
+            %p Matches
+          .col-xs-4.profile-tab{"data-toggle" => "tab", :href => "#team"}
+            %p Team
+
+
+        / %ul#myTab
+        /   %li.active
+        /     %a{"data-toggle" => "tab", :href => "#stats"} Stats
+        /   %li
+        /     %a{"data-toggle" => "tab", :href => "#matches"} Matches
+        /   %li
+        /     %a{"data-toggle" => "tab", :href => "#team"} Team
+        .row.no-margin
+          .tab-content
+            #stats.tab-pane.text-center.active
+              .row.no-margin
+                .col-xs-4.stats-info
+                  %h4 Goals
+                  %h1= @player.goals(@player.id)
+                .col-xs-4.stats-info
+                  %h4 Appearances
+                  %h1= @player.appearances(@player.id)
+                .col-xs-4.stats-info
+                  %h4 MOTM
+                  %h1= @player.motms(@player.id)
+
+            / /tab-pane
+            #matches.tab-pane
+              .col-xs-12
+                = render 'matches/index'
+                %hr/
+                .row
+                  .col-md-4.col-md-offset-4.text-center
+                    %ul#myPager.pagination
+                / /table-resp
+                %hr/
+              / /tab-pane
+            #team.tab-pane
+              %hr/
+              %h1
+                - if @player.team.nil?
+                  Free Agent
+                - else
+                  = @player.team.name
+          / /tab-pane
+        / /tab-content

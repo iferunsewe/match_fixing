@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   devise_for :players, controllers: {
     sessions: 'players/sessions'
   }
+  as :player do
+    get "/login" => 'about#index'
+  end
   resources :matches
   resources :grounds
   resources :teams

@@ -9,3 +9,19 @@
   margin-bottom: 0;
   border: none;
 }
+
+.btn-black{
+  background-color: black;
+  border-color: black;
+  color: white;
+}
+
+.no-padding{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.no-margin{
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
