@@ -4,14 +4,13 @@
     -(1..@player.average_rating).each do |i|
       = image_tag("star-on.png")
 
-
 %h2
   - if @player.team.nil?
     Free Agent
   - else
     = @player.team.name
 
-= form_for @player do |f|
+= form_for @player, html: { multipart: true } do |f|
   - if @player.errors.any?
     #error_explanation
       %h2= "#{pluralize(@player.errors.count, "error")} prohibited this player from being saved:"
@@ -22,6 +21,9 @@
   .field
     = f.label :date_of_birth
     = date_select "player", "dob", { start_year: 100.years.ago.year, end_year: Date.today.year, default: Date.today}
+  .field
+    = f.label :choose_profile_image
+    = f.file_field :image
   .field
     = f.label :position
     = f.text_field :position

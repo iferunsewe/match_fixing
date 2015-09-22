@@ -1,5 +1,5 @@
 CarrierWave.configure do |config|
-  config.storage    = :aws
+  config.storage    = :fog
   config.aws_bucket = ENV['AWS_S3_BUCKET']
   config.aws_acl    = :public_read
   config.asset_host = 'http://example.com'

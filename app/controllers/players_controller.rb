@@ -53,10 +53,6 @@ class PlayersController < ApplicationController
   def player_params
     params.require(:player).permit(:name, :dob, :position, :hometown, :captain,
                                    :weight,:height, :password, :email, :foot, :specialities, :team_id,
-                                   stat_attributes:[:goals, :appearance, :man_of_the_match])
-  end
-
-  def set_player_rating
-
+                                   :image, stat_attributes:[:goals, :appearance, :man_of_the_match])
   end
 end
