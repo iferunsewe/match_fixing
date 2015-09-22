@@ -23,13 +23,14 @@
       = g.label :address
       = g.text_area :address
 
-  # Form to edit stats - only appears on the edit page
-  = f.fields_for :stats do |s|
-    .field
-      = s.label s.object.player.name
-      = s.label s.object.player.team.name
-      = s.select :goals, 1..10, prompt: 'Goals'
-      = s.select :man_of_the_match, [["Yes", true], ["No", false]]
+  -# Form to edit stats - only appears on the edit page
+  - if @match.status
+    = f.fields_for :stats do |s|
+      .field
+        = s.label s.object.player.name
+        = s.label s.object.player.team.name
+        = s.select :goals, 1..10, prompt: 'Goals'
+        = s.select :man_of_the_match, [["Yes", true], ["No", false]]
 
   .actions
     = f.submit 'Save'

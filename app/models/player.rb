@@ -63,6 +63,14 @@ class Player < ActiveRecord::Base
     Stat.where(player_id: player_id, man_of_the_match: true).size
   end
 
+  def goals_in_match(player_id, match_id)
+    Stat.where(player_id: player_id, match_id: match_id).first.goals
+  end
+
+  def motm_in_match(player_id, match_id)
+    Stat.where(player_id: player_id, match_id: match_id).first.man_of_the_match ? "Man of the Match" : nil
+  end
+
   def self.map_authentication_to_player_properties(authentication)
     authentication.slice(:info, :provider, :uid)
   end
