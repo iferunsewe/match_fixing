@@ -4,14 +4,13 @@
     -(1..@player.average_rating).each do |i|
       = image_tag("star-on.png")
 
-
 %h2
   - if @player.team.nil?
     Free Agent
   - else
     = @player.team.name
 
-= form_for @player do |f|
+= form_for @player, html: { multipart: true } do |f|
   - if @player.errors.any?
     #error_explanation
       %h2= "#{pluralize(@player.errors.count, "error")} prohibited this player from being saved:"
