@@ -3,7 +3,6 @@ class Player < ActiveRecord::Base
                   :captain, :weight,:height, :password, :email, :remember_me, :team_id,
                   :foot, :specialities, :password_confirmation, :image
   before_save :defaults
-  # after_save :player_provider_id
 
 
   # Include default devise modules. Others available are:
