@@ -9,6 +9,7 @@ class Team < ActiveRecord::Base
   has_many :players
   has_many :ratings
   belongs_to :league
+  mount_uploader :image, TeamImageUploader
 
   accepts_nested_attributes_for :players
 
