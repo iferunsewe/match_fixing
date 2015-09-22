@@ -1,7 +1,7 @@
 class Player < ActiveRecord::Base
   attr_accessible :name, :dob, :position, :hometown, :rating_id,
                   :captain, :weight,:height, :password, :email, :remember_me, :team_id,
-                  :foot, :specialities, :password_confirmation, :image
+                  :foot, :specialities, :password_confirmation, :image, :remote_image_url
   before_save :defaults
   mount_uploader :image, PlayerImageUploader
 
@@ -73,7 +73,7 @@ class Player < ActiveRecord::Base
         facebook_auth_name = [auth["info"]["first_name"], auth["info"]["last_name"]].join(' ')
         user.name = facebook_auth_name if !auth.info.name.nil? && user.name.blank?
         user.email = auth["info"]["email"] if user.email.blank?
-        user.image = auth["info"]["image"] if user.image.blank?
+        user.image = auth["info"]["image"].gsub("http","https") if user.image.blank?
         user.skip_confirmation! if user.respond_to?(:skip_condirmation!)
     end
     user
@@ -86,9 +86,9 @@ class Player < ActiveRecord::Base
         facebook_auth_name = [auth["info"]["first_name"], auth["info"]["last_name"]].join(' ')
         user_name = facebook_auth_name if !auth.info.name.nil?
         user_email = auth["info"]["email"]
-        user_image = auth["info"]["image"]
-        user_password = Devise.friendly_token[0,20]
-        user = self.create!(name: user_name, email: user_email, image: user_image, password: user_password)
+        user_image = auth["info"]["image"].gsub("http","https") #Needed or image can not be validated from facebook
+        user_password = Devise.friendly_token[0,20]#Password automatically generated for user
+        user = self.create!(name: user_name, email: user_email, remote_image_url: user_image, password: user_password)
         self.skip_confirmation! if self.respond_to?(:skip_condirmation!)
     end
     user

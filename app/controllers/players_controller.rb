@@ -53,6 +53,6 @@ class PlayersController < ApplicationController
   def player_params
     params.require(:player).permit(:name, :dob, :position, :hometown, :captain,
                                    :weight,:height, :password, :email, :foot, :specialities, :team_id,
-                                   :image, stat_attributes:[:goals, :appearance, :man_of_the_match])
+                                   :image, :remote_image_url, stat_attributes:[:goals, :appearance, :man_of_the_match])
   end
 end

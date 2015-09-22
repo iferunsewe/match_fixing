@@ -4,7 +4,7 @@
     -(1..@player.average_rating).each do |i|
       = image_tag("star-on.png")
 
-= image_tag @player.image.url
+= image_tag @player.image.detail.url
 
 %h2
   - if @player.team.nil?
