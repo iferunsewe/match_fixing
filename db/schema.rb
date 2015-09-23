@@ -33,14 +33,14 @@ ActiveRecord::Schema.define(version: 20150921220135) do
 
   create_table "matches", force: :cascade do |t|
     t.datetime "date"
-    t.boolean  "status",           default: false
+    t.boolean  "status"
     t.integer  "team_a_score",     default: 0
     t.integer  "team_b_score",     default: 0
     t.integer  "team_a_id"
     t.integer  "team_b_id"
     t.integer  "ground_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "man_of_the_match"
   end
 
@@ -111,16 +111,18 @@ ActiveRecord::Schema.define(version: 20150921220135) do
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.string   "hometown"
-    t.integer  "played",           default: 0
-    t.integer  "wins",             default: 0
-    t.integer  "losses",           default: 0
-    t.integer  "draws",            default: 0
-    t.integer  "points",           default: 0
+    t.string   "primary_kit_colour"
+    t.string   "secondary_kit_colour"
+    t.integer  "played",               default: 0
+    t.integer  "wins",                 default: 0
+    t.integer  "losses",               default: 0
+    t.integer  "draws",                default: 0
+    t.integer  "points",               default: 0
     t.integer  "rating_id"
     t.boolean  "seeking_players"
     t.integer  "league_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "philosophy"
     t.string   "primary_colour"
     t.string   "secondary_colour"

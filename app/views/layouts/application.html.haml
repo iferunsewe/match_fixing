@@ -12,7 +12,6 @@
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
   %body
-<<<<<<< HEAD
     - if current_player
       %nav.navbar.navbar-default
         .container-fluid
@@ -66,6 +65,8 @@
       / %p.alert= alert
     - else
       %h1.text-center.font-override Match Fixing
+
+    =yield
       
 / =======
 /     %p.notice= notice
@@ -86,4 +87,3 @@
 /       = link_to "Login", new_player_session_path, :class => 'navbar-link'
 
 / >>>>>>> develop
-    = yield
