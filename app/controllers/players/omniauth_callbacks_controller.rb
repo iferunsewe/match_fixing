@@ -1,28 +1,18 @@
 class Players::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  # You should configure your model like this:
-  # devise :omniauthable, omniauth_providers: [:twitter]
+  def facebook
+    handle_callback "Facebook"
+  end
 
-  # You should also create an action method in this controller like this:
-  # def twitter
-  # end
-
-  # More info at:
-  # https://github.com/plataformatec/devise#omniauth
-
-  # GET|POST /resource/auth/twitter
-  # def passthru
-  #   super
-  # end
-
-  # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
-
-  # protected
-
-  # The path used when omniauth fails
-  # def after_omniauth_failure_path_for(scope)
-  #   super(scope)
-  # end
+  def handle_callback(kind)
+    auth = Player.map_authentication_to_player_properties(request.env["omniauth.auth"])
+    @player = Provider.authenticate(auth, current_player, kind)
+    if @player.persisted?
+      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => kind.titleize
+      sign_in_and_redirect @player, :event => :authentication
+    else
+      session["devise.authentication"] = auth
+      flash[:notice] = session["devise.authentication"]
+      redirect_to new_player_registration_url
+    end
+  end
 end

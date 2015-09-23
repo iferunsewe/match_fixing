@@ -33,14 +33,14 @@ class Match < ActiveRecord::Base
     end
   end
 
-  private
+    private
 
-  def init_stats_for_players
-    self.team_a.players.each do |player|
-      player.stats.create(player_id: player.id, match_id: self.id)
+    def init_stats_for_players
+      self.team_a.players.each do |player|
+        player.stats.create(player_id: player.id, match_id: self.id)
+      end
+      self.team_b.players.each do |player|
+        player.stats.create(player_id: player.id, match_id: self.id)
+      end
     end
-    self.team_b.players.each do |player|
-      player.stats.create(player_id: player.id, match_id: self.id)
-    end
-  end
 end

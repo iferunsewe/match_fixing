@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 / / = team_color(@team)
 / -# Compile the stylesheet if necessary
 / - team_stylesheet = TeamStylesheet.new(@team)
@@ -161,3 +162,61 @@
               / /table-resp
               %hr/
             / /tab-pane
+/ =======
+/ %p#notice= notice
+
+/ = image_tag @team.image.wide.url
+/ %p
+/   %b Name:
+/   = @team.name
+/   - if @team.players != [] && @team.ratings.sum(:stars) > 0 && @team.average_rating(@team) != 0
+/     -(1..@team.average_rating(@team)).each do |i|
+/       = image_tag("star-on.png")
+/     -#%b= "#{number_with_precision(@team.average_rating(@team), precision: 2)}"
+/   - else
+/     %p Team not rated yet
+/   %br
+/   %b Players:
+/   %ul
+/     -@team.players.map do |player|
+/       %li= player.name
+
+
+/ %p
+/   %b Hometown:
+/   = @team.hometown
+/ %p
+/   %b Played:
+/   = @team.played
+/ %p
+/   %b Wins:
+/   = @team.wins
+/ %p
+/   %b Losses:
+/   = @team.losses
+/ %p
+/   %b Draws:
+/   = @team.draws
+
+/ %p
+/   %b Seeking players:
+/   = @team.seeking_players
+
+/ - if @team.matches != []
+/   %b Matches:
+/   %ul
+/     - @team.matches.map do |match|
+/       %li= match.team_a.name
+/       vs
+/       = match.team_b.name
+/ - else
+/   %p No matches scheduled
+
+
+/ %br
+
+/ - if user_is_admin? || user_is_captain?
+/   = link_to 'Edit', edit_team_path(@team)
+/   \|
+/ = link_to 'Back', teams_path
+/ >>>>>>> develop

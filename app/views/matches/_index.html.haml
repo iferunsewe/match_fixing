@@ -1,5 +1,6 @@
-%h1 Listing matches
+%h1 Matches
 
+<<<<<<< HEAD
 .table-responsive
   %table.table.table-hover
     %thead
@@ -40,5 +41,44 @@
 %br
 - if user_is_admin?
   = link_to 'New Match', new_match_path
+
+  / =======
+  / %table
+  /   %thead
+  /     %tr
+  /       -#%th Date
+  /       -#%th Status
+  /       -#%th Team a
+  /       -#%th Team a score
+  /       -#%th Team b score
+  /       -#%th Team b
+  /       -#%th Ground
+  /       -#%th
+  /       -#%th
+  /       -#%th
+
+  /   %tbody
+  /     - @matches.each do |match|
+  /       -if current_player.team == match.team_a || current_player.team == match.team_b
+  /         %tr
+  /           %td= match.date.to_s(:long)
+  /           %td= match.display_status(match.status)
+  /           %td= link_to match.team_a.name, team_path(match.team_a)
+  /           - if match.status == "Played"
+  /             %td= match.team_a_score
+  /             %td= match.team_b_score
+  /           %td= link_to match.team_b.name, team_path(match.team_b)
+  /           -# Code for match fixing
+  /           -#- if user_is_admin
+  /           -#  - if match.team_a != current_player.team && match.status == nil
+  /           -#    %td
+  /           -#      = form_for match do |f|
+  /           -#        = f.select :status, [['Accept','true'],['Reject','false']]
+  /           -#        = f.submit "Match"
+  /           %td
+  /             - if match.ground.present?
+  /               = match.ground.name
+  /           - if user_is_admin?
+  / >>>>>>> develop
 
 

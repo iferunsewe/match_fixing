@@ -1,5 +1,6 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: [:show, :edit, :update, :destroy]
+  before_action :pending_to_played, only: [:index, :show, :edit, :update, :destroy]
   before_filter :authenticate_player!
   load_and_authorize_resource
 
@@ -81,4 +82,16 @@ class MatchesController < ApplicationController
       )
     end
 
+    def pending_to_played
+      matches = Match.all
+        matches.map do |match|
+        unless match.status
+          if match.date < Date.today
+            match.update(status: true)
+          else
+            false
+          end
+        end
+      end
+    end
 end

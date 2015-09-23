@@ -1,25 +1,19 @@
 # encoding: utf-8
 
-class ImageUploader < CarrierWave::Uploader::Base
+class TeamImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+  include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
+  process :content_type
 
   # Choose what kind of storage to use for this uploader:
-  # storage :file
-  storage :fog
+  storage :aws
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
-
-  # You can find full list of custom headers in AWS SDK documentation on
-  # AWS::S3::S3Object
-  def download_url(filename)
-    url(response_content_disposition: %Q{attachment; filename="#{filename}"})
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -41,6 +35,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :resize_to_fit => [50, 50]
   # end
+
+  version :wide do
+    process :resize_to_fit => [600, 400]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

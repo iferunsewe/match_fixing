@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   resources :stats
   resources :leagues
   devise_for :players, controllers: {
-    sessions: 'players/sessions'
+    sessions: 'players/sessions',
+    omniauth_callbacks: "players/omniauth_callbacks"
   }
   as :player do
     get "/login" => 'about#index'
@@ -16,7 +17,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'about#index'
+  # root 'about#index'
+
+  root 'leagues#show', :id => '1'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -66,4 +69,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
 end

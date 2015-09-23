@@ -1,0 +1,33 @@
+%table
+  %thead
+    %tr
+      %th Name
+      %th Hometown
+      %th Played
+      %th Wins
+      %th Losses
+      %th Draws
+      %th Seeking players
+      %th Points
+      %th
+      %th
+
+  %tbody
+    - league_teams.order(points: :desc).each do |team|
+      %tr
+        %td= link_to team.name, team
+        %td= team.hometown
+        %td= team.played
+        %td= team.wins
+        %td= team.losses
+        %td= team.draws
+        %td= team.seeking_players
+        %td= team.points
+        - if user_is_admin? || user_is_captain?
+          %td= link_to 'Edit', edit_team_path(team)
+          %td= link_to 'Destroy', team, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+- if user_is_admin? || !current_player.nil? && current_player.team.nil?
+  = link_to 'New Team', new_team_path

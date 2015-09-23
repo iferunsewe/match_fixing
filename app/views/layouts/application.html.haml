@@ -12,6 +12,7 @@
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
   %body
+<<<<<<< HEAD
     - if current_player
       %nav.navbar.navbar-default
         .container-fluid
@@ -66,4 +67,23 @@
     - else
       %h1.text-center.font-override Match Fixing
       
+/ =======
+/     %p.notice= notice
+/     %p.alert= alert
+/     - if player_signed_in?
+/       Logged in as
+/       %strong= link_to current_player.name, current_player
+/       - if current_player.team != nil
+/         Member of
+/         %strong= link_to current_player.team.name, current_player.team
+/       = image_tag current_player.image, class: "small-avatar"
+/       = link_to 'Edit account', edit_player_registration_path, :class => 'navbar-link'
+/       = link_to 'Edit Profile', edit_player_path(current_player), :class => 'navbar-link'
+/       = link_to "Logout", destroy_player_session_path, method: :delete, :class => 'navbar-link'
+/     - else
+/       = link_to "Sign up with facebook", player_omniauth_authorize_path(:facebook)
+/       = link_to "Sign up", new_player_registration_path, :class => 'navbar-link'
+/       = link_to "Login", new_player_session_path, :class => 'navbar-link'
+
+/ >>>>>>> develop
     = yield
