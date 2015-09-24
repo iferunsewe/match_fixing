@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150921220135) do
+ActiveRecord::Schema.define(version: 20150924232740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 20150921220135) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "foot"
-    t.string   "specialities"
     t.boolean  "admin"
     t.text     "image"
   end
@@ -76,6 +75,14 @@ ActiveRecord::Schema.define(version: 20150921220135) do
   add_index "players", ["email"], name: "index_players_on_email", unique: true, using: :btree
   add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true, using: :btree
   add_index "players", ["team_id"], name: "index_players_on_team_id", using: :btree
+
+  create_table "players_specialities", force: :cascade do |t|
+    t.integer "player_id"
+    t.integer "speciality_id"
+  end
+
+  add_index "players_specialities", ["player_id"], name: "index_players_specialities_on_player_id", using: :btree
+  add_index "players_specialities", ["speciality_id"], name: "index_players_specialities_on_speciality_id", using: :btree
 
   create_table "providers", force: :cascade do |t|
     t.integer "player_id"
@@ -94,6 +101,13 @@ ActiveRecord::Schema.define(version: 20150921220135) do
 
   add_index "ratings", ["player_id"], name: "index_ratings_on_player_id", using: :btree
   add_index "ratings", ["team_id"], name: "index_ratings_on_team_id", using: :btree
+
+  create_table "specialities", force: :cascade do |t|
+    t.string   "name"
+    t.text     "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "stats", force: :cascade do |t|
     t.boolean  "appearance",       default: true
