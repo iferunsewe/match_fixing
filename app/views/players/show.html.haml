@@ -3,8 +3,10 @@
   - if @player.ratings != []
     -(1..@player.average_rating).each do |i|
       = image_tag("star-on.png")
+  - else
+    %h4 Player not rated yet
 
-= image_tag @player.image.detail.url
+= image_tag @player.image.detail.url if !@player.image.nil?
 
 %h2
   - if @player.team.nil?
@@ -47,7 +49,8 @@
   = @player.foot
 %p
   %b Specialities:
-  = @player.specialities
+  - @player.specialities.each do |specialty|
+    = image_tag specialty.image, alt: specialty.name, class: 'small_specialities'
 
 - unless @player.team.nil?
   - match = Match.where({team_a_id: [@player.team.id, current_player.team.id], team_b_id: [@player.team.id, current_player.team.id], status: true})

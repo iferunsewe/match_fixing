@@ -7,8 +7,6 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %p.notice= notice
-    %p.alert= alert
     - if player_signed_in?
       Logged in as
       %strong= link_to current_player.name, current_player
@@ -23,5 +21,7 @@
       = link_to "Sign up with facebook", player_omniauth_authorize_path(:facebook)
       = link_to "Sign up", new_player_registration_path, :class => 'navbar-link'
       = link_to "Login", new_player_session_path, :class => 'navbar-link'
+    %p.notice= notice
+    %p.alert= alert
 
     = yield

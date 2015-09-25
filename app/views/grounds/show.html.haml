@@ -1,4 +1,3 @@
-%p#notice= notice
 
 %p
   %b Address:
@@ -38,5 +37,4 @@
       %td= link_to 'Show', match
 - if user_is_admin?
   = link_to 'Edit', edit_ground_path(@ground)
-  \|
-= link_to 'Back', grounds_path
+

@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  resources :specialities
   resources :stats
   resources :leagues
   devise_for :players, controllers: {
     sessions: 'players/sessions',
-    omniauth_callbacks: "players/omniauth_callbacks"
+    omniauth_callbacks: "players/omniauth_callbacks",
+    registrations: "registrations"
   }
   resources :matches
   resources :grounds

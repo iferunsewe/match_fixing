@@ -1,4 +1,3 @@
-%p#notice= notice
 
 %p
   %b Date:
@@ -31,8 +30,11 @@
   %thead
     %tr
       %th Players
-      %th Goals
+      %th Goals this Season
       %th Rating
+      - if @match.status
+        %th Goals
+        %th Man of the Match
 
 %tbody
   - @match.team_a.players.each do |player|
@@ -40,6 +42,9 @@
       %td= player.name
       %td= player.goals(player.id)
       %td= player.average_rating
+      - if @match.status
+        %td= player.goals_in_match(player.id, @match.id)
+        %td= player.motm_in_match(player.id, @match.id)
       %br
 
 %h3 AWAY
@@ -53,8 +58,11 @@
   %thead
     %tr
       %th Players
-      %th Goals
+      %th Goals this Season
       %th Rating
+      - if @match.status
+        %th Goals
+        %th Man of the Match
 
 %tbody
   - @match.team_b.players.each do |player|
@@ -62,13 +70,18 @@
       %td= player.name
       %td= player.goals(player.id)
       %td= player.average_rating
+      - if @match.status
+        %td= player.goals_in_match(player.id, @match.id)
+        %td= player.motm_in_match(player.id, @match.id)
       %br
 
 %br
 %p
   %b Ground:
   = @match.ground.name
+  %b Address
+  = @match.ground.address
+
 - if user_is_admin?
   = link_to 'Edit', edit_match_path(@match)
-  \|
-= link_to 'Back', matches_path
+
