@@ -1,10 +1,11 @@
 %h1.object-name
   =@player.name
-  - if @player.ratings != []
-    -(1..@player.average_rating).each do |i|
-      = image_tag("star-on.png")
-  - else
-    %h4 Player not rated yet
+- if @player.ratings != []
+  -(1..@player.average_rating).each do |i|
+    = image_tag("star-on.png")
+  %h6= @player.float_average_rating
+- else
+  %h4 Player not rated yet
 
 = image_tag @player.image.detail.url if !@player.image.nil?
 
@@ -18,7 +19,7 @@
 - if @player.team.nil?
   = link_to "Create a Team?", new_team_path
 
-= render 'matches/index'
+= render 'matches/index', {player: @player}
 
 %p
   %b Age:

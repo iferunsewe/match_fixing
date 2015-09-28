@@ -31,6 +31,14 @@ class Player < ActiveRecord::Base
     end
   end
 
+  def float_average_rating
+    if ratings != []
+      ratings.sum(:stars).to_f / ratings.size.to_f
+    else
+      0.00
+    end
+  end
+
   # Decides whether players can rate other players. Conditions are:
   # PlayerA can rate PlayerB once after each match
   def played_and_rated__before(player_a, player_b, match) #Player profile and current player logged in
