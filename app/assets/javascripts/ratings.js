@@ -30,7 +30,6 @@ specialties.limitChosenSpecialities = function(){
 
 $(document).ready(function(){
     $('.star_rating').click(function(){
-        console.log('RATING');
         var star = $(this);
         var form_id = star.attr('data-form-id');
         var stars = star.attr('data-stars');
