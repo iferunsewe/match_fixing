@@ -167,60 +167,164 @@
 /   / /col-9
 / / /row
 
-.profile-container.font-override
-  .profile-break
-  .row.profile-top.no-margin
-    .col-md-4.profile-image-col
-      .profile-image
-    .col-md-8.profile-name-rating.no-padding
-      .col-xs-12.profile-name{ :style => "padding-left:0px;padding-right:50px;" }
-        %h1.pull-left
-          =@player.name
-        %h1.pull-right
-          UK
-      .col-xs-12.profile-rating{ :style => "padding-left:0px;padding-right:50px;" }
-        %h1.pull-left
-          - if @player.ratings != []
-            -(1..@player.average_rating).each do |i|
-              = image_tag("star-on.png")
+/ .profile-container.font-override
+/   .profile-break
+/   .row.profile-top.no-margin
+/     .col-md-4.profile-image-col
+/       .profile-image
+/     .col-md-8.profile-name-rating.no-padding
+/       .col-xs-12.profile-name{ :style => "padding-left:0px;padding-right:50px;" }
+/         %h1.pull-left
+/           =@player.name
+/         %h4.pull-left{ :style => "position: absolute;bottom:0;"}
+/           Striker
+/         %h1.pull-right
+/           UK
+/       .col-xs-12.profile-rating{ :style => "padding-left:0px;padding-right:50px;" }
+/         %h1.pull-left
+/           - if @player.ratings != []
+/             -(1..@player.average_rating).each do |i|
+/               = image_tag("star-on.png")
+/           - else
+/             -(1..5).each do |i|
+/               = image_tag("star-on.png")
+/         %img.pull-right.img-circle.img-responsive{:src => "/assets/uk.jpg", :title => "profile image", style: "height:50px;width:50px;"}/
+
+
+
+/     / .col-xs-2.profile-nation
+/     /   .col-xs-12{:style => "background-color:#49841A;padding-left:0px;"}
+/     /     %h1 Brazil
+/     /   .profile-nation-image
+/   / .profile-break
+/   .profile-bottom
+/     .row.no-margin
+/       .col-sm-4.profile-about
+/         .row
+/           .col-xs-12.profile-list-item
+/             %h5
+/               %span.pull-left 
+/                 Age
+/               %span.pull-right
+/                 =@player.dob || 18
+/         .row
+/           .col-xs-12.profile-list-item
+/             %h5
+/               %span.pull-left 
+/                 Hometown
+/               %span.pull-right
+/                 =@player.hometown || 'London'
+/         .row
+/           .col-xs-12.profile-list-item
+/             %h5
+/               %span.pull-left 
+/                 Foot
+/               %span.pull-right
+/                 =@player.foot || 'Right'
+
+/       .col-sm-8.profile-stats
+/         .row.profile-tabs.text-center.no-margin
+/           .col-xs-4.profile-tab{"data-toggle" => "tab", :href => "#stats"}
+/             %p Stats
+/           .col-xs-4.profile-tab{"data-toggle" => "tab", :href => "#matches"}
+/             %p Matches
+/           .col-xs-4.profile-tab{"data-toggle" => "tab", :href => "#team"}
+/             %p Team
+
+
+/         / %ul#myTab
+/         /   %li.active
+/         /     %a{"data-toggle" => "tab", :href => "#stats"} Stats
+/         /   %li
+/         /     %a{"data-toggle" => "tab", :href => "#matches"} Matches
+/         /   %li
+/         /     %a{"data-toggle" => "tab", :href => "#team"} Team
+/         .row.no-margin
+/           .tab-content
+/             #stats.tab-pane.text-center.active
+/               .row.no-margin
+/                 .col-xs-4.stats-info.no-padding
+/                   .col-xs-12.stats-info-title.no-padding
+/                     %h4 Goals
+/                   .col-xs-12
+/                     %h1= @player.goals(@player.id)
+/                 .col-xs-4.stats-info.no-padding
+/                   .col-xs-12.stats-info-title.no-padding
+/                     %h4 Appearances
+/                   .col-xs-12
+/                     %h1= @player.appearances(@player.id)
+/                 .col-xs-4.stats-info.no-padding
+/                   .col-xs-12.stats-info-title.no-padding
+/                     %h4 MOTM
+/                   .col-xs-12
+/                     %h1= @player.motms(@player.id)
+
+/             / /tab-pane
+/             #matches.tab-pane
+/               .col-xs-12
+/                 = render 'matches/index'
+/                 %hr/
+/                 .row
+/                   .col-md-4.col-md-offset-4.text-center
+/                     %ul#myPager.pagination
+/                 / /table-resp
+/                 %hr/
+/               / /tab-pane
+/             #team.tab-pane
+/               %hr/
+/               %h1
+/                 - if @player.team.nil?
+/                   Free Agent
+/                 - else
+/                   = @player.team.name
+/           / /tab-pane
+/         / /tab-content
+
+
+
+.profile-container.no-margin.font-override
+  .col-sm-6.profile-left.no-margin.no-padding.text-center
+    .row.profile-image-box.no-margin
+      .col-sm-12.profile-image
+      / .col-sm-12.profile-image
+      /   .profile-image
+    .row
+      .col-sm-12.name-box
+        %h2=@player.name
+        %hr
+        %h2
+          - if @player.team.nil?
+            Free Agent
           - else
-            -(1..5).each do |i|
-              = image_tag("star-on.png")
-        %img.pull-right.img-circle.img-responsive{:src => "/assets/uk.jpg", :title => "profile image", style: "height:50px;width:50px;"}/
+            = @player.team.name
+    .row
+      .col-sm-12.rating-box
+        - if @player.ratings != []
+          -(1..@player.average_rating).each do |i|
+            %i.fa.fa-star.fa-3x
+        - else
+          .row.lead
+            #stars.starrr
+              / #count
+    .row
+      .col-sm-12
+        %h4 Personal Information
+      .col-sm-12
+        %p
+          Age:
+          %span=@player.dob || 18
+        %p
+          Hometown:
+          %span=@player.hometown || 'London'
+        %p
+          Position:
+          %span=@player.position || 'Defender'
+                
 
 
-
-    / .col-xs-2.profile-nation
-    /   .col-xs-12{:style => "background-color:#49841A;padding-left:0px;"}
-    /     %h1 Brazil
-    /   .profile-nation-image
-  / .profile-break
-  .profile-bottom
-    .row.no-margin
-      .col-sm-4.profile-about
-        .row
-          .col-xs-12.profile-list-item
-            %h5
-              %span.pull-left 
-                Age
-              %span.pull-right
-                =@player.dob || 18
-        .row
-          .col-xs-12.profile-list-item
-            %h5
-              %span.pull-left 
-                Hometown
-              %span.pull-right
-                =@player.hometown || 'London'
-        .row
-          .col-xs-12.profile-list-item
-            %h5
-              %span.pull-left 
-                Foot
-              %span.pull-right
-                =@player.foot || 'Right'
-
-      .col-sm-8.profile-stats
+  .col-sm-6.profile-right.no-margin.text-center
+    .row.profile-stats-box
+      .col-sm-12.profile-stats.no-padding
         .row.profile-tabs.text-center.no-margin
           .col-xs-4.profile-tab{"data-toggle" => "tab", :href => "#stats"}
             %p Stats
@@ -228,28 +332,25 @@
             %p Matches
           .col-xs-4.profile-tab{"data-toggle" => "tab", :href => "#team"}
             %p Team
-
-
-        / %ul#myTab
-        /   %li.active
-        /     %a{"data-toggle" => "tab", :href => "#stats"} Stats
-        /   %li
-        /     %a{"data-toggle" => "tab", :href => "#matches"} Matches
-        /   %li
-        /     %a{"data-toggle" => "tab", :href => "#team"} Team
-        .row.no-margin
-          .tab-content
-            #stats.tab-pane.text-center.active
-              .row.no-margin
-                .col-xs-4.stats-info
-                  %h4 Goals
-                  %h1= @player.goals(@player.id)
-                .col-xs-4.stats-info
-                  %h4 Appearances
-                  %h1= @player.appearances(@player.id)
-                .col-xs-4.stats-info
-                  %h4 MOTM
-                  %h1= @player.motms(@player.id)
+        .row.no-margin{:style =>"height:100%;overflow:auto;"}
+          .tab-content{:style =>"height:100%;"}
+            #stats.tab-pane.text-center.active{:style =>"height:100%"}
+              .row.no-margin.stats-info-background{:style =>"height:100%"}
+                .col-xs-4.stats-info.no-padding
+                  .col-xs-12.stats-info-title.no-padding
+                    %h4 Goals
+                  .col-xs-12
+                    %h1{:style => "padding-top:25%;"}= @player.goals(@player.id)
+                .col-xs-4.stats-info.no-padding
+                  .col-xs-12.stats-info-title.no-padding
+                    %h4 Appearances
+                  .col-xs-12
+                    %h1{:style => "padding-top:25%;"}= @player.appearances(@player.id)
+                .col-xs-4.stats-info.no-padding
+                  .col-xs-12.stats-info-title.no-padding
+                    %h4 MOTM
+                  .col-xs-12
+                    %h1{:style => "padding-top:25%;"}= @player.motms(@player.id)
 
             / /tab-pane
             #matches.tab-pane
@@ -263,11 +364,32 @@
                 %hr/
               / /tab-pane
             #team.tab-pane
-              %hr/
-              %h1
+              %h1.centered-axis-xy
                 - if @player.team.nil?
                   Free Agent
                 - else
                   = @player.team.name
+                  %br/
           / /tab-pane
         / /tab-content
+    .row
+      .col-sm-12.speciality-box
+        %h2
+          Specialities
+        %hr
+          
+    .row
+      .col-xs-12
+        .col-xs-4
+          %img{:src => "/assets/leader.jpg", :alt => "", :class => "speciality-img"}/
+          %p
+            Leader
+        .col-xs-4
+          %img{:src => "/assets/organiser.jpg", :alt => "", :class => "speciality-img"}/
+          %p
+            Organiser
+        .col-xs-4
+          %img{:src => "/assets/canon.jpg", :alt => "", :class => "speciality-img"}/
+          %p
+            Canon
+

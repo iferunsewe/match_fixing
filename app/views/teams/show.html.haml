@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 / / = team_color(@team)
 / -# Compile the stylesheet if necessary
 / - team_stylesheet = TeamStylesheet.new(@team)
@@ -113,55 +112,84 @@
 
 
 .team-container.font-override
-  .row.team-header
+  .row.team-header.no-margin
     .col-xs-6.pull-right
-      %h1 
+      %h1.pull-right 
         = @team.name
 
-  .row.ratings-row.text-center
-    - if @team.players != [] && @team.average_rating(@team) != 0
+  .row.ratings-row.text-center.no-margin
+    - if @team.players != [] && @team.ratings.sum(:stars) > 0 && @team.average_rating(@team) != 0
       -(1..@team.average_rating(@team)).each do |i|
         = image_tag("star-on.png")
-      / # -#%b= "#{number_with_precision(@team.average_rating(@team), precision: 2)}"
-    -else
-      -(1..5).each do |i|
-        = image_tag("star-on.png")
-
+      -#%b= "#{number_with_precision(@team.average_rating(@team), precision: 2)}"
+    - else
+      %p Team not rated yet
   .row
-    .col-sm-12.team-stats
-      .row.profile-tabs.text-center.no-margin
-        .col-xs-4.profile-tab{"data-toggle" => "tab", :href => "#stats"}
-          %p Stats
-        .col-xs-4.profile-tab{"data-toggle" => "tab", :href => "#matches"}
-          %p Matches
-        .col-xs-4.profile-tab{"data-toggle" => "tab", :href => "#team"}
-          %p Team
-
+    .col-sm-6.team-left{:style=>"color:black;"}
+      %h1 About
+    .col-sm-6.team-right
       .row.no-margin
-        .tab-content
-          #stats.tab-pane.text-center.active
-            .row.no-margin
-              .col-xs-4.stats-info
-                %h4 Wins
-                %h1= @team.wins
-              .col-xs-4.stats-info
-                %h4 Losses
-                %h1= @team.losses
-              .col-xs-4.stats-info
-                %h4 Draws
-                %h1= @team.draws
+        .col-sm-12.team-stats.no-padding
+          .row.profile-tabs.text-center.no-margin
+            .col-xs-4.profile-tab{"data-toggle" => "tab", :href => "#stats"}
+              %p Stats
+            .col-xs-4.profile-tab{"data-toggle" => "tab", :href => "#matches"}
+              %p Matches
+            .col-xs-4.profile-tab{"data-toggle" => "tab", :href => "#players"}
+              %p Players
 
-          / /tab-pane
-          #matches.tab-pane
-            .col-xs-12
-              / # =# render 'matches/index'
-              %hr/
-              .row
-                .col-md-4.col-md-offset-4.text-center
-                  %ul#myPager.pagination
-              / /table-resp
-              %hr/
+          .row.no-margin
+            .tab-content
+              #stats.tab-pane.text-center.active
+                .row.no-margin.stats-info-background{:style =>"height:100%"}
+                  .col-xs-4.stats-info.no-padding
+                    .col-xs-12.stats-info-title.no-padding
+                      %h4 Wins
+                    .col-xs-12
+                      %h1{:style => "padding-top:10%;"}= @team.wins
+                  .col-xs-4.stats-info.no-padding
+                    .col-xs-12.stats-info-title.no-padding
+                      %h4 Losses
+                    .col-xs-12
+                      %h1{:style => "padding-top:10%;"}= @team.losses
+                  .col-xs-4.stats-info.no-padding
+                    .col-xs-12.stats-info-title.no-padding
+                      %h4 Draws
+                    .col-xs-12
+                      %h1{:style => "padding-top:10%;"}= @team.draws
+                / .row.no-margin
+                /   .col-xs-4.stats-info
+                /     %h4 Wins
+                /     %h1= @team.wins
+                /   .col-xs-4.stats-info
+                /     %h4 Losses
+                /     %h1= @team.losses
+                /   .col-xs-4.stats-info
+                /     %h4 Draws
+                /     %h1= @team.draws
+
+              / /tab-pane
+              #matches.tab-pane
+                .col-xs-12
+                  = render 'matches/index'
+                  %hr/
+                  .row
+                    .col-md-4.col-md-offset-4.text-center
+                      %ul#myPager.pagination
+                  / /table-resp
+                  %hr/
+                / /tab-pane
+              #players.tab-pane
+                %hr/
+                - if @team.players.nil?
+                  %h1 No Players
+                - else
+                  - @team.players.each do |player|
+                    %li
+                      =player.name
+
             / /tab-pane
+          / /tab-content
 / =======
 / %p#notice= notice
 

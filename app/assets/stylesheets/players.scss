@@ -11,10 +11,10 @@
   background-size: 100% 100%;
 }*/
 
-body {
+/*body {
     background: linear-gradient(
-      rgba(0, 0, 0, 0.7), 
-      rgba(0, 0, 0, 0.7)
+      rgba(0, 0, 0, 0.8), 
+      rgba(0, 0, 0, 0.8)
     ), url('/assets/pitch.jpg') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -25,13 +25,14 @@ body {
 
 html body {
     min-height: 100%;
-}
-
+}*/
+/*
 .profile-container{
   
   color: white;
-  height: 100vh;
+  height: 110vh;
   width: 100vw;
+  background-color: rgba(0, 0, 0, 0.45);
 }
 
 .profile-nation-image{
@@ -75,7 +76,7 @@ html body {
   padding-left: 50px !important;
   padding-right: 50px !important;
   max-width: 100%;
-  padding-top: 10%;
+  padding-top: 5%;
 }
 
 .profile-list-item{
@@ -85,33 +86,10 @@ html body {
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.45);
   max-width: 100%;
-}
+}*/
 
-.profile-tab{
-  background-color: rgba(255, 255, 255, 0.45);
-  border-left: 2px solid white;
-  border-right: 2px solid white;
-  max-width: 100%;
-}
 
-profile-tabs{
-  margin-bottom: 10px; 
-  max-width: 100%;
-}
-
-.profile-stats{
-  height: 100%;
-  max-width: 100%;
-  padding-top: 10%;
-
-}
-
-/*.profile-break{
-  height: 5%;
-  max-width: 100%;
-}
-*/
-.profile-image-col{
+/*.profile-image-col{
   height: 100%;
   max-width: 100%;
   padding-bottom: 20px;
@@ -129,15 +107,146 @@ profile-tabs{
   background-size: 100% 100%;
   border: 2px solid white;
   max-width: 100%;
-}
+}*/
 
-.stats-info{
-  background-color: rgba(0, 0, 0, 0.7);
-  height: 100%;
-  max-width: 100%;
-}
-.small-avatar {
+
+/*.small-avatar {
   height: 30px;
   border-radius: 1000px;
   margin-bottom: -8px;
+}*/
+
+/*@media only screen and (max-width: 520px) {
+
+   .profile-tabs { font-size: 15px; }
+    
+   .stats-info { 
+    h4{
+      font-size: 12px; 
+    }
+  }
+}*/
+
+
+.profile-left{
+  height: 100%;
+}
+
+.profile-right{
+  height: 100%;
+  /*padding-left: 0px !important;*/
+}
+
+.profile-container{
+  height: 90vh;
+}
+
+.profile-image-box{
+  height: 50%;
+}
+
+.profile-about{
+  height: 25%;
+}
+
+.profile-about{
+  height: 25%;
+}
+
+.profile-image{
+  height: 100%;
+  min-width: 100%;
+  background: url('/assets/messi.jpg') no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /*object-fit: contain;*/
+}
+
+.name-box hr{
+  width: 60%;
+  border-bottom: 3px solid black;
+}
+
+.centered-axis-xy {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.speciality-box hr{
+  width: 60%;
+  border-bottom: 3px solid black;
+}
+
+.speciality-img{
+  height: 150px;
+  width: 150px;
+}
+
+.profile-stats-box{
+  height: 50%;
+}
+
+.profile-tab{
+  background-color: white;
+  color: black;
+  max-width: 100%;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+}
+
+.profile-tabs{
+  font-size: 30px;
+}
+
+.profile-stats{
+  height: 100%;
+  overflow: hidden;
+}
+
+.stats-info{
+  color: white;
+  height: 100%;
+  max-width: 100%;
+  h1{
+    font-size: 70px;
+  }
+}
+
+.stats-info-background{
+  background:  linear-gradient(
+      rgba(0, 0, 0, 0.45), 
+      rgba(0, 0, 0, 0.45)
+    ), url('/assets/pitch.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.stats-info-title{
+  color: white;
+  border-bottom: 2px solid white;
+}
+
+@media only screen and (max-width: 520px) {
+
+   .profile-tabs { font-size: 15px; }
+    
+   .stats-info { 
+    h4{
+      font-size: 15px; 
+    }
+  }
+
+  .speciality-img{
+    height: 100px;
+    width: 100px;
+  }
+/*  .profile-right{
+    margin-top: 100px;
+  }*/
 }

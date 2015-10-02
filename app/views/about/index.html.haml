@@ -6,7 +6,8 @@
     .col-xs-4.text-center.landing-box
     
   - if current_player
-    .col-xs-4.text-center.logo-box-logged-in
+    %a{:href => "/leagues/1"}
+      .col-xs-4.text-center.logo-box-logged-in
       / .logo-box2.text-center
       / .logo-box3.text-center
   - else
@@ -16,8 +17,12 @@
       / .logo-box3.text-center
   
   - if current_player
-    %a{:href => "/teams/new"}
-      .col-xs-4.text-center.create-team-box
+    -if current_player.team
+      %a{:href => "/teams/#{current_player.team.id}"}
+        .col-xs-4.text-center.my-team-box
+    -else
+      %a{:href => "/teams/new"}
+        .col-xs-4.text-center.create-team-box
   - else
     .col-xs-4.text-center.landing-box
 

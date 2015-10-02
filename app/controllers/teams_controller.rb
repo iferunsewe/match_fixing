@@ -12,6 +12,8 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
     @team = Team.find(params[:id])
+    @matches = Match.all.sort_by &:date
+
     # respond_to do |format|
     #   format.html
     #   format.css
