@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :user_is_player?, :user_is_admin?, :user_is_captain?
+  helper_method :user_is_player?, :user_is_admin?, :user_is_captain?, :previous_url
   before_action :configure_permitted_parameters, if: :devise_controller?
 
 
@@ -38,15 +38,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def update_team_stats
+    # Used for calculating the stats for the leadertable
+    @teams = Team.all
+    @teams.map do |team|
+      team.update(played: team.calc_matches(team) ,wins: team.calc_wins(team), losses: team.calc_losses(team), draws: team.calc_draws(team), points: team.calc_points)
+    end
+    @teams = @teams.order(points: :desc)
+  end
 
   protected
 
-  def go_back #Redirect user to previous page
-    redirect_to :back
-    rescue ActionController::RedirectBackError
-      redirect_to root_path
+  def previous_url
+    binding.pry
+    session[:my_previous_url] = URI(request.referer || '').path
   end
-
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name

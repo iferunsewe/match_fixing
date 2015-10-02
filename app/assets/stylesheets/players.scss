@@ -156,7 +156,9 @@ html body {
 .profile-image{
   height: 100%;
   min-width: 100%;
-  background: url('/assets/messi.jpg') no-repeat center center; 
+  /*background: url('/assets/messi.jpg') no-repeat center center; */
+  background-repeat: no-repeat;
+  background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

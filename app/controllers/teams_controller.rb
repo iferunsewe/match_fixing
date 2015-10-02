@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
   before_filter :authenticate_player!, except: [:index]
   before_action :set_team, only: [:show, :edit, :update, :destroy]
-  before_action :update_team_stats, only: [:index, :show, :edit, :update, :destroy]
+  before_action :update_team_stats, only: [:show, :edit]
   load_and_authorize_resource
   # GET /teams
   # GET /teams.json
@@ -86,12 +86,5 @@ class TeamsController < ApplicationController
                                                        :weight,:height, :foot, :specialities])
     end
 
-    def update_team_stats
-      # Used for calculating the stats for the leadertable
-      @teams = Team.all
-      @teams.map do |team|
-        team.update(played: team.calc_matches(team) ,wins: team.calc_wins(team), losses: team.calc_losses(team), draws: team.calc_draws(team), points: team.calc_points)
-      end
-      @teams = @teams.order(points: :desc)
-    end
+
 end

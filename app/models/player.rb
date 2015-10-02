@@ -1,7 +1,8 @@
 class Player < ActiveRecord::Base
   attr_accessible :name, :dob, :position, :hometown, :rating_id,
                   :captain, :weight,:height, :password, :email, :remember_me, :team_id,
-                  :foot, :specialities, :password_confirmation, :image, :remote_image_url
+                  :foot, :password_confirmation, :image, :remote_image_url, :speciality_ids
+
   before_save :defaults
   mount_uploader :image, PlayerImageUploader
 
@@ -17,6 +18,7 @@ class Player < ActiveRecord::Base
   has_many :stats
   has_many :matches, through: :stats
   has_many :providers, dependent: :destroy
+  has_and_belongs_to_many :specialities
 
   accepts_nested_attributes_for :ratings, :matches, :stats
 
@@ -61,6 +63,14 @@ class Player < ActiveRecord::Base
 
   def motms(player_id)
     Stat.where(player_id: player_id, man_of_the_match: true).size
+  end
+
+  def goals_in_match(player_id, match_id)
+    Stat.where(player_id: player_id, match_id: match_id).first.goals
+  end
+
+  def motm_in_match(player_id, match_id)
+    Stat.where(player_id: player_id, match_id: match_id).first.man_of_the_match ? "Man of the Match" : nil
   end
 
   def self.map_authentication_to_player_properties(authentication)

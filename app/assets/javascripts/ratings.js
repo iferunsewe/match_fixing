@@ -10,13 +10,31 @@ ratingsSection.setStars = function(form_id, stars){
     }
 };
 
+specialties = {};
+
+specialties.limitChosenSpecialities = function(){
+    $('.specialities_checkboxes').click(function(){
+        var specialty = $(this);
+        specialty.attr("checked", true);
+        if ($('.specialities_checkboxes:checked').length > 3){
+            specialty.attr("checked", false);
+            console.log("HERE")
+            $(".specialties_checkboxes").not(':checked').attr('disabled', true);
+            alert("You can't have it all. Only 3 specialties can be chosen!");
+        } else {
+            $(".specialties_checkboxes").removeAttr("disabled");
+        }
+    });
+};
+
 
 $(document).ready(function(){
     $('.star_rating').click(function(){
+        console.log('RATING');
         var star = $(this);
         var form_id = star.attr('data-form-id');
         var stars = star.attr('data-stars');
-        var object_name = $(".object-name").text()
+        var object_name = $(".object-name").text();
         ratingsSection.setStars(form_id, stars);
         $('#' + form_id + '_stars').val(stars);
         $.ajax({
@@ -34,6 +52,8 @@ $(document).ready(function(){
         var stars = $('#' + form_id + '_stars').val();
         ratingsSection.setStars(form_id, stars)
     });
+
+    specialties.limitChosenSpecialities();
 });
 
 
