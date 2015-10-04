@@ -1,49 +1,73 @@
-%h1.profile-name
-  = @player.name
-  - if @player.ratings != []
-    -(1..@player.average_rating).each do |i|
-      = image_tag("star-on.png")
+.forms-edit.font-override
 
-%h2
-  - if @player.team.nil?
-    Free Agent
-  - else
-    = @player.team.name
+  %h1.profile-name.text-center
+    = @player.name
+  %p.text-center
+    - if @player.ratings != []
+      -(1..@player.average_rating).each do |i|
+        %i.fa.fa-star
 
-= form_for @player, html: { multipart: true } do |f|
-  - if @player.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@player.errors.count, "error")} prohibited this player from being saved:"
-      %ul
-        - @player.errors.full_messages.each do |msg|
-          %li= msg
+  %h2.text-center
+    - if @player.team.nil?
+      Free Agent
+    - else
+      = @player.team.name
 
-  .field
-    = f.label :date_of_birth
-    = date_select "player", "dob", { start_year: 100.years.ago.year, end_year: Date.today.year, default: Date.today}
-  .field
-    = f.label :choose_profile_photo
-    = f.file_field :image
-  .field
-    = f.label :position
-    = f.text_field :position
-  .field
-    = f.label :hometown
-    = f.text_field :hometown
-  .field
-    = f.label :specialities
-    - Speciality.all.each do |speciality|
-      = check_box_tag "player[speciality_ids][]", speciality.id, @player.speciality_ids.include?(speciality.id), class: "specialities_checkboxes"
-      = image_tag speciality.image, alt: speciality.name, class: 'small_specialities'
-  .field
-    = f.label :foot
-    = f.select :foot, ["Right", "Left"]
-  .field
-    = f.label :team
-    = f.collection_select :team_id, Team.all, :id, :name, :include_blank => "Free Agent"
-  - if user_is_admin?
-    .field
-      = f.label :captain
-      = f.select :captain, [["Yes", true], ["No", false]]
-  .actions
-    = f.submit 'Save'
+  = form_for @player, html: { multipart: true } do |f|
+    - if @player.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@player.errors.count, "error")} prohibited this player from being saved:"
+        %ul
+          - @player.errors.full_messages.each do |msg|
+            %li= msg
+
+    .row
+      .col-md-4
+        .form-group
+          = f.label :date_of_birth
+          = date_select "player", "dob", { start_year: 100.years.ago.year, end_year: Date.today.year, default: Date.today}, class: "form-control"
+      .col-md-12
+        .form-group
+          = f.label :choose_profile_photo
+          %div{:style=>"position:relative;"}
+            %a.btn.btn-xs.btn-black.nohoverblack{:href=>'javascript:;'}>
+              Choose File...
+              = f.file_field :image, {:style=>"position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';opacity:0;background-color:transparent;color:transparent;"}
+        
+      .col-md-12
+        .form-group
+          = f.label :position
+          = f.text_field :position, class: "form-control"
+      .col-md-12
+        .form-group
+          = f.label :foot
+          = f.select :foot, options_for_select(["Right", "Left"]), {},{ :class => "form-control"}
+      .col-md-12
+        .form-group
+          = f.label :team
+          = f.collection_select :team_id, Team.all, :id, :name, {:include_blank => "Free Agent"}, {class: "form-control"}
+      .col-md-12
+        .form-group
+          = f.label :hometown
+          = f.text_field :hometown, class: "form-control"
+
+      - if user_is_admin?
+        .col-md-12
+          .form-group
+            = f.label :captain
+            = f.select :captain, [["Yes", true], ["No", false]], {},{ :class => "form-control"}
+      .col-md-12
+        .form-group
+          = f.label :specialities
+          %br/
+          - Speciality.all.each do |speciality|
+            .col-md-3
+              = check_box_tag "player[speciality_ids][]", speciality.id, @player.speciality_ids.include?(speciality.id), class: "specialities_checkboxes"
+              = image_tag speciality.image, alt: speciality.name, class: 'small_specialities'
+              %p
+                =speciality.name
+
+      .col-md-12
+        .actions.text-center
+          = f.submit 'Save', class:"btn btn-black nohoverblack"
+          = link_to 'Cancel', @player, class:"btn btn-danger"

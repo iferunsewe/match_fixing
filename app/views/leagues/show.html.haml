@@ -1,10 +1,12 @@
+.league-container.font-override.text-center{:style =>"color:white;padding-top: 10%;"}
+  .league-table
+    %h1{:style =>"margin-top:0px;"}= @league.name
+    %p
+      %b Location:
+      = @league.location
 
-%h1= @league.name
-%p
-  %b Location:
-  = @league.location
-
-  = render 'teams/index', {league_teams: @league.teams}
-- if user_is_admin?
-  = link_to 'Edit', edit_league_path(@league)
+      = render 'teams/index', {league_teams: @league.teams}
+    - if user_is_admin?
+      %h4.text-center
+        = link_to 'Edit', edit_league_path(@league), class: "link-override"
 

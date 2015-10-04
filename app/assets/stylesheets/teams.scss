@@ -15,7 +15,7 @@
 }
 
 .team-header{
-  height: 40%;
+  height: 45%;
   background: url('/assets/ronaldo.jpg') no-repeat center center fixed; 
     -webkit-background-size: 100% 100%;
     -moz-background-size: 100% 100%;
@@ -35,7 +35,14 @@
 .ratings-row{
   background-color: rgba(0, 0, 0, 1);
   height: 10%;
-  padding-top: 20px;
+  /*padding-top: 20px;*/
+  color: white;
+  h1{
+    font-size: 18px;
+    i{
+      font-size: 15px;
+    }
+  }
 }
 
 #matches{

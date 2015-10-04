@@ -157,8 +157,6 @@ html body {
   height: 100%;
   min-width: 100%;
   /*background: url('/assets/messi.jpg') no-repeat center center; */
-  background-repeat: no-repeat;
-  background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -234,6 +232,28 @@ html body {
   border-bottom: 2px solid white;
 }
 
+#team{
+  color: white;
+  height: 100%;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+  h1{
+    span{
+      font-size: 15px;
+    }
+  }
+}
+
+.td-pad{
+  padding-top: 35px !important;
+}
+
+.modal{
+  margin-top: 10%;
+}
+
 @media only screen and (max-width: 520px) {
 
    .profile-tabs { font-size: 15px; }
@@ -251,4 +271,19 @@ html body {
 /*  .profile-right{
     margin-top: 100px;
   }*/
+  .td-pad{
+    padding-top: 0px !important;
+  }
+
+  .welcome-header{
+      font-size: 20px;
+      padding-left: 0% !important;
+
+      button{
+        text-decoration: none;
+      }
+  }
+  .modal{
+    margin-top: 20%;
+  }
 }

@@ -1,23 +1,25 @@
-%h1 Listing leagues
+.league-container.font-override.text-center{:style =>"color:white;padding-top: 10%;"}
+  %h1 Leagues
+  .league-table
+    .table-responsive.font-override
+      %table.table
+        %thead
+          %tr
+            %th.text-center Name
+            %th.text-center Location
+            %th.text-center Actions
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Location
-      %th
-      %th
-      %th
+        %tbody#items
+          - @leagues.each do |league|
+            %tr
+              %td= league.name
+              %td= league.location
+              %td
+                = link_to 'Show', league, :class => "btn btn-xs btn-white"
+                = link_to 'Edit', edit_league_path(league), :class => "btn btn-xs btn-warning"
+                = link_to 'Destroy', league, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-xs btn-danger"
 
-  %tbody
-    - @leagues.each do |league|
-      %tr
-        %td= league.name
-        %td= league.location
-        %td= link_to 'Show', league
-        %td= link_to 'Edit', edit_league_path(league)
-        %td= link_to 'Destroy', league, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-- if user_is_admin?
-  = link_to 'New League', new_league_path
+  %br
+  - if user_is_admin?
+    %h4.text-center
+      = link_to 'New League', new_league_path, class: "link-override"

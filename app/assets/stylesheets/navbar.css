@@ -10,10 +10,61 @@
   border: none;
 }
 
+.link-override{
+  text-decoration: none;
+  color: white;
+  &:visited{
+    color:white;
+  }
+  &:hover{
+    color:green;
+    text-decoration: none;
+  }
+}
+
+select.date-select {
+    float: left;
+    width: 10%;
+}
+
+.link-override-alt{
+  text-decoration: none;
+  color: black;
+  &:visited{
+    color:black;
+  }
+  &:hover{
+    color:green;
+    text-decoration: none;
+  }
+}
+
 .btn-black{
   background-color: black;
   border-color: black;
   color: white;
+}
+
+.modal-header{
+  background-color: black !important;
+}
+
+.modal-title{
+  color: white;
+}
+
+.close{
+  opacity: 1 !important;
+}
+
+
+
+.btn.nohoverblack:hover {
+    /* here copy default .btn class styles */
+    /*cursor:default !important;*/
+    /* or something like that */
+    color: white;
+    text-decoration: none;
 }
 
 .no-padding{

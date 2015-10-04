@@ -1,40 +1,44 @@
 .profile-container.no-margin.font-override
   .col-sm-6.profile-left.no-margin.no-padding.text-center
     .row.profile-image-box.no-margin
-      .col-sm-12.profile-image
-        = image_tag @player.image.detail.url if !@player.image.nil?
-      / .col-sm-12.profile-image
-      /   .profile-image
-    .row
+      .col-sm-12{:style=>"background: url(#{@player.image.detail.url if !@player.image.nil?}) no-repeat center center;height: 100%;min-width: 100%;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: 100% 100%;"}
       .col-sm-12.name-box
         %h2=@player.name
         %hr
-        %h2
-          - if @player.team.nil?
-            Free Agent
-          - else
-            = @player.team.name
+        / %h2
+        /   - if @player.team.nil?
+        /     Free Agent
+        /   - else
+        /     = @player.team.name
     .row
       .col-sm-12.rating-box
         - if @player.ratings != []
+          %p
+            =@player.average_rating
           -(1..@player.average_rating).each do |i|
-            %i.fa.fa-star.fa-3x
+            %i.fa.fa-star
         - else
-          .row.lead
-            #stars.starrr
-              / #count
+          %p
+            Player not yet rated.
     .row
       .col-sm-12
-        %h4 Personal Information
+        %h4
+          %b Personal Information
       .col-sm-12
-        %p
-          Age:
-          %span=@player.dob || 18
-        %p
-          Hometown:
+        %h4
+          %b Age:
+          %span
+            - if @player.dob.nil? && @player.id == current_player.id
+              = link_to 'Please update age', edit_player_path
+            - elsif @player.dob.nil?
+              No registered date of birth
+            - else
+              = @player.calculate_age(@player.dob)
+        %h4
+          %b Hometown:
           %span=@player.hometown || 'London'
-        %p
-          Position:
+        %h4
+          %b Position:
           %span=@player.position || 'Defender'
                 
 
@@ -78,15 +82,23 @@
                   .col-md-4.col-md-offset-4.text-center
                     %ul#myPager.pagination
                 / /table-resp
-                %hr/
               / /tab-pane
-            #team.tab-pane
+            #team.tab-pane{:style =>"background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('#{if @player.team then @player.team.image.wide.url end}') no-repeat center center; "}
               %h1.centered-axis-xy
                 - if @player.team.nil?
                   Free Agent
                 - else
-                  = @player.team.name
+                  =link_to @player.team.name, team_path( @player.team), {:class => 'link-override-alt'}
                   %br/
+                  %span
+                    - if @player.team.ratings.sum(:stars) > 0 && @player.team.average_rating(@player.team) != 0
+                      -(1..@player.team.average_rating(@player.team)).each do |i|
+                        %i.fa.fa-star
+                    - else
+                      -(1..5).each do |i|
+                        %i.fa.fa-star
+                      
+                  
           / /tab-pane
         / /tab-content
     .row
@@ -97,78 +109,34 @@
           
     .row
       .col-xs-12
-        .col-xs-4
-          %img{:src => "/assets/leader.jpg", :alt => "", :class => "speciality-img"}/
-          %p
-            Leader
-        .col-xs-4
-          %img{:src => "/assets/organiser.jpg", :alt => "", :class => "speciality-img"}/
-          %p
-            Organiser
-        .col-xs-4
-          %img{:src => "/assets/canon.jpg", :alt => "", :class => "speciality-img"}/
-          %p
-            Canon
-/ =======
-/ %h1.object-name
-/   =@player.name
-/   - if @player.ratings != []
-/     -(1..@player.average_rating).each do |i|
-/       = image_tag("star-on.png")
-/   - else
-/     %h4 Player not rated yet
-
-
-
-/ %h2
-/   - if @player.team.nil?
-/     Free Agent
-/   - else
-/     = @player.team.name
-/ - if user_is_admin?
-/   = link_to "Fancy a match?", new_match_path |
-/ - if @player.team.nil?
-/   = link_to "Create a Team?", new_team_path
-
-/ = render 'matches/index'
-
-/ %p
-/   %b Age:
-/   - if @player.dob.nil? && @player.id == current_player.id
-/     = link_to 'Please update age', edit_player_path
-/   - elsif @player.dob.nil?
-/     No registered date of birth
-/   - else
-/     = @player.calculate_age(@player.dob)
-/ %p
-/   %b Appearances:
-/   = @player.appearances(@player.id)
-/ %p
-/   %b Goals:
-/   = @player.goals(@player.id)
-
-/ %p
-/   %b Man of the Match:
-/   = @player.motms(@player.id)
-/ %p
-/   %b Position:
-/   = @player.position
-/ %p
-/   %b Hometown:
-/   = @player.hometown
-/ %p
-/   %b Foot:
-/   = @player.foot
-/ %p
-/   %b Specialities:
-/   - @player.specialities.each do |specialty|
-/     = image_tag specialty.image, alt: specialty.name, class: 'small_specialities'
-
-/ - unless @player.team.nil?
-/   - match = Match.where({team_a_id: [@player.team.id, current_player.team.id], team_b_id: [@player.team.id, current_player.team.id], status: true})
-/   - if @player.id != current_player.id && match != [] && @player.played_and_rated__before(@player, current_player, match) == true
-/     %p
-/       %b Rate player
-/       = render 'rendered_pages/ratings_form', {object: @player, model: 'player'}
-/ >>>>>>> develop
-
+        - @player.specialities.each do |speciality|
+          -if @player.specialities.length == 1
+            .col-xs-12
+              = image_tag speciality.image, alt: speciality.name, class: 'speciality-img'
+              %p
+                =speciality.name
+          -if @player.specialities.length == 2
+            .col-xs-6
+              = image_tag speciality.image, alt: speciality.name, class: 'speciality-img'
+              %p
+                =speciality.name
+          -if @player.specialities.length == 3
+            .col-xs-4
+              = image_tag speciality.image, alt: speciality.name, class: 'speciality-img'
+              %p
+                =speciality.name
+  / Modal
+  #rateModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+    .modal-dialog{:role => "document"}
+      .modal-content.font-override
+        .modal-header
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true", :style =>'color:white;'} ×
+          %h4#myModalLabel.modal-title.text-center Rate Player
+        .modal-body.text-center
+          = render 'rendered_pages/ratings_form', {object: @player, model: 'player'}
+  - unless @player.team.nil?
+    - match = Match.where({team_a_id: [@player.team.id, current_player.team.id], team_b_id: [@player.team.id, current_player.team.id], status: true})
+    - if @player.id != current_player.id && match != [] && @player.played_and_rated__before(@player, current_player, match) == true
+      %button.btn-rate-player{"data-target" => "#rateModal", "data-toggle" => "modal", :type => "button", :class=>"hide"}
+      

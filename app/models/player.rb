@@ -70,7 +70,7 @@ class Player < ActiveRecord::Base
   end
 
   def motm_in_match(player_id, match_id)
-    Stat.where(player_id: player_id, match_id: match_id).first.man_of_the_match ? "Man of the Match" : nil
+    Stat.where(player_id: player_id, match_id: match_id).first.man_of_the_match ? "MOTM" : nil
   end
 
   def self.map_authentication_to_player_properties(authentication)

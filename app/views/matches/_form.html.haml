@@ -1,36 +1,51 @@
-= form_for @match do |f|
-  - if @match.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@match.errors.count, "error")} prohibited this match from being saved:"
-      %ul
-        - @match.errors.full_messages.each do |msg|
-          %li= msg
+.forms-edit.font-override
+  = form_for @match do |f|
+    - if @match.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@match.errors.count, "error")} prohibited this match from being saved:"
+        %ul
+          - @match.errors.full_messages.each do |msg|
+            %li= msg
+    .row
+      .col-md-12
+        .form-group
+          = f.label :date
+          .input-group.date#datetimepicker1
+            = f.text_field :date, class:"form-control"
+            %span.input-group-addon
+              %span.glyphicon.glyphicon-calendar
+      .col-md-12
+        .form-group
+          = f.collection_select :team_a_id, Team.all, :id, :name, {:prompt => 'Choose Home Team'}, {:class => "form-control"}
+      .col-md-12
+        .form-group
+          = f.collection_select :team_b_id, Team.all, :id, :name, {:prompt => 'Choose Away Team'}, {:class => "form-control"}
+      = f.fields_for :ground do |g|
+        .col-md-12
+          .form-group
+          = g.label :ground
+          = g.text_field :name, class: "form-control"
+        .col-md-12
+          .form-group
+            = g.label :address
+            = g.text_area :address, class: "form-control"
 
-  .field
-    = f.label :date
-    = f.datetime_select :date
+      -# Form to edit stats - only appears on the edit page
+      - if @match.status
+        = f.fields_for :stats do |s|
+          .col-md-12
+            .form-group
+              %h4
+                %b
+                  = s.label s.object.player.name + " - "
+                  = s.label s.object.player.team.name
+            .form-group
+              = s.label :goals
+              = s.select :goals, 1..10, {prompt: 'Goals'}, {:class => "form-control"}
+              = s.label :man_of_the_match
+              = s.select :man_of_the_match, [["Yes", true], ["No", false]], {}, {:class => "form-control"}
 
-  -#= f.hidden_field :team_a_id, :value => current_player.team.id #ADD THIS IN WHEN WE WANT TO LET TEAMS ARRANGE MATCHES
-  .field
-    = f.collection_select :team_a_id, Team.all, :id, :name, {:prompt => 'Choose Home Team'}
-  .field
-    = f.collection_select :team_b_id, Team.all, :id, :name, {:prompt => 'Choose Away Team'}
-  = f.fields_for :ground do |g|
-    .field
-      = g.label :ground
-      = g.text_field :name
-    .field
-      = g.label :address
-      = g.text_area :address
-
-  -# Form to edit stats - only appears on the edit page
-  - if @match.status
-    = f.fields_for :stats do |s|
-      .field
-        = s.label s.object.player.name
-        = s.label s.object.player.team.name
-        = s.select :goals, 1..10, prompt: 'Goals'
-        = s.select :man_of_the_match, [["Yes", true], ["No", false]]
-
-  .actions
-    = f.submit 'Save'
+      .col-md-12
+        .actions.text-center
+          = f.submit 'Save', class:"btn btn-black nohoverblack"
+          = link_to 'Cancel', @match, class:"btn btn-danger"

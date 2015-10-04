@@ -1,5 +1,6 @@
 ratingsSection = {};
 
+
 ratingsSection.setStars = function(form_id, stars){
     for(i=1; i<=5; i++){
         if(i<=stars){
@@ -29,6 +30,7 @@ specialties.limitChosenSpecialities = function(){
 
 
 $(document).ready(function(){
+    $('.btn-rate-player').click()
     $('.star_rating').click(function(){
         console.log('RATING');
         var star = $(this);

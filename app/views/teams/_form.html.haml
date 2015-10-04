@@ -29,9 +29,16 @@
           = f.text_field :secondary_kit_colour, class: "form-control"
       .col-md-12
         .form-group
+          = f.label :choose_team_photo
+          %div{:style=>"position:relative;"}
+            %a.btn.btn-xs.btn-black.nohoverblack{:href=>'javascript:;'}>
+              Choose File...
+              = f.file_field :image, {:style=>"position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';opacity:0;background-color:transparent;color:transparent;"}
+      .col-md-12
+        .form-group
           = f.label :seeking_players
           = f.check_box :seeking_players, class: "form-control"
       .col-md-12
         .actions.text-center
-          = link_to 'Cancel', teams_path, class: "btn btn-danger"
+          = link_to 'Cancel', team_path(@team), class: "btn btn-danger"
           = f.submit 'Save', class: "btn btn-success"

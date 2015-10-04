@@ -13,9 +13,9 @@
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
   %body
-<<<<<<< HEAD
+
     - if current_player
-      %nav.navbar.navbar-default
+      %nav.navbar.navbar-default.font-override
         .container-fluid
           / Brand and toggle get grouped for better mobile display
           .navbar-header
@@ -23,66 +23,61 @@
               %span.sr-only Toggle navigation
               %span.icon-bar
               %span.icon-bar
-              %span.icon-bar%img{}
-            %a
+              %span.icon-bar
+            %a{:href=> "/"}
               %img.pull-left.img-responsive{:src => "/assets/logo-xs.jpg"}
           / Collect the nav links, forms, and other content for toggling
           #bs-example-navbar-collapse-1.collapse.navbar-collapse
-            %ul.nav.navbar-nav
-              %li.active
-                %a{:href => "#"}
-                  Link
+            %ul.nav.navbar-nav{:style =>"width:70%;"}
+              %li{:style =>"width:25%;border-left:white;padding-left:5%;"}
+                = link_to "My Profile", current_player
+              - if current_player.team != nil
+                %li{:style =>"width:25%;border-left:white;padding-left:5%;"}
+                  = link_to "My Team", current_player.team
+              %li{:style =>"width:25%;border-left:white;padding-left:5%;"}
+                %a{:href => "/leagues/1"}
+                  League Table
                   %span.sr-only (current)
-              %li
-                %a{:href => "#"} Link
-              %li.dropdown
-                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-                  Dropdown
-                  %span.caret
-                %ul.dropdown-menu
-                  %li
-                    %a{:href => "#"} Action
-                  %li
-                    %a{:href => "#"} Another action
-                  %li
-                    %a{:href => "#"} Something else here
-                  %li.divider{:role => "separator"}
-                  %li
-                    %a{:href => "#"} Separated link
-                  %li.divider{:role => "separator"}
-                  %li
-                    %a{:href => "#"} One more separated link
-            %ul.nav.navbar-nav.navbar-right
-              %li
-                - if player_signed_in?
-                  %strong= link_to current_player.name, current_player, :class => 'navbar-link'
-                  %strong= link_to "Log out", destroy_player_session_path, :method => :delete 
-                  - if current_player.team != nil
-                    Member of
-                    %strong= link_to current_player.team.name, current_player.team
+            %ul.nav.navbar-nav.navbar-right{:style =>"width:25%;"}
+              - if player_signed_in?
+
+                %li{:style =>"padding-left:5%;"}
+                  = button_to 'Edit account', edit_player_path(current_player), :method => :get, :class => 'navbar-link', :class => 'btn btn-xs navbar-btn btn-warning'
+                %li{:style =>"padding-left:5%;"}
+                  = button_to "Log out", destroy_player_session_path, :method => :delete, :class => 'btn btn-xs navbar-btn btn-danger' 
+
 
           / /.navbar-collapse
         / /.container-fluid
       / %p.notice= notice
       / %p.alert= alert
     - else
-      %h1.text-center.font-override Match Fixing
+      .row
+        .col-xs-12
+          %h1.welcome-header.text-center.font-override{:style =>"padding-left: 15%;"}
+            Match Fixing
+
+            = link_to "Sign up", new_registration_path(resource_name), {class: "btn btn-xs btn-primary pull-right", :style =>"margin-right: 5%;"}
+            %button.btn.btn-xs.btn-success.pull-right{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button", :style =>"margin-right: 5%;"}
+              Login
+
+      / Modal
+      #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+        .modal-dialog{:role => "document"}
+          .modal-content.font-override
+            .modal-header
+              %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                %span{"aria-hidden" => "true", :style =>'color:white;'} ×
+              %h4#myModalLabel.modal-title.text-center Log In
+            .modal-body
+              = render 'devise/sessions/new'
+              .row
+                .col-xs-12.text-center
+                  %h4
+                    Or
+                .col-xs-12.text-center
+                  = link_to "Sign up with facebook", player_omniauth_authorize_path(:facebook), {class: "btn btn-primary"}
+    
+
 
     =yield
-
-    / - if player_signed_in?
-    /   Logged in as
-    /   %strong= link_to current_player.name, current_player
-    /   - if current_player.team != nil
-    /     Member of
-    /     %strong= link_to current_player.team.name, current_player.team
-    /   = image_tag current_player.image, class: "small-avatar"
-    /   = link_to 'Edit account', edit_player_registration_path, :class => 'navbar-link'
-    /   = link_to 'Edit Profile', edit_player_path(current_player), :class => 'navbar-link'
-    /   = link_to "Logout", destroy_player_session_path, method: :delete, :class => 'navbar-link'
-    / - else
-    /   = link_to "Sign up with facebook", player_omniauth_authorize_path(:facebook)
-    /   = link_to "Sign up", new_player_registration_path, :class => 'navbar-link'
-    /   = link_to "Login", new_player_session_path, :class => 'navbar-link'
-    / %p.notice= notice
-    / %p.alert= alert

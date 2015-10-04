@@ -1,15 +1,13 @@
 .match_container
-  .row.ground
+  .row.ground.no-margin
     .col.md-12.text-center
       = @match.ground.name
-  .match_home.col-xs-6
+    .col-md-12.text-center
+      - if user_is_admin?
+        = link_to 'Edit Match', edit_match_path(@match), {:class => 'link-override',:style => "font-size:15px;"}
+  .match_home.col-sm-6
     .col-xs-12.text-center
       %h3 HOME
-      - if current_player.team != @match.team_a && current_player.team == @match.team_b && @match.status && @match.played_and_rated_before(current_player, @match.team_a, @match)
-        %h2 Rate team
-        %b.object-name= "#{@match.team_a.name}"
-        #ratings_form
-          = render 'rendered_pages/ratings_form', {object: @match.team_a, model: 'team'}
     .col-xs-12
       %h1.text-center= @match.team_a.name
       .row
@@ -27,31 +25,35 @@
             %tr
               %th Image
               %th Players
-              %th Goals
               %th Rating
+              - if @match.status
+                %th Goals
+                %th
 
           %tbody
             - @match.team_a.players.each do |player|
               %tr
                 %td
-                  %img.img-circle.img-responsive{:src => "http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100", :title => "profile image"}/
-                %td= player.name
-                %td
-                  -for i in 0..player.goals(player.id)
-                    %i.fa.fa-futbol-o
-                %td
-                  -for i in 0..player.average_rating
+                  = player_avatar player
+                %td.match-table
+                  = player.name
+                  -if player.captain?
+                    %i.fa.fa-copyright{:style =>"color:white;"}
+                %td.match-table
+                  -for i in 1..player.average_rating
                     %span.glyphicon.glyphicon-star-empty
+                - if @match.status
+                  %td.match-table
+                    -for i in 1..player.goals_in_match(player.id, @match.id)
+                      %i.fa.fa-futbol-o
+                  %td.match-table
+                    = player.motm_in_match(player.id, @match.id)
                 %br
 
-  .match_away.col-xs-6
+
+  .match_away.col-sm-6
     .col-xs-12.text-center
       %h3 Away
-      - if current_player.team != @match.team_b && current_player.team == @match.team_a && @match.status == true && @match.played_and_rated_before(current_player, @match.team_b, @match)
-        %h2 Rate team
-        %b.object-name= "#{@match.team_b.name}"
-        #ratings_form
-          = render 'rendered_pages/ratings_form', {object: @match.team_b, model: 'team'}
     .col-xs-12
       %h1.text-center= @match.team_b.name
       .row
@@ -69,87 +71,59 @@
             %tr
               %th Image
               %th Players
-              %th Goals
               %th Rating
-
+              - if @match.status
+                %th Goals
+                %th
           %tbody
             - @match.team_b.players.each do |player|
               %tr
                 %td
-                  %img.img-circle.img-responsive{:src => "http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100", :title => "profile image"}/
-                %td= player.name
-                %td
-                  -for i in 0..player.goals(player.id)
-                    %i.fa.fa-futbol-o
-                %td
-                  -for i in 0..player.average_rating
+                  = player_avatar player
+
+                %td.match-table
+                  = player.name
+                  -if player.captain?
+                    %i.fa.fa-copyright
+                %td.match-table
+                  -for i in 1..player.average_rating
                     %span.glyphicon.glyphicon-star-empty
+                - if @match.status
+                  %td.match-table
+                    -for i in 1..player.goals_in_match(player.id, @match.id)
+                      %i.fa.fa-futbol-o
+                  %td.match-table
+                    = player.motm_in_match(player.id, @match.id)
                 %br
 
 
-/ <<<<<<< HEAD
-/ - if user_is_admin?
-/   = link_to 'Edit', edit_match_path(@match)
-/   \|
-/ = link_to 'Back', matches_path
-/ =======
-/ %table
-/   %thead
-/     %tr
-/       %th Players
-/       %th Goals this Season
-/       %th Rating
-/       - if @match.status
-/         %th Goals
-/         %th Man of the Match
+/ Modal
+#rateModalA.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content.font-override
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true", :style =>'color:white;'} ×
+        %h4#myModalLabel.modal-title.text-center
+          Rate
+          =@match.team_b.name
+      .modal-body.text-center
+        = render 'rendered_pages/ratings_form', {object: @match.team_a, model: 'team'}
 
-/ %tbody
-/   - @match.team_a.players.each do |player|
-/     %tr
-/       %td= player.name
-/       %td= player.goals(player.id)
-/       %td= player.average_rating
-/       - if @match.status
-/         %td= player.goals_in_match(player.id, @match.id)
-/         %td= player.motm_in_match(player.id, @match.id)
-/       %br
+/ Modal
+#rateModalB.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content.font-override
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true", :style =>'color:white;'} ×
+        %h4#myModalLabel.modal-title.text-center
+          Rate
+          =@match.team_b.name
+      .modal-body.text-center
+        = render 'rendered_pages/ratings_form', {object: @match.team_b, model: 'team'}
 
-/ %h3 AWAY
-/ - if current_player.team != @match.team_b && current_player.team == @match.team_a && @match.status == true && @match.played_and_rated_before(current_player, @match.team_b, @match)
-/   %h2 Rate team
-/   %b.object-name= "#{@match.team_b.name}"
-/   #ratings_form
-/     = render 'rendered_pages/ratings_form', {object: @match.team_b, model: 'team'}
-
-/ %table
-/   %thead
-/     %tr
-/       %th Players
-/       %th Goals this Season
-/       %th Rating
-/       - if @match.status
-/         %th Goals
-/         %th Man of the Match
-
-/ %tbody
-/   - @match.team_b.players.each do |player|
-/     %tr
-/       %td= player.name
-/       %td= player.goals(player.id)
-/       %td= player.average_rating
-/       - if @match.status
-/         %td= player.goals_in_match(player.id, @match.id)
-/         %td= player.motm_in_match(player.id, @match.id)
-/       %br
-
-/ %br
-/ %p
-/   %b Ground:
-/   = @match.ground.name
-/   %b Address
-/   = @match.ground.address
-
-/ - if user_is_admin?
-/   = link_to 'Edit', edit_match_path(@match)
-
-/ >>>>>>> develop
+- if current_player.team != @match.team_a && current_player.team == @match.team_b && @match.status && @match.played_and_rated_before(current_player, @match.team_a, @match)
+  %button.btn-rate-player{"data-target" => "#rateModalA", "data-toggle" => "modal", :type => "button", :class=>"hide"}
+- if current_player.team != @match.team_b && current_player.team == @match.team_a && @match.status == true && @match.played_and_rated_before(current_player, @match.team_b, @match)
+  %button.btn-rate-player{"data-target" => "#rateModalB", "data-toggle" => "modal", :type => "button", :class=>"hide"}

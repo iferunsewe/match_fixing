@@ -22,10 +22,8 @@ module MatchFixing
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-<<<<<<< HEAD
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
-=======
     config.paths['app/views'] << "app/views/devise"
->>>>>>> develop
+
   end
 end

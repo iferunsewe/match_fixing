@@ -13,7 +13,24 @@
   - else
     .col-xs-4.text-center.logo-box
       .landing-box2.text-center.font-override
-        = render 'devise/sessions/new'
+        %h4.animated.fadeInDown
+          %span.landing-about1
+            Welcome to MatchFixing.
+            %br/
+            %br/
+            %i.fa.fa-arrow-circle-o-right.fa-2x.animated.infinite.pulse.landing-next1
+
+          %span.landing-about2.hide
+            Please sign in, create your profile and join a team.
+            %br/
+            %br/
+            %i.fa.fa-arrow-circle-o-left.fa-2x.animated.infinite.pulse.landing-previous1
+            %i.fa.fa-arrow-circle-o-right.fa-2x.animated.infinite.pulse.landing-next2
+          %span.landing-about3.hide
+            Then help your team rise to the top of the MatchFixing League, by playing and winning matches, to claim the glory and bragging rights.
+            %br/
+            %br/
+            %i.fa.fa-arrow-circle-o-left.fa-2x.animated.infinite.pulse.landing-previous2
       / .logo-box3.text-center
   
   - if current_player
