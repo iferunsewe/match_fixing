@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:notice] = "Access denied!"
-    go_back
   end
 
   def after_sign_in_path_for(player)

@@ -138,8 +138,6 @@ ActiveRecord::Schema.define(version: 20150924232740) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "philosophy"
-    t.string   "primary_colour"
-    t.string   "secondary_colour"
     t.text     "image"
   end
 

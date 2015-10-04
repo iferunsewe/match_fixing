@@ -23,7 +23,7 @@
           %td= team.wins
           %td= team.losses
           %td= team.draws
-          %td= team.seeking_players
+          %td= team.seeking_players ? 'Yes' : 'No'
           %td= team.points
           - if user_is_admin? || user_is_captain?
             %td

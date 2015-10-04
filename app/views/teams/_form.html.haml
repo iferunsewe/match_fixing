@@ -40,5 +40,5 @@
           = f.check_box :seeking_players, class: "form-control"
       .col-md-12
         .actions.text-center
-          = link_to 'Cancel', team_path(@team), class: "btn btn-danger"
+          = link_to 'Cancel', player_path(current_player), class: "btn btn-danger"
           = f.submit 'Save', class: "btn btn-success"

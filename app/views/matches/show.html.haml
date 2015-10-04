@@ -23,7 +23,7 @@
         %table.table.no-border
           %thead
             %tr
-              %th Image
+              %th
               %th Players
               %th Rating
               - if @match.status
@@ -36,7 +36,7 @@
                 %td
                   = player_avatar player
                 %td.match-table
-                  = player.name
+                  = link_to player.name, player, class: 'link-override'
                   -if player.captain?
                     %i.fa.fa-copyright{:style =>"color:white;"}
                 %td.match-table
@@ -69,7 +69,7 @@
         %table.table.no-border
           %thead
             %tr
-              %th Image
+              %th
               %th Players
               %th Rating
               - if @match.status
@@ -82,7 +82,7 @@
                   = player_avatar player
 
                 %td.match-table
-                  = player.name
+                  = link_to player.name, player, class: 'link-override-alt'
                   -if player.captain?
                     %i.fa.fa-copyright
                 %td.match-table
