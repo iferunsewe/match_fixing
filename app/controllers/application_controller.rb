@@ -50,7 +50,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def previous_url
-    binding.pry
     session[:my_previous_url] = URI(request.referer || '').path
   end
 
