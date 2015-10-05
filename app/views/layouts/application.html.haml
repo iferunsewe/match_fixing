@@ -45,7 +45,7 @@
               - if player_signed_in?
 
                 %li{:style =>"padding-left:5%;"}
-                  = button_to 'Edit account', edit_player_path(current_player), :method => :get, :class => 'navbar-link', :class => 'btn btn-xs navbar-btn btn-warning'
+                  = button_to 'Edit account', edit_player_registration_path, :method => :get, :class => 'navbar-link', :class => 'btn btn-xs navbar-btn btn-warning'
                 %li{:style =>"padding-left:5%;"}
                   = button_to "Log out", destroy_player_session_path, :method => :delete, :class => 'btn btn-xs navbar-btn btn-danger' 
 

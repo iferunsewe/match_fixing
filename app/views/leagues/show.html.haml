@@ -4,8 +4,12 @@
     %p
       %b Location:
       = @league.location
-
       = render 'teams/index', {league_teams: @league.teams}
     - if user_is_admin?
       %h4.text-center
         = link_to 'Edit', edit_league_path(@league), class: "link-override"
+
+
+  -#      - if !current_player.nil? && current_player.team.nil?
+  -#%h4= link_to 'Join a Team', edit_player_path
+

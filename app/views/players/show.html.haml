@@ -14,12 +14,12 @@
       .col-sm-12.rating-box
         - if @player.ratings != []
           %p
-            =@player.average_rating
+            = @player.float_average_rating
           -(1..@player.average_rating).each do |i|
             %i.fa.fa-star
         - else
           %p
-            Player not yet rated.
+            Not Rated Yet
     .row
       .col-sm-12
         %h4
@@ -40,8 +40,6 @@
         %h4
           %b Position:
           %span=@player.position || 'Defender'
-                
-
 
   .col-sm-6.profile-right.no-margin.text-center
     .row.profile-stats-box
@@ -88,15 +86,14 @@
                 - if @player.team.nil?
                   Free Agent
                 - else
-                  =link_to @player.team.name, team_path( @player.team), {:class => 'link-override-alt'}
+                  =link_to @player.team.name, team_path( @player.team), {:class => 'link-override'}
                   %br/
                   %span
                     - if @player.team.ratings.sum(:stars) > 0 && @player.team.average_rating(@player.team) != 0
                       -(1..@player.team.average_rating(@player.team)).each do |i|
                         %i.fa.fa-star
                     - else
-                      -(1..5).each do |i|
-                        %i.fa.fa-star
+                      %p Not Rated Yet
                       
                   
           / /tab-pane
