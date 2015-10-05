@@ -72,5 +72,5 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'rmagick'
 gem 'jquery-turbolinks'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 gem 'puma'
