@@ -26,7 +26,7 @@
         %table.table.no-border
           %thead
             %tr
-              %th Image
+              %th
               %th Players
               %th Rating
               - if @match.status
@@ -39,7 +39,7 @@
                 %td
                   = player_avatar player
                 %td.match-table
-                  =link_to player.name, player_path(player), {:class => 'link-override'}
+                  = link_to player.name, player, class: 'link-override'
                   -if player.captain?
                     %i.fa.fa-copyright{:style =>"color:white;"}
                 %td.match-table
@@ -52,7 +52,6 @@
                   %td.match-table
                     = player.motm_in_match(player.id, @match.id)
                 %br
-
 
   .match_away.col-sm-6
     .col-xs-12.text-center
@@ -72,7 +71,7 @@
         %table.table.no-border
           %thead
             %tr
-              %th Image
+              %th
               %th Players
               %th Rating
               - if @match.status
@@ -85,7 +84,7 @@
                   = player_avatar player
 
                 %td.match-table
-                  =link_to player.name, player_path(player), {:class => 'link-override-alt'}
+                  = link_to player.name, player, class: 'link-override-alt'
                   -if player.captain?
                     %i.fa.fa-copyright
                 %td.match-table

@@ -9,12 +9,12 @@
       .col-xs-12
         - if @player.ratings != []
           %p
-            =@player.average_rating
+            = @player.float_average_rating
           -(1..@player.average_rating).each do |i|
             %i.fa.fa-star
         - else
           %p
-            Player not yet rated.
+            Not Rated Yet
     .row
       .col-sm-12
         %h4
@@ -41,7 +41,6 @@
             %b Actions:
             %span= link_to 'Edit Profile', edit_player_path(@player), :class=>"link-override-alt"
                 
-
 
   .col-sm-6.profile-right.no-margin.text-center
     .row.profile-stats-box
@@ -76,7 +75,7 @@
             / /tab-pane
             #matches.tab-pane
               .col-xs-12
-                = render 'matches/index'
+                = render 'matches/index', {team_visited: @player.team}
                 %hr/
                 .row
                   .col-md-4.col-md-offset-4.text-center
@@ -95,8 +94,7 @@
                       -(1..@player.team.average_rating(@player.team)).each do |i|
                         %i.fa.fa-star
                     - else
-                      -(1..5).each do |i|
-                        %i.fa.fa-star
+                      %p Not Rated Yet
                       
                   
           / /tab-pane
@@ -135,7 +133,7 @@
           %h4#myModalLabel.modal-title.text-center Rate Player
         .modal-body.text-center
           = render 'rendered_pages/ratings_form', {object: @player, model: 'player'}
-  - unless @player.team.nil?
+  - unless @player.team.nil? || current_player.team.nil?
     - match = Match.where({team_a_id: [@player.team.id, current_player.team.id], team_b_id: [@player.team.id, current_player.team.id], status: true})
     - if @player.id != current_player.id && match != [] && @player.played_and_rated__before(@player, current_player, match) == true
       %button.btn-rate-player{"data-target" => "#rateModal", "data-toggle" => "modal", :type => "button", :class=>"hide"}

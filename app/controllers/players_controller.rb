@@ -14,7 +14,6 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     @matches = Match.all.sort_by &:date
-    # @match = Match.find(params[:id]
     @rating = Rating.where(player_id: current_player.id)
   end
 

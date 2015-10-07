@@ -17,7 +17,7 @@
 
     %tbody#items
       - @matches.each do |match|
-        -if current_player.team == match.team_a || current_player.team == match.team_b
+        -if Match.show_matches?(current_player, team_visited, match)
           %tr
             %td= match.date.to_s(:long)
             %td= match.display_status(match.status)

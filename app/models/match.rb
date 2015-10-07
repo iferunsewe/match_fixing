@@ -33,6 +33,10 @@ class Match < ActiveRecord::Base
     end
   end
 
+  def self.show_matches?(current_player, team_visited=nil, match)
+    current_player.team == match.team_a || current_player.team == match.team_b || team_visited == match.team_a || team_visited == match.team_b
+  end
+
     private
 
     def init_stats_for_players

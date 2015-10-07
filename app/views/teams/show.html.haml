@@ -12,9 +12,7 @@
         -(1..@team.average_rating(@team)).each do |i|
           %i.fa.fa-star
       - else
-        / %p Team not rated yet
-        -(1..5).each do |i|
-          %i.fa.fa-star
+        %p Not Rated Yet
   .row
     .col-sm-4.team-left{:style=>"color:black;"}
       %h1.text-center{:style=>"text-decoration:underline;"}
@@ -44,7 +42,7 @@
             %b Seeking players:
         .col-xs-6
           %h5
-            = @team.seeking_players || 'Maybe'
+            = @team.seeking_players ? 'Yes' : 'No' || 'Maybe'
       - if user_is_admin? || user_is_captain?
         .row.text-center
           .col-xs-6
@@ -87,7 +85,7 @@
               / /tab-pane
               #matches.tab-pane
                 .col-xs-12
-                  = render 'matches/index'
+                  = render 'matches/index', {team_visited: @team}
                   %hr/
                   .row
                     .col-md-4.col-md-offset-4.text-center

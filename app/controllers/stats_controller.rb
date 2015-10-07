@@ -69,6 +69,6 @@ class StatsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stat_params
-      params.require(:stat).permit(:appearances, :goals, :man_of_the_match)
+      params.require(:stat).permit(:appearances, :goals, :man_of_the_match, :player_id, :match_id)
     end
 end
