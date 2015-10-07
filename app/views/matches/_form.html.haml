@@ -38,20 +38,20 @@
             = g.label :address
             = g.text_area :address, class: "form-control"
 
-      / -# Form to edit stats - only appears on the edit page
-      / - if @match.status
-      /   = f.fields_for :stats do |s|
-      /     .col-md-12
-      /       .form-group
-      /         %h4
-      /           %b
-      /             = s.label s.object.player.name + " - "
-      /             = s.label s.object.player.team.name
-      /       .form-group
-      /         = s.label :goals
-      /         = s.select :goals, 1..10, {prompt: 'Goals'}, {:class => "form-control"}
-      /         = s.label :man_of_the_match
-      /         = s.select :man_of_the_match, [["Yes", true], ["No", false]], {}, {:class => "form-control"}
+      -# Form to edit stats - only appears on the edit page
+      - if @match.status
+        = f.fields_for :stats do |s|
+          .col-md-12
+            .form-group
+              %h4
+                %b
+                  = s.label s.object.player.name + " - "
+                  = s.label s.object.player.team.name
+            .form-group
+              = s.label :goals
+              = s.select :goals, 1..10, {prompt: 'Goals'}, {:class => "form-control"}
+              = s.label :man_of_the_match
+              = s.select :man_of_the_match, [["Yes", true], ["No", false]], {}, {:class => "form-control"}
 
       .col-md-12
         .actions.text-center
