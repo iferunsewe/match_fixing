@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://localhost:3000/teams/3 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>MatchFixing</title>
+    <link href="./MatchFixing_files/font-awesome.min.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="./MatchFixing_files/bootstrap.min.css" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" rel="stylesheet">
+    <link href="./MatchFixing_files/css" rel="stylesheet" type="text/css">
+    <link href="./MatchFixing_files/css(1)" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/about.self-33cd3d51b36716b73567a96c2a14672bd96c32d12346b5505c727c6e2af2939a.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/basic_styles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/black_theme.self-e7dadfc9152fd5c933a974347f4c75ba43be23d44853e540af0b3ba8c0bec589.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/bootstrap-import.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/flag-icon.self-cf815b1c5d4a8ecca1ff5a1ef80d1a2f732e25dc0851fe8dd0605aab43773e02.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/flag-icon.min.self-8c1f119fb98bbbcb2a4aab5b8c201be11c9799cbe6908730481e18b9adcc80ee.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/font-awesome.min.self-90cb016e3fe20ab16831015a98e44d77a5ced73f5429c80439389bc5a0f7408a.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/grounds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/leagues.self-6b8215aa7106f7432be65fad9bbd2247bb41dfbd185882ae01fc4a4bb249e240.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/matches.self-7152e8b440df332297e9226a67af9d56c129084d8415f37faec4c44115569d48.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/navbar.self-d236748efdd73c7c4302b6cd861a2ea18eb286064a473eee38d8d53fefabfd8b.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/players.self-a4e28fa720a491cc196e2ee02951d0b06c3ae0e771a892809dbcf88e2c507a81.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/ratings.self-03b52092f7a9cd1b1b6ab9da495a0d941405482cb686dd4e1536f38c3ab330d7.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/scaffolds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/specialities.self-0274cdf70bba4e94bd7a52fd8a46575b721bbf2628bf73e1b20ab7a4caccaf35.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/stats.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/teams.self-5fb40b18d508077ebad4fcb8127185e060953c51984920c87dd2fbbd4c868902.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/1_20150906190015.self-e7dadfc9152fd5c933a974347f4c75ba43be23d44853e540af0b3ba8c0bec589.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/2_20150906190015.self-c42736405475c919528f0a257aa8df2286a439e98a4318fe6fefa4840ecd45c4.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/3_20150906190015.self-a3b3e4d8b424f3c3453467128561674c226750ab368e1c8898229ff2ecb4906c.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/4_20150906190042.self-87b6fbc41565a3e976eb5ae64eb018656fad57c48cb78235f960d6cc5a4a7d03.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/5_20150907193822.self-4403592cbb385dfc8c4aa83f6ff76db89ed23ca170e188abd05f848bd80e536c.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/teams_theme.self-2dd07b0bf3b9fbd91fe77d9f6fe89a2cedb37510559b962e442eb7c10c462122.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/yellow_theme.self-9331a6ced1d4dcc875b2d439269335ddac1972420d153680ab0ac64eeb56c91b.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/application.self-593ca280c2f172750371144ea48bdb8037ed527b4bfdfad325206a513c6b6ec7.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/bootstrap-datepicker3.self-b69e6d94415b66c1478ab6805c3b0b26a91bf756e920d691787210e33871c7af.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/animate.self-f0312ef59651a0714bb1e547b969fe2a7eb2baeada025ff581b1294772ef1b14.css" data-turbolinks-track="true">
+    <link rel="stylesheet" media="all" href="./MatchFixing_files/sweet-alert.self-696772f02350452a4dd1b9460c33b307aa29446ae2e2bf06c53fcdbfac458881.css" data-turbolinks-track="true">
+    <!-- = stylesheet_link_tag    'black_theme', media: 'all', 'data-turbolinks-track' => true -->
+    <script src="./MatchFixing_files/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js" data-turbolinks-track="true"></script><style type="text/css"></style>
+    <script src="./MatchFixing_files/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/jquery.turbolinks.self-176b9819f30444d441e820bbccd3264fe57753aeafd54dec732b0dbc77129a2a.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/affix.self-d2b642d8fbfc1d7041e2edefd66683ada567a980789dcd6f94fddda0b33408b5.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/alert.self-a29e91e8cd3ddaba9bbc466901d53ec2127e9256b9b941905d525a3a716bd1a5.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/button.self-a6cb16785434acb365ae426aef9f1fce05ed553cae7a965e4471c3da71509175.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/carousel.self-57eb8422043cf0a85b7a9dc6843916eb0a3e35b419c7798a5eb254b918997631.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/collapse.self-7dc8bfbc2fbfabd2bad62c58ff8ffeaf8f20fb87c7ca6cd35f06d4dc19632587.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/dropdown.self-9314126777c6be5443e37ea7f7967d7914d72b3e60449ba50edc967446373059.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/tab.self-122235057fbd4c6c7da377d59dc58f47b44cb1088a2e38e6ee6ce9d8ac29a26a.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/transition.self-09ff30b1e8a93d1f7728b9855f55d9c9d8d5734c8861e0d8139994e50944572a.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/scrollspy.self-a155b9d4b2f978905f0326c0f6635e1134fe91c6bfbfcbad079fa24a9fef2b0e.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/modal.self-72f95ffa1071297725a9ac91989693d56d1abf23f441a47455073b0da2857a5b.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/tooltip.self-11cf547be953f25f511cec668f6690473fd97b2f65502e4032f4030999a3f0c3.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/popover.self-77d8e3a2499c1104ef146396a68b82469ee2bdb365199b874694698d10405e9a.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/core.self-2108578dd80b06babd8fe975d4846b8ed5a95a716b5374ab5d29abb39b2a978a.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.ar.self-3b6d7157be553c75fb586e9bbcb1caf9ffb68b3e52621ce7a0b4d80b3816a41e.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.az.self-8db9617a83a8a02538f8cd912021aca2670ccffafc6798d4514043d9486c5663.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.bg.self-b7a3f39633df1fa3ad6bc79721ce75dc13810b439ed1142f006e9cb827c1bb30.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.bs.self-f8df754db6d7925e6cd61086321f4f14a12c4e113496e8f585af359f3b1c9255.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.ca.self-79baf1a80f07fc2992e718d2a5a176dc39d44d32863a2aad4d17b2af589b49e8.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.cs.self-1f283f86bd06ff1d1bd11164cfcd16bd1145e3124a0a01a6c94de44f5ffb6343.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.cy.self-407e2840dddaa728a6b9fcf7d486d782095e6326cc34261bca778111405cff13.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.da.self-4b8bc096136ed432878f06dbaca1882fe022584219f5550faffc1d43a7ff7c07.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.de.self-4f2c0a59189ba1be31a84960ce9d1a85891edfd548ed937f9dc3ec713da12a5f.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.el.self-3e7b5405072eed3e174dda9852237a91a9408308ba302aed7ad1babfc08edb98.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.en-GB.self-75037d96da281458d0248540731410287851ee6109628ccad4c7cef5e14f8480.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.es.self-9c8aa7d40000b61f39e9c8ec8812499042c2c3183f33fe6e42570d22603c7ba5.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.et.self-022a684302ff704bd2085ef1ac1291e6e52dacb8b27ebc687612026002440040.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.eu.self-db94d76d4f7a835b91706016eacc1002df7ccaa0648d57feae59690cee29e00c.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.fa.self-20ab53975a47e1cdba4e7a41e0f0c567a2a699d53118ccdf6ea5aae33b692d15.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.fi.self-ccf83502bdb5c6ef4444f72cdc70fe2179959ef3dff96a482337fe217bec08ba.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.fo.self-cdb4220a83b19ebd933025408642e98ff3cfc486d7aadc8c7aeb160ee5e1b623.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.fr-CH.self-8505d532c79fd48b9adfaa323009c37f260adf37c332f09bae956bdf88f897bc.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.fr.self-deb156bac5a71411c48c50300adaabc68bb75b6b65b13eaa3bcbf740f5915fa2.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.gl.self-a65b2feab5cb36718a2ddd0868d2c01bd6635cbeefcf11242a38eda9a7afd3e7.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.he.self-9d26121395049e408a1223d6eeccf625e4969a6a5d52f740af1ad533646e93a4.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.hr.self-c698e599cbb43e0d47db763bdbb56201f114793cad63d241593db5ed8cbf3e59.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.hu.self-e06f8ae64d38ddc7b6f3645693f0004fa7110a3a75747b9475cb444c7c6a7dd2.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.hy.self-80b525567470f1f84c286485bb6e7b698a80b5d22c2622ee517fc3cc15881f75.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.id.self-06f18dddb15d5a29cfa3ffa7d7c4a60acb44f6c4de424bb02024d09340e4441d.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.is.self-bc0f72036ec3567987826f039af27458caaebbf9490ab5b5b68b23ea775f164c.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.it-CH.self-e11c5acaff5fd5a2d3308fab422837e46feae15b183a39aeca25681579ebce21.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.it.self-9f3f6490c0e9e79bdd7be42d8683d4aa91b0a59a225d40cfa8d4b6402f39975c.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.ja.self-788ec601281791ede95e2efa88b8b4f96c4326d6d0f4a2b71770c5bade97ad2f.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.ka.self-917002de67fe7499d434606fb1b16944e08211fac649e79a7ebd6d8007e13b0f.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.kh.self-9d2694499d40685986d7db3a0fb8145a88ed95a042b4d7b86545493ce3c1201f.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.kk.self-6078cc411d054bcd7483584ac6a1fa97cff14eaa44da1a0e1b32ff3e7efbd589.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.kr.self-a64526670a47f60dc21009c7f8eaf6abedd72483359339708f5691e59094aa68.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.lt.self-bf1caffc704f0b1179d0658d35a8f9c8fbf16f17a796b0a6d758be695f8ff199.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.lv.self-d2b9bfb8a5c8d154e2bdcbd6f8b413d594667d512b1b30dee18ee193964dc3fc.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.me.self-b9bddd29292ea2f0138ea2c8d871cf2de23f1aa10093cd937b15ecc328efa040.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.mk.self-605e744c0ad4a68d96cb36c92725316514fc55d8cab9ec64cab056d5be42dbde.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.ms.self-60695de2455ce924d87bad89e1d0e0297875f619b4ef0964fcf1144e153a300e.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.nb.self-b99c90e73a1aae750ca03b5d82849adfbe75ce8a6e1b49d40b6b0f9f46f471fb.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.nl-BE.self-feff7f646e3b86ba22440202914bbee45537559ba73c4189c0d64f98582a30c4.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.nl.self-621bc7370f2a617e9ce5417e2977c98ef9f716d39141e9cb690c9cf5a384d454.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.no.self-0581a112c2e1b3e84adad2e86de6dc6c68b0f2d0f224e020884c021186a64a4a.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.pl.self-5f6f3ae61020b394b9eb418adddaf8ef3c2ddd121a0faa4a11703dbada9eb82f.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.pt-BR.self-a9929788e15257cd6d53c34e940d4ccdfe5dde50d8a567f0e6d745a3b910d478.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.pt.self-50917ff15509f79150b8e907d0f0f14cf8a76ffe6cd62c1436b95fa229fba532.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.ro.self-2ce2abfb1a68d74df89a67f6695c82b14cda901917dc94ed15d48ffd8098a00c.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.rs-latin.self-e380888c9b1ddf2dbbf393974ba9441e0d77c7ce1aa13575b5cb71ca1dd9aab7.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.rs.self-e4424d793f143a80597b8f9d862efdd3d5363a0bab09f5fae38a54731b7889d3.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.ru.self-f150c4a51ec73942b3db65e32057ef3952acb18947952927b828a94d8f693466.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.sk.self-38ed0c71883641672088263fe41929ee614f393d79c100aa1ade23a577a6eb10.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.sl.self-4ebe8ef7003f2c85aef96e9bca7d07224399524dc1d50c46cbc3df555f767fd0.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.sq.self-3047806efd68cc9d17af43f26f804661de0cbf16fe941e2f3fcfb17eb2681161.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.sr-latin.self-df824ec3021f51baaecc100851223e1c382c9f83e954158aec74d8884619fe6b.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.sr.self-20067040734b6e098a3702dbce57a79ba269202502dd7aeace4858bd1ee948d2.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.sv.self-8b6c538be8b7b4f79f4f62ac4e8b3875a57f42b45bb538cf349701a6ac464a2e.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.sw.self-d38809be721122969627f871869f23011f28f1e08e13ac831a5697f99f4ec37c.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.th.self-38ccaf19cff8c13178de6efb294156266bbb5ce6652531d4b53f7f869986ce71.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.tr.self-355e071ef8544636da99b51e45ed0c1dae0fc44b0d2c10eaa0263efb2b61f865.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.ua.self-d3090a654f9c3b2ecf04746b1d8616e9fbcd4f6063435f91e76ffd00688684f4.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.uk.self-2abae8fff06c08293423a12eff4b2b27ef391b3a8732a1e728710526d42dfbac.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.vi.self-a180716cdd330a299f905be25da5533ad00d0aef3f6df53dc4432e9b668d8f2a.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.zh-CN.self-8ebc409538b6b966a0d74c9bb89ca62c6e27bb32f89f1f6a30a18db19e3a6b6e.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datepicker.zh-TW.self-7b9b920886ba93b54d1e93376737549b42b477063468d9df5fb1e30862645e6c.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/index.self-75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/moment.self-7c169710367e715cec0e7768bb92b9339f5a767a109041e9e9861a0abc0afa44.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/bootstrap-datetimepicker.self-9bf8b50ba86095fb5caaadd1ee11eaf661b3f4879f3ea5263d541e9804fd7b15.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/jquery.raty.self-628421be04f36f7a8fa8b9b884c6d7824d6f8bdeba4f172b131f15aa63f713e8.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/sweet-alert.self-4e01602e252d160c642bd360f573536aaef4e97deb01b72cb289462f17d1c34c.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/Backstretch.self-6fa7638a32d803fbd92452bd9773e427fcc9373f10430a3efc12e9994042873c.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/grounds.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/landing.self-b896f39e29341888c1c2c553008bf1ce0531297662b01692802ee963477b3992.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/leagues.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/matches.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/players.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/ratings.self-9337fd9d43ddc5f1be85478b094b53f2ee3f11253a4189e202c69198b19ecd29.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/specialities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/stars.self-0a4141b1a8d18a7e64904d42b6428e8cbd89d259627420c49581515323d8af6d.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/stats.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/teams.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="true"></script>
+    <script src="./MatchFixing_files/application.self-56c86ca2b896578539bcf5643a91ca4adb26aa4f7e4b47b74026eeea25174c74.js" data-turbolinks-track="true"></script>
+    <meta name="csrf-param" content="authenticity_token">
+    <meta name="csrf-token" content="nWJxL3ChDqIeD6k2U4DntDFQzTSo56dxpSYS+z3MX1aaZ11NNCn+ivKwHo8qwmiuCgGQ5n73HX29luI/nMXz0Q==">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+  </head>
+  <body>
+    <nav class="navbar navbar-default font-override">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="http://localhost:3000/">
+            <img class="pull-left img-responsive" src="./MatchFixing_files/logo-xs.jpg">
+          </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav" style="width:70%;">
+            <li style="width:25%;border-left:white;padding-left:5%;">
+              <a href="http://localhost:3000/players/3">My Profile</a>
+            </li>
+            <li style="width:25%;border-left:white;padding-left:5%;">
+              <a href="./MatchFixing_files/MatchFixing.html">My Team</a>
+            </li>
+            <li style="width:25%;border-left:white;padding-left:5%;">
+              <a href="http://localhost:3000/leagues/1">
+                League Table
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right" style="width:25%;">
+            <li style="padding-left:5%;">
+              <form class="button_to" method="get" action="http://localhost:3000/players/edit.3"><input class="btn btn-xs navbar-btn btn-white nohoverwhite" type="submit" value="Edit account"></form>
+            </li>
+            <li style="padding-left:5%;">
+              <form class="button_to" method="post" action="http://localhost:3000/players/sign_out"><input type="hidden" name="_method" value="delete"><input class="btn btn-xs navbar-btn btn-white nohoverwhite" type="submit" value="Log out"><input type="hidden" name="authenticity_token" value="nWJxL3ChDqIeD6k2U4DntDFQzTSo56dxpSYS+z3MX1aaZ11NNCn+ivKwHo8qwmiuCgGQ5n73HX29luI/nMXz0Q=="></form>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+    <div class="text-center font-override hide" id="flash-notice">
+      Team was successfully updated.
+      <span class="glyphicon glyphicon-remove pull-right close-notice"></span>
+    </div>
+    <div class="page-wrap">
+      <div class="team-container font-override">
+        <div class="row no-margin" style="height: 45%;background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://wonderwear.s3-eu-west-1.amazonaws.com/uploads/team/image/3/messi2.jpg) no-repeat center center fixed;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100%;background-size: 100% 100%;">
+          <div class="col-xs-6 pull-right">
+            <h1 class="pull-right">
+              Rodallega Bombs
+            </h1>
+          </div>
+        </div>
+        <div class="row ratings-row text-center no-margin" style="color:white;">
+          <h1>
+            Rating
+            <br>
+            <!-- %p Team not rated yet -->
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </h1>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 team-left" style="color:black;">
+            <h1 class="text-center" style="text-decoration:underline;">
+              Team Details
+            </h1>
+            <div class="row text-center">
+              <div class="col-xs-6">
+                <h4>
+                  <b>Hometown:</b>
+                </h4>
+              </div>
+              <div class="col-xs-6">
+                <h4>
+                  Jesmond
+                </h4>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-xs-6">
+                <h4>
+                  <b>Philosophy:</b>
+                </h4>
+              </div>
+              <div class="col-xs-6">
+                <h4>
+                  Attacking
+                </h4>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-xs-6">
+                <h4>
+                  <b>Seeking players:</b>
+                </h4>
+              </div>
+              <div class="col-xs-6">
+                <h4>
+                  true
+                </h4>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-xs-6">
+                <h4>
+                  <b>Actions:</b>
+                </h4>
+              </div>
+              <div class="col-xs-6">
+                <h4>
+                  <a class="link-override-alt" href="http://localhost:3000/teams/3/edit">Edit Team</a>
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-8 team-right">
+            <div class="row no-margin">
+              <div class="col-sm-12 team-stats no-padding">
+                <div class="row profile-tabs text-center no-margin">
+                  <div class="col-xs-4 profile-tab" data-toggle="tab" href="#stats">
+                    <p>Stats</p>
+                  </div>
+                  <div class="col-xs-4 profile-tab" data-toggle="tab" href="#matches">
+                    <p>Matches</p>
+                  </div>
+                  <div class="col-xs-4 profile-tab" data-toggle="tab" href="#players">
+                    <p>Players</p>
+                  </div>
+                </div>
+                <div class="row no-margin" style="height:100%;overflow:auto;">
+                  <div class="tab-content" style="height:100%;">
+                    <div class="tab-pane text-center active" id="stats" style="height:100%;">
+                      <div class="row no-margin stats-info-background" style="height:100%">
+                        <div class="col-xs-4 stats-info no-padding" style="height: 40vh;">
+                          <div class="col-xs-12 stats-info-title no-padding">
+                            <h4>Wins</h4>
+                          </div>
+                          <div class="col-xs-12">
+                            <h1 style="padding-top:10%;">0</h1>
+                          </div>
+                        </div>
+                        <div class="col-xs-4 stats-info no-padding">
+                          <div class="col-xs-12 stats-info-title no-padding">
+                            <h4>Losses</h4>
+                          </div>
+                          <div class="col-xs-12">
+                            <h1 style="padding-top:10%;">0</h1>
+                          </div>
+                        </div>
+                        <div class="col-xs-4 stats-info no-padding">
+                          <div class="col-xs-12 stats-info-title no-padding">
+                            <h4>Draws</h4>
+                          </div>
+                          <div class="col-xs-12">
+                            <h1 style="padding-top:10%;">1</h1>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /tab-pane -->
+                    <div class="tab-pane" id="matches">
+                      <div class="col-xs-12">
+                        <div class="table-responsive">
+                          <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th>Ground</th>
+                                <th>Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody id="items">
+                              <tr>
+                                <td>August 01, 2015 15:00</td>
+                                <td>Played</td>
+                                <td><a href="http://localhost:3000/teams/1">The Neville wears Prada</a></td>
+                                <td>0</td>
+                                <td>vs</td>
+                                <td>0</td>
+                                <td><a href="./MatchFixing_files/MatchFixing.html">Rodallega Bombs</a></td>
+                                <td>
+                                  St James Park
+                                </td>
+                                <td><a class="btn btn-xs btn-black nohoverblack" href="http://localhost:3000/matches/4">Show</a></td>
+                              </tr>
+                              <tr>
+                                <td>August 01, 2015 15:00</td>
+                                <td>Played</td>
+                                <td><a href="http://localhost:3000/teams/2">Petr Cech Yourself</a></td>
+                                <td>3</td>
+                                <td>vs</td>
+                                <td>1</td>
+                                <td><a href="./MatchFixing_files/MatchFixing.html">Rodallega Bombs</a></td>
+                                <td>
+                                  St James Park
+                                </td>
+                                <td><a class="btn btn-xs btn-black nohoverblack" href="http://localhost:3000/matches/3">Show</a></td>
+                              </tr>
+                              <tr>
+                                <td>September 28, 2015 15:00</td>
+                                <td>Played</td>
+                                <td><a href="http://localhost:3000/teams/5">Ruud Van Nipplejoy</a></td>
+                                <td>0</td>
+                                <td>vs</td>
+                                <td>0</td>
+                                <td><a href="./MatchFixing_files/MatchFixing.html">Rodallega Bombs</a></td>
+                                <td>
+                                  St James Park
+                                </td>
+                                <td><a class="btn btn-xs btn-black nohoverblack" href="http://localhost:3000/matches/9">Show</a></td>
+                              </tr>
+                              <tr>
+                                <td>October 01, 2015 15:00</td>
+                                <td>Played</td>
+                                <td><a href="./MatchFixing_files/MatchFixing.html">Rodallega Bombs</a></td>
+                                <td>0</td>
+                                <td>vs</td>
+                                <td>0</td>
+                                <td><a href="http://localhost:3000/teams/4">Chamakh My Pitch Up</a></td>
+                                <td>
+                                  St James Park
+                                </td>
+                                <td><a class="btn btn-xs btn-black nohoverblack" href="http://localhost:3000/matches/10">Show</a></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <br>
+                        <hr>
+                        <div class="row">
+                          <div class="col-md-4 col-md-offset-4 text-center">
+                            <ul class="pagination" id="myPager"></ul>
+                          </div>
+                        </div>
+                        <!-- /table-resp -->
+                      </div>
+                      <!-- /tab-pane -->
+                    </div>
+                    <div class="tab-pane" id="players">
+                      <hr>
+                      <li style="text-decoration:none;list-style-type:none;">
+                        <h4 class="text-center">
+                          <a class="link-override-alt" href="http://localhost:3000/players/13">Khosro Heydari</a>
+                        </h4>
+                      </li>
+                      <li style="text-decoration:none;list-style-type:none;">
+                        <h4 class="text-center">
+                          <a class="link-override-alt" href="http://localhost:3000/players/8">Yuya Osako</a>
+                        </h4>
+                      </li>
+                      <li style="text-decoration:none;list-style-type:none;">
+                        <h4 class="text-center">
+                          <a class="link-override-alt" href="http://localhost:3000/players/3">Phil Jagielka</a>
+                          <i class="fa fa-copyright"></i>
+                        </h4>
+                      </li>
+                    </div>
+                  </div>
+                  <!-- /tab-pane -->
+                </div>
+                <!-- /tab-content -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="site-footer text-center font-override" id="footer">
+      <h4>MatchFixing footer</h4>
+    </footer>
+  
+
+</body></html>

@@ -22,6 +22,7 @@ class PlayersController < ApplicationController
   end
 
   def update
+     
     respond_to do |format|
       if @player.update(player_params)
         format.html { redirect_to @player, notice: 'Player was successfully updated.' }

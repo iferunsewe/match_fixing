@@ -1,0 +1,66 @@
+/* line 3, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/basic_styles.scss */
+.container {
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* line 7, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/basic_styles.scss */
+.font-override {
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* line 11, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/basic_styles.scss */
+.color_override {
+  background-color: red !important;
+  color: white !important;
+}
+/* line 14, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/basic_styles.scss */
+.color_override i {
+  color: white;
+}
+
+/* line 19, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/basic_styles.scss */
+.color_override_alt {
+  background-color: white !important;
+  color: red !important;
+}
+/* line 22, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/basic_styles.scss */
+.color_override_alt i {
+  color: red;
+}
+
+/*.nav-tabs > li > a{
+  text-decoration: none;
+  color: $color;
+  background-color: $background_color;
+  border: 3px solid $color;
+}*/
+/* line 34, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/basic_styles.scss */
+.stats-box {
+  background-color: red;
+}
+/* line 36, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/basic_styles.scss */
+.stats-box h1 {
+  border-bottom: 3px solid white;
+  padding: 10px;
+  margin: 0;
+  color: white;
+}
+/* line 42, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/basic_styles.scss */
+.stats-box h2 {
+  font-size: 100px;
+  color: white;
+}
+
+/* line 48, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/basic_styles.scss */
+.alt {
+  background-color: white;
+}
+/* line 50, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/basic_styles.scss */
+.alt h1 {
+  border-bottom: 3px solid red;
+  color: red;
+}
+/* line 54, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/basic_styles.scss */
+.alt h2 {
+  color: red;
+}

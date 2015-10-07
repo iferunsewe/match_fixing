@@ -16,10 +16,18 @@
               %span.glyphicon.glyphicon-calendar
       .col-md-12
         .form-group
+          = f.label :home_team
           = f.collection_select :team_a_id, Team.all, :id, :name, {:prompt => 'Choose Home Team'}, {:class => "form-control"}
+          %br/
+          = f.label :score
+          = f.number_field :team_a_score, {:class => "form-control"}
       .col-md-12
         .form-group
+          = f.label :away_team
           = f.collection_select :team_b_id, Team.all, :id, :name, {:prompt => 'Choose Away Team'}, {:class => "form-control"}
+          %br/
+          = f.label :score
+          = f.number_field :team_b_score, {:class => "form-control"}
       = f.fields_for :ground do |g|
         .col-md-12
           .form-group
@@ -48,4 +56,4 @@
       .col-md-12
         .actions.text-center
           = f.submit 'Save', class:"btn btn-black nohoverblack"
-          = link_to 'Cancel', @match, class:"btn btn-danger"
+          = link_to 'Cancel', @match, class:"btn btn-black nohoverblack"

@@ -1,17 +1,12 @@
 .profile-container.no-margin.font-override
   .col-sm-6.profile-left.no-margin.no-padding.text-center
     .row.profile-image-box.no-margin
-      .col-sm-12{:style=>"background: url(#{@player.image.detail.url if !@player.image.nil?}) no-repeat center center;height: 100%;min-width: 100%;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: 100% 100%;"}
-      .col-sm-12.name-box
+      .col-xs-12.profile-image{:style=>"background: url(#{@player.image.detail.url if !@player.image.nil?}) no-repeat center center;height: 100%;max-width: 100%;-webkit-background-size: 50%;-moz-background-size: 50%;-o-background-size: 50%;background-size: 50%;"}
+      .col-xs-12.name-box
         %h2=@player.name
         %hr
-        / %h2
-        /   - if @player.team.nil?
-        /     Free Agent
-        /   - else
-        /     = @player.team.name
     .row
-      .col-sm-12.rating-box
+      .col-xs-12
         - if @player.ratings != []
           %p
             = @player.float_average_rating
@@ -25,7 +20,7 @@
         %h4
           %b Personal Information
       .col-sm-12
-        %h4
+        %h5
           %b Age:
           %span
             - if @player.dob.nil? && @player.id == current_player.id
@@ -34,12 +29,18 @@
               No registered date of birth
             - else
               = @player.calculate_age(@player.dob)
-        %h4
+        %h5
           %b Hometown:
           %span=@player.hometown || 'London'
-        %h4
+        %h5
           %b Position:
           %span=@player.position || 'Defender'
+        - if user_is_admin? || @player.id == current_player.id
+ 
+          %h5
+            %b Actions:
+            %span= link_to 'Edit Profile', edit_player_path(@player), :class=>"link-override-alt"
+                
 
   .col-sm-6.profile-right.no-margin.text-center
     .row.profile-stats-box

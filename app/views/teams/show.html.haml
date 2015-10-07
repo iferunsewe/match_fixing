@@ -1,5 +1,5 @@
 .team-container.font-override
-  .row.no-margin{:style =>"height: 45%;background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(#{@team.image.wide.url}) no-repeat center center fixed;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100%;background-size: 100% 100%;"}
+  .row.no-margin{:style =>"height: 45%;background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(#{@team.image.url}) no-repeat center center fixed;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100%;background-size: 100% 100%;"}
     .col-xs-6.pull-right
       %h1.pull-right 
         = @team.name
@@ -17,34 +17,39 @@
     .col-sm-4.team-left{:style=>"color:black;"}
       %h1.text-center{:style=>"text-decoration:underline;"}
         Team Details
+      .row
+        %h5.text-center 
+          %b Kit
+        .col-xs-12{:style => "padding-right:15%;"}
+          %p.col-xs-offset-6.full-team-circle{:style => "background:linear-gradient(to left, #{@team.primary_kit_colour} 50%, #{@team.secondary_kit_colour} 50%);"}
       .row.text-center
         .col-xs-6
-          %h4
+          %h5
             %b Hometown:
         .col-xs-6
-          %h4
+          %h5
             = @team.hometown
       .row.text-center
         .col-xs-6
-          %h4
+          %h5
             %b Philosophy:
         .col-xs-6
-          %h4
+          %h5
             = @team.philosophy
       .row.text-center
         .col-xs-6
-          %h4
+          %h5
             %b Seeking players:
         .col-xs-6
-          %h4
+          %h5
             = @team.seeking_players ? 'Yes' : 'No' || 'Maybe'
       - if user_is_admin? || user_is_captain?
         .row.text-center
           .col-xs-6
-            %h4
+            %h5
               %b Actions:
           .col-xs-6
-            %h4
+            %h5
               = link_to 'Edit Team', edit_team_path(@team), :class=>"link-override-alt"
     .col-sm-8.team-right
       .row.no-margin

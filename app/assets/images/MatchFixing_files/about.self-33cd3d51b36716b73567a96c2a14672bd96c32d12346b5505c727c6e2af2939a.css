@@ -1,0 +1,128 @@
+/* line 1, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/about.scss */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+/* line 5, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/about.scss */
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+/* line 10, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/about.scss */
+.about-container {
+  height: 100vh;
+}
+
+/* line 14, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/about.scss */
+.landing-box {
+  background-color: black;
+  height: 100%;
+}
+
+/* line 19, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/about.scss */
+.landing-box2 {
+  position: absolute;
+  width: 100%;
+  height: 30%;
+  top: 50%;
+  color: white;
+}
+
+/* line 27, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/about.scss */
+.create-team-box {
+  border-left: 3px solid black;
+  height: 100%;
+  background-image: url("/assets/team.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-color: white;
+}
+
+/* line 38, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/about.scss */
+.my-team-box {
+  border-left: 3px solid black;
+  height: 100%;
+  background-image: url("/assets/myteam.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-color: white;
+}
+
+/* line 48, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/about.scss */
+.logo-box {
+  padding-top: 20px;
+  position: relative;
+  background-color: black;
+  height: 100%;
+  background-image: url("/assets/logo.jpg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: 300px 300px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+/* line 61, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/about.scss */
+.logo-box-logged-in {
+  position: relative;
+  background-color: black;
+  height: 100%;
+  background-image: url("/assets/logo.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+/* line 72, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/about.scss */
+.create-profile-box {
+  border-right: 3px solid black;
+  height: 100%;
+  background-image: url("/assets/myprofile.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-color: white;
+}
+
+/* line 82, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/about.scss */
+.logo-box2 {
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  height: 30%;
+  background-image: url("/assets/team.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30%;
+}
+
+/* line 92, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/about.scss */
+.logo-box3 {
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  height: 30%;
+  bottom: 0;
+  background-image: url("/assets/team.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30%;
+}
+
+/* line 104, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/about.scss */
+.btn-white {
+  background-color: white;
+  border-color: white;
+  color: black;
+}
+
+@media (max-width: 600px) {
+  /* line 111, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/about.scss */
+  .logo-box {
+    background-size: 150%;
+  }
+}

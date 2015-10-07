@@ -29,10 +29,12 @@
       .col-md-12
         .form-group
           = f.label :choose_profile_photo
-          %div{:style=>"position:relative;"}
+          %br/
+          %img#img_prev.hide{:alt => "your image", :src => "#"}/
+          %div{:style=>"position:relative;margin-top:5px;"}
             %a.btn.btn-xs.btn-black.nohoverblack{:href=>'javascript:;'}>
               Choose File...
-              = f.file_field :image, {:style=>"position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';opacity:0;background-color:transparent;color:transparent;"}
+              = f.file_field :image, {:style=>"position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';opacity:0;background-color:transparent;color:transparent;", :id => "upload", :onchange => "readURL(this)"}
         
       .col-md-12
         .form-group
@@ -71,3 +73,20 @@
         .actions.text-center
           = f.submit 'Save', class:"btn btn-black nohoverblack"
           = link_to 'Cancel', @player, class:"btn btn-danger"
+
+:javascript
+  function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#img_prev')
+            .attr('src', e.target.result)
+            .width(200)
+            .height(200);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+      $('#img_prev').removeClass('hide');
+    }

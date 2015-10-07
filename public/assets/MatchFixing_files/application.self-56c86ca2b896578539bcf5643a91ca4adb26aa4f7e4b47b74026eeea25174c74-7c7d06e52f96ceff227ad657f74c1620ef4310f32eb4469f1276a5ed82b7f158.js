@@ -1,0 +1,1 @@
+$(function(){$(".datepicker").datepicker(),$("#datetimepicker1").datetimepicker(),$(".update-button").on("click",function(){swal("Updated")}),$(".close-notice").on("click",function(){$("#flash-notice").addClass("hide");var e=$(window).height()-$("body").height();e>0&&$("#footer").css("margin-top",e)})});

@@ -1,0 +1,13 @@
+/* line 1, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/ratings.scss */
+li.star_rating, li.on {
+  background: url("star-off.png");
+  width: 16px;
+  height: 16px;
+  display: block;
+  float: left;
+}
+
+/* line 9, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/ratings.scss */
+.on {
+  background: url("star-on.png");
+}

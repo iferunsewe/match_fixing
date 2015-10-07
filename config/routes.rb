@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     omniauth_callbacks: "players/omniauth_callbacks",
     registrations: "registrations"
   }
-  as :player do
-    get "/login" => 'about#index'
-  end
+  # as :player do
+  #   get "/login" => 'about#index'
+  # end
   resources :matches
   resources :grounds
   resources :teams

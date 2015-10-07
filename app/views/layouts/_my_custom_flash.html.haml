@@ -1,0 +1,10 @@
+-if flash[:notice]
+  #flash-notice.text-center.font-override
+    = flash[:notice]
+    %span.glyphicon.glyphicon-remove.pull-right.close-notice
+
+-if flash[:alert]
+  #flash-alert.text-center.font-override
+    = flash[:alert]
+    %span.glyphicon.glyphicon-remove.pull-right.close-alert
+

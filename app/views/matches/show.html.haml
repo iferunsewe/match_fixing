@@ -2,6 +2,9 @@
   .row.ground.no-margin
     .col.md-12.text-center
       = @match.ground.name
+      %br/
+      %h5
+        = @match.date.to_s(:short)
     .col-md-12.text-center
       - if user_is_admin?
         = link_to 'Edit Match', edit_match_path(@match), {:class => 'link-override',:style => "font-size:15px;"}
@@ -52,7 +55,7 @@
 
   .match_away.col-sm-6
     .col-xs-12.text-center
-      %h3 Away
+      %h3 AWAY
     .col-xs-12
       %h1.text-center= @match.team_b.name
       .row

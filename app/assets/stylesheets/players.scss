@@ -162,6 +162,7 @@ html body {
   -o-background-size: cover;
   background-size: cover;
   /*object-fit: contain;*/
+  border-top:2px solid black;
 }
 
 .name-box hr{
@@ -254,6 +255,10 @@ html body {
   margin-top: 10%;
 }
 
+.small_specialities{
+  height: 116px;
+}
+
 @media only screen and (max-width: 520px) {
 
    .profile-tabs { font-size: 15px; }
@@ -286,4 +291,5 @@ html body {
   .modal{
     margin-top: 20%;
   }
+  .profile-image{background-size: 75% !important}
 }
