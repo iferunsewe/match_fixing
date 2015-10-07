@@ -15,9 +15,9 @@
               %td= league.name
               %td= league.location
               %td
-                = link_to 'Show', league, :class => "btn btn-xs btn-white"
-                = link_to 'Edit', edit_league_path(league), :class => "btn btn-xs btn-warning"
-                = link_to 'Destroy', league, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-xs btn-danger"
+                = link_to 'Show', league, :class => "btn btn-xs btn-white nohoverwhite"
+                = link_to 'Edit', edit_league_path(league), :class => "btn btn-xs btn-white nohoverwhite"
+                = link_to 'Destroy', league, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-xs btn-white nohoverwhite"
 
   %br
   - if user_is_admin?

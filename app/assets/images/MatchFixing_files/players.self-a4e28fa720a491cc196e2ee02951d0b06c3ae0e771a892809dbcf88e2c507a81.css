@@ -1,0 +1,305 @@
+/*body{
+  background:  linear-gradient(
+      rgba(0, 0, 0, 0.45), 
+      rgba(0, 0, 0, 0.45)
+    ), url('/assets/pitch.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}*/
+/*body {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.8), 
+      rgba(0, 0, 0, 0.8)
+    ), url('/assets/pitch.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100%;
+}
+
+html body {
+    min-height: 100%;
+}*/
+/*
+.profile-container{
+  
+  color: white;
+  height: 110vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+.profile-nation-image{
+  background-image: url('/assets/messi.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  max-width: 100%;
+}
+
+
+.profile-bottom{
+  padding-top: 10;
+  height: 65%;
+  max-width: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+.profile-top{
+  height: 35%;
+  max-width: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+.profile-name-rating{
+  height: 100%;
+  max-width: 100%;
+}
+
+.profile-rating{
+  height: 35%;
+  max-width: 100%;
+}
+.profile-name{
+  height: 65%;
+  max-width: 100%;
+}
+
+.profile-about{
+  height: 100%;
+  padding-left: 50px !important;
+  padding-right: 50px !important;
+  max-width: 100%;
+  padding-top: 5%;
+}
+
+.profile-list-item{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 50%;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.45);
+  max-width: 100%;
+}*/
+/*.profile-image-col{
+  height: 100%;
+  max-width: 100%;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.profile-image{
+  padding-top: 10px;
+  height: 100%;
+  width: 60%;
+  margin: 0 auto;
+  background-image: url('/assets/messi.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: 2px solid white;
+  max-width: 100%;
+}*/
+/*.small-avatar {
+  height: 30px;
+  border-radius: 1000px;
+  margin-bottom: -8px;
+}*/
+/*@media only screen and (max-width: 520px) {
+
+   .profile-tabs { font-size: 15px; }
+    
+   .stats-info { 
+    h4{
+      font-size: 12px; 
+    }
+  }
+}*/
+/* line 132, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.profile-left {
+  height: 100%;
+}
+
+/* line 136, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.profile-right {
+  height: 100%;
+  /*padding-left: 0px !important;*/
+}
+
+/* line 141, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.profile-container {
+  height: 90vh;
+}
+
+/* line 145, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.profile-image-box {
+  height: 50%;
+}
+
+/* line 149, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.profile-about {
+  height: 25%;
+}
+
+/* line 153, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.profile-about {
+  height: 25%;
+}
+
+/* line 157, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.profile-image {
+  height: 100%;
+  min-width: 100%;
+  /*background: url('/assets/messi.jpg') no-repeat center center; */
+  background-size: cover;
+  /*object-fit: contain;*/
+  border-top: 2px solid black;
+}
+
+/* line 169, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.name-box hr {
+  width: 60%;
+  border-bottom: 3px solid black;
+}
+
+/* line 174, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.centered-axis-xy {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+/* line 181, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.speciality-box hr {
+  width: 60%;
+  border-bottom: 3px solid black;
+}
+
+/* line 186, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.speciality-img {
+  height: 150px;
+  width: 150px;
+}
+
+/* line 191, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.profile-stats-box {
+  height: 50%;
+}
+
+/* line 195, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.profile-tab {
+  background-color: white;
+  color: black;
+  max-width: 100%;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+}
+
+/* line 205, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.profile-tabs {
+  font-size: 30px;
+}
+
+/* line 209, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.profile-stats {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* line 214, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.stats-info {
+  color: white;
+  height: 100%;
+  max-width: 100%;
+}
+/* line 218, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.stats-info h1 {
+  font-size: 70px;
+}
+
+/* line 223, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.stats-info-background {
+  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("/assets/pitch.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("/assets/pitch.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* line 232, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.stats-info-title {
+  color: white;
+  border-bottom: 2px solid white;
+}
+
+/* line 237, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+#team {
+  color: white;
+  height: 100%;
+  background-size: 100% 100%;
+}
+/* line 245, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+#team h1 span {
+  font-size: 15px;
+}
+
+/* line 251, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.td-pad {
+  padding-top: 35px !important;
+}
+
+/* line 255, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+.modal {
+  margin-top: 10%;
+}
+
+@media only screen and (max-width: 520px) {
+  /* line 261, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+  .profile-tabs {
+    font-size: 15px;
+  }
+
+  /* line 264, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+  .stats-info h4 {
+    font-size: 15px;
+  }
+
+  /* line 269, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+  .speciality-img {
+    height: 100px;
+    width: 100px;
+  }
+
+  /*  .profile-right{
+      margin-top: 100px;
+    }*/
+  /* line 276, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+  .td-pad {
+    padding-top: 0px !important;
+  }
+
+  /* line 280, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+  .welcome-header {
+    font-size: 20px;
+    padding-left: 0% !important;
+  }
+  /* line 284, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+  .welcome-header button {
+    text-decoration: none;
+  }
+
+  /* line 288, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+  .modal {
+    margin-top: 20%;
+  }
+
+  /* line 291, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/players.scss */
+  .profile-image {
+    background-size: 75% !important;
+  }
+}

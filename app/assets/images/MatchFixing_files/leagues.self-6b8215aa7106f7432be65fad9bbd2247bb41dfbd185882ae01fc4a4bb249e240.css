@@ -1,0 +1,13 @@
+/* line 1, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/leagues.scss */
+.league-container {
+  height: 100vh;
+  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("/assets/pitch.jpg") no-repeat center center fixed;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("/assets/pitch.jpg") no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100%;
+}
+
+/* line 13, /Users/ThatTobMate/Side Projects/freelance/match_fixing/app/assets/stylesheets/leagues.scss */
+.league-table {
+  margin: 0 auto;
+}

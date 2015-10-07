@@ -16,10 +16,18 @@
               %span.glyphicon.glyphicon-calendar
       .col-md-12
         .form-group
+          = f.label :home_team
           = f.collection_select :team_a_id, Team.all, :id, :name, {:prompt => 'Choose Home Team'}, {:class => "form-control"}
+          %br/
+          = f.label :score
+          = f.number_field :team_a_score, {:class => "form-control"}
       .col-md-12
         .form-group
+          = f.label :away_team
           = f.collection_select :team_b_id, Team.all, :id, :name, {:prompt => 'Choose Away Team'}, {:class => "form-control"}
+          %br/
+          = f.label :score
+          = f.number_field :team_b_score, {:class => "form-control"}
       = f.fields_for :ground do |g|
         .col-md-12
           .form-group
@@ -30,22 +38,22 @@
             = g.label :address
             = g.text_area :address, class: "form-control"
 
-      -# Form to edit stats - only appears on the edit page
-      - if @match.status
-        = f.fields_for :stats do |s|
-          .col-md-12
-            .form-group
-              %h4
-                %b
-                  = s.label s.object.player.name + " - "
-                  = s.label s.object.player.team.name
-            .form-group
-              = s.label :goals
-              = s.select :goals, 1..10, {prompt: 'Goals'}, {:class => "form-control"}
-              = s.label :man_of_the_match
-              = s.select :man_of_the_match, [["Yes", true], ["No", false]], {}, {:class => "form-control"}
+      / -# Form to edit stats - only appears on the edit page
+      / - if @match.status
+      /   = f.fields_for :stats do |s|
+      /     .col-md-12
+      /       .form-group
+      /         %h4
+      /           %b
+      /             = s.label s.object.player.name + " - "
+      /             = s.label s.object.player.team.name
+      /       .form-group
+      /         = s.label :goals
+      /         = s.select :goals, 1..10, {prompt: 'Goals'}, {:class => "form-control"}
+      /         = s.label :man_of_the_match
+      /         = s.select :man_of_the_match, [["Yes", true], ["No", false]], {}, {:class => "form-control"}
 
       .col-md-12
         .actions.text-center
           = f.submit 'Save', class:"btn btn-black nohoverblack"
-          = link_to 'Cancel', @match, class:"btn btn-danger"
+          = link_to 'Cancel', @match, class:"btn btn-black nohoverblack"

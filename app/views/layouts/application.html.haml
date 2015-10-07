@@ -40,26 +40,41 @@
                   %span.sr-only (current)
             %ul.nav.navbar-nav.navbar-right{:style =>"width:25%;"}
               - if player_signed_in?
-
                 %li{:style =>"padding-left:5%;"}
-                  = button_to 'Edit account', edit_player_path(current_player), :method => :get, :class => 'navbar-link', :class => 'btn btn-xs navbar-btn btn-warning'
+                  = button_to 'Edit account', edit_player_registration_path(current_player), :method => :get, :class => 'navbar-link', :class => 'btn btn-xs navbar-btn btn-white nohoverwhite'
                 %li{:style =>"padding-left:5%;"}
-                  = button_to "Log out", destroy_player_session_path, :method => :delete, :class => 'btn btn-xs navbar-btn btn-danger' 
+                  = button_to "Log out", destroy_player_session_path, :method => :delete, :class => 'btn btn-xs navbar-btn btn-white nohoverwhite' 
 
 
           / /.navbar-collapse
         / /.container-fluid
-      / %p.notice= notice
-      / %p.alert= alert
-    - else
-      .row
-        .col-xs-12
-          %h1.welcome-header.text-center.font-override{:style =>"padding-left: 15%;"}
-            Match Fixing
+      = render :partial => 'layouts/my_custom_flash', :flash => flash
 
-            = link_to "Sign up", new_registration_path(resource_name), {class: "btn btn-xs btn-primary pull-right", :style =>"margin-right: 5%;"}
-            %button.btn.btn-xs.btn-success.pull-right{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button", :style =>"margin-right: 5%;"}
-              Login
+    - else
+      - if current_page?('/players/password/new')
+        .row.welcome-header-alt
+          .col-xs-12
+            %h1.welcome-header.text-center.font-override{:style =>"padding-left: 15%;"}
+              Match Fixing
+              = link_to "Sign up", new_registration_path(resource_name), {class: "btn btn-xs btn-white nohoverwhite pull-right", :style =>"margin-right: 5%;"}
+              %button.btn.btn-xs.btn-white.nohoverwhite.pull-right{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button", :style =>"margin-right: 5%;"}
+                Login
+      -else
+        .row
+          .col-xs-12
+            %h1.welcome-header.text-center.font-override{:style =>"padding-left: 15%;"}
+              Match Fixing
+              - if !current_page?('/players/sign_up')
+                = link_to "Sign up", new_registration_path(resource_name), {class: "btn btn-xs btn-black nohoverblack pull-right", :style =>"margin-right: 5%;"}
+                %button.btn.btn-xs.btn-black.nohoverblack.pull-right{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button", :style =>"margin-right: 5%;"}
+                  Login
+              -else
+                = link_to "Sign up", new_registration_path(resource_name), {class: "btn btn-xs btn-white nohoverwhite pull-right", :style =>"margin-right: 5%;"}
+                %button.btn.btn-xs.btn-white.nohoverwhite.pull-right{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button", :style =>"margin-right: 5%;"}
+                  Login
+        = render :partial => 'layouts/my_custom_flash', :flash => flash
+
+
 
       / Modal
       #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
@@ -73,11 +88,17 @@
               = render 'devise/sessions/new'
               .row
                 .col-xs-12.text-center
+                  %br/
+                  = link_to "Forgot your password?", new_password_path(resource_name), {class:"link-override-alt"}
                   %h4
                     Or
                 .col-xs-12.text-center
                   = link_to "Sign up with facebook", player_omniauth_authorize_path(:facebook), {class: "btn btn-primary"}
+
     
 
+    .page-wrap
+      =yield
 
-    =yield
+    / %footer#footer.site-footer.text-center.font-override
+    /   %h4 MatchFixing footer

@@ -21,24 +21,43 @@
           = f.text_field :philosophy, class: "form-control"
       .col-md-12
         .form-group
-          = f.label :primary_kit_colour
-          = f.text_field :primary_kit_colour, class: "form-control"
+          = f.label :primary_colour
+          = f.text_field :primary_colour, class: "form-control"
       .col-md-12
         .form-group
-          = f.label :secondary_kit_colour
-          = f.text_field :secondary_kit_colour, class: "form-control"
+          = f.label :secondary_colour
+          = f.text_field :secondary_colour, class: "form-control"
       .col-md-12
         .form-group
           = f.label :choose_team_photo
-          %div{:style=>"position:relative;"}
+          %br/
+          %img#img_prev.hide{:alt => "your image", :src => "#"}/
+          %div{:style=>"position:relative;margin-top:5px;"}
             %a.btn.btn-xs.btn-black.nohoverblack{:href=>'javascript:;'}>
               Choose File...
-              = f.file_field :image, {:style=>"position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';opacity:0;background-color:transparent;color:transparent;"}
+              = f.file_field :image, {:style=>"position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';opacity:0;background-color:transparent;color:transparent;", :id => "upload", :onchange => "readURL(this)"}
       .col-md-12
         .form-group
           = f.label :seeking_players
           = f.check_box :seeking_players, class: "form-control"
       .col-md-12
         .actions.text-center
-          = link_to 'Cancel', team_path(@team), class: "btn btn-danger"
-          = f.submit 'Save', class: "btn btn-success"
+          = link_to 'Cancel', team_path(@team), class: "btn btn-black nohoverblack"
+          = f.submit 'Save', class: "btn btn-black nohoverblack"
+
+:javascript
+  function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#img_prev')
+            .attr('src', e.target.result)
+            .width(200)
+            .height(200);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+      $('#img_prev').removeClass('hide');
+    }

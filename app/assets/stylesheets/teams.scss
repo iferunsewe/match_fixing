@@ -45,6 +45,14 @@
   }
 }
 
+.full-team-circle{
+  height:50px;
+  width:50px;
+  -webkit-border-radius:75px;
+  -moz-border-radius:75px;
+  border: 2px solid black;
+}
+
 #matches{
   color: black;
 }

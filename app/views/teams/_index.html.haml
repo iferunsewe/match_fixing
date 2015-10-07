@@ -27,9 +27,9 @@
           %td= team.points
           - if user_is_admin? || user_is_captain?
             %td
-              = button_to 'Edit', edit_team_path(team), :method => :get, :class => "btn btn-xs btn-warning"
+              = button_to 'Edit', edit_team_path(team), :method => :get, :class => "btn btn-xs btn-white nohoverwhite"
             %td
-              = button_to 'Delete', team, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-xs btn-danger"
+              = button_to 'Delete', team, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-xs btn-white nohoverwhite"
 
   %br
 

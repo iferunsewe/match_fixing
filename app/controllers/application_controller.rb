@@ -12,8 +12,8 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:notice] = "Access denied!"
-    go_back
+    flash[:alert] = "Access denied!"
+    redirect_to(previous_url)
   end
 
   def after_sign_in_path_for(player)
@@ -50,7 +50,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def previous_url
-    binding.pry
     session[:my_previous_url] = URI(request.referer || '').path
   end
 
@@ -68,7 +67,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_player!(options={})
     if !current_player
-      flash[:notice] = 'You need to sign in before accessing this page!'
+      flash[:alert] = 'You need to sign in before accessing this page!'
       redirect_to new_player_session_path
     end
   end

@@ -162,6 +162,7 @@ html body {
   -o-background-size: cover;
   background-size: cover;
   /*object-fit: contain;*/
+  border-top:2px solid black;
 }
 
 .name-box hr{
@@ -286,4 +287,5 @@ html body {
   .modal{
     margin-top: 20%;
   }
+  .profile-image{background-size: 75% !important}
 }
