@@ -75,7 +75,7 @@
             / /tab-pane
             #matches.tab-pane
               .col-xs-12
-                = render 'matches/index', {team_visited: @player.team}
+                = render 'matches/index', {player_visited: @player, team_visited: nil} # team_visited is nil otherwise the element would not exists on the player's page
                 %hr/
                 .row
                   .col-md-4.col-md-offset-4.text-center

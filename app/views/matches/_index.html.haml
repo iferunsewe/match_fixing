@@ -10,14 +10,14 @@
         %th
         %th
         %th Ground
-        %th Actions
+        %th
         - if user_is_admin?
           %th
           %th
 
     %tbody#items
       - @matches.each do |match|
-        -if Match.show_matches?(current_player, team_visited, match)
+        -if Match.show_matches?(player_visited, team_visited, match)
           %tr
             %td= match.date.to_s(:long)
             %td= match.display_status(match.status)
@@ -34,7 +34,7 @@
             %td
               - if match.ground.present?
                 = match.ground.name
-            %td= link_to 'Show', match, :class => "btn btn-xs btn-black nohoverblack"
+            %td= link_to 'See Match', match, :class => "btn btn-xs btn-black nohoverblack"
             - if user_is_admin?
               %td= link_to 'Edit', edit_match_path(match), :class => "btn btn-xs btn-warning btn-black nohoverblack"
               %td= link_to 'Destroy', match, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-xs btn-danger btn-black nohoverblack"
