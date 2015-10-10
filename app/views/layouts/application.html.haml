@@ -35,7 +35,7 @@
                   = link_to "Create Team", new_team_path
               - elsif current_player.team.nil?
                 %li{:style =>"width:25%;border-left:white;padding-left:5%;"}
-                  = link_to "Join my team", edit_player_path(current_player)
+                  = link_to "Join your team", edit_player_path
               - else
                 %li{:style =>"width:25%;border-left:white;padding-left:5%;"}
                   = link_to "My Team", current_player.team
@@ -87,7 +87,7 @@
           .modal-content.font-override
             .modal-header
               %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-                %span{"aria-hidden" => "true", :style =>'color:white;'} ×
+                %span{"aria-hidden" => "true", :style =>'color:white;'} x
               %h4#myModalLabel.modal-title.text-center Log In
             .modal-body
               = render 'devise/sessions/new'
