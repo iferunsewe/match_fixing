@@ -33,14 +33,14 @@ ActiveRecord::Schema.define(version: 20150924232740) do
 
   create_table "matches", force: :cascade do |t|
     t.datetime "date"
-    t.boolean  "status"
+    t.boolean  "status",           default: false
     t.integer  "team_a_score",     default: 0
     t.integer  "team_b_score",     default: 0
     t.integer  "team_a_id"
     t.integer  "team_b_id"
     t.integer  "ground_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "man_of_the_match"
   end
 
@@ -62,15 +62,12 @@ ActiveRecord::Schema.define(version: 20150924232740) do
     t.string   "position"
     t.string   "hometown"
     t.boolean  "captain",                default: false
-    t.boolean  "man_of_the_match",       default: false
     t.float    "weight"
     t.float    "height"
     t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "foot"
-    t.integer  "goals",                  default: 0
-    t.integer  "appearances",            default: 0
     t.boolean  "admin"
     t.text     "image"
   end
@@ -128,18 +125,23 @@ ActiveRecord::Schema.define(version: 20150924232740) do
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.string   "hometown"
-    t.integer  "played",          default: 0
-    t.integer  "wins",            default: 0
-    t.integer  "losses",          default: 0
-    t.integer  "draws",           default: 0
-    t.integer  "points",          default: 0
+    t.string   "primary_kit_colour"
+    t.string   "secondary_kit_colour"
+    t.integer  "played",               default: 0
+    t.integer  "wins",                 default: 0
+    t.integer  "losses",               default: 0
+    t.integer  "draws",                default: 0
+    t.integer  "points",               default: 0
     t.integer  "rating_id"
     t.boolean  "seeking_players"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "league_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "philosophy"
     t.text     "image"
   end
+
+  add_index "teams", ["league_id"], name: "index_teams_on_league_id", using: :btree
 
   add_foreign_key "ratings", "players"
   add_foreign_key "ratings", "teams"
