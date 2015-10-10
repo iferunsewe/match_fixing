@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(player)
-    ratings = Rating.where(rater: player.id)
+    rater = Rating.where(rater: player.id)
     played_matches = player.matches.where(status: true)
     matches_sorted_by_date = (played_matches.sort_by &:date)
     last_match_played = matches_sorted_by_date.last
@@ -27,10 +27,12 @@ class ApplicationController < ActionController::Base
     # the second to last match will be discarded as this focuses on the last match played
     if user_is_admin?
       player_path(current_player)
-    elsif ratings == [] && played_matches == []
+    elsif rater == [] && played_matches == []
       player_path(current_player)
-    elsif ratings == [] && played_matches.size >= 1
+    elsif rater == [] && played_matches.size >= 1
       match_path(last_match_played.id)
+    elsif rater != [] && played_matches == []
+      player_path(current_player)
     elsif ratings != [] && (ratings.last.created_at < last_match_played.date)
       match_path(last_match_played.id)
     else

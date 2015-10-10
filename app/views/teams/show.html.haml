@@ -25,14 +25,14 @@
             %b Hometown:
         .col-xs-6
           %h5
-            = @team.hometown
+            = @team.hometown.nil? ? 'N/A' : @team.hometown
       .row.text-center
         .col-xs-6
           %h5
             %b Philosophy:
         .col-xs-6
           %h5
-            = @team.philosophy
+            = @team.philosophy.nil? ? 'N/A' : @team.philosophy
       - if user_is_admin? || user_is_captain?
         .row.text-center
           .col-xs-6

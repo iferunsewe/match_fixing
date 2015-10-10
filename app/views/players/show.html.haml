@@ -22,21 +22,21 @@
           %b Age:
       .col-xs-6
         %h5
-          = @player.dob.nil? ? 'N/A' : @player.calculate_age(@player.dob)
+          = @player.dob.nil? || @player.dob.blank? ? 'N/A' : @player.calculate_age(@player.dob)
     .row.text-center
       .col-xs-6
         %h5
           %b Hometown:
       .col-xs-6
         %h5
-          = @player.hometown.nil? ? 'N/A' : @player.hometown
+          = @player.hometown.nil? || @player.hometown.blank? ? 'N/A' : @player.hometown
     .row.text-center
       .col-xs-6
         %h5
           %b Position:
       .col-xs-6
         %h5
-          = @player.position.nil? ? 'N/A' : @player.position
+          = @player.position.nil? || @player.position.blank? ? 'N/A' : @player.position
     - if user_is_admin? || @player.id == current_player.id
       .row
         .col-xs-12
@@ -97,8 +97,6 @@
                         %i.fa.fa-star
                     - else
                       %p Not Rated Yet
-                      
-                  
           / /tab-pane
         / /tab-content
     .row
@@ -106,7 +104,6 @@
         %h2
           Specialities
         %hr
-          
     .row
       .col-xs-12
         - @player.specialities.each do |speciality|

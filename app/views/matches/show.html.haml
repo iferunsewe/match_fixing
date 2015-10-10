@@ -35,23 +35,24 @@
 
           %tbody
             - @match.team_a.players.each do |player|
-              %tr
-                %td
-                  = player_avatar player
-                %td.match-table
-                  = link_to player.name, player, class: 'link-override'
-                  -if player.captain?
-                    %i.fa.fa-copyright{:style =>"color:white;"}
-                %td.match-table
-                  -for i in 1..player.average_rating
-                    %span.glyphicon.glyphicon-star-empty
-                - if @match.status
+              -if Stat.where(player_id: player.id, match_id: @match.id) != []
+                %tr
+                  %td
+                    = player_avatar player
                   %td.match-table
-                    -for i in 1..player.goals_in_match(player.id, @match.id)
-                      %i.fa.fa-futbol-o
+                    = link_to player.name, player, class: 'link-override'
+                    -if player.captain?
+                      %i.fa.fa-copyright{:style =>"color:white;"}
                   %td.match-table
-                    = player.motm_in_match(player.id, @match.id)
-                %br
+                    -for i in 1..player.average_rating
+                      %span.glyphicon.glyphicon-star-empty
+                  - if @match.status
+                    %td.match-table
+                      -for i in 1..player.goals_in_match(player.id, @match.id)
+                        %i.fa.fa-futbol-o
+                    %td.match-table
+                      = player.motm_in_match(player.id, @match.id)
+                  %br
 
   .match_away.col-sm-6
     .col-xs-12.text-center
@@ -79,24 +80,25 @@
                 %th
           %tbody
             - @match.team_b.players.each do |player|
-              %tr
-                %td
-                  = player_avatar player
+              -if Stat.where(player_id: player.id, match_id: @match.id) != []
+                %tr
+                  %td
+                    = player_avatar player
 
-                %td.match-table
-                  = link_to player.name, player, class: 'link-override-alt'
-                  -if player.captain?
-                    %i.fa.fa-copyright
-                %td.match-table
-                  -for i in 1..player.average_rating
-                    %span.glyphicon.glyphicon-star-empty
-                - if @match.status
                   %td.match-table
-                    -for i in 1..player.goals_in_match(player.id, @match.id)
-                      %i.fa.fa-futbol-o
+                    = link_to player.name, player, class: 'link-override-alt'
+                    -if player.captain?
+                      %i.fa.fa-copyright
                   %td.match-table
-                    = player.motm_in_match(player.id, @match.id)
-                %br
+                    -for i in 1..player.average_rating
+                      %span.glyphicon.glyphicon-star-empty
+                  - if @match.status
+                    %td.match-table
+                      -for i in 1..player.goals_in_match(player.id, @match.id)
+                        %i.fa.fa-futbol-o
+                    %td.match-table
+                      = player.motm_in_match(player.id, @match.id)
+                  %br
 
 
 / Modal
