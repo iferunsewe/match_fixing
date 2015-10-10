@@ -15,31 +15,46 @@
         - else
           %p
             Not Rated Yet
-    .row
-      .col-sm-12
-        %h4
-          %b Personal Information
-      .col-sm-12
+    .row.text-center
+      .col-xs-6
         %h5
           %b Age:
-          %span
-            - if @player.dob.nil? && @player.id == current_player.id
-              = link_to 'Please update age', edit_player_path
-            - elsif @player.dob.nil?
-              No registered date of birth
-            - else
-              = @player.calculate_age(@player.dob)
+      .col-xs-6
+        %h5
+          - if @player.dob.nil?
+            No registered date of birth
+          - else
+            = @player.calculate_age(@player.dob)
+    .row.text-center
+      .col-xs-6
         %h5
           %b Hometown:
-          %span=@player.hometown || 'London'
+      .col-xs-6
+        %h5
+          = @player.hometown || 'London'
+    .row.text-center
+      .col-xs-6
         %h5
           %b Position:
-          %span=@player.position || 'Defender'
-        - if user_is_admin? || @player.id == current_player.id
- 
-          %h5
-            %b Actions:
-            %span= link_to 'Edit Profile', edit_player_path(@player), :class=>"link-override-alt"
+      .col-xs-6
+        %h5
+          =@player.position || 'Defender'
+    .row
+      .col-xs-12
+        %h3
+          %b
+            = link_to 'Edit Profile', edit_player_path(@player), :class=>"link-override-alt"
+        -#%h5
+        -#  %b Hometown:
+        -#  %span=@player.hometown || 'London'
+        -#%h5
+        -#  %b Position:
+        -#  %span=@player.position || 'Defender'
+        -#- if user_is_admin? || @player.id == current_player.id
+        -#
+        -#  %h5
+        -#    %b Actions:
+        -#    %span= link_to 'Edit Profile', edit_player_path(@player), :class=>"link-override-alt"
                 
 
   .col-sm-6.profile-right.no-margin.text-center
