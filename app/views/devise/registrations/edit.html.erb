@@ -47,12 +47,15 @@
   </div>
 
   <div class="col-md-12">
-      <div class="actions text-center">
+    <div class="actions text-center">
         <%= f.submit "Update", class: "btn btn-black nohoverblack update-button" %>
-
-        <%= button_to "Cancel my account", registration_path(resource_name), method: :delete, class: "btn btn-black nohoverblack" %>
-      </div>
     </div>
+  </div>
 <% end %>
 
+  <div class="col-md-12 cancel-my-account">
+    <div class="actions text-center">
+        <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger nohoverblack" %>
+    </div>
+  </div>
 </div>

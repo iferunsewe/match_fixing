@@ -20,7 +20,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'about#index'
-
   # root 'leagues#show', :id => '1'
 
   # Example of regular route:
