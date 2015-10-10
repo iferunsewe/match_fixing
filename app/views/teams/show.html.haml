@@ -36,13 +36,6 @@
         .col-xs-6
           %h5
             = @team.philosophy
-      .row.text-center
-        .col-xs-6
-          %h5
-            %b Seeking players:
-        .col-xs-6
-          %h5
-            = @team.seeking_players ? 'Yes' : 'No' || 'Maybe'
       - if user_is_admin? || user_is_captain?
         .row.text-center
           .col-xs-6

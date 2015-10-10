@@ -3,12 +3,10 @@
     %thead
       %tr
         %th.text-center Name
-        %th.text-center Hometown
         %th.text-center Played
         %th.text-center Wins
         %th.text-center Losses
         %th.text-center Draws
-        %th.text-center Seeking players
         %th.text-center Points
         - if user_is_admin? || user_is_captain?
           %th.text-center Actions
@@ -18,12 +16,10 @@
       - league_teams.order(points: :desc).each do |team|
         %tr
           %td= link_to team.name, team, :class => "link-override"
-          %td= team.hometown
           %td= team.played
           %td= team.wins
           %td= team.losses
           %td= team.draws
-          %td= team.seeking_players ? 'Yes' : 'No'
           %td= team.points
           - if user_is_admin? || user_is_captain?
             %td
