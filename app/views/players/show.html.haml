@@ -1,17 +1,18 @@
 .profile-container.no-margin.font-override
   .col-sm-6.profile-left.no-margin.no-padding.text-center
     .row.profile-image-box.no-margin
-      .col-xs-12.profile-image{:style=>"background: url(#{@player.image.detail.url if !@player.image.nil?}) no-repeat center center;height: 100%;max-width: 100%;-webkit-background-size: 50%;-moz-background-size: 50%;-o-background-size: 50%;background-size: 50%;"}
+      .col-xs-12.profile-image{:style=>"background: url(#{@player.image.detail.url.nil? ? '/assets/eboue2.jpg' : @player.image.detail.url}) no-repeat center center;height: 100%;max-width: 100%;-webkit-background-size: 50%;-moz-background-size: 50%;-o-background-size: 50%;background-size: 50%;"}
       .col-xs-12.name-box
         %h2=@player.name
+        %h5= link_to @player.team.name, @player.team, class: 'link-override-alt' if !@player.team.nil?
         %hr
     .row
       .col-xs-12
         - if @player.ratings != []
-          %p
-            = @player.float_average_rating
+          -#%p
+          -#  = @player.float_average_rating
           -(1..@player.average_rating).each do |i|
-            %i.fa.fa-star
+            = image_tag('gold-star.png')
         - else
           %p
             Not Rated Yet
@@ -21,41 +22,27 @@
           %b Age:
       .col-xs-6
         %h5
-          - if @player.dob.nil?
-            No registered date of birth
-          - else
-            = @player.calculate_age(@player.dob)
+          = @player.dob.nil? ? 'N/A' : @player.calculate_age(@player.dob)
     .row.text-center
       .col-xs-6
         %h5
           %b Hometown:
       .col-xs-6
         %h5
-          = @player.hometown || 'London'
+          = @player.hometown.nil? ? 'N/A' : @player.hometown
     .row.text-center
       .col-xs-6
         %h5
           %b Position:
       .col-xs-6
         %h5
-          =@player.position || 'Defender'
-    .row
-      .col-xs-12
-        %h3
-          %b
-            = link_to 'Edit Profile', edit_player_path(@player), :class=>"link-override-alt"
-        -#%h5
-        -#  %b Hometown:
-        -#  %span=@player.hometown || 'London'
-        -#%h5
-        -#  %b Position:
-        -#  %span=@player.position || 'Defender'
-        -#- if user_is_admin? || @player.id == current_player.id
-        -#
-        -#  %h5
-        -#    %b Actions:
-        -#    %span= link_to 'Edit Profile', edit_player_path(@player), :class=>"link-override-alt"
-                
+          = @player.position.nil? ? 'N/A' : @player.position
+    - if user_is_admin? || @player.id == current_player.id
+      .row
+        .col-xs-12
+          %h3
+            %b
+              = link_to 'Edit Profile', edit_player_path(@player), :class=>"link-override-alt"
 
   .col-sm-6.profile-right.no-margin.text-center
     .row.profile-stats-box

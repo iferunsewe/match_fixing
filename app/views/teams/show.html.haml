@@ -5,14 +5,11 @@
         = @team.name
 
   .row.ratings-row.text-center.no-margin{:style => "color:white;"}
-    %h1
-      Rating
-      %br/
-      - if @team.players != [] && @team.ratings.sum(:stars) > 0 && @team.average_rating(@team) != 0
-        -(1..@team.average_rating(@team)).each do |i|
-          %i.fa.fa-star
-      - else
-        %p Not Rated Yet
+    - if @team.players != [] && @team.ratings.sum(:stars) > 0 && @team.average_rating(@team) != 0
+      -(1..@team.average_rating(@team)).each do |i|
+        = image_tag('gold-star.png')
+    - else
+      %p Not Rated Yet
   .row
     .col-sm-4.team-left{:style=>"color:black;"}
       %h1.text-center{:style=>"text-decoration:underline;"}

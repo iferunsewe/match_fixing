@@ -22,6 +22,18 @@
   }
 }
 
+.link-override-alt{
+    text-decoration: none;
+    color: black;
+    &:visited{
+         color:black;
+     }
+    &:hover{
+         color:green;
+         text-decoration: none;
+     }
+}
+
 html{
   min-height: 100%;
 }
@@ -64,18 +76,6 @@ html{
 select.date-select {
     float: left;
     width: 10%;
-}
-
-.link-override-alt{
-  text-decoration: none;
-  color: black;
-  &:visited{
-    color:black;
-  }
-  &:hover{
-    color:green;
-    text-decoration: none;
-  }
 }
 
 .btn-black{
