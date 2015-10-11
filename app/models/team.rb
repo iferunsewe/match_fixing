@@ -1,7 +1,7 @@
 class Team < ActiveRecord::Base
   attr_accessible :name, :hometown, :wins, :losses, :draws, :rating_id,
-                  :seeking_players, :points, :primary_colour, :philosophy, :league_id,
-                  :played, :secondary_colour, :image
+                  :seeking_players, :points, :philosophy, :league_id,
+                  :played, :primary_kit_colour, :secondary_kit_colour, :image
 
   has_many(:matches, :foreign_key => :team_a_id, :dependent => :destroy)
   has_many(:reverse_team_match, :class_name => :Match, :foreign_key => :team_b_id, :dependent => :destroy)

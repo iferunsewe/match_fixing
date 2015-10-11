@@ -3,8 +3,8 @@
     .col.md-12.text-center
       = @match.ground.name
       %br/
-      %h5
-        = @match.date.to_s(:short)
+      -#%h5
+      -#  = @match.date.to_s(:short)
     .col-md-12.text-center
       - if user_is_admin?
         = link_to 'Edit Match', edit_match_path(@match), {:class => 'link-override',:style => "font-size:15px;"}

@@ -19,27 +19,23 @@
         .form-group
           = f.label :philosophy
           = f.text_field :philosophy, class: "form-control"
-      .col-md-12
+      .col-md-6
         .form-group
           = f.label :primary_kit_colour
           = f.text_field :primary_kit_colour, class: "form-control"
-      .col-md-12
+      .col-md-6
         .form-group
           = f.label :secondary_kit_colour
           = f.text_field :secondary_kit_colour, class: "form-control"
       .col-md-12
         .form-group
-          = f.label :choose_team_photo
+          = f.label :image, "Choose team photo. Wide photos are ideal e.g. 1200x400"
           %br/
           %img#img_prev.hide{:alt => "your image", :src => "#"}/
           %div{:style=>"position:relative;margin-top:5px;"}
             %a.btn.btn-xs.btn-black.nohoverblack{:href=>'javascript:;'}>
               Choose File...
               = f.file_field :image, {:style=>"position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';opacity:0;background-color:transparent;color:transparent;", :id => "upload", :onchange => "readURL(this)"}
-      .col-md-12
-        .form-group
-          = f.label :seeking_players
-          = f.check_box :seeking_players, class: "form-control"
       .col-md-12
         .actions.text-center
           = link_to 'Cancel', team_path(@team), class: "btn btn-black nohoverblack"

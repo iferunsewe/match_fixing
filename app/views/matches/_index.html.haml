@@ -19,7 +19,7 @@
       - @matches.each do |match|
         -if Match.show_matches?(player_visited, team_visited, match)
           %tr
-            %td= match.date.to_s(:long)
+            %td= match.date.to_s(:short)
             %td= match.display_status(match.status)
             %td= link_to match.team_a.name, team_path(match.team_a)
             %td= match.team_a_score
