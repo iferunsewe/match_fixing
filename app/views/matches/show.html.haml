@@ -2,6 +2,9 @@
   .row.ground.no-margin
     .col.md-12.text-center
       = @match.ground.name
+      - if !@match.date.nil?
+        \-
+        = @match.date.to_s(:long)
       %br/
       -#%h5
       -#  = @match.date.to_s(:short)

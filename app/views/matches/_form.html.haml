@@ -10,10 +10,8 @@
       .col-md-12
         .form-group
           = f.label :date
-          .input-group.date#datetimepicker1
-            = f.text_field :date, class:"form-control", value: :date
-            %span.input-group-addon
-              %span.glyphicon.glyphicon-calendar
+          .form-inline
+            = datetime_select :match, :date, { start_year: 100.years.ago.year, end_year: Date.today.year, default: @match.date.nil? ? Date.today : @match.date}, class: "form-control"
       .col-xs-4
         .form-group
           = f.label :home_team

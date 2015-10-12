@@ -12,10 +12,11 @@
             %li= msg
 
     .row
-      .col-md-6
+      .col-md-12
         .form-group
           = f.label :date_of_birth
-          = date_select "player", "dob", { start_year: 100.years.ago.year, end_year: Date.today.year, default: @player.dob.nil? ? Date.today : @player.dob}, class: "form-control"
+          .form-inline
+            = date_select "player", "dob", { start_year: 100.years.ago.year, end_year: Date.today.year, default: @player.dob.nil? ? Date.today : @player.dob}, class: "form-control"
       .col-md-12
         .form-group
           = f.label :choose_profile_photo
