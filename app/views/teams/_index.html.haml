@@ -21,7 +21,7 @@
           %td= team.losses
           %td= team.draws
           %td= team.points
-          - if user_is_admin? || user_is_captain?
+          - if user_is_admin? || user_is_captain? && current_player.team == team
             %td
               = button_to 'Edit', edit_team_path(team), :method => :get, :class => "btn btn-xs btn-white nohoverwhite"
             %td
