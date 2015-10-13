@@ -8,7 +8,7 @@
         %th.text-center Losses
         %th.text-center Draws
         %th.text-center Points
-        - if user_is_admin? || user_is_captain?
+        - if user_is_admin? || user_is_captain? && current_player.team == team
           %th.text-center Actions
           %th
 

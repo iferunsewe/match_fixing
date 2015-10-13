@@ -16,16 +16,18 @@
         .form-group
           = f.label :home_team
           = f.collection_select :team_a_id, Team.all, :id, :name, {:prompt => 'Choose Home Team'}, {:class => "form-control pick-team-field"}
-      .col-xs-2
-        = f.label :score
-        = f.number_field :team_a_score, {:class => "form-control"}
+      - if @match.status
+        .col-xs-2
+          = f.label :score
+          = f.number_field :team_a_score, {:class => "form-control"}
       .col-xs-4
         .form-group
           = f.label :away_team
           = f.collection_select :team_b_id, Team.all, :id, :name, {:prompt => 'Choose Away Team'}, {:class => "form-control pick-team-field"}
-      .col-xs-2
-        = f.label :score
-        = f.number_field :team_b_score, {:class => "form-control"}
+      - if @match.status
+        .col-xs-2
+          = f.label :score
+          = f.number_field :team_b_score, {:class => "form-control"}
       = f.fields_for :ground do |g|
         .col-xs-6
           .form-group
