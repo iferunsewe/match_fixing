@@ -13,6 +13,10 @@ class Team < ActiveRecord::Base
 
   accepts_nested_attributes_for :players
 
+  def league_position(team)
+    (team.league.teams.order(points: :desc).index(team) + 1).ordinalize
+  end
+
   def calc_wins(team)
     wins = Match.where(team_a_id: team.id).where("team_a_score > team_b_score")
     @wins = wins.size

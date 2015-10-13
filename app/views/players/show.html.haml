@@ -12,7 +12,7 @@
           -#%p
           -#  = @player.float_average_rating
           -(1..@player.average_rating).each do |i|
-            = image_tag('gold-star.png')
+            = image_tag('gold-star.png', class: 'small-star')
         - else
           %p
             Not Rated Yet
