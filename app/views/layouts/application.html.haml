@@ -10,6 +10,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    = favicon_link_tag 'favicon-logo.png'
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
   %body
 
@@ -39,7 +40,7 @@
               - else
                 %li{:style =>"width:25%;border-left:white;padding-left:5%;"}
                   = link_to "My Team", current_player.team
-              - if current_player.team.present? 
+              - if current_player.team.present?
                 %li{:style =>"width:25%;border-left:white;padding-left:5%;"}
                   = link_to "League Table", league_path(current_player.team.league)
                   %span.sr-only (current)
