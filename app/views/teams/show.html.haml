@@ -9,7 +9,8 @@
       -(1..@team.average_rating(@team)).each do |i|
         = image_tag('gold-star.png', class: 'small-star')
     - else
-      %h1 Not Rated Yet
+      %h1
+        Not Rated Yet
   .row
     .col-sm-4.team-left{:style=>"color:black;"}
       %h1.text-center{:style=>"text-decoration:underline;"}

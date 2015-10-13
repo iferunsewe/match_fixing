@@ -35,13 +35,15 @@
 .ratings-row{
   background-color: rgba(0, 0, 0, 1);
   height: 7%;
-  padding-top: 0.5%;
   color: white;
   h1{
     font-size: 18px;
     i{
       font-size: 15px;
     }
+  }
+  .small-star{
+    padding-top: 0.5%;
   }
 }
 
