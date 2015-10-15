@@ -64,3 +64,5 @@
         .actions.text-center
           = f.submit 'Save', class:"btn btn-black nohoverblack"
           = link_to 'Cancel', @match, class:"btn btn-black nohoverblack"
+          - if user_is_admin?
+            %td= link_to 'Delete', @match, class: "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -1,4 +1,5 @@
 class Player < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
   attr_accessible :name, :dob, :position, :hometown, :rating_id,
                   :captain, :weight,:height, :password, :email, :remember_me, :team_id,
                   :foot, :password_confirmation, :image, :remote_image_url, :speciality_ids
@@ -14,8 +15,8 @@ class Player < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
 
   belongs_to :team
-  has_many :ratings
-  has_many :stats
+  has_many :ratings, dependent: :destroy
+  has_many :stats, dependent: :destroy
   has_many :matches, through: :stats
   has_many :providers, dependent: :destroy
   has_and_belongs_to_many :specialities
@@ -33,7 +34,8 @@ class Player < ActiveRecord::Base
 
   def float_average_rating
     if ratings != []
-      ratings.sum(:stars).to_f / ratings.size.to_f
+      av_rating = ratings.sum(:stars).to_f / ratings.size.to_f
+      number_with_precision(av_rating, :precision => 2)
     else
       0.00
     end

@@ -40,7 +40,7 @@
               - else
                 %li{:style =>"width:25%;border-left:white;padding-left:5%;"}
                   = link_to "My Team", current_player.team
-              - if current_player.team.present?
+              - if current_player.team.present? && current_player.team.league.present?
                 %li{:style =>"width:25%;border-left:white;padding-left:5%;"}
                   = link_to "League Table", league_path(current_player.team.league)
                   %span.sr-only (current)

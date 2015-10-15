@@ -268,7 +268,7 @@ Devise.setup do |config|
       ENV["FACEBOOK_MF_SECRET_ID"], {
       scope: "email",
       display: "page",
-      image_size: "normal",
+      image_size: {width: 250, height: 370},
       info_fields: "first_name,last_name,age_range,education,hometown,email"
   }
 end

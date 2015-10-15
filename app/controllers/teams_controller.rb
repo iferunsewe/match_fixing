@@ -33,10 +33,12 @@ class TeamsController < ApplicationController
   # POST /teams.json
   def create
     @team = Team.new(team_params)
-    # Adds the player creating the team to the created team and makes them captain by default
-    @team.players << current_player
-    first_player = @team.players[0]
-    first_player.captain = true
+    unless user_is_admin?
+      # Adds the player creating the team to the created team and makes them captain by default
+      @team.players << current_player
+      first_player = @team.players[0]
+      first_player.captain = true
+    end
     respond_to do |format|
       if @team.save
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
@@ -67,7 +69,7 @@ class TeamsController < ApplicationController
   def destroy
     @team.destroy
     respond_to do |format|
-      format.html { redirect_to teams_url, notice: 'Team was successfully destroyed.' }
+      format.html { redirect_to current_player, notice: 'Team was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -37,7 +37,11 @@ class TeamImageUploader < CarrierWave::Uploader::Base
   # end
 
   version :wide do
-    process :resize_to_fit => [1200, 400]
+    process :resize_to_fit => [1600, 400]
+  end
+
+  version :team_tab do
+    process :resize_to_fit => [800, 400]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

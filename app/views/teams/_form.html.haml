@@ -38,8 +38,11 @@
               = f.file_field :image, {:style=>"position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';opacity:0;background-color:transparent;color:transparent;", :id => "upload", :onchange => "readURL(this)"}
       .col-md-12
         .actions.text-center
-          = link_to 'Cancel', team_path(@team), class: "btn btn-black nohoverblack"
+          - if !@team.id.nil?
+            = link_to 'Cancel', team_path(@team), class: "btn btn-black nohoverblack"
           = f.submit 'Save', class: "btn btn-black nohoverblack"
+          - if user_is_admin?
+            %td= link_to 'Delete', @team, class: "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 :javascript
   function readURL(input) {

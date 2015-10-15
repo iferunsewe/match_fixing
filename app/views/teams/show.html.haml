@@ -19,21 +19,21 @@
         %h5.text-center 
           %b Kit
         .col-xs-12{:style => "padding-right:15%;"}
-          %p.col-xs-offset-6.full-team-circle{:style => "background:linear-gradient(to left, #{@team.primary_kit_colour} 50%, #{@team.secondary_kit_colour} 50%);"}
+          %p.col-xs-offset-6.full-team-circle{:style => "background:linear-gradient(to left, #{@team.secondary_kit_colour} 50%, #{@team.primary_kit_colour} 50%);"}
       .row.text-center
         .col-xs-6
           %h5
             %b Hometown:
         .col-xs-6
           %h5
-            = @team.hometown.nil? ? 'N/A' : @team.hometown
+            = @team.hometown.nil? || @team.hometown.blank? ? 'N/A' : @team.hometown
       .row.text-center
         .col-xs-6
           %h5
             %b Philosophy:
         .col-xs-6
           %h5
-            = @team.philosophy.nil? ? 'N/A' : @team.philosophy
+            = @team.philosophy.nil? || @team.philosophy.blank? ? 'N/A' : @team.philosophy
       .row.text-center
         .col-xs-6
           %h5

@@ -7,7 +7,7 @@ class Team < ActiveRecord::Base
   has_many(:reverse_team_match, :class_name => :Match, :foreign_key => :team_b_id, :dependent => :destroy)
   has_many :teams, :through => :matches, :source => :team_b
   has_many :players
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
   belongs_to :league
   mount_uploader :image, TeamImageUploader
 

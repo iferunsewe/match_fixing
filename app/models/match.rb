@@ -5,7 +5,7 @@ class Match < ActiveRecord::Base
   belongs_to :team_a, :class_name => :Team
   belongs_to :team_b, :class_name => :Team
   belongs_to :ground
-  has_many :stats
+  has_many :stats, dependent: :destroy
   has_many :players, through: :stats
   after_create :init_stats_for_players # Used to create a stat for each player when a match is created.
 

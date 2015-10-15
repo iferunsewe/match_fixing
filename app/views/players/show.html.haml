@@ -1,18 +1,21 @@
 .profile-container.no-margin.font-override
   .col-sm-6.profile-left.no-margin.no-padding.text-center
     .row.profile-image-box.no-margin
-      .col-xs-12.profile-image{:style=>"background: url(#{@player.image.detail.url.nil? ? '/assets/eboue2.jpg' : @player.image.detail.url}) no-repeat center center;height: 100%;max-width: 100%;-webkit-background-size: 50%;-moz-background-size: 50%;-o-background-size: 50%;background-size: 50%;"}
+      .col-xs-12.profile-image{:style=>"background: url(#{@player.image.detail.url.nil? ? '/assets/eboue_smart.jpg' : @player.image.detail.url}) no-repeat center center;height: 100%;max-width: 100%;-webkit-background-size: 50%;-moz-background-size: 50%;-o-background-size: 50%;background-size: 50% 100%;"}
       .col-xs-12.name-box
-        %h2=@player.name
+        %h2
+          =@player.name
+          -if @player.captain?
+            %i.fa.fa-copyright
         %h5= link_to @player.team.name, @player.team, class: 'link-override-alt' if !@player.team.nil?
         %hr
     .row
       .col-xs-12
         - if @player.ratings != []
-          -#%p
-          -#  = @player.float_average_rating
           -(1..@player.average_rating).each do |i|
             = image_tag('gold-star.png', class: 'small-star')
+          %h5
+            = @player.float_average_rating
         - else
           %p
             Not Rated Yet
@@ -84,7 +87,7 @@
                     %ul#myPager.pagination
                 / /table-resp
               / /tab-pane
-            #team.tab-pane{:style =>"background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('#{if @player.team then @player.team.image.wide.url end}') no-repeat center center; "}
+            #team.tab-pane{:style =>"background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('#{if @player.team then @player.team.image.team_tab.url end}') no-repeat center center; background-size: 100% 100%;"}
               %h1.centered-axis-xy
                 - if @player.team.nil?
                   Free Agent

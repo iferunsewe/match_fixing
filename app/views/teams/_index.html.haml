@@ -8,8 +8,8 @@
         %th.text-center Losses
         %th.text-center Draws
         %th.text-center Points
-        - if user_is_admin? || user_is_captain? && current_player.team == team
-          %th.text-center Actions
+        - if user_is_admin? || user_is_captain? && current_player.present?
+          %th
           %th
 
     %tbody
@@ -21,10 +21,11 @@
           %td= team.losses
           %td= team.draws
           %td= team.points
-          - if user_is_admin? || user_is_captain? && current_player.team == team
-            %td
+          %td
+            - if user_is_admin? || user_is_captain? && current_player.team == team # Repeated to keep white under borderlines
               = button_to 'Edit', edit_team_path(team), :method => :get, :class => "btn btn-xs btn-white nohoverwhite"
-            %td
+          %td
+            - if user_is_admin? || user_is_captain? && current_player.team == team
               = button_to 'Delete', team, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-xs btn-white nohoverwhite"
 
   %br

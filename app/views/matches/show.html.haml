@@ -4,10 +4,8 @@
       = @match.ground.name
       - if !@match.date.nil?
         \-
-        = @match.date.to_s(:long)
+        = @match.date.to_s(:short)
       %br/
-      -#%h5
-      -#  = @match.date.to_s(:short)
     .col-md-12.text-center
       - if user_is_admin?
         = link_to 'Edit Match', edit_match_path(@match), {:class => 'link-override',:style => "font-size:15px;"}
@@ -15,7 +13,7 @@
     .col-xs-12.text-center
       %h3 HOME
     .col-xs-12
-      %h1.text-center= @match.team_a.name
+      %h1.text-center= link_to @match.team_a.name, @match.team_a, class: 'link-override'
       .row
         .col-xs-6.col-xs-offset-3
           %img.img-responsive.img-circle{:src => "/assets/grass4.png"}
@@ -38,7 +36,7 @@
 
           %tbody
             - @match.team_a.players.each do |player|
-              -if Stat.where(player_id: player.id, match_id: @match.id) != []
+              -if Stat.where(player_id: player.id, match_id: @match.id) != [] #Flaky method as it doesn't allow you to edit teams due to the attributes needed therefore changing teams won't display below
                 %tr
                   %td
                     = player_avatar player
@@ -61,7 +59,7 @@
     .col-xs-12.text-center
       %h3 AWAY
     .col-xs-12
-      %h1.text-center= @match.team_b.name
+      %h1.text-center= link_to @match.team_b.name, @match.team_b, class: 'link-override-alt'
       .row
         .col-xs-6.col-xs-offset-3
           %img.img-responsive.img-circle{:src => "/assets/grass4.png"}
@@ -87,7 +85,6 @@
                 %tr
                   %td
                     = player_avatar player
-
                   %td.match-table
                     = link_to player.name, player, class: 'link-override-alt'
                     -if player.captain?
