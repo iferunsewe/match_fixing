@@ -110,7 +110,7 @@
           %span{"aria-hidden" => "true", :style =>'color:white;'} ×
         %h4#myModalLabel.modal-title.text-center
           Rate
-          =@match.team_b.name
+          =@match.team_a.name
       .modal-body.text-center
         = render 'rendered_pages/ratings_form', {object: @match.team_a, model: 'team'}
 
