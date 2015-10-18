@@ -22,6 +22,21 @@ Rails.application.routes.draw do
   root 'about#index'
   # root 'leagues#show', :id => '1'
 
+  resources :players do
+    collection { post :search, to: 'players#search' }
+  end
+
+  resources :teams do
+    collection { post :search, to: 'teams#search' }
+  end
+
+
+  resources :leagues do
+    collection { post :search, to: 'leagues#search' }
+  end
+
+  get '/search', to: "search#index"
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

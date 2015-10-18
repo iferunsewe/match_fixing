@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :user_is_player?, :user_is_admin?, :user_is_captain?, :previous_url
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_filter :set_ransack_form_variables
 
 
 
@@ -47,6 +48,13 @@ class ApplicationController < ActionController::Base
       team.update(played: team.calc_matches(team) ,wins: team.calc_wins(team), losses: team.calc_losses(team), draws: team.calc_draws(team), points: team.calc_points)
     end
     @teams = @teams.order(points: :desc)
+  end
+
+  def set_ransack_form_variables
+    q = params[:q]
+    @players = Player.search(name_cont: q).result
+    @teams = Team.search(name_cont: q).result
+    @leagues = League.search(name_cont: q).result
   end
 
   protected
