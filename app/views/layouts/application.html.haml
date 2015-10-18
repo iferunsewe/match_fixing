@@ -40,10 +40,10 @@
               - else
                 %li{:style =>"width:21%;border-left:white;padding-left:5%;"}
                   = link_to "My Team", current_player.team
-              - if current_player.team.present? && current_player.team.league.present?
-                %li{:style =>"width:31%;border-left:white;padding-left:5%;"}
-                  = link_to "League Table", league_path(current_player.team.league)
-                  %span.sr-only (current)
+              -#- if current_player.team.present? && current_player.team.league.present?
+              %li{:style =>"width:31%;border-left:white;padding-left:0%;"}
+                = link_to "League Table", league_path(1)
+                %span.sr-only (current)
               %li
                 %form.navbar-form{action: "/search", method: :get}
                   .input-group
