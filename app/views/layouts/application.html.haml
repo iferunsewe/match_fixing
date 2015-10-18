@@ -38,7 +38,7 @@
                 %li{:style =>"width:21%;border-left:white;padding-left:5%;"}
                   = link_to "Join your team", edit_player_path(current_player)
               - else
-                %li{:style =>"width:21%;border-left:white;padding-left:5%;"}
+                %li{:style =>"width:21%;border-left:white;padding-left:3%;"}
                   = link_to "My Team", current_player.team
               -#- if current_player.team.present? && current_player.team.league.present?
               %li{:style =>"width:31%;border-left:white;padding-left:0%;"}
