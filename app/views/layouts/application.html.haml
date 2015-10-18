@@ -29,25 +29,25 @@
           / Collect the nav links, forms, and other content for toggling
           #bs-example-navbar-collapse-1.collapse.navbar-collapse
             %ul.nav.navbar-nav{:style =>"width:70%;"}
-              %li{:style =>"width:25%;border-left:white;padding-left:5%;"}
+              %li{:style =>"width:17%;border-left:white;padding-left:5%;"}
                 = link_to "My Profile", current_player
               - if current_player.team.nil? && user_is_captain?
-                %li{:style =>"width:25%;border-left:white;padding-left:5%;"}
+                %li{:style =>"width:21%;border-left:white;padding-left:5%;"}
                   = link_to "Create Team", new_team_path
               - elsif current_player.team.nil?
-                %li{:style =>"width:25%;border-left:white;padding-left:5%;"}
+                %li{:style =>"width:21%;border-left:white;padding-left:5%;"}
                   = link_to "Join your team", edit_player_path(current_player)
               - else
-                %li{:style =>"width:25%;border-left:white;padding-left:5%;"}
+                %li{:style =>"width:21%;border-left:white;padding-left:5%;"}
                   = link_to "My Team", current_player.team
               - if current_player.team.present? && current_player.team.league.present?
-                %li{:style =>"width:25%;border-left:white;padding-left:5%;"}
+                %li{:style =>"width:31%;border-left:white;padding-left:5%;"}
                   = link_to "League Table", league_path(current_player.team.league)
                   %span.sr-only (current)
               %li
                 %form.navbar-form{action: "/search", method: :get}
                   .input-group
-                    %input#srch-term.form-control{name: "q", placeholder: "Search...", type: "text"}/
+                    %input#srch-term.form-control{name: "search_input", placeholder: "Search...", type: "text"}/
                     .input-group-btn
                       %button.btn.btn-default{:type => "submit"}
                         %i.glyphicon.glyphicon-search

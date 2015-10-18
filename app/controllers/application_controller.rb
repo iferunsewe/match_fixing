@@ -51,10 +51,10 @@ class ApplicationController < ActionController::Base
   end
 
   def set_ransack_form_variables
-    q = params[:q]
-    @players = Player.search(name_cont: q).result
-    @teams = Team.search(name_cont: q).result
-    @leagues = League.search(name_cont: q).result
+    search_input = params[:search_input]
+    @players = Player.search(name_cont: search_input).result
+    @teams = Team.search(name_cont: search_input).result
+    @leagues = League.search(name_cont: search_input).result
   end
 
   protected
