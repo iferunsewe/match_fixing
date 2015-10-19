@@ -31,7 +31,7 @@
               %li{:style =>"width:17%;border-left:white;padding-left:5%;"}
                 = link_to "My Profile", current_player
               - if current_player.team.nil? && user_is_captain?
-                %li{:style =>"width:12%;border-left:white;padding-left:0%;"}
+                %li{:style =>"width:14%;border-left:white;padding-left:0%;"}
                   = link_to "Create Team", new_team_path
               - elsif current_player.team.nil?
                 %li{:style =>"width:12%;border-left:white;padding-left:0%;"}
