@@ -4,17 +4,23 @@
       Search results
 
   .search-results
-    - if @players.present?
-      -  @players.each do |player|
-        .search-result
-          = link_to player.name, player_path(player), class: "link-override"
-          = player_avatar player
-    - elsif @teams.present?
-      -  @teams.each do |team|
-        = link_to team.name, team_path(team), class: "link-override"
-    - elsif @leagues.present?
-      -  @leagues.each do |league|
-        = link_to league.name, league_path(league), class: "link-override"
-    - else
-      %h2 Can't find anything on here! Try again
-    %br
+    .table-responsive
+      %table
+        %tbody
+          - search_results = @players += @teams += @leagues
+          - unless search_results == []
+            - search_results.map do |result|
+              - if result.class.name == "Player"
+                %tr
+                  %td= link_to result.name, player_path(result), class: "link-override"
+                  %td= player_avatar result
+              - elsif result.class.name == "Team"
+                - @teams.each do |team|
+                  %tr{style: "height:70px;"}
+                    %td= link_to team.name, team_path(team), class: "link-override"
+              - else
+                -  @leagues.each do |league|
+                  %tr{style: "height:70px;"}
+                    %td= link_to league.name, league_path(league), class: "link-override"
+          - else
+            %h2 Can't find anything on here! Try again
