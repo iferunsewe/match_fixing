@@ -1,0 +1,14 @@
+- if team == match_played.team_a
+  #rateModalA.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+- else
+  #rateModalB.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+    .modal-dialog{:role => "document"}
+      .modal-content.font-override
+        .modal-header
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true", :style =>'color:white;'} ×
+          %h4#myModalLabel.modal-title.text-center
+            Rate
+            = team.name
+        .modal-body.text-center
+          = render 'rendered_pages/ratings_form', {object: team, model: 'team'}
