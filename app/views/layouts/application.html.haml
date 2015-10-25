@@ -105,9 +105,7 @@
                   %h4
                     Or
                 .col-xs-12.text-center
-                  = link_to "Sign up with facebook", player_omniauth_authorize_path(:facebook), {class: "btn btn-primary"}
-
-    
+                  = link_to image_tag("grass-facebook-logo.jpg", class: 'login-social-media-logo'), player_omniauth_authorize_path(:facebook)
 
     .page-wrap
       =yield
