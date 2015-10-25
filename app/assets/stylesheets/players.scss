@@ -301,3 +301,9 @@ html body {
 .cancel-my-account{
   margin-top: 2%;
 }
+
+@media only screen and (max-height: 640px) {
+  .speciality-box{
+    margin-top: 20%;
+  }
+}

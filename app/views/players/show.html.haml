@@ -102,29 +102,20 @@
                       %p Not Rated Yet
           / /tab-pane
         / /tab-content
-    .row
-      .col-sm-12.speciality-box
-        %h2
-          Specialities
-        %hr
-    .row
-      .col-xs-12
-        - @player.specialities.each do |speciality|
-          -if @player.specialities.length == 1
-            .col-xs-12
-              = image_tag speciality.image, alt: speciality.name, class: 'speciality-img'
-              %p
-                =speciality.name
-          -if @player.specialities.length == 2
-            .col-xs-6
-              = image_tag speciality.image, alt: speciality.name, class: 'speciality-img'
-              %p
-                =speciality.name
-          -if @player.specialities.length == 3
+    .row.speciality-box
+      .row
+        .col-sm-12
+          %h2
+            Specialities
+          %hr
+      .row
+        .col-xs-12
+          - @player.specialities.each do |speciality|
             .col-xs-4
               = image_tag speciality.image, alt: speciality.name, class: 'speciality-img'
               %p
                 =speciality.name
+
   / Modal
   #rateModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
     .modal-dialog{:role => "document"}
