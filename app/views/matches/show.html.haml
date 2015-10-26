@@ -12,120 +12,19 @@
   .match_home.col-sm-6
     .col-xs-12.text-center
       %h3 HOME
-    .col-xs-12
-      %h1.text-center= link_to @match.team_a.name, @match.team_a, class: 'link-override'
-      .row
-        .col-xs-6.col-xs-offset-3
-          %img.img-responsive.img-circle{:src => "/assets/grass4.png"}
-            .circle-inner
-              .score-text
-                - if @match.status
-                  = @match.team_a_score
-                - else
-                  0
-      .table-responsive
-        %table.table.no-border
-          %thead
-            %tr
-              %th
-              %th Players
-              %th Rating
-              - if @match.status
-                %th Goals
-                %th
-
-          %tbody
-            - @match.team_a.players.each do |player|
-              -if Stat.where(player_id: player.id, match_id: @match.id) != [] #Flaky method as it doesn't allow you to edit teams due to the attributes needed therefore changing teams won't display below
-                %tr
-                  %td
-                    = player_avatar player
-                  %td.match-table
-                    = link_to player.name, player, class: 'link-override'
-                    -if player.captain?
-                      %i.fa.fa-copyright{:style =>"color:white;"}
-                  %td.match-table
-                    -for i in 1..player.average_rating
-                      %span.glyphicon.glyphicon-star-empty
-                  - if @match.status
-                    %td.match-table
-                      -for i in 1..player.goals_in_match(player.id, @match.id)
-                        %i.fa.fa-futbol-o
-                    %td.match-table
-                      = player.motm_in_match(player.id, @match.id)
-                  %br
+    = render 'matches/team_match_stats.html.haml', {match_played: @match, team: @match.team_a, team_score: @match.team_a_score}
 
   .match_away.col-sm-6
     .col-xs-12.text-center
       %h3 AWAY
-    .col-xs-12
-      %h1.text-center= link_to @match.team_b.name, @match.team_b, class: 'link-override-alt'
-      .row
-        .col-xs-6.col-xs-offset-3
-          %img.img-responsive.img-circle{:src => "/assets/grass4.png"}
-            .circle-inner
-              .score-text
-                - if @match.status
-                  = @match.team_b_score
-                - else
-                  0
-      .table-responsive
-        %table.table.no-border
-          %thead
-            %tr
-              %th
-              %th Players
-              %th Rating
-              - if @match.status
-                %th Goals
-                %th
-          %tbody
-            - @match.team_b.players.each do |player|
-              -if Stat.where(player_id: player.id, match_id: @match.id) != []
-                %tr
-                  %td
-                    = player_avatar player
-                  %td.match-table
-                    = link_to player.name, player, class: 'link-override-alt'
-                    -if player.captain?
-                      %i.fa.fa-copyright
-                  %td.match-table
-                    -for i in 1..player.average_rating
-                      %span.glyphicon.glyphicon-star-empty
-                  - if @match.status
-                    %td.match-table
-                      -for i in 1..player.goals_in_match(player.id, @match.id)
-                        %i.fa.fa-futbol-o
-                    %td.match-table
-                      = player.motm_in_match(player.id, @match.id)
-                  %br
+    = render 'matches/team_match_stats.html.haml', {match_played: @match, team: @match.team_b, team_score: @match.team_b_score}
 
 
 / Modal
-#rateModalA.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-dialog{:role => "document"}
-    .modal-content.font-override
-      .modal-header
-        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-          %span{"aria-hidden" => "true", :style =>'color:white;'} ×
-        %h4#myModalLabel.modal-title.text-center
-          Rate
-          =@match.team_a.name
-      .modal-body.text-center
-        = render 'rendered_pages/ratings_form', {object: @match.team_a, model: 'team'}
+= render 'matches/rate_modal', {match_played: @match, team: @match.team_a}
 
 / Modal
-#rateModalB.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-dialog{:role => "document"}
-    .modal-content.font-override
-      .modal-header
-        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-          %span{"aria-hidden" => "true", :style =>'color:white;'} ×
-        %h4#myModalLabel.modal-title.text-center
-          Rate
-          =@match.team_b.name
-      .modal-body.text-center
-        = render 'rendered_pages/ratings_form', {object: @match.team_b, model: 'team'}
+= render 'matches/rate_modal', {match_played: @match, team: @match.team_b}
 
 - if current_player.team != @match.team_a && current_player.team == @match.team_b && @match.status && @match.played_and_rated_before(current_player, @match.team_a, @match)
   %button.btn-rate-player{"data-target" => "#rateModalA", "data-toggle" => "modal", :type => "button", :class=>"hide"}

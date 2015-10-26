@@ -18,18 +18,15 @@ class Team < ActiveRecord::Base
   end
 
   def calc_wins(team)
-    wins = Match.where(team_a_id: team.id).where("team_a_score > team_b_score")
-    @wins = wins.size
+    @wins = Match.where(team_a_id: team.id, status: true).where("team_a_score > team_b_score").size + Match.where(team_b_id: team.id).where("team_b_score > team_a_score").size
   end
 
   def calc_losses(team)
-    losses = Match.where(team_a_id: team.id).where("team_a_score < team_b_score")
-    @losses = losses.size
+    @losses = Match.where(team_a_id: team.id, status: true).where("team_a_score < team_b_score").size + Match.where(team_b_id: team.id).where("team_b_score < team_a_score").size
   end
 
   def calc_draws(team)
-    draws = Match.where(team_a_id: team.id).where("team_a_score = team_b_score")
-    @draws = draws.size
+    @draws = Match.where(status: true).where("team_a_id = #{team.id} OR team_b_id = #{team.id}").where("team_a_score = team_b_score").size
   end
 
   def calc_points
