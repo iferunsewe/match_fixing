@@ -27,7 +27,11 @@
         .form-group
           = f.label :secondary_kit_colour
           = f.text_field :secondary_kit_colour, class: "form-control"
-      .col-md-12
+      .col-md-6
+        .form-group
+          = f.label :choose_league
+          = f.collection_select :league_id, League.all, :id, :name, class: "form-control"
+      .col-md-6
         .form-group
           = f.label :image, "Choose team photo. Wide photos are ideal e.g. 1200x400"
           %br/
