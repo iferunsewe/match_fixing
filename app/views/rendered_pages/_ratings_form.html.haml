@@ -4,5 +4,7 @@
     - sym_model = "#{model}_id".to_sym
     = f.hidden_field sym_model
     = f.hidden_field :stars, id: "#{form_id}_stars"
-  -(1..5).each do |i|
-    = image_tag("star-off.png", class: "star_rating", "data-form-id" => form_id, "data-stars" => i, id: "#{form_id}_#{i}", alt:"star_rating")
+    -(1..5).each do |i|
+      = image_tag("star-off.png", class: "star_rating", "data-form-id" => form_id, "data-stars" => i, id: "#{form_id}_#{i}", alt:"star_rating")
+    .ratings-comment
+      = f.text_area :comment, placeholder: "What did you think of #{object.name}?", class: "form-control"
