@@ -40,25 +40,21 @@
 
       -# Form to edit stats - only appears on the edit page
       - if @match.status
+        .col-md-6
+          .form-group
+            = f.label :enter_stats_for_a_player
+            = f.collection_select :stats, @match.stats.sort_by{|stat| stat.player.team}, :id, :stat_player_name, {include_blank: "Choose player"} ,{:class => "form-control", id: 'players-stats-selector'}
         = f.fields_for :stats do |s|
-          .col-md-3
-            .form-group
-              %h4
-                %b
-                  = s.label s.object.player.name
-          .col-md-3
-            .form-group
-              %h5
-                %b
-                  = s.label s.object.player.team.name
-          .col-md-3
-            .form-group
-              = s.label :goals
-              = s.select :goals, 0..10, {}, {:class => "form-control"}
-          .col-md-3
-            .form-group
-              = s.label :man_of_the_match
-              = s.select :man_of_the_match, [["Yes", true], ["No", false]], {}, {:class => "form-control"}
+          - stat_id = s.object.id
+          .hidden-option-stats{id: "stat_form#{stat_id}"}
+            .col-md-3
+              .form-group
+                = s.label :goals
+                = s.select :goals, 0..10, {}, {:class => "form-control"}
+            .col-md-3
+              .form-group
+                = s.label :man_of_the_match
+                = s.select :man_of_the_match, [["Yes", true], ["No", false]], {}, {:class => "form-control"}
 
       .col-md-12
         .actions.text-center
