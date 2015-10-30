@@ -13,7 +13,7 @@
     .col-xs-12.text-center
       %h3 HOME
     .col-xs-12
-      %h1.text-center= link_to @match.team_a.name, @match.team_a, class: 'link-override'
+      %h1.text-center= link_to @match.team_a.name, @match.team_a, {class: 'link-override', style: 'height:80px'}
       .row
         .col-xs-6.col-xs-offset-3
           %img.img-responsive.img-circle{:src => "/assets/grass4.png"}
@@ -59,7 +59,7 @@
     .col-xs-12.text-center
       %h3 AWAY
     .col-xs-12
-      %h1.text-center= link_to @match.team_b.name, @match.team_b, class: 'link-override-alt'
+      %h1.text-center= link_to @match.team_b.name, @match.team_b, {class: 'link-override-alt', style: 'height:80px'}
       .row
         .col-xs-6.col-xs-offset-3
           %img.img-responsive.img-circle{:src => "/assets/grass4.png"}
