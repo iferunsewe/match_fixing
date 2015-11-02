@@ -1,14 +1,16 @@
-- if team == match_played.team_a
-  #rateModalA.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-- else
-  #rateModalB.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-    .modal-dialog{:role => "document"}
-      .modal-content.font-override
-        .modal-header
-          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-            %span{"aria-hidden" => "true", :style =>'color:white;'} ×
-          %h4#myModalLabel.modal-title.text-center
-            Rate
-            = team.name
-        .modal-body.text-center
-          = render 'rendered_pages/ratings_form', {object: team, model: 'team'}
+#rateModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content.font-override
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true", :style =>'color:white;'} ×
+        %h4#myModalLabel.modal-title.text-center
+          Rate
+          = team.name
+      .modal-body.text-center
+        = render 'rendered_pages/ratings_form', {object: team, model: 'team'}
+
+- if current_player.team != match_played.team_a && current_player.team == match_played.team_b && match_played.status && @match.played_and_rated_before(current_player, @match.team_a, @match)
+  %button.btn-rate-player{"data-target" => "#rateModalA", "data-toggle" => "modal", :type => "button", :class=>"hide"}
+- if current_player.team != natch_played.team_b && current_player.team == match_played.team_a && match_played.status == true && @match.played_and_rated_before(current_player, @match.team_b, @match)
+  %button.btn-rate-player{"data-target" => "#rateModalB", "data-toggle" => "modal", :type => "button", :class=>"hide"}

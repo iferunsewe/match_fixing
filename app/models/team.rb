@@ -60,4 +60,10 @@ class Team < ActiveRecord::Base
   def calc_matches(team)
     team.matches.where(status: true).size + team.reverse_team_match.where(status: true).size
   end
+
+  def comments
+    self.ratings.map do |rating|
+      "#{rating.comment} by #{Player.find(rating.rater).name}"
+    end.compact
+  end
 end

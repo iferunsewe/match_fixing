@@ -6,10 +6,6 @@ li.star_rating{
   float: left;
 }
 
-li.star_rating:hover{
-  background: url("star-on.png");
-}
-
 .on{
   @extend .star_rating;
   background: url("star-on.png");
