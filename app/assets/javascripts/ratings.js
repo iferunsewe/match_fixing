@@ -27,6 +27,15 @@ specialties.limitChosenSpecialities = function(){
     });
 };
 
+matches = {};
+matches.editFormFields = function(){
+    $('#players-stats-selector').change(function(){
+        $('.hidden-option-stats').hide();
+        var selectedPlayer = $(this).val();
+        $('#stat_form' + selectedPlayer).show();
+    });
+};
+
 
 $(document).ready(function(){
     $('.btn-rate-player').click()
@@ -53,6 +62,9 @@ $(document).ready(function(){
     });
 
     specialties.limitChosenSpecialities();
+
+    matches.editFormFields();
+
 });
 
 
