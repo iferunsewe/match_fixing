@@ -1,12 +1,17 @@
 .team-container.font-override
   .row.no-margin{:style =>"height: 45%;background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(#{@team.image.wide.url}) no-repeat center center fixed;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100%;background-size: 100% 100%;"}
     .col-xs-6.pull-left
-      %p.pull-left
-        = @team.comments
-
-    .col-xs-6.pull-right
-      %h1.pull-right 
+      %h1.team-title
         = @team.name
+    - if !@team.comments != []
+      .col-xs-6.pull-right
+        %h3.comment-title
+          Match Reviews
+        .comments-box
+          %ul.comments
+            - @team.comments.each do |comment|
+              %li
+                = comment
 
   .row.ratings-row.text-center.no-margin{:style => "color:white;"}
     - if @team.players != [] && @team.ratings.sum(:stars) > 0 && @team.average_rating(@team) != 0

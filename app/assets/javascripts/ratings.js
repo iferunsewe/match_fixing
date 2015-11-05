@@ -39,7 +39,6 @@ ratingsSection.sendStarsToDb = function(){
             url: htmlIdForm.attr('action'),
             data: htmlIdForm.serialize()
         }).success(function(){
-            console.log('RATED');
             htmlIdRatingsForm.html('');
             htmlIdRatingsForm.append("<p>Rated</p>");
         });
