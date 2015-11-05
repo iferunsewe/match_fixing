@@ -114,19 +114,6 @@ class Player < ActiveRecord::Base
     user
   end
 
-
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      if auth = session["devise.authentication"]
-        facebook_auth_name = [auth["info"]["first_name"], auth["info"]["last_name"]].join(' ')
-        user.name = facebook_auth_name if user.name.blank?
-        user.email = auth["info"]["email"] if user.email.blank?
-        user.image = auth["info"]["image"] if user.image.blank?
-        user.skip_confirmation! if user.respond_to?(:skip_condirmation!)
-      end
-    end
-  end
-
   def calculate_age(birthday)
     (Date.today - birthday).to_i / 365
   end

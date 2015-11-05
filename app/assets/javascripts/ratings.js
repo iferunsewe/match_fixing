@@ -1,7 +1,7 @@
 ratingsSection = {};
 
 
-ratingsSection.setStars = function(form_id, stars){
+ratingsSection.changeStarImage = function(form_id, stars){
     for(i=1; i<=5; i++){
         if(i<=stars){
             $('#' + form_id + '_' + i).attr("src", "/assets/star-on.png");
@@ -9,6 +9,48 @@ ratingsSection.setStars = function(form_id, stars){
             $('#' + form_id + '_' + i).attr("src", "/assets/star-off.png");
         }
     }
+};
+
+ratingsSection.changeStarHover = function(){
+    $('.star_rating').hover(function(){
+        var star = $(this);
+        var stars = star.attr('data-stars');
+        var form_id = star.attr('data-form-id');
+        ratingsSection.changeStarImage(form_id, stars);
+    }, function(){
+        var star = $(this);
+        var stars = star.attr('data-stars');
+        var form_id = star.attr('data-form-id');
+        ratingsSection.changeStarImage(form_id, stars);
+    })
+};
+
+ratingsSection.sendStarsToDb = function(){
+    $('.star_rating').click(function(){
+        var star = $(this);
+        var form_id = star.attr('data-form-id');
+        var stars = star.attr('data-stars');
+        var htmlIdForm = $('#' + form_id);
+        var htmlIdRatingsForm = $('#ratings_form');
+        ratingsSection.changeStarImage(form_id, stars);
+        $('#' + form_id + '_stars').val(stars);
+        $.ajax({
+            method: 'POST',
+            url: htmlIdForm.attr('action'),
+            data: htmlIdForm.serialize()
+        }).success(function(){
+            htmlIdRatingsForm.html('');
+            htmlIdRatingsForm.append("<p>Rated</p>");
+        });
+    });
+};
+
+ratingsSection.setStars = function(){
+    $('.star_rating_form').each(function(){
+        var rails_form_id = $(this).attr('id');
+        var stars_value = $('#' + rails_form_id + '_stars').val();
+        ratingsSection.changeStarImage(rails_form_id, stars_value)
+    });
 };
 
 specialties = {};
@@ -38,28 +80,13 @@ matches.editFormFields = function(){
 
 
 $(document).ready(function(){
-    $('.btn-rate-player').click()
-    $('.star_rating').click(function(){
-        var star = $(this);
-        var form_id = star.attr('data-form-id');
-        var stars = star.attr('data-stars');
-        ratingsSection.setStars(form_id, stars);
-        $('#' + form_id + '_stars').val(stars);
-        $.ajax({
-            method: 'POST',
-            url: $('#' + form_id).attr('action'),
-            data: $('#' + form_id).serialize()
-        }).success(function(){
-            $('#ratings_form').html('');
-            $('#ratings_form').append("<p>Rated</p>");
-        });
-    });
+    $('.btn-rate-player').click();
 
-    $('.star_rating_form').each(function(){
-        var form_id = $(this).attr('id');
-        var stars = $('#' + form_id + '_stars').val();
-        ratingsSection.setStars(form_id, stars)
-    });
+    ratingsSection.changeStarHover();
+
+    ratingsSection.sendStarsToDb();
+
+    ratingsSection.setStars();
 
     specialties.limitChosenSpecialities();
 
