@@ -10,6 +10,7 @@ class Team < ActiveRecord::Base
   has_many :ratings, dependent: :destroy
   belongs_to :league
   mount_uploader :image, TeamImageUploader
+  include ActionView::Helpers
 
   accepts_nested_attributes_for :players
 
@@ -51,13 +52,15 @@ class Team < ActiveRecord::Base
     team_ratings_sum / team_ratings_size
   end
 
-  def players_names(team)
-    team.players.map do |player|
-      player.name
-    end
-  end
-
   def calc_matches(team)
     team.matches.where(status: true).size + team.reverse_team_match.where(status: true).size
+  end
+
+  def comments
+    self.ratings.reject { |rating|
+      rating.comment.blank?
+    }.map { |rating|
+      simple_format("#{rating.comment}\n#{rating.created_at.to_s(:short)}")
+    }.last(3).reverse
   end
 end
