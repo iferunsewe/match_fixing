@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Rails match_fixing: test" uuid="0e5ecbb2-9db7-4e4e-a50e-7b0355fa6445">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails match_fixing: development" uuid="154cc9e1-e149-4552-95fe-8213052287c8">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails match_fixing: production" uuid="bef71e76-40b6-48df-8850-5f38ce2fbc13">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>
