@@ -7,7 +7,7 @@
         = @match.date.to_s(:short)
       %br/
     .col-md-12.text-center
-      - if user_is_admin?
+      - if user_is_admin? || user_is_captain?
         = link_to 'Edit Match', edit_match_path(@match), {:class => 'link-override',:style => "font-size:15px;"}
   .match_home.col-sm-6
     .col-xs-12.text-center

@@ -1,16 +1,47 @@
 .league-container{
-  height: 100vh;
+  height: 100%;
   background: linear-gradient(
     rgba(0, 0, 0, 0.8), 
     rgba(0, 0, 0, 0.8)
-  ), url('/assets/pitch.jpg') no-repeat center center fixed; 
+  ), url('/assets/grass-wallpaper.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  min-height: 100%;
+  min-height: 100vh;
 }
 .league-table{
-
   margin: 0 auto;
+}
+
+.fixtures-and-results-container{
+  padding-bottom: 10%;
+  height: 100%;
+  background: linear-gradient(
+                  rgba(0, 0, 0, 0.8),
+                  rgba(0, 0, 0, 0.8)
+  ), url('/assets/grass-wallpaper.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.fixtures-and-results-body{
+  .table-responsive{
+    padding-left: 5%;
+    border: none;
+    .table tbody tr td{
+      border: none;
+    }
+    td.team_name{
+      width: 15%;
+    }
+  }
+}
+
+.fixtures-and-results-title{
+  border-bottom: 1px solid white;
+  padding-left: 5%;
 }

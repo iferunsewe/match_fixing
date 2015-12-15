@@ -4,6 +4,8 @@
     %p
       %b Location:
       = @league.location
+      |
+      = link_to 'Fixtures and Results', "/leagues/#{@league.id}/fixtures-and-results", class: "link-override"
       = render 'teams/index', {league_teams: @league.teams}
     - if user_is_admin?
       %h4.text-center

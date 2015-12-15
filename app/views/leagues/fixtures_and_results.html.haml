@@ -1,0 +1,26 @@
+.fixtures-and-results-container.font-override{:style =>"color:white;padding-top: 10%;"}
+  %h1.text-center Fixtures and Results
+  - @matches.each do |date, matches|
+    .fixtures-and-results-title
+      %h3 #{date.to_s(:short)}
+
+    .fixtures-and-results-body
+      .table-responsive
+        %table.table
+          %tbody#items
+            - matches.each do |match|
+              %tr
+                %td= match.display_status(match.status)
+                %td.team_name
+                  = link_to match.team_a.name, team_path(match.team_a), class: "link-override"
+                - if match.status
+                  %td= match.team_a_score
+                %td vs
+                - if match.status
+                  %td= match.team_b_score
+                %td.team_name
+                  = link_to match.team_b.name, team_path(match.team_b), class: "link-override"
+                %td
+                  - if match.ground.present?
+                    = match.ground.name
+                %td= link_to 'Match report', match, class: "link-override"

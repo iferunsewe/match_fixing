@@ -13,6 +13,11 @@ class LeaguesController < ApplicationController
   def show
   end
 
+  def fixtures_and_results
+    @league = League.find(params[:id])
+    @matches = Match.all.group_by(&:date)
+  end
+
   # GET /leagues/new
   def new
     @league = League.new
@@ -61,6 +66,8 @@ class LeaguesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
