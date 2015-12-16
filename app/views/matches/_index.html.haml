@@ -27,7 +27,7 @@
             %td vs
             - if match.status
               %td= match.team_b_score
-            -#%td= link_to match.team_b.name, team_path(match.team_b)
+            %td= link_to match.team_b.name, team_path(match.team_b)
             -#- if match.team_a != current_player.team && match.status == nil
             -#  %td
             -#    = form_for match do |f|
