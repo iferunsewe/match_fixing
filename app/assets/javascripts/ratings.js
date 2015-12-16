@@ -90,7 +90,7 @@ $(document).ready(function(){
 
     specialties.limitChosenSpecialities();
 
-    matches.editFormFields();
+    //matches.editFormFields();
 
 });
 

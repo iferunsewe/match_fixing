@@ -7,46 +7,48 @@
           - @match.errors.full_messages.each do |msg|
             %li= msg
     .row
-      .col-md-12
-        .form-group
-          = f.label :date
-          .form-inline
-            = datetime_select :match, :date, { start_year: 100.years.ago.year, end_year: Date.today.year, default: @match.date.nil? ? Date.today : @match.date}, class: "form-control"
-      .col-xs-4
-        .form-group
-          = f.label :home_team
-          = f.collection_select :team_a_id, Team.all, :id, :name, {:prompt => 'Choose Home Team'}, {:class => "form-control pick-team-field"}
-      - if @match.status
-        .col-xs-2
-          = f.label :score
-          = f.number_field :team_a_score, {:class => "form-control"}
-      .col-xs-4
-        .form-group
-          = f.label :away_team
-          = f.collection_select :team_b_id, Team.all, :id, :name, {:prompt => 'Choose Away Team'}, {:class => "form-control pick-team-field"}
-      - if @match.status
-        .col-xs-2
-          = f.label :score
-          = f.number_field :team_b_score, {:class => "form-control"}
-      = f.fields_for :ground do |g|
-        .col-xs-6
+      - if user_is_admin?
+        .col-md-12
           .form-group
-          = g.label :ground
-          = g.text_field :name, class: "form-control"
-        .col-xs-6
+            = f.label :date
+            .form-inline
+              = datetime_select :match, :date, { start_year: 100.years.ago.year, end_year: Date.today.year, default: @match.date.nil? ? Date.today : @match.date}, class: "form-control"
+        .col-xs-4
           .form-group
-            = g.label :address
-            = g.text_area :address, class: "form-control"
+            = f.label :home_team
+            = f.collection_select :team_a_id, Team.all, :id, :name, {:prompt => 'Choose Home Team'}, {:class => "form-control pick-team-field"}
+        - if @match.status
+          .col-xs-2
+            = f.label :score
+            = f.number_field :team_a_score, {:class => "form-control"}
+        .col-xs-4
+          .form-group
+            = f.label :away_team
+            = f.collection_select :team_b_id, Team.all, :id, :name, {:prompt => 'Choose Away Team'}, {:class => "form-control pick-team-field"}
+        - if @match.status
+          .col-xs-2
+            = f.label :score
+            = f.number_field :team_b_score, {:class => "form-control"}
+        = f.fields_for :ground do |g|
+          .col-xs-6
+            .form-group
+            = g.label :ground
+            = g.text_field :name, class: "form-control"
+          .col-xs-6
+            .form-group
+              = g.label :address
+              = g.text_area :address, class: "form-control"
 
       -# Form to edit stats - only appears on the edit page
       - if @match.status
-        .col-md-6
-          .form-group
-            = f.label :enter_stats_for_a_player
-            = f.collection_select :stats, @match.stats.sort_by{|stat| stat.player.team}, :id, :stat_player_name, {include_blank: "Choose player"} ,{:class => "form-control", id: 'players-stats-selector'}
+        %h4.match-form-team-name
+          = current_player.team.name
         = f.fields_for :stats do |s|
-          - stat_id = s.object.id
-          .hidden-option-stats{id: "stat_form#{stat_id}"}
+          - if s.object.player.team == current_player.team
+            .col-md-2
+              = player_avatar s.object.player
+            .col-md-4
+              %h3= s.object.player.name
             .col-md-3
               .form-group
                 = s.label :goals
@@ -55,6 +57,7 @@
               .form-group
                 = s.label :man_of_the_match
                 = s.select :man_of_the_match, [["Yes", true], ["No", false]], {}, {:class => "form-control"}
+              %br
 
       .col-md-12
         .actions.text-center
