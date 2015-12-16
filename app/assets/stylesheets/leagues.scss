@@ -35,8 +35,14 @@
     .table tbody tr td{
       border: none;
     }
-    td.team_name{
+    td.team_name, td.ground{
       width: 15%;
+    }
+    td.score{
+      width: 5%;
+    }
+    td.status{
+      width: 10%;
     }
   }
 }

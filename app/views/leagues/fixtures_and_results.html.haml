@@ -10,14 +10,17 @@
           %tbody#items
             - matches.each do |match|
               %tr
-                %td= match.display_status(match.status)
+                %td.status
+                  = match.display_status(match.status)
                 %td.team_name
                   = link_to match.team_a.name, team_path(match.team_a), class: "link-override"
-                - if match.status
-                  %td= match.team_a_score
+                %td.score
+                  - if match.status
+                    = match.team_a_score
                 %td vs
-                - if match.status
-                  %td= match.team_b_score
+                %td.score
+                  - if match.status
+                    = match.team_b_score
                 %td.team_name
                   = link_to match.team_b.name, team_path(match.team_b), class: "link-override"
                 %td
