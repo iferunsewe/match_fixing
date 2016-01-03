@@ -1,4 +1,5 @@
-@mixin basic_styles($background_color,$background_color_alt,$color,$color_alt) 
+@mixin basic_styles($background_color,$background_color_alt,$color,$color_alt)
+
 {
 .container{
   font-family: 'Orbitron', sans-serif;
@@ -56,11 +57,22 @@
     }
 }
 
-  
+
 }
 
 .login-social-media-logo{
   border-radius: 10px;
   max-width: 250px;
   width: 100%;
+}
+
+@font-face {
+  font-family: 'Futarae';
+  src:url('futura-extra-bold.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.futara-bold{
+  font-family: 'Futarae', sans-serif;
 }

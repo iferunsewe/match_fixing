@@ -66,7 +66,7 @@
       - if current_page?('/players/password/new')
         .row.welcome-header-alt
           .col-xs-12
-            %h1.welcome-header.text-center.font-override{:style =>"padding-left: 15%;"}
+            %h1.welcome-header.text-center.futara-bold{:style =>"padding-left: 15%;"}
               Match Fixing
               = link_to "Sign up", new_registration_path(resource_name), {class: "btn btn-xs btn-white nohoverwhite pull-right", :style =>"margin-right: 5%;"}
               %button.btn.btn-xs.btn-white.nohoverwhite.pull-right{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button", :style =>"margin-right: 5%;"}
@@ -75,7 +75,7 @@
         .row
           .col-xs-12
             %h1.welcome-header.text-center.font-override{:style =>"padding-left: 15%;"}
-              Match Fixing
+              MATCH FIXING
               - if !current_page?('/players/sign_up')
                 = link_to "Sign up", new_registration_path(resource_name), {class: "btn btn-xs btn-black nohoverblack pull-right", :style =>"margin-right: 5%;"}
                 %button.btn.btn-xs.btn-black.nohoverblack.pull-right{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button", :style =>"margin-right: 5%;"}
