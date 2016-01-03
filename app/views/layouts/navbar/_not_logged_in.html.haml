@@ -1,0 +1,7 @@
+%h1.welcome-header.text-center.font-override
+  Match Fixing
+%ul.nav.navbar-nav.navbar-right{:style =>"width:25%;"}
+  %li{:style =>"padding-left:5%;"}
+    = link_to "Sign up", new_registration_path(resource_name), class: 'navbar-link'
+  %li.navbar-link{:style =>"padding-left:5%;", "data-target" => "#myModal", "data-toggle" => "modal"}
+    Login

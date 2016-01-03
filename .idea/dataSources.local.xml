@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="Rails match_fixing: test" uuid="0e5ecbb2-9db7-4e4e-a50e-7b0355fa6445">
+    <data-source name="Rails match_fixing: production" uuid="f74793c3-8d9a-43dd-b53b-25ed5a882357">
       <first-sync>true</first-sync>
     </data-source>
-    <data-source name="Rails match_fixing: development" uuid="154cc9e1-e149-4552-95fe-8213052287c8">
+    <data-source name="Rails match_fixing: development" uuid="17e3f0ae-e454-4805-90e8-28eef63fefa7">
       <first-sync>true</first-sync>
     </data-source>
-    <data-source name="Rails match_fixing: production" uuid="bef71e76-40b6-48df-8850-5f38ce2fbc13">
+    <data-source name="Rails match_fixing: test" uuid="ad0bb5c8-f0fa-436d-a7b3-a1a908549240">
       <first-sync>true</first-sync>
     </data-source>
   </component>

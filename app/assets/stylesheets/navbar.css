@@ -78,6 +78,11 @@ select.date-select {
     width: 10%;
 }
 
+.welcome-header{
+    display: inline-block;
+    padding-left: 5%;
+}
+
 .btn-black{
   background-color: black;
   border-color: black;

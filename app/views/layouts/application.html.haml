@@ -14,18 +14,10 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
   %body{style:'height: 100%;'}
     - if current_player
-      = render partial: 'layouts/navbar/logged_in/logged_in'
-      = render partial: 'layouts/my_custom_flash', :flash => flash
-
+      = render partial: 'layouts/navbar/logged_in'
     - else
-      %ul.nav.navbar-nav.navbar-right{:style =>"width:25%;"}
-        %h1.welcome-header.text-center.font-override
-          Match Fixing
-        %li{:style =>"padding-left:5%;"}
-          = link_to "Sign up", new_registration_path(resource_name), class: 'navbar-link'
-        %li{:style =>"padding-left:5%;"}
-          = link_to "Login", new_registration_path(resource_name), :class => 'navbar-link'
-    = render :partial => 'layouts/my_custom_flash', :flash => flash
+      = render partial: 'layouts/navbar/not_logged_in'
+    = render partial: 'layouts/my_custom_flash', :flash => flash
 
 
 
