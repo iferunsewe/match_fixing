@@ -91,7 +91,6 @@ $(document).ready(function(){
     specialties.limitChosenSpecialities();
 
     //matches.editFormFields();
-
 });
 
 

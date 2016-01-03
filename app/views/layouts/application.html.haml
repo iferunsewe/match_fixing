@@ -14,98 +14,31 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
   %body{style:'height: 100%;'}
     - if current_player
-      %nav.navbar.navbar-default.font-override
-        .container-fluid
-          / Brand and toggle get grouped for better mobile display
-          .navbar-header
-            %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-              %span.sr-only Toggle navigation
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-            %a{:href=> "/"}
-              %img.pull-left.img-responsive{:src => "/assets/logo-xs.jpg"}
-          / Collect the nav links, forms, and other content for toggling
-          #bs-example-navbar-collapse-1.collapse.navbar-collapse
-            %ul.nav.navbar-nav{:style =>"width:70%;"}
-              %li{:style =>"width:17%;border-left:white;padding-left:5%;"}
-                = link_to "My Profile", current_player
-              - if current_player.team.nil? && user_is_captain?
-                %li{:style =>"width:14%;border-left:white;padding-left:0%;"}
-                  = link_to "Create Team", new_team_path
-              - elsif current_player.team.nil?
-                %li{:style =>"width:12%;border-left:white;padding-left:0%;"}
-                  = link_to "Join Team", edit_player_path(current_player)
-              - else
-                %li{:style =>"width:12%;border-left:white;padding-left:0%;"}
-                  = link_to "My Team", current_player.team
-              - if current_player.team.present? && current_player.team.league.present?
-                %li{:style =>"width:20%;border-left:white;padding-left:0%;"}
-                  = link_to "League Table", league_path(current_player.team.league)
-                %span.sr-only (current)
-              %li
-                %form.navbar-form{action: "/search", method: :get}
-                  .input-group
-                    %input#srch-term.form-control{name: "search_input", placeholder: "Search...", type: "text", style: 'height:35px;'}/
-                    .input-group-btn
-                      %button.btn.btn-default{:type => "submit"}
-                        %i.glyphicon.glyphicon-search
-            %ul.nav.navbar-nav.navbar-right{:style =>"width:25%;"}
-              - if player_signed_in?
-                %li{:style =>"padding-left:5%;"}
-                  = button_to 'Edit account', edit_player_registration_path(current_player), :method => :get, :class => 'navbar-link', :class => 'btn btn-xs navbar-btn btn-white nohoverwhite'
-                %li{:style =>"padding-left:5%;"}
-                  = button_to "Log out", destroy_player_session_path, :method => :delete, :class => 'btn btn-xs navbar-btn btn-white nohoverwhite' 
-
-
-          / /.navbar-collapse
-        / /.container-fluid
-      = render :partial => 'layouts/my_custom_flash', :flash => flash
-
+      = render partial: 'layouts/navbar/logged_in'
     - else
-      - if current_page?('/players/password/new')
-        .row.welcome-header-alt
-          .col-xs-12
-            %h1.welcome-header.text-center.futara-bold{:style =>"padding-left: 15%;"}
-              Match Fixing
-              = link_to "Sign up", new_registration_path(resource_name), {class: "btn btn-xs btn-white nohoverwhite pull-right", :style =>"margin-right: 5%;"}
-              %button.btn.btn-xs.btn-white.nohoverwhite.pull-right{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button", :style =>"margin-right: 5%;"}
-                Login
-      -else
-        .row
-          .col-xs-12
-            %h1.welcome-header.text-center.font-override{:style =>"padding-left: 15%;"}
-              MATCH FIXING
-              - if !current_page?('/players/sign_up')
-                = link_to "Sign up", new_registration_path(resource_name), {class: "btn btn-xs btn-black nohoverblack pull-right", :style =>"margin-right: 5%;"}
-                %button.btn.btn-xs.btn-black.nohoverblack.pull-right{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button", :style =>"margin-right: 5%;"}
-                  Login
-              -else
-                = link_to "Sign up", new_registration_path(resource_name), {class: "btn btn-xs btn-white nohoverwhite pull-right", :style =>"margin-right: 5%;"}
-                %button.btn.btn-xs.btn-white.nohoverwhite.pull-right{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button", :style =>"margin-right: 5%;"}
-                  Login
-        = render :partial => 'layouts/my_custom_flash', :flash => flash
+      = render partial: 'layouts/navbar/not_logged_in'
+    = render partial: 'layouts/my_custom_flash', :flash => flash
 
 
 
-      / Modal
-      #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-        .modal-dialog{:role => "document"}
-          .modal-content.font-override
-            .modal-header
-              %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-                %span{"aria-hidden" => "true", :style =>'color:white;'} x
-              %h4#myModalLabel.modal-title.text-center Log In
-            .modal-body
-              = render 'devise/sessions/new'
-              .row
-                .col-xs-12.text-center
-                  %br/
-                  = link_to "Forgot your password?", new_password_path(resource_name), {class:"link-override-alt"}
-                  %h4
-                    Or
-                .col-xs-12.text-center
-                  = link_to image_tag("grass-facebook-logo.jpg", class: 'login-social-media-logo'), player_omniauth_authorize_path(:facebook)
+    / Modal
+    #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog{:role => "document"}
+        .modal-content.font-override
+          .modal-header
+            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+              %span{"aria-hidden" => "true", :style =>'color:white;'} x
+            %h4#myModalLabel.modal-title.text-center Log In
+          .modal-body
+            = render 'devise/sessions/new'
+            .row
+              .col-xs-12.text-center
+                %br/
+                = link_to "Forgot your password?", new_password_path(resource_name), {class:"link-override-alt"}
+                %h4
+                  Or
+              .col-xs-12.text-center
+                = link_to image_tag("grass-facebook-logo.jpg", class: 'login-social-media-logo'), player_omniauth_authorize_path(:facebook)
 
     .page-wrap
       =yield
