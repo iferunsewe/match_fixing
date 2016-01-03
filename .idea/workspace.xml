@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a01f871e-322c-4b7c-b222-df936c127a1c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/fonts/futura-extra-bold.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/fonts/futura-koyu.ttf" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/fonts/futura-light.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/fonts/futura-oblique.ttf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/basic_styles.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/basic_styles.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.haml" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
