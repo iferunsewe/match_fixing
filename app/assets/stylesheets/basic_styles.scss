@@ -67,8 +67,29 @@
 }
 
 @font-face {
-  font-family: 'Futarae';
+  font-family: 'Futara-Extra-Bold';
   src:url('futura-extra-bold.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futara-Koyu';
+  src:url('futura-koyu.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futara-Light';
+  src:url('futura-light.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura-Oblique';
+  src:url('futura-oblique.ttf');
   font-weight: normal;
   font-style: normal;
 }

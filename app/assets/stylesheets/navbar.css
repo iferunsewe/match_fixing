@@ -79,8 +79,25 @@ select.date-select {
 }
 
 .welcome-header{
-    display: inline-block;
     padding-left: 5%;
+    width: 100%;
+    height: 10%;
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.8)
+    ), url('/assets/navbar-grass-wallpaper.jpg') no-repeat fixed;
+    /*-webkit-background-size: cover;*/
+    /*-moz-background-size: cover;*/
+    /*-o-background-size: cover;*/
+    /*background-size: cover;*/
+    /*min-height: 100vh;*/
+}
+
+.welcome-header h1{
+    display: inline-block;
+    color: white;
+    font-family: 'Futura-Oblique', sans-serif;
+    letter-spacing: 8px;
 }
 
 .btn-black{
