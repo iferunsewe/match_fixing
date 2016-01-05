@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="15a9a683-c78c-4d5a-a1a9-5dae1a159163" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Development__match_fixing.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Production__match_fixing.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/runConfigurations/spec__match_fixing.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/runConfigurations/test__match_fixing.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/images/uk.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/match_fixing.iml" afterPath="$PROJECT_DIR$/.idea/match_fixing.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/basic_styles.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/basic_styles.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/navbar.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/navbar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/_my_custom_flash.html.haml" afterPath="$PROJECT_DIR$/app/views/layouts/_my_custom_flash.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/navbar/_not_logged_in.html.haml" afterPath="$PROJECT_DIR$/app/views/layouts/navbar/_not_logged_in.html.haml" />
-    </list>
+    <list default="true" id="15a9a683-c78c-4d5a-a1a9-5dae1a159163" name="Default" comment="" />
     <ignored path="match_fixing.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
