@@ -78,6 +78,19 @@ matches.editFormFields = function(){
     });
 };
 
+leagues = {};
+leagues.editResults = function(){
+    $('.input-score').hide();
+    $('.scores-submit-button').hide();
+    $('.input-scores-button').click(function(){
+        var score_inputs = $(this).attr('data_match_id')
+        $("." + score_inputs + "").show();
+        $('.scores-submit-button').show();
+        $('.score').hide();
+        $('.input-scores-button').hide();
+    })
+}
+
 
 $(document).ready(function(){
     $('.btn-rate-player').click();
@@ -89,6 +102,8 @@ $(document).ready(function(){
     ratingsSection.setStars();
 
     specialties.limitChosenSpecialities();
+
+    leagues.editResults();
 
     //matches.editFormFields();
 

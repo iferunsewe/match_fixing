@@ -9,21 +9,37 @@
         %table.table
           %tbody#items
             - matches.each do |match|
-              %tr
-                %td.status
-                  = match.display_status(match.status)
-                %td.team_name
-                  = link_to match.team_a.name, team_path(match.team_a), class: "link-override"
-                %td.score
-                  - if match.status
-                    = match.team_a_score
-                %td vs
-                %td.score
-                  - if match.status
-                    = match.team_b_score
-                %td.team_name
-                  = link_to match.team_b.name, team_path(match.team_b), class: "link-override"
-                %td
-                  - if match.ground.present?
-                    = match.ground.name
-                %td= link_to 'Match report', match, class: "link-override"
+              = form_for match do |f|
+                - if match.errors.any?
+                  #error_explanation
+                    %h2= "#{pluralize(match.errors.count, "error")} prohibited this match from being saved:"
+                    %ul
+                      - match.errors.full_messages.each do |msg|
+                        %li= msg
+                %tr
+                  %td.status
+                    = match.display_status(match.status)
+                  %td.team_name
+                    = link_to match.team_a.name, team_path(match.team_a), class: "link-override"
+                  %td.score
+                    - if match.status
+                      = match.team_a_score
+                  %td.input-score{class: "scores_#{match.id}"}
+                    = f.number_field :team_a_score, {:class => "form-control"}
+                  %td vs
+                  %td.score
+                    - if match.status
+                      = match.team_b_score
+                  %td.input-score{class: "scores_#{match.id}"}
+                    = f.number_field :team_b_score, {:class => "form-control"}
+                  %td.team_name
+                    = link_to match.team_b.name, team_path(match.team_b), class: "link-override"
+                  %td
+                    .input-scores-button{data_match_id: "scores_#{match.id}"}
+                      Input Scores
+                    .actions.scores-submit-button
+                      = f.submit 'Save', class: "btn btn-success"
+                  %td
+                    - if match.ground.present?
+                      = match.ground.name
+                  %td= link_to 'Match report', match, class: "link-override"

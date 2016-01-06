@@ -15,6 +15,11 @@ class LeaguesController < ApplicationController
 
   def fixtures_and_results
     @league = League.find(params[:id])
+    @matches = @league.matches.all.group_by(&:date)
+  end
+
+  def edit_fixtures_and_results
+    @league = League.find(params[:id])
     @matches = Match.all.group_by(&:date)
   end
 
