@@ -9,21 +9,40 @@
         %table.table
           %tbody#items
             - matches.each do |match|
-              %tr
-                %td.status
-                  = match.display_status(match.status)
-                %td.team_name
-                  = link_to match.team_a.name, team_path(match.team_a), class: "link-override"
-                %td.score
-                  - if match.status
-                    = match.team_a_score
-                %td vs
-                %td.score
-                  - if match.status
-                    = match.team_b_score
-                %td.team_name
-                  = link_to match.team_b.name, team_path(match.team_b), class: "link-override"
-                %td
-                  - if match.ground.present?
-                    = match.ground.name
-                %td= link_to 'Match report', match, class: "link-override"
+              - match_form_id = "match_form_#{match.id}"
+              = form_for match, html: {id: match_form_id, data_match_id: match.id} do |f|
+                - if match.errors.any?
+                  #error_explanation
+                    %h2= "#{pluralize(match.errors.count, "error")} prohibited this match from being saved:"
+                    %ul
+                      - match.errors.full_messages.each do |msg|
+                        %li= msg
+                %tr
+                  %td.status
+                    = match.display_status(match.status)
+                  %td.team_name
+                    = link_to match.team_a.name, team_path(match.team_a), class: "link-override"
+                  %td.score{class: "scores_#{match.id}", id: "team_a_score_#{match.id}"}
+                    - if match.status
+                      = match.team_a_score
+                  %td.input-score{class: "input_scores_#{match.id}"}
+                    = f.number_field :team_a_score, {:class => "form-control"}
+                  %td vs
+                  %td.score{class: "scores_#{match.id}", id: "team_b_score_#{match.id}"}
+                    - if match.status
+                      = match.team_b_score
+                  %td.input-score{class: "input_scores_#{match.id}"}
+                    = f.number_field :team_b_score, {:class => "form-control"}
+                  %td.team_name
+                    = link_to match.team_b.name, team_path(match.team_b), class: "link-override"
+                  - if user_is_admin?
+                    %td.inline-score-button
+                      - if match.status
+                        .input-scores-button{data_match_form_id: match_form_id, data_scores_match_id: "scores_#{match.id}", class: 'link-override'}
+                          Input Scores
+                        .actions.scores-submit-button{data_match_form_id: match_form_id, id: "scores-submit-button-#{match.id}", class: 'link-override'}
+                          Submit
+                  %td
+                    - if match.ground.present?
+                      = match.ground.name
+                  %td= link_to 'Match report', match, class: "link-override"

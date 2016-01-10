@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get '/search', to: "search#index"
 
   get '/leagues/:id/fixtures-and-results', to: 'leagues#fixtures_and_results'
+  get '/leagues/:id/edit-fixtures-and-results', to: 'leagues#edit_fixtures_and_results'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
