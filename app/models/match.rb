@@ -9,7 +9,6 @@ class Match < ActiveRecord::Base
   has_many :stats, dependent: :destroy
   has_many :players, through: :stats
   after_create :init_stats_for_players # Used to create a stat for each player when a match is created.
-  after_create :default_league_id
 
 
   accepts_nested_attributes_for :ground, :stats
