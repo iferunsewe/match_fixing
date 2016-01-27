@@ -8,14 +8,14 @@
         %th.text-center Losses
         %th.text-center Draws
         %th.text-center Points
-        - if user_is_admin? || user_is_captain? && current_player.present?
-          %th
-          %th
+        %th
+        %th
+
 
     %tbody
       - league_teams.order(points: :desc).each do |team|
         %tr
-          %td= link_to team.name, team, :class => "link-override"
+          %td= link_to team.name, team, :class => "link-override-alt"
           %td= team.played
           %td= team.wins
           %td= team.losses

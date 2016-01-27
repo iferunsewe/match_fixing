@@ -1,15 +1,19 @@
-.league-container.font-override.text-center{:style =>"color:white;padding-top: 10%;"}
+.league-container.font-override.text-center{:style =>"padding-top: 1%;"}
+  %h1{:style =>"color:white;margin-bottom: 20px;margin-top: 0px;"}
+    =@league.name
+  %h4{:style =>"color:white;"}
+    %b Location:
+    = @league.location
+    |
+    = link_to 'Fixtures & Results', "/leagues/#{@league.id}/fixtures-and-results", class: "link-override"
   .league-table
-    %h1{:style =>"margin-top:0px;"}= @league.name
-    %p
-      %b Location:
-      = @league.location
+    = render 'teams/index', {league_teams: @league.teams}
+  - if user_is_admin?
+    %h4.text-center
+      = link_to 'Edit', edit_league_path(@league), class: "link-override"
       |
-      = link_to 'Fixtures and Results', "/leagues/#{@league.id}/fixtures-and-results", class: "link-override"
-      = render 'teams/index', {league_teams: @league.teams}
-    - if user_is_admin?
-      %h4.text-center
-        = link_to 'Edit', edit_league_path(@league), class: "link-override"
+      - if user_is_admin?
+        = link_to 'Add team', new_team_path, class: "link-override"
 
 
   -#      - if !current_player.nil? && current_player.team.nil?

@@ -28,17 +28,9 @@
           .modal-header
             %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
               %span{"aria-hidden" => "true", :style =>'color:white;'} x
-            %h4#myModalLabel.modal-title.text-center Log In
+            %h4#myModalLabel.modal-title.text-center LOG IN
           .modal-body
             = render 'devise/sessions/new'
-            .row
-              .col-xs-12.text-center
-                %br/
-                = link_to "Forgot your password?", new_password_path(resource_name), {class:"link-override-alt"}
-                %h4
-                  Or
-              .col-xs-12.text-center
-                = link_to image_tag("grass-facebook-logo.jpg", class: 'login-social-media-logo'), player_omniauth_authorize_path(:facebook)
 
     .page-wrap
       =yield

@@ -1,4 +1,4 @@
-%nav.navbar.navbar-default.font-override
+%nav.navbar.navbar-default
   .container-fluid
     / Brand and toggle get grouped for better mobile display
     .navbar-header
@@ -10,26 +10,46 @@
         %img.pull-left.img-responsive{:src => "/assets/logo-xs.jpg"}
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      %ul.nav.navbar-nav{:style =>"width:70%;"}
-        %li{:style =>"width:17%;border-left:white;padding-left:5%;"}
-          = link_to "My Profile", current_player
-        - if current_player.team.nil? && user_is_captain?
-          %li{:style =>"width:14%;border-left:white;padding-left:0%;"}
-            = link_to "Create Team", new_team_path
-        - elsif current_player.team.nil?
-          %li{:style =>"width:12%;border-left:white;padding-left:0%;"}
-            = link_to "Join Team", edit_player_path(current_player)
-        - else
-          %li{:style =>"width:12%;border-left:white;padding-left:0%;"}
-            = link_to "My Team", current_player.team
+      %ul.nav.navbar-nav{:style =>"width:25%;"}
+        %li{:style =>"width:33.3%;border-left:white;padding-left:0%;"}
+          = link_to "PROFILE", current_player
+        %li{:style =>"width:33.3%;border-left:white;padding-left:0%;"}
+          - if current_player.team.nil? && user_is_captain?
+            = link_to "CREATE", new_team_path
+          - elsif current_player.team.nil?
+            = link_to "JOIN", edit_player_path(current_player)
+          - else
+            = link_to "TEAM", current_player.team
         -#- if current_player.team.present? && current_player.team.league.present?
-        %li{:style =>"width:20%;border-left:white;padding-left:0%;"}
-          = link_to "League Table", league_path(1)
+        %li{:style =>"width:33.3%;border-left:white;padding-left:0%;"}
+          = link_to "LEAGUE", league_path(1)
           %span.sr-only (current)
-        %li
+      %ul.nav.navbar-nav.navbar-right{:style =>"width:60%;"}
+        %li{:style =>"width:60%;"}
           = render partial: 'search/input_form'
-      %ul.nav.navbar-nav.navbar-right{:style =>"width:25%;"}
         %li{:style =>"padding-left:5%;"}
-          = link_to "Edit Account", edit_player_registration_path(current_player), :method => :get, :class => 'navbar-link'
+          = link_to "EDIT ACCOUNT", edit_player_registration_path(current_player), :method => :get, :class => 'navbar-link'
         %li{:style =>"padding-left:5%;"}
-          = link_to "Log out", destroy_player_session_path, :method => :delete
+          = link_to "LOG OUT", destroy_player_session_path, :method => :delete
+.sub-navbar.welcome-header
+  %ul.nav.navbar-nav.navbar-centre{:style =>"width:25%;height:50%;"}
+    %li.text-center{:style =>"width:50%;"}
+      .navbar-link.dropdown.league-dropdown
+        = link_to 'LEAGUE TABLES', '#'
+        .dropdown-content
+          %ul
+            - League.all.each do |league|
+              %li= link_to league.name, league
+            - if user_is_admin?
+              %li{:style =>"border-bottom:none;"}
+                = link_to 'New League', new_league_path
+    %li.text-center{:style =>"width:50%;"}
+      .navbar-link.dropdown.fandr-dropdown
+        = link_to 'FIXTURES & RESULTS', '#'
+        .dropdown-content
+          %ul
+            - League.all.each do |league|
+              %li= link_to league.name, "/leagues/#{league.id}/fixtures-and-results"
+            - if user_is_admin?
+              %li{:style =>"border-bottom:none;"}
+                = link_to 'New Fixture', new_match_path
