@@ -8,36 +8,30 @@
             %li= msg
     .row
       - if user_is_admin?
-        .col-md-12
+        .col-md-7
           .form-group
             = f.label :date
             .form-inline
               = datetime_select :match, :date, { start_year: 100.years.ago.year, end_year: Date.today.year, default: @match.date.nil? ? Date.today : @match.date}, class: "form-control"
-        -#.col-lg-5
-        -#  .form-group
-        -#    = f.label :league
-        -#    %select#select_match_form_league_ids{class: "form-control"}
-        -#      - leagues = League.all
-        -#      - leagues.each do |l|
-        -#        %option{value: l.id}= l.name
-        -#    %input#re{type: "hidden"}
-
-        .col-xs-4
+        .col-lg-5
+          .form-group
+            = f.label :league
+            = f.collection_select :league_id, League.all, :id, :name, {:prompt => 'Choose League'}, {:class => "form-control", :id => "option_match_league_id"}
+        .col-xs-4.team-field-form
           .form-group
             = f.label :home_team
-            = f.collection_select :team_a_id, Team.all, :id, :name, {:prompt => 'Choose Home Team'}, {:class => "form-control pick-team-field team-field-form"}
-        - if @match.status
-          .col-xs-2
-            = f.label :score
-            = f.number_field :team_a_score, {:class => "form-control team-field-form"}
-        .col-xs-4
+            = f.collection_select :team_a_id, Team.all, :id, :name, {:prompt => 'Choose Home Team'}, {:class => "form-control pick-team-field"}
+        .col-xs-2.team-field-form
+          = f.label :score
+          = f.number_field :team_a_score, {:class => "form-control"}
+        .col-xs-4.team-field-form
           .form-group
             = f.label :away_team
-            = f.collection_select :team_b_id, Team.all, :id, :name, {:prompt => 'Choose Away Team'}, {:class => "form-control pick-team-field team-field-form"}
+            = f.collection_select :team_b_id, Team.all, :id, :name, {:prompt => 'Choose Away Team'}, {:class => "form-control pick-team-field"}
         - if @match.status
-          .col-xs-2
+          .col-xs-2.team-field-form
             = f.label :score
-            = f.number_field :team_b_score, {:class => "form-control team-field-form"}
+            = f.number_field :team_b_score, {:class => "form-control"}
         = f.fields_for :ground do |g|
           .col-xs-6
             .form-group

@@ -78,15 +78,17 @@ matches.editFormFields = function(){
     });
 };
 
-//matches.changeNewMatchTeamsOnLeague = function(){
-//    $('.team-field-form').hide();
-//    $('#select_match_form_league_ids').change(function() {
-//
-//    });
-//    //Hide home team and away teams
-//    //Take value from match_form_league_id once selected
-//    //Then show the home team and away teams dropdown with teams from league with the league id selected
-//};
+matches.changeNewMatchTeamsOnLeague = function(){
+    $('.team-field-form').hide();
+    var matchLeagueSelect = $('#match_league_id');
+    var matchLeagueId = $('#option_match_league_id').val();
+    matchLeagueSelect.change(function() {
+        console.log("MATCH LEAGUE ID: " + matchLeagueId);
+    });
+    //Hide home team and away teams
+    //Take value from match_form_league_id once selected
+    //Then show the home team and away teams dropdown with teams from league with the league id selected
+};
 
 leagues = {};
 leagues.editResults = function(){
@@ -155,6 +157,8 @@ $(document).ready(function(){
     leagues.editResults();
 
     leagues.submitResults();
+
+    matches.changeNewMatchTeamsOnLeague();
     //matches.editFormFields();
 });
 
