@@ -16,18 +16,19 @@
         .col-lg-5
           .form-group
             = f.label :league
-            = f.collection_select :league_id, League.all, :id, :name, {:prompt => 'Choose League'}, {:class => "form-control", :id => "option_match_league_id"}
+            = f.collection_select :league_id, League.all, :id, :name, {:prompt => 'Choose League'}, {:class => "form-control"}
         .col-xs-4.team-field-form
           .form-group
             = f.label :home_team
-            = f.collection_select :team_a_id, Team.all, :id, :name, {:prompt => 'Choose Home Team'}, {:class => "form-control pick-team-field"}
-        .col-xs-2.team-field-form
-          = f.label :score
-          = f.number_field :team_a_score, {:class => "form-control"}
+            = f.grouped_collection_select :team_a_id, League.all, :teams, :name, :id, :name, {:prompt => 'Choose Home Team'}, {:class => "form-control pick-team-field match_team_id"}
+        - if @match.status
+          .col-xs-2.team-field-form
+            = f.label :score
+            = f.number_field :team_a_score, {:class => "form-control"}
         .col-xs-4.team-field-form
           .form-group
             = f.label :away_team
-            = f.collection_select :team_b_id, Team.all, :id, :name, {:prompt => 'Choose Away Team'}, {:class => "form-control pick-team-field"}
+            = f.grouped_collection_select :team_b_id, League.all, :teams, :name, :id, :name, {:prompt => 'Choose Away Team'}, {:class => "form-control pick-team-field match_team_id"}
         - if @match.status
           .col-xs-2.team-field-form
             = f.label :score

@@ -69,77 +69,6 @@ specialties.limitChosenSpecialities = function(){
     });
 };
 
-matches = {};
-matches.editFormFields = function(){
-    $('#players-stats-selector').change(function(){
-        $('.hidden-option-stats').hide();
-        var selectedPlayer = $(this).val();
-        $('#stat_form' + selectedPlayer).show();
-    });
-};
-
-matches.changeNewMatchTeamsOnLeague = function(){
-    $('.team-field-form').hide();
-    var matchLeagueSelect = $('#match_league_id');
-    var matchLeagueId = $('#option_match_league_id').val();
-    matchLeagueSelect.change(function() {
-        console.log("MATCH LEAGUE ID: " + matchLeagueId);
-    });
-    //Hide home team and away teams
-    //Take value from match_form_league_id once selected
-    //Then show the home team and away teams dropdown with teams from league with the league id selected
-};
-
-leagues = {};
-leagues.editResults = function(){
-    $('.input-score').hide();
-    $('.scores-submit-button').hide();
-    $('.input-scores-button').click(function(){
-        var matchIdForm = $(this).attr('data_match_form_id');
-        var htmlIdForm = $('#' + matchIdForm);
-        var matchId = htmlIdForm.attr('data_match_id');
-        var score_inputs = $(this).attr('data_scores_match_id');
-        $(".input_" + score_inputs + "").show();
-        console.log('#scores-submit-button-' + matchId);
-        $("." + score_inputs).hide();
-        $(this).hide();
-        $('#scores-submit-button-' + matchId).show();
-    })
-};
-
-leagues.submitResults = function(){
-    $('.scores-submit-button').click(function(){
-        var matchIdForm = $(this).attr('data_match_form_id');
-        var htmlIdForm = $('#' + matchIdForm);
-        var matchId = htmlIdForm.attr('data_match_id');
-        $.ajax({
-            type: "POST",
-            url: htmlIdForm.attr('action'),
-            data: htmlIdForm.serialize()
-        }).success(function(){
-            console.log("Match data submitted");
-            $.ajax({
-                type: "GET",
-                dataType: "json",
-                url: "/matches/" + matchId,
-            }).success(function(data){
-                var input_scores_button = $('.input-scores-button');
-                var scores = $('.' + input_scores_button.attr('data_scores_match_id'));
-                var team_a_score_element = $('#team_a_score_' + matchId);
-                var team_b_score_element = $('#team_b_score_' + matchId);
-                var team_a_score = data['team_a_score']
-                var team_b_score = data['team_b_score']
-                team_a_score_element.html('').append(team_a_score);
-                team_b_score_element.html('').append(team_b_score);
-                input_scores_button.show();
-                $('.score').show();
-                $('.input-score').hide();
-                $('.scores-submit-button').hide();
-                scores.show()
-            });
-        });
-    })
-};
 
 
 
@@ -154,12 +83,6 @@ $(document).ready(function(){
 
     specialties.limitChosenSpecialities();
 
-    leagues.editResults();
-
-    leagues.submitResults();
-
-    matches.changeNewMatchTeamsOnLeague();
-    //matches.editFormFields();
 });
 
 
