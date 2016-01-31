@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95ed148a-7cd8-457b-b852-28a49dbe9b87" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/leagues.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/leagues.scss" />
     </list>
     <ignored path="match_fixing.iws" />
