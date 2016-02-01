@@ -150,6 +150,8 @@ select.date-select {
     list-style: none;
     border-bottom: black solid 1px;
     padding-bottom: 2%;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 .welcome-header ul li .dropdown:hover .dropdown-content {
