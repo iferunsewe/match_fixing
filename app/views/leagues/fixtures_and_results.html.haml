@@ -42,10 +42,12 @@
                           .input-scores-button{data_match_form_id: match_form_id, data_scores_match_id: "scores_#{match.id}"}
                             Input Scores
                           .actions.scores-submit-button{data_match_form_id: match_form_id, id: "scores-submit-button-#{match.id}",}
-                            Submit
+                            %span.glyphicon.glyphicon-ok
                     %td.ground-name
                       - if match.ground.present?
-                        = match.ground.name
+                        = link_to "https://maps.google.com?saddr=Current+Location&daddr=#{match.ground.address_to_link_address}", {class: 'link-override-alt', title: 'Get directions to the ground'} do
+                          = match.ground.name
+                          %span.glyphicon.glyphicon-map-marker
                     %td.ground-name
                       = link_to 'Match report', match, class: "link-override-alt"
     - else
