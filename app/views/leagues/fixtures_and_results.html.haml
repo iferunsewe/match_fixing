@@ -48,7 +48,7 @@
                         = link_to "https://maps.google.com?saddr=Current+Location&daddr=#{match.ground.address_to_link_address}", {class: 'link-override-alt', title: 'Get directions to the ground'} do
                           = match.ground.name
                           %span.glyphicon.glyphicon-map-marker
-                    %td.ground-name
+                    %td.match-report
                       = link_to 'Match report', match, class: "link-override-alt"
     - else
       %h2 No fixtures exists
