@@ -1,9 +1,6 @@
 @mixin basic_styles($background_color,$background_color_alt,$color,$color_alt)
 
 {
-//.container{
-//  font-family: 'Futura-Oblique', sans-serif !important;
-//}
 
 .color_override{
   background-color: $background_color !important;
