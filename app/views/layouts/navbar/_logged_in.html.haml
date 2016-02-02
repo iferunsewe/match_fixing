@@ -38,7 +38,7 @@
         = link_to 'LEAGUE TABLES', '#'
         .dropdown-content
           %ul
-            - League.all.each do |league|
+            - League.order(created_at: :desc).each do |league|
               %li= link_to league.name, league
             - if user_is_admin?
               %li{:style =>"border-bottom:none;"}
@@ -48,7 +48,7 @@
         = link_to 'FIXTURES & RESULTS', '#'
         .dropdown-content
           %ul
-            - League.all.each do |league|
+            - League.order(created_at: :desc).each do |league|
               %li= link_to league.name, "/leagues/#{league.id}/fixtures-and-results"
             - if user_is_admin?
               %li{:style =>"border-bottom:none;"}

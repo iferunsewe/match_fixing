@@ -9,102 +9,126 @@ input:-webkit-autofill:focus {
 
 .about-container{
   height: 100vh;
+  .create-profile-box{
+    border-right: 3px solid black;
+    height: 100%;
+    background-image: url('/assets/myprofile.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-color: white;
+  }
+
+  .logo-box-logged-in{
+    position: relative;
+    background-color: black;
+    height: 100%;
+    background-image: url('/assets/logo.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .create-team-box{
+    border-left: 3px solid black;
+    height: 100%;
+    background-image: url('/assets/team.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-color: white;
+
+  }
+
+  .my-team-box{
+    border-left: 3px solid black;
+    height: 100%;
+    background-image: url('/assets/myteam.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-color: white;
+
+  }
+
+  .logo-box{
+    padding-top: 20px;
+    position: relative;
+    background-color: black;
+    height: 50%;
+    background-image: url('/assets/logo.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 300px 300px;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    .landing-box2{
+      position: absolute;
+      width: 100%;
+      height: 30%;
+      top: 50%;
+      color: white;
+    }
+  }
+
+
+  #landing-filler-image{
+    background: url('/assets/landing_page_image.jpg');
+    color:black;
+    height: 50%;
+  }
+
+  #landing-description-box {
+    height: 50%;
+    padding-left: 0;
+    padding-right: 0;
+    h3{
+      font-family: 'Futara-Koyu', sans-serif;
+      padding-top: 1%;
+      background: grey;
+      margin-top: 0;
+      margin-bottom: 0;
+      height: 50px;
+    }
+    ul{
+      height: 100%;
+      margin-top: 5%;
+      list-style: none;
+      padding-left: 0;
+      li{
+        height:100%;
+        text-align: center;
+        .image-box{
+          height:50%;
+          img {
+            display: block;
+            margin: 0 auto;
+            width: 75%;
+          }
+        }
+        .image-mf-logo{
+          height:50%;
+          img {
+            display: block;
+            margin: 0 auto;
+            width: 60%;
+          }
+        }
+        .star-box{
+          padding-top: 20%;
+          height:50%;
+        }
+      }
+    }
+
+  }
 }
 
 .landing-box{
   background-color: black;
   height: 100%;
-}
-
-.landing-box2{
-  position: absolute;
-  width: 100%;
-  height: 30%;
-  top: 50%;
-  color: white;
-}
-
-.create-team-box{
-  border-left: 3px solid black;
-  height: 100%;
-  background-image: url('/assets/team.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 60%;
-  background-color: white;
-
-}
-
-.my-team-box{
-  border-left: 3px solid black;
-  height: 100%;
-  background-image: url('/assets/myteam.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 60%;
-  background-color: white;
-
-}
-.logo-box{
-  padding-top: 20px;
-  position: relative;
-  background-color: black;
-  height: 100%;
-  background-image: url('/assets/logo.jpg');
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: 300px 300px;
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-
-.logo-box-logged-in{
-  position: relative;
-  background-color: black;
-  height: 100%;
-  background-image: url('/assets/logo.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 60%;
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-.create-profile-box{
-  border-right: 3px solid black;
-  height: 100%;
-  background-image: url('/assets/myprofile.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 60%;
-  background-color: white;
-}
-
-.logo-box2{
-  position: absolute;
-  width: 100%;
-  background-color: white;
-  height: 30%;
-  background-image: url('/assets/team.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 30%;
-}
-.logo-box3{
-  position: absolute;
-  width: 100%;
-  background-color: white;
-  height: 30%;
-  bottom: 0;
-  background-image: url('/assets/team.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 30%;
-}
-
-.btn-white{
-  background-color: white;
-  border-color: white;
-  color: black;
 }
 
 @media (max-width: 600px) {

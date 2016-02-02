@@ -2,38 +2,8 @@
   - if current_player
     %a{:href => "/players/#{current_player.id}"}
       .col-xs-4.text-center.create-profile-box
-  - else
-    .col-xs-4.text-center.landing-box
-    
-  - if current_player
     %a{:href => "/leagues/1"}
       .col-xs-4.text-center.logo-box-logged-in
-      / .logo-box2.text-center
-      / .logo-box3.text-center
-  - else
-    .col-xs-4.text-center.logo-box
-      .landing-box2.text-center.font-override
-        %h4.animated.fadeInDown
-          %span.landing-about1
-            Welcome to MatchFixing.
-            %br/
-            %br/
-            %i.fa.fa-arrow-circle-o-right.fa-2x.animated.infinite.pulse.landing-next1
-
-          %span.landing-about2.hide
-            Please sign in, create your profile and join a team.
-            %br/
-            %br/
-            %i.fa.fa-arrow-circle-o-left.fa-2x.animated.infinite.pulse.landing-previous1
-            %i.fa.fa-arrow-circle-o-right.fa-2x.animated.infinite.pulse.landing-next2
-          %span.landing-about3.hide
-            Then help your team rise to the top of the MatchFixing League, by playing and winning matches, to claim the glory and bragging rights.
-            %br/
-            %br/
-            %i.fa.fa-arrow-circle-o-left.fa-2x.animated.infinite.pulse.landing-previous2
-      / .logo-box3.text-center
-  
-  - if current_player
     -if current_player.team
       %a{:href => "/teams/#{current_player.team.id}"}
         .col-xs-4.text-center.my-team-box
@@ -41,11 +11,30 @@
       %a{:href => "/teams/new"}
         .col-xs-4.text-center.create-team-box
   - else
-    .col-xs-4.text-center.landing-box
+    .col-xs-12.text-center.logo-box
+      .landing-box2.text-center.font-override
 
-  / 
-  /   .col-xs-6.text-center.create-team-box
+    .col-xs-12#landing-description-box
+      %h3.text-center
+        WELCOME TO MATCH FIXING
+      %ul.font-override
+        %li.col-xs-3
+          .image-mf-logo
+            = image_tag('homepage-profile.png')
+          %h5 Create a profile
+        %li.col-xs-3
+          .image-mf-logo
+            = image_tag('homepage_team.png')
+          %h5 Create or join your team
+        %li.col-xs-3
+          .image-box
+            = image_tag('screenshot_fixtures_results.png')
+          %h5 See all your upcoming fixtures and previous results
+        %li.col-xs-3
+          .star-box
+            - 3.times do
+              = image_tag('gold-star.png')
+          %h5 Rate and comment on your previous opponents
 
-  / 
-  /   .col-xs-6.text-center.create-profile-box
-    
+    .col-xs-12#landing-filler-image
+
