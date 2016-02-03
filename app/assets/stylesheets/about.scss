@@ -85,9 +85,10 @@ input:-webkit-autofill:focus {
     padding-left: 0;
     padding-right: 0;
     h3{
-      font-family: 'Futara-Koyu', sans-serif;
+      font-family: 'Futura-Oblique', sans-serif;
       padding-top: 1%;
-      background: grey;
+      background: #ababab;
+      color: rgb(255, 255, 255);
       margin-top: 0;
       margin-bottom: 0;
       height: 50px;
@@ -131,7 +132,7 @@ input:-webkit-autofill:focus {
   height: 100%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .logo-box{
     background-size: 150%;
   }
