@@ -20,9 +20,9 @@
             = link_to "JOIN", edit_player_path(current_player)
           - else
             = link_to "TEAM", current_player.team
-        -#- if current_player.team.present? && current_player.team.league.present?
-        %li{:style =>"width:33.3%;border-leeft:white;padding-left:0%;text-align:center;"}
-          = link_to "LEAGUE", league_path(1)
+        - if current_player.team.present? && current_player.team.league.present?
+          %li{:style =>"width:33.3%;border-leeft:white;padding-left:0%;text-align:center;"}
+            = link_to "LEAGUE", current_player.team.league
           %span.sr-only (current)
       %ul.nav.navbar-nav.navbar-right.logged-in{:style =>"width:60%;"}
         %li.search{:style =>"width:60%;"}

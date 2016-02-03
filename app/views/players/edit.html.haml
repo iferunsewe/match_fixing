@@ -26,22 +26,31 @@
             %a.btn.btn-xs.btn-black.nohoverblack{:href=>'javascript:;'}>
               Choose File...
               = f.file_field :image, {:style=>"position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';opacity:0;background-color:transparent;color:transparent;", :id => "upload", :onchange => "readURL(this)"}
-      .col-md-6
+      .col-md-4
         .form-group
           = f.label :position
           = f.text_field :position, class: "form-control"
-      .col-md-6
+      .col-md-4
         .form-group
           = f.label :foot
           = f.select :foot, options_for_select(["Right", "Left"]), {},{ :class => "form-control"}
-      .col-md-6
-        .form-group
-          = f.label :team
-          = f.collection_select :team_id, Team.all, :id, :name, {:include_blank => "Free Agent"}, {class: "form-control"}
-      .col-md-6
+      -
+      -#  .col-xs-4.team-field-form
+      -#    .form-group
+      -#      = f.label :home_team
+      -#      = f.grouped_collection_select :team_a_id, League.all, :teams, :name, :id, :name, {:prompt => 'Choose Home Team'}, {:class => "form-control pick-team-field match_team_id"}
+      .col-md-4
         .form-group
           = f.label :hometown
           = f.text_field :hometown, class: "form-control"
+      .col-lg-6
+        .form-group
+          = f.label :league
+          = f.collection_select :league_id, League.all, :id, :name, {:prompt => 'Choose League'}, {:class => "form-control league-field-form"}
+      .col-md-6.team-field-form
+        .form-group
+          = f.label :team
+          = f.grouped_collection_select :team_id, League.all, :teams, :name, :id, :name, {:include_blank => "Free Agent"}, {class: "form-control match_team_id"}
 
       - if user_is_admin?
         .col-md-4.col-md-offset-4

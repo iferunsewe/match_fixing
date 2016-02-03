@@ -16,7 +16,7 @@
         .col-lg-5
           .form-group
             = f.label :league
-            = f.collection_select :league_id, League.all, :id, :name, {:prompt => 'Choose League'}, {:class => "form-control"}
+            = f.collection_select :league_id, League.all, :id, :name, {:prompt => 'Choose League'}, {:class => "form-control league-field-form"}
         .col-xs-4.team-field-form
           .form-group
             = f.label :home_team
