@@ -34,11 +34,6 @@
         .form-group
           = f.label :foot
           = f.select :foot, options_for_select(["Right", "Left"]), {},{ :class => "form-control"}
-      -
-      -#  .col-xs-4.team-field-form
-      -#    .form-group
-      -#      = f.label :home_team
-      -#      = f.grouped_collection_select :team_a_id, League.all, :teams, :name, :id, :name, {:prompt => 'Choose Home Team'}, {:class => "form-control pick-team-field match_team_id"}
       .col-md-4
         .form-group
           = f.label :hometown
