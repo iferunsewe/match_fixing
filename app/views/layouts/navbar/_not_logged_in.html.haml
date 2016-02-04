@@ -16,14 +16,14 @@
             = link_to 'LEAGUE TABLES', '#'
             .dropdown-content
               %ul
-                - League.order(created_at: :desc).each do |league|
+                - League.order(created_at: :asc).each do |league|
                   %li= link_to league.name, league
         %li.text-center{:style =>"width:25%;"}
           .navbar-link.dropdown.fandr-dropdown
             = link_to 'FIXTURES & RESULTS', '#'
             .dropdown-content
               %ul
-                - League.order(created_at: :desc).each do |league|
+                - League.order(created_at: :asc).each do |league|
                   %li= link_to league.name, "/leagues/#{league.id}/fixtures-and-results"
         %li.text-center{:style =>"width:15%;"}
           .navbar-link
