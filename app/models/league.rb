@@ -4,4 +4,7 @@ class League < ActiveRecord::Base
   has_many :teams
   has_many :players
   has_many :matches, through: :teams
+
+  validates :name, presence: true
+  validates :location, presence: true
 end

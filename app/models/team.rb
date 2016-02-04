@@ -61,6 +61,6 @@ class Team < ActiveRecord::Base
       rating.comment.blank?
     }.map { |rating|
       simple_format("#{rating.comment}\n#{rating.created_at.to_s(:short)}")
-    }.last(3).reverse
+    }.reverse
   end
 end

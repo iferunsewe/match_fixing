@@ -8,6 +8,10 @@ class Match < ActiveRecord::Base
   belongs_to :league
   has_many :stats, dependent: :destroy
   has_many :players, through: :stats
+
+  validates :team_a_id, presence: true
+  validates :team_b_id, presence: true
+  validates :ground_id, presence: true
   after_create :init_stats_for_players # Used to create a stat for each player when a match is created.
 
 

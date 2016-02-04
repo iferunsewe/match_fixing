@@ -115,10 +115,6 @@ select.date-select {
     color: green;
 }
 
-.welcome-header ul.navbar-nav li .navbar-link:hover{
-    border-top: black solid 2px
-}
-
 .welcome-header ul{
     margin-top: 1.5%;
     padding-right: 0;
