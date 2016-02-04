@@ -83,16 +83,16 @@ class MatchesController < ApplicationController
       )
     end
 
-    def pending_to_played
-      matches = Match.all
-        matches.map do |match|
-        unless match.status
-          if match.date < Date.today
-            match.update(status: true)
-          else
-            false
-          end
+  def pending_to_played
+    matches = Match.all
+    matches.map do |match|
+      unless match.status
+        if match.date < DateTime.now
+          match.update(status: true)
+        else
+          false
         end
       end
     end
+  end
 end

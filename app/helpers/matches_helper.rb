@@ -7,4 +7,5 @@ module MatchesHelper
       image_tag 'logo-sm.jpg', :class => "img-circle img-responsive profile-circle"
     end
   end
+
 end

@@ -1,6 +1,7 @@
 class LeaguesController < ApplicationController
   before_action :set_league, only: [:show, :edit, :update, :destroy]
   before_action :update_team_stats, only: [:show, :edit]
+  before_action :pending_to_played, only: [:fixtures_and_results]
 
   # GET /leagues
   # GET /leagues.json
@@ -80,4 +81,17 @@ class LeaguesController < ApplicationController
       params.require(:league).permit(:name, :location, team_attributes: [:name, :hometown, :wins, :losses, :draws, :rating,
                                                                          :seeking_players, :kit, :philosophy])
     end
+
+  def pending_to_played
+    matches = Match.all
+    matches.map do |match|
+      unless match.status
+        if match.date < DateTime.now
+          match.update(status: true)
+        else
+          false
+        end
+      end
+    end
+  end
 end
