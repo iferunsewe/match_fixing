@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95ed148a-7cd8-457b-b852-28a49dbe9b87" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/matches/show.html.haml" afterPath="$PROJECT_DIR$/app/views/matches/show.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/players/edit.html.haml" afterPath="$PROJECT_DIR$/app/views/players/edit.html.haml" />
-    </list>
+    <list default="true" id="95ed148a-7cd8-457b-b852-28a49dbe9b87" name="Default" comment="" />
     <ignored path="match_fixing.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
@@ -43,12 +39,12 @@
       <file leaf-file-name="edit.html.haml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/players/edit.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.125">
-              <caret line="47" column="154" selection-start-line="47" selection-start-column="154" selection-end-line="47" selection-end-column="154" />
+            <state vertical-scroll-proportion="-36.25">
+              <caret line="58" column="47" selection-start-line="58" selection-start-column="47" selection-end-line="58" selection-end-column="47" />
               <folding>
-                <marker date="1454679195000" expanded="true" signature="3051:3405" placeholder="{...}" />
-                <marker date="1454679195000" expanded="true" signature="3094:3357" placeholder="{...}" />
-                <marker date="1454679195000" expanded="true" signature="3173:3301" placeholder="{...}" />
+                <marker date="1454679435000" expanded="true" signature="3051:3405" placeholder="{...}" />
+                <marker date="1454679435000" expanded="true" signature="3094:3357" placeholder="{...}" />
+                <marker date="1454679435000" expanded="true" signature="3173:3301" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -57,7 +53,7 @@
       <file leaf-file-name="show.html.haml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/matches/show.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0397351">
+            <state vertical-scroll-proportion="-1.0529802">
               <caret line="2" column="51" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
               <folding />
             </state>
@@ -151,7 +147,7 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="3" />
+    <option name="x" value="2" />
     <option name="y" value="23" />
     <option name="width" value="1437" />
     <option name="height" value="873" />
@@ -472,7 +468,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="3" y="23" width="1437" height="873" extended-state="0" />
+    <frame x="2" y="23" width="1437" height="873" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21003585" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -849,19 +845,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/players/edit.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.125">
-          <caret line="47" column="154" selection-start-line="47" selection-start-column="154" selection-end-line="47" selection-end-column="154" />
+        <state vertical-scroll-proportion="-36.25">
+          <caret line="58" column="47" selection-start-line="58" selection-start-column="47" selection-end-line="58" selection-end-column="47" />
           <folding>
-            <marker date="1454679195000" expanded="true" signature="3051:3405" placeholder="{...}" />
-            <marker date="1454679195000" expanded="true" signature="3094:3357" placeholder="{...}" />
-            <marker date="1454679195000" expanded="true" signature="3173:3301" placeholder="{...}" />
+            <marker date="1454679435000" expanded="true" signature="3051:3405" placeholder="{...}" />
+            <marker date="1454679435000" expanded="true" signature="3094:3357" placeholder="{...}" />
+            <marker date="1454679435000" expanded="true" signature="3173:3301" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/matches/show.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0397351">
+        <state vertical-scroll-proportion="-1.0529802">
           <caret line="2" column="51" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
           <folding />
         </state>
