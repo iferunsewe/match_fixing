@@ -22,6 +22,7 @@ class Player < ActiveRecord::Base
   has_many :providers, dependent: :destroy
   has_and_belongs_to_many :specialities
 
+
   accepts_nested_attributes_for :ratings, :matches, :stats
 
   # The method calculates the average stars a player has received so it can be shown on their profile
