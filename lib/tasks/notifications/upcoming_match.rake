@@ -9,8 +9,7 @@ class MatchNotifications
           fb_provider = Player.find(player.id).providers.where(provider: "facebook").first
           options = {match: match, player: player}
           unless fb_provider.nil?
-            p "Access token #{ENV["FACEBOOK_MF_ACCESS_TOKEN"]}"
-            uri = URI.encode("https://graph.facebook.com/#{fb_url(fb_provider.uid, ENV["FACEBOOK_MF_ACCESS_TOKEN"], options)}")
+            uri = URI.encode("https://graph.facebook.com/#{fb_url(fb_provider.uid, "#{ENV["FACEBOOK_MF_ACCESS_TOKEN_1"]}|#{ENV["FACEBOOK_MF_ACCESS_TOKEN_2"]}", options)}")
             uri = URI.parse(uri)
             http = Net::HTTP.new(uri.host, uri.port)
             http.use_ssl = true
