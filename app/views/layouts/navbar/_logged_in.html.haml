@@ -1,0 +1,55 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        - (0..2).each do |bar|
+          %span.icon-bar
+      %a{:href=> "/"}
+        %img.pull-left.img-responsive{:src => "/assets/logo-xs.jpg"}
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav.logged-in{:style =>"width:25%;"}
+        %li{:style =>"width:33.3%;border-left:white;padding-left:0%;text-align:center;"}
+          = link_to "PROFILE", current_player
+        %li{:style =>"width:33.3%;border-left:white;padding-left:0%;text-align:center;"}
+          - if current_player.team.nil? && user_is_captain?
+            = link_to "CREATE", new_team_path
+          - elsif current_player.team.nil?
+            = link_to "JOIN", edit_player_path(current_player)
+          - else
+            = link_to "TEAM", current_player.team
+        - if current_player.team.present? && current_player.team.league.present?
+          %li{:style =>"width:33.3%;border-leeft:white;padding-left:0%;text-align:center;"}
+            = link_to "LEAGUE", current_player.team.league
+          %span.sr-only (current)
+      %ul.nav.navbar-nav.navbar-right.logged-in{:style =>"width:60%;"}
+        %li.search{:style =>"width:60%;"}
+          = render partial: 'search/input_form'
+        %li{:style =>"padding-left:5%;"}
+          = link_to "EDIT ACCOUNT", edit_player_registration_path(current_player), :method => :get, :class => 'navbar-link'
+        %li{:style =>"padding-left:5%;"}
+          = link_to "LOG OUT", destroy_player_session_path, :method => :delete
+.sub-navbar.welcome-header
+  %ul.nav.navbar-nav.navbar-centre{:style =>"width:25%;height:50%;"}
+    %li.text-center{:style =>"width:50%;"}
+      .navbar-link.dropdown.league-dropdown
+        = link_to 'LEAGUE TABLES', '#'
+        .dropdown-content
+          %ul
+            - League.order(created_at: :desc).each do |league|
+              %li= link_to league.name, league
+            - if user_is_admin?
+              %li{:style =>"border-bottom:none;"}
+                = link_to 'New League', new_league_path
+    %li.text-center{:style =>"width:50%;"}
+      .navbar-link.dropdown.fandr-dropdown
+        = link_to 'FIXTURES & RESULTS', '#'
+        .dropdown-content
+          %ul
+            - League.order(created_at: :desc).each do |league|
+              %li= link_to league.name, "/leagues/#{league.id}/fixtures-and-results"
+            - if user_is_admin?
+              %li{:style =>"border-bottom:none;"}
+                = link_to 'New Fixture', new_match_path

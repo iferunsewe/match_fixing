@@ -1,0 +1,6 @@
+%form.navbar-form.font-override{action: "/search", method: :get}
+  .input-group{style: "width:100%"}
+    %input#srch-term.form-control{name: "search_input", placeholder: "Search for players, teams or leagues......", type: "text", style: 'height:35px;'}/
+    -#.input-group-btn
+    -#  %button.btn.btn-default{:type => "submit"}
+    -#    %i.glyphicon.glyphicon-search

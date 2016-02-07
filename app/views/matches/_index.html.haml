@@ -22,15 +22,17 @@
             %td= match.date.to_s(:short)
             %td= match.display_status(match.status)
             %td= link_to match.team_a.name, team_path(match.team_a)
-            %td= match.team_a_score
+            - if match.status
+              %td= match.team_a_score
             %td vs
-            %td= match.team_b_score
+            - if match.status
+              %td= match.team_b_score
             %td= link_to match.team_b.name, team_path(match.team_b)
-            - if match.team_a != current_player.team && match.status == nil
-              %td
-                = form_for match do |f|
-                  = f.select :status, [['Accept','true'],['Reject','false']]
-                  = f.submit "Match"
+            -#- if match.team_a != current_player.team && match.status == nil
+            -#  %td
+            -#    = form_for match do |f|
+            -#      = f.select :status, [['Accept','true'],['Reject','false']]
+            -#      = f.submit "Match"
             %td
               - if match.ground.present?
                 = match.ground.name

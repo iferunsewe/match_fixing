@@ -50,6 +50,7 @@ class MatchesController < ApplicationController
     respond_to do |format|
       if @match.update(match_params)
         format.html { redirect_to @match, notice: 'Match was successfully updated.' }
+        format.js {}
         format.json { render :show, status: :ok, location: @match }
       else
         format.html { render :edit }
@@ -77,21 +78,21 @@ class MatchesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
       params.require(:match).permit(:id, :date, :status, :team_a_score, :team_b_score, :team_a_id,
-                                    :team_b_id,:stats,  :man_of_the_match, ground_attributes: [:address, :name, :image , :id],
+                                    :team_b_id,:stats,  :man_of_the_match, :league_id, ground_attributes: [:address, :name, :image , :id],
                                     stats_attributes:[:goals, :appearance, :man_of_the_match, :id, :player_id, :match_id]
       )
     end
 
-    def pending_to_played
-      matches = Match.all
-        matches.map do |match|
-        unless match.status
-          if match.date < Date.today
-            match.update(status: true)
-          else
-            false
-          end
+  def pending_to_played
+    matches = Match.all
+    matches.map do |match|
+      unless match.status
+        if match.date < DateTime.now
+          match.update(status: true)
+        else
+          false
         end
       end
     end
+  end
 end

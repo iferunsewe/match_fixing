@@ -1,16 +1,84 @@
 .league-container{
-  height: 100vh;
+  height: 100%;
   background: linear-gradient(
     rgba(0, 0, 0, 0.8), 
     rgba(0, 0, 0, 0.8)
-  ), url('/assets/pitch.jpg') no-repeat center center fixed; 
+  ), url('/assets/grass-wallpaper.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  min-height: 100%;
+  min-height: 100vh;
+  .league-table{
+    margin: 0 auto;
+    background: white;
+    padding-top: 1%;
+  }
 }
-.league-table{
 
-  margin: 0 auto;
+
+.fixtures-and-results-container{
+  padding-bottom: 10%;
+  height: 100%;
+  background: linear-gradient(
+                  rgba(0, 0, 0, 0.8),
+                  rgba(0, 0, 0, 0.8)
+  ), url('/assets/grass-wallpaper.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100vh;
+  .fixtures-and-results-body{
+    background: white;
+    padding-top: 1%;
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-bottom: 5%;
+    .fixtures-and-results-title{
+      padding-left: 5%;
+      background-color: #bec3ba;
+    }
+    .table-responsive{
+      padding-left: 14%;
+      border: none;
+      .table tbody tr td{
+        border: none;
+      }
+      td.team_name, td.ground{
+        width: 15%;
+      }
+      td.team-right{
+        text-align: right;
+      }
+      td.score{
+        width: 5%;
+      }
+      td.score-right{
+        text-align: right;
+      }
+      td.input-score{
+        width: 6%;
+      }
+      td.status{
+        width: 10%;
+      }
+      td.inline-score-button{
+        width: 5%;
+        .input-scores-button, .scores-submit-button{
+          color: green;
+        }
+      }
+      td.ground-name{
+        width: 12%;
+      }
+      td.match-report{
+        width: 10%;
+      }
+      td#vs{
+        width:2%;
+        text-align: center;
+      }
+    }
+  }
 }

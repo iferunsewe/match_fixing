@@ -1,13 +1,13 @@
 .match_container
   .row.ground.no-margin
-    .col.md-12.text-center
+    .col.md-12.text-center{style:'margin-top: 0.5%;'}
       = @match.ground.name
       - if !@match.date.nil?
         \-
         = @match.date.to_s(:short)
       %br/
     .col-md-12.text-center
-      - if user_is_admin?
+      - if user_is_admin? || user_is_captain?
         = link_to 'Edit Match', edit_match_path(@match), {:class => 'link-override',:style => "font-size:15px;"}
   .match_home.col-sm-6
     .col-xs-12.text-center
@@ -99,36 +99,13 @@
                     %td.match-table
                       = player.motm_in_match(player.id, @match.id)
           %br
-
-
-/ Modal
-#rateModalA.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-dialog{:role => "document"}
-    .modal-content.font-override
-      .modal-header
-        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-          %span{"aria-hidden" => "true", :style =>'color:white;'} ×
-        %h4#myModalLabel.modal-title.text-center
-          Rate
-          =@match.team_a.name
-      .modal-body.text-center
-        = render 'rendered_pages/ratings_form', {object: @match.team_a, model: 'team'}
-
-/ Modal
-#rateModalB.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-dialog{:role => "document"}
-    .modal-content.font-override
-      .modal-header
-        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-          %span{"aria-hidden" => "true", :style =>'color:white;'} ×
-        %h4#myModalLabel.modal-title.text-center
-          Rate
-          =@match.team_b.name
-      .modal-body.text-center
-        = render 'rendered_pages/ratings_form', {object: @match.team_b, model: 'team'}
+          
+- if current_player.team != @match.team_b && current_player.team == @match.team_a && @match.status && @match.played_and_rated_before(current_player, @match.team_b, @match)
+  %button.btn-rate-player{"data-target" => "#rateModal", "data-toggle" => "modal", :type => "button", :class=>"hide"}
+  -# Modal
+  = render 'matches/rate_modal', {team: @match.team_b}
 
 - if current_player.team != @match.team_a && current_player.team == @match.team_b && @match.status && @match.played_and_rated_before(current_player, @match.team_a, @match)
-  %button.btn-rate-player{"data-target" => "#rateModalA", "data-toggle" => "modal", :type => "button", :class=>"hide"}
-- if current_player.team != @match.team_b && current_player.team == @match.team_a && @match.status == true && @match.played_and_rated_before(current_player, @match.team_b, @match)
-  %button.btn-rate-player{"data-target" => "#rateModalB", "data-toggle" => "modal", :type => "button", :class=>"hide"}
-
+  %button.btn-rate-player{"data-target" => "#rateModal", "data-toggle" => "modal", :type => "button", :class=>"hide"}
+  -# Modal
+  = render 'matches/rate_modal', {team: @match.team_a}

@@ -1,0 +1,33 @@
+%nav.navbar.navbar-default
+  .container-fluid.welcome-header
+
+    %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+      %span.sr-only Toggle navigation
+      - (0..2).each do |bar|
+        %span.icon-bar
+    %h1
+      = link_to 'MATCH FIXING', '/', {style: 'text-decoration: none; color:white'}
+
+
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right.navbar-collapse
+        %li.text-center{:style =>"width:25%;"}
+          .navbar-link.dropdown.league-dropdown
+            = link_to 'LEAGUE TABLES', '#'
+            .dropdown-content
+              %ul
+                - League.order(created_at: :asc).each do |league|
+                  %li= link_to league.name, league
+        %li.text-center{:style =>"width:25%;"}
+          .navbar-link.dropdown.fandr-dropdown
+            = link_to 'FIXTURES & RESULTS', '#'
+            .dropdown-content
+              %ul
+                - League.order(created_at: :asc).each do |league|
+                  %li= link_to league.name, "/leagues/#{league.id}/fixtures-and-results"
+        %li.text-center{:style =>"width:15%;"}
+          .navbar-link
+            = link_to "SIGN UP", new_registration_path(resource_name)
+        %li.text-center{:style =>"width:15%;"}
+          .navbar-link
+            = link_to 'LOGIN', '#', 'data-target' => '#myModal', 'data-toggle' => 'modal'

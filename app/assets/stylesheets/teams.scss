@@ -65,3 +65,24 @@
   color: black;
 }
 
+.comments-box{
+  width: 675px;
+  height: 250px;
+  padding-right: 5%;
+  overflow: scroll;
+  ul.comments{
+    list-style-type: none;
+    li{
+      margin-top: 2%;
+    }
+  }
+}
+
+h3.comment-title{
+  margin-left: 5%;
+}
+
+h1.team-title{
+  padding-left: 3%;
+}
+

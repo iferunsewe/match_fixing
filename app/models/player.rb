@@ -2,7 +2,7 @@ class Player < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   attr_accessible :name, :dob, :position, :hometown, :rating_id,
                   :captain, :weight,:height, :password, :email, :remember_me, :team_id,
-                  :foot, :password_confirmation, :image, :remote_image_url, :speciality_ids
+                  :foot, :password_confirmation, :image, :remote_image_url, :admin, :speciality_ids, :league_id
 
   before_save :defaults
   mount_uploader :image, PlayerImageUploader
@@ -15,11 +15,13 @@ class Player < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
 
   belongs_to :team
+  belongs_to :league
   has_many :ratings, dependent: :destroy
   has_many :stats, dependent: :destroy
   has_many :matches, through: :stats
   has_many :providers, dependent: :destroy
   has_and_belongs_to_many :specialities
+
 
   accepts_nested_attributes_for :ratings, :matches, :stats
 
@@ -112,19 +114,6 @@ class Player < ActiveRecord::Base
         self.skip_confirmation! if self.respond_to?(:skip_condirmation!)
     end
     user
-  end
-
-
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      if auth = session["devise.authentication"]
-        facebook_auth_name = [auth["info"]["first_name"], auth["info"]["last_name"]].join(' ')
-        user.name = facebook_auth_name if user.name.blank?
-        user.email = auth["info"]["email"] if user.email.blank?
-        user.image = auth["info"]["image"] if user.image.blank?
-        user.skip_confirmation! if user.respond_to?(:skip_condirmation!)
-      end
-    end
   end
 
   def calculate_age(birthday)

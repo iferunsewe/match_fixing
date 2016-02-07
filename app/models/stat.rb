@@ -5,9 +5,4 @@ class Stat < ActiveRecord::Base
   belongs_to :match
 
   accepts_nested_attributes_for :match, :player
-
-
-  def stat_player_name
-    "#{self.player.name} - #{self.player.team.name}"
-  end
 end

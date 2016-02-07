@@ -1,6 +1,7 @@
 class LeaguesController < ApplicationController
   before_action :set_league, only: [:show, :edit, :update, :destroy]
   before_action :update_team_stats, only: [:show, :edit]
+  before_action :pending_to_played, only: [:fixtures_and_results]
 
   # GET /leagues
   # GET /leagues.json
@@ -11,6 +12,11 @@ class LeaguesController < ApplicationController
   # GET /leagues/1
   # GET /leagues/1.json
   def show
+  end
+
+  def fixtures_and_results
+    @league = League.find(params[:id])
+    @matches = @league.matches.all.group_by(&:date).sort_by{|date, element| date}
   end
 
   # GET /leagues/new
@@ -62,6 +68,8 @@ class LeaguesController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_league
@@ -73,4 +81,17 @@ class LeaguesController < ApplicationController
       params.require(:league).permit(:name, :location, team_attributes: [:name, :hometown, :wins, :losses, :draws, :rating,
                                                                          :seeking_players, :kit, :philosophy])
     end
+
+  def pending_to_played
+    matches = Match.all
+    matches.map do |match|
+      unless match.status
+        if match.date < DateTime.now
+          match.update(status: true)
+        else
+          false
+        end
+      end
+    end
+  end
 end

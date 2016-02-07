@@ -15,6 +15,7 @@
   color: white;
   &:visited{
     color:white;
+    text-decoration: none;
   }
   &:hover{
     color:green;
@@ -37,6 +38,7 @@
 html{
   min-height: 100%;
 }
+
 /*#footer{
   background-color: grey;
   border-top: 2px solid white;
@@ -78,6 +80,108 @@ select.date-select {
     width: 10%;
 }
 
+.welcome-header{
+    padding-left: 5% !important;
+    width: 100%;
+    height: 10%;
+    border-bottom: solid black 2px;
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.8)
+    ), url('/assets/navbar-grass-wallpaper.jpg') no-repeat fixed;
+}
+
+.welcome-header h1{
+    display: inline-block;
+    color: white;
+    font-family: 'Futura-Oblique', sans-serif;
+    letter-spacing: 8px;
+}
+
+.welcome-header ul li .navbar-link{
+    width:100%;
+    height:100%;
+    padding-top:8px;
+}
+
+.welcome-header ul li .navbar-link a{
+    font-family: 'Futara-Koyu', sans-serif;
+    letter-spacing: 1px;
+    color: white;
+    text-decoration: none;
+}
+
+.welcome-header ul li .navbar-link a:hover{
+    color: green;
+}
+
+.welcome-header ul{
+    margin-top: 1.5%;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.welcome-header ul li .dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.welcome-header ul li .dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.welcome-header ul li .dropdown-content a{
+    color: black;
+    font-size: 12px;
+}
+
+.welcome-header ul li .dropdown-content ul{
+    padding-left: 0px
+}
+
+.welcome-header ul li .dropdown-content ul li{
+    list-style: none;
+    border-bottom: black solid 1px;
+    padding-bottom: 2%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.welcome-header ul li .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.welcome-header.container-fluid .collapse.navbar-collapse{
+    width: 72%;
+    display: inline-block !important;
+}
+
+.welcome-header.container-fluid .collapse.navbar-collapse ul{
+    width:100%;
+    margin-right: 0;
+}
+
+.sub-navbar.welcome-header{
+    padding-left: 5%;
+    width: 100%;
+    height: 8%;
+    border-bottom: solid black 2px;
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.8)
+    ), url('/assets/navbar-grass-wallpaper.jpg') no-repeat fixed;
+}
+
+.sub-navbar.welcome-header ul.navbar-nav{
+    margin-left: 35.5%;
+    margin-top: 1%;
+}
+
 .btn-black{
   background-color: black;
   border-color: black;
@@ -96,22 +200,8 @@ select.date-select {
   opacity: 1 !important;
 }
 
-
-
-.btn.nohoverblack:hover {
-    /* here copy default .btn class styles */
-    /*cursor:default !important;*/
-    /* or something like that */
-    color: white;
-    text-decoration: none;
-}
-
-.btn.nohoverwhite:hover {
-    /* here copy default .btn class styles */
-    /*cursor:default !important;*/
-    /* or something like that */
-    color: black;
-    text-decoration: none;
+#bs-example-navbar-collapse-1 ul li a {
+    font-family: 'Futara-Koyu', sans-serif;
 }
 
 .no-padding{
@@ -122,6 +212,10 @@ select.date-select {
 .no-margin{
   margin-right: 0px !important;
   margin-left: 0px !important;
+}
+
+#srch-term{
+    border-radius: 4%;
 }
 
 .navbar-default {
@@ -196,4 +290,58 @@ select.date-select {
     color: #4bd833;
     background-color: #0c060f;
   }
+
+    .container-fluid.welcome-header{
+        padding-right: 0;
+    }
+
+    .container-fluid.welcome-header ul{
+        width: 100% !important;
+        margin:0;
+        border: 0;
+        background: black;
+   }
+
+    .welcome-header ul li{
+        border-bottom: 1px solid white;
+        width: 100% !important;
+    }
+
+    .welcome-header h1 {
+        font-size: 21px;
+        margin-bottom: 10px;
+        margin-left: 15px;
+        margin-top: 15px;
+    }
+
+    .welcome-header ul li .dropdown:hover .dropdown-content {
+        width: 100%;
+    }
+
+    .container-fluid.welcome-header .collapse.navbar-collapse{
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+        padding-right: 0;
+        border-top-width: 1px;
+        padding-left: 0;
+        display: block !important;
+    }
+
+    ul.logged-in{
+        width: 100% !important;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    ul.logged-in li{
+        padding-left: 0;
+    }
+
+    ul.logged-in .search{
+        width: 100% !important;
+    }
+
 }
+
+

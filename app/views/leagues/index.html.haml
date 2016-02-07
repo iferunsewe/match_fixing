@@ -1,5 +1,5 @@
-.league-container.font-override.text-center{:style =>"color:white;padding-top: 10%;"}
-  %h1 Leagues
+.league-container.font-override.text-center{:style =>"padding-top: 1%;"}
+  %h1{:style =>"color:white;margin-bottom:20px;margin-top:0px;"} Leagues
   .league-table
     .table-responsive.font-override
       %table.table
@@ -7,15 +7,14 @@
           %tr
             %th.text-center Name
             %th.text-center Location
-            %th.text-center Actions
+            %th.text-center
 
         %tbody#items
           - @leagues.each do |league|
             %tr
-              %td= league.name
+              %td= link_to league.name, class: 'link-override-alt'
               %td= league.location
               %td
-                = link_to 'Show', league, :class => "btn btn-xs btn-white nohoverwhite"
                 = link_to 'Edit', edit_league_path(league), :class => "btn btn-xs btn-white nohoverwhite"
                 = link_to 'Destroy', league, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-xs btn-white nohoverwhite"
 

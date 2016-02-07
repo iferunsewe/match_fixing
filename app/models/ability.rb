@@ -35,8 +35,8 @@ class Ability
       can :create, [Rating, Team]
       cannot :create, Ground, Match
       can :read, [Team, Player, Match, Ground, Rating]
-      cannot :update, [Ground, Match]
-      can :update, Rating
+      cannot :update, [Ground]
+      can :update, [Rating, Match]
       can [:update, :destroy], Team do |team|
         player.team == team
       end
