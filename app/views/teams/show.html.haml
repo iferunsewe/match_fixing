@@ -49,7 +49,7 @@
             %b League Position:
         .col-xs-6
           %h5
-            = @team.league.nil? ? 'N/A' : @team.league_position(@team)
+            = @team.league.nil? ? 'N/A' : @team.league_position
       - if user_is_admin? || user_is_captain? && current_player.team == @team
         .row
           .col-xs-12
