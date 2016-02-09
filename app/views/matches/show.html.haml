@@ -1,0 +1,29 @@
+.match_container
+  .row.ground.no-margin
+    .col.md-12.text-center{style:'margin-top: 0.5%;'}
+      = @match.ground.name
+      - if !@match.date.nil?
+        \-
+        = @match.date.to_s(:short)
+      %br/
+    .col-md-12.text-center
+      - if user_is_admin? || user_is_captain?
+        = link_to 'Edit Match', edit_match_path(@match), {:class => 'link-override',:style => "font-size:15px;"}
+  .match_home.col-sm-6
+    .col-xs-12.text-center
+      %h3 HOME
+    = render 'matches/team_match_stats.html.haml', {match_played: @match, team: @match.team_a, team_score: @match.team_a_score}
+
+  .match_away.col-sm-6
+    .col-xs-12.text-center
+      %h3 AWAY
+    = render 'matches/team_match_stats.html.haml', {match_played: @match, team: @match.team_b, team_score: @match.team_b_score}
+
+- if current_player.team != @match.team_a && current_player.team == @match.team_b && @match.status && @match.played_and_rated_before(current_player, @match.team_a, @match)
+  %button.btn-rate-player{"data-target" => "#rateModal", "data-toggle" => "modal", :type => "button", :class=>"hide"}
+  / Modal
+  = render 'matches/rate_modal', {match_played: @match, team: @match.team_a}
+- if current_player.team != @match.team_b && current_player.team == @match.team_a && @match.status == true && @match.played_and_rated_before(current_player, @match.team_b, @match)
+  %button.btn-rate-player{"data-target" => "#rateModal", "data-toggle" => "modal", :type => "button", :class=>"hide"}
+  / Modal
+  = render 'matches/rate_modal', {match_played: @match, team: @match.team_b}
