@@ -1,0 +1,4 @@
+class RatingNotifications
+
+
+end

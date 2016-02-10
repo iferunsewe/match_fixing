@@ -33,8 +33,10 @@
                   = link_to player.name, player, class: 'link-override'
                 - else
                   = link_to player.name, player, class: 'link-override-alt'
-                -if player.captain?
+                -if player.captain? && player.team == match_played.team_a
                   %i.fa.fa-copyright{:style =>"color:white;"}
+                - elsif player.captain? && player.team == match_played.team_b
+                  %i.fa.fa-copyright
               %td.match-table
                 -for i in 1..player.average_rating
                   %span.glyphicon.glyphicon-star-empty

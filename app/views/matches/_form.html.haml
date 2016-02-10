@@ -46,7 +46,8 @@
       -# Form to edit stats - only appears on the edit page
       - if @match.status
         %h4.match-form-team-name
-          = current_player.team.name
+          - if current_player.team
+            = current_player.team.name
         = f.fields_for :stats do |s|
           - if s.object.player.team == current_player.team
             .col-md-2

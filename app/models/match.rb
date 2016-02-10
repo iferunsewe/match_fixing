@@ -11,7 +11,6 @@ class Match < ActiveRecord::Base
 
   validates :team_a_id, presence: true
   validates :team_b_id, presence: true
-  validates :ground_id, presence: true
   after_create :init_stats_for_players # Used to create a stat for each player when a match is created.
 
 
@@ -44,6 +43,10 @@ class Match < ActiveRecord::Base
     else
       team_visited == match.team_a || team_visited == match.team_b
     end
+  end
+
+  def other_team(player)
+    self.team_a == player.team ? self.team_b : self.team_a
   end
 
     private
