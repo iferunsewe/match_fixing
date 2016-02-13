@@ -174,7 +174,7 @@ select.date-select {
     background: linear-gradient(
             rgba(0, 0, 0, 0.8),
             rgba(0, 0, 0, 0.8)
-    ), url('/assets/navbar-grass-wallpaper.jpg') no-repeat fixed;
+    ), url('/assets/navbar-grass-wallpaper.jpg') no-repeat scroll;
 }
 
 .sub-navbar.welcome-header ul.navbar-nav{
@@ -317,6 +317,9 @@ select.date-select {
     .welcome-header ul li .dropdown:hover .dropdown-content {
         width: 100%;
     }
+    .welcome-header ul li{
+        font-size: 12px;
+    }
 
     .container-fluid.welcome-header .collapse.navbar-collapse{
         width: 100%;
@@ -342,6 +345,27 @@ select.date-select {
         width: 100% !important;
     }
 
+    .sub-navbar.welcome-header ul.navbar-nav{
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        width: 100% !important;
+        height: 12%;
+        font-size: 12px;
+    }
+
+    .sub-navbar.welcome-header{
+        padding-bottom: 65px;
+    }
+
+    .sub-navbar.welcome-header ul.navbar-nav li{
+        padding-bottom: 8px;
+    }
+
+    #bs-example-navbar-collapse-1 ul li{
+        width: 100% !important;
+        text-align: center;
+    }
 }
 
 

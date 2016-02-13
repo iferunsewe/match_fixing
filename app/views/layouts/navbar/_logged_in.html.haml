@@ -31,25 +31,25 @@
           = link_to "EDIT ACCOUNT", edit_player_registration_path(current_player), :method => :get, :class => 'navbar-link'
         %li{:style =>"padding-left:5%;"}
           = link_to "LOG OUT", destroy_player_session_path, :method => :delete
-    .sub-navbar.welcome-header
-      %ul.nav.navbar-nav.navbar-centre{:style =>"width:25%;height:50%;"}
-        %li.text-center{:style =>"width:50%;"}
-          .navbar-link.dropdown.league-dropdown
-            = link_to 'LEAGUE TABLES', '#'
-            .dropdown-content
-              %ul
-                - League.order(created_at: :desc).each do |league|
-                  %li= link_to league.name, league
-                - if user_is_admin?
-                  %li{:style =>"border-bottom:none;"}
-                    = link_to 'New League', new_league_path
-        %li.text-center{:style =>"width:50%;"}
-          .navbar-link.dropdown.fandr-dropdown
-            = link_to 'FIXTURES & RESULTS', '#'
-            .dropdown-content
-              %ul
-                - League.order(created_at: :desc).each do |league|
-                  %li= link_to league.name, "/leagues/#{league.id}/fixtures-and-results"
-                - if user_is_admin?
-                  %li{:style =>"border-bottom:none;"}
-                    = link_to 'New Fixture', new_match_path
+.sub-navbar.welcome-header
+  %ul.nav.navbar-nav.navbar-centre{:style =>"width:25%;height:50%;"}
+    %li.text-center{:style =>"width:50%;"}
+      .navbar-link.dropdown.league-dropdown
+        = link_to 'LEAGUE TABLES', '#'
+        .dropdown-content
+          %ul
+            - League.order(created_at: :desc).each do |league|
+              %li= link_to league.name, league
+            - if user_is_admin?
+              %li{:style =>"border-bottom:none;"}
+                = link_to 'New League', new_league_path
+    %li.text-center{:style =>"width:50%;"}
+      .navbar-link.dropdown.fandr-dropdown
+        = link_to 'FIXTURES & RESULTS', '#'
+        .dropdown-content
+          %ul
+            - League.order(created_at: :desc).each do |league|
+              %li= link_to league.name, "/leagues/#{league.id}/fixtures-and-results"
+            - if user_is_admin?
+              %li{:style =>"border-bottom:none;"}
+                = link_to 'New Fixture', new_match_path

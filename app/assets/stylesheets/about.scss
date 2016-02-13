@@ -117,10 +117,6 @@ input:-webkit-autofill:focus {
             width: 60%;
           }
         }
-        .star-box{
-          padding-top: 20%;
-          height:50%;
-        }
       }
     }
 
@@ -135,5 +131,19 @@ input:-webkit-autofill:focus {
 @media (max-width: 767px) {
   .logo-box{
     background-size: 150%;
+  }
+  #landing-description-box {
+    height: initial !important;
+    h3{
+      padding-bottom: 17%;
+    }
+    ul{
+      li{
+        width: 100%;
+        .image-box, .image-mf-logo{
+          height: 60% !important
+        }
+      }
+    }
   }
 }
