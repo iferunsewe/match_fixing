@@ -4,6 +4,7 @@
 }
 .navbar-header{
   background-color: black;
+  margin-right: 3% !important;
 }
 .navbar.navbar-default{
   margin-bottom: 0;
@@ -216,6 +217,21 @@ select.date-select {
 
 #srch-term{
     border-radius: 4%;
+}
+
+.navbar-images{
+    height: 50px !important;
+    width: 50px !important;
+}
+
+
+#bs-example-navbar-collapse-1 ul li.nav-image a{
+    padding:0;
+}
+
+#bs-example-navbar-collapse-1 ul li.nav-image a img{
+    height: 50px !important;
+    width: 50px !important;
 }
 
 .navbar-default {

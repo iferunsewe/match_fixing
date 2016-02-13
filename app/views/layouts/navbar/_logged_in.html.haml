@@ -11,8 +11,9 @@
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav.logged-in{:style =>"width:25%;"}
-        %li{:style =>"width:33.3%;border-left:white;padding-left:0%;text-align:center;"}
-          = link_to "PROFILE", current_player
+        %li.nav-image{:style =>"border-left:white;padding-left:0%;text-align:center;"}
+          = link_to current_player, {title: 'Profile page'}do
+            = navbar_avatar current_player
         %li{:style =>"width:33.3%;border-left:white;padding-left:0%;text-align:center;"}
           - if current_player.team.nil? && user_is_captain?
             = link_to "CREATE", new_team_path
@@ -21,7 +22,7 @@
           - else
             = link_to "TEAM", current_player.team
         - if current_player.team.present? && current_player.team.league.present?
-          %li{:style =>"width:33.3%;border-leeft:white;padding-left:0%;text-align:center;"}
+          %li{:style =>"width:33.3%;border-left:white;padding-left:0%;text-align:center;"}
             = link_to "LEAGUE", current_player.team.league
           %span.sr-only (current)
       %ul.nav.navbar-nav.navbar-right.logged-in{:style =>"width:60%;"}
