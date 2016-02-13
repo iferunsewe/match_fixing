@@ -1,7 +1,8 @@
 .match_container
   .row.ground.no-margin
     .col.md-12.text-center{style:'margin-top: 0.5%;'}
-      = @match.ground.name
+      = link_to "https://maps.google.com?saddr=Current+Location&daddr=#{@match.ground.address_to_link_address}", {class: 'link-override', title: 'Get directions to the ground'} do
+        = @match.ground.name
       - if !@match.date.nil?
         \-
         = @match.date.to_s(:short)
