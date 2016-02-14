@@ -28,6 +28,7 @@ class MatchNotifications
           uri = URI.encode("https://graph.facebook.com/#{fb_url(fb_provider.uid, @access_token , url_endpoint, message)}")
           create_request(uri)
         end
+
       end
     end
   end
