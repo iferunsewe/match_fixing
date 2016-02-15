@@ -1,16 +1,23 @@
-!!!
-%html
-  %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-  %body
-    %h1
-      #{@player.name} have you recently played #{@last_opposition}?
-    %ul
-      %li Rate the other team and tell the rest of the league if they're anything to worry about!
-      %li See if your league position has changed
-      %li See your upcoming fixture
-    %br/
-    %p
-      %a{:href => @url} Just click here to login
-    %br/
-    %h3 play the game on and off the pitch
+
+
+.mailer-container
+  .mailer-body
+    .mailer-header
+      %h1
+        = link_to 'MATCH FIXING', '/'
+      = image_tag 'http://www.matchfixing.co.uk/assets/logo-sm'
+    .mailer-content.font-override
+      %h2
+        #{@player.name} have you recently played #{@last_opposition.name}?
+      %ul
+        %li Rate the other team and tell the rest of the league if they are anything to worry about!
+        %li See if your league position has changed
+        %li See your upcoming fixture
+      %br/
+      %p
+        %a{:href => @url} Just click here to login
+        %br/
+        %br/
+        Got some feedback or queries? Give us a shout at ife@matchfixing.co.uk or alex@matchfixing.co.uk
+      %br/
+      %h3 play the game on and off the pitch

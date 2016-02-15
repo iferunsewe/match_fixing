@@ -74,3 +74,4 @@ gem 'rmagick'
 gem 'jquery-turbolinks'
 gem 'rails_12factor', group: :production
 gem 'puma'
+gem 'roadie-rails', '~> 1.0'

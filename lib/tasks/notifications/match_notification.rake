@@ -33,6 +33,12 @@ class MatchNotifications
     end
   end
 
+  def recent_matches
+    matches = Match.all
+    recent_matches = matches.select{|match| Date.today == (match.date.to_date + 1) || Date.today == (match.date.to_date + 2)}
+    recent_matches.each do |match| match end
+  end
+
   private
 
   def create_request(uri)
@@ -55,11 +61,7 @@ class MatchNotifications
     matches_today.each do |match| match end
   end
 
-  def recent_matches
-    matches = Match.all
-    recent_matches = matches.select{|match| Date.today == (match.date.to_date + 1) || Date.today == (match.date.to_date + 2)}
-    recent_matches.each do |match| match end
-  end
+
 
 end
 

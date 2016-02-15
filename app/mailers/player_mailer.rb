@@ -1,5 +1,6 @@
 class PlayerMailer < ApplicationMailer
-  default from: 'info@matchfixing.co.uk'
+  include Roadie::Rails::Automatic
+  default from: 'ife@matchfixing.co.uk'
 
   def post_match_email player
     @player = player
@@ -10,6 +11,6 @@ class PlayerMailer < ApplicationMailer
                          @last_match.team_a
                        end
     @url = "http://www.matchfixing.co.uk/matches/#{@last_match.id}"
-    mail(to: @user.email, subject: "How bad were they?")
+    mail(to: @player.email, subject: "MATCH FIXING - How bad were they?")
   end
 end
