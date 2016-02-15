@@ -125,6 +125,12 @@
   }
 }
 
+h2.devise-form-title{
+  padding-bottom: 3%;
+  margin-bottom: 5%;
+  border-bottom: 2px solid black;
+}
+
 .td-pad{
   padding-top: 35px !important;
 }
@@ -174,6 +180,8 @@
 .cancel-my-account{
   margin-top: 2%;
 }
+
+
 
 @media only screen and (max-height: 640px) {
   .speciality-box{
