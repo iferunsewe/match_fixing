@@ -1,5 +1,5 @@
 !!!
-%html{style:'height: 100%;'}
+%html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title MatchFixing
@@ -12,31 +12,18 @@
     = csrf_meta_tags
     = favicon_link_tag 'favicon-logo.png'
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
-  %body{style:'height: 100%;'}
-    - if current_player
-      = render partial: 'layouts/navbar/logged_in'
-    - else
-      = render partial: 'layouts/navbar/not_logged_in'
-    = render partial: 'layouts/my_custom_flash', :flash => flash
-    .spinner
-      .double-bounce1
-      .double-bounce2
-
-
-
-    / Modal
-    #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-      .modal-dialog{:role => "document"}
-        .modal-content.font-override
-          .modal-header
-            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-              %span{"aria-hidden" => "true", :style =>'color:white;'} x
-            %h4#myModalLabel.modal-title.text-center LOG IN
-          .modal-body
-            = render 'devise/sessions/new'
-
-    .page-wrap
-      =yield
-
-    -#%footer#footer.site-footer.text-center.font-override
-    -#  %h4 MatchFixing footer
+  %body
+    .wrapper
+      .spinner
+        .double-bounce1
+        .double-bounce2
+      %header
+        - if current_player
+          = render partial: 'layouts/navbar/logged_in'
+        - else
+          = render partial: 'layouts/navbar/not_logged_in'
+        = render partial: 'layouts/my_custom_flash', :flash => flash
+      .content
+        =yield
+      %footer
+        = render partial: 'layouts/footer/footer'

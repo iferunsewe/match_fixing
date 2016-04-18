@@ -31,3 +31,14 @@
         %li.text-center{:style =>"width:15%;"}
           .navbar-link
             = link_to 'LOGIN', '#', 'data-target' => '#myModal', 'data-toggle' => 'modal'
+
+            / Modal
+#myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content.font-override
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true", :style =>'color:white;'} x
+        %h4#myModalLabel.modal-title.text-center LOG IN
+      .modal-body
+        = render 'devise/sessions/new'
