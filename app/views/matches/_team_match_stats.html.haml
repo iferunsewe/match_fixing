@@ -13,36 +13,40 @@
             - else
               0
   .table-responsive
-    %table.table.no-border
-      %thead
-        %tr
-          %th
-          %th Players
-          %th Rating
-          - if match_played.status
-            %th Goals
+    - if team.players == []
+      %h1{id: 'error_message'}= "No registered players"
+    - else
+      %table.table.no-border
+        %thead
+          %tr
             %th
-      %tbody
-        - team.players.each do |player|
-          -if Stat.where(player_id: player.id, match_id: match_played.id) != [] #Flaky method as it doesn't allow you to edit teams due to the attributes needed therefore changing teams won't display below
-            %tr
-              %td
-                = player_avatar player
-              %td.match-table
-                - if team == match_played.team_a
-                  = link_to player.name, player, class: 'link-override'
-                - else
-                  = link_to player.name, player, class: 'link-override-alt'
-                -if player.captain? && player.team == match_played.team_a
-                  %i.fa.fa-copyright{:style =>"color:white;"}
-                - elsif player.captain? && player.team == match_played.team_b
-                  %i.fa.fa-copyright
-              %td.match-table
-                -for i in 1..player.average_rating
-                  %span.glyphicon.glyphicon-star-empty
-                - if match_played.status
-                  %td.match-table
-                    -for i in 1..player.goals_in_match(player.id, match_played.id)
-                      %i.fa.fa-futbol-o
-                  %td.match-table
-                    = player.motm_in_match(player.id, match_played.id)
+            %th Players
+            %th Rating
+            - if match_played.status
+              %th Goals
+              %th
+        %tbody
+          - team.players.each do |player|
+            -if Stat.where(player_id: player.id, match_id: match_played.id) != [] #Flaky method as it doesn't allow you to edit teams due to the attributes needed therefore changing teams won't display below
+              %tr
+                %td
+                  = player_avatar player
+                %td.match-table
+                  - if team == match_played.team_a
+                    = link_to player.name, player, class: 'link-override'
+                  - else
+                    = link_to player.name, player, class: 'link-override-alt'
+                  -if player.captain? && player.team == match_played.team_a
+                    %i.fa.fa-copyright{:style =>"color:white;"}
+                  - elsif player.captain? && player.team == match_played.team_b
+                    %i.fa.fa-copyright
+                %td.match-table
+                  -for i in 1..player.average_rating
+                    %span.glyphicon.glyphicon-star-empty
+                  - if match_played.status
+                    %td.match-table
+                      -for i in 1..player.goals_in_match(player.id, match_played.id)
+                        %i.fa.fa-futbol-o
+                    %td.match-table
+                      = player.motm_in_match(player.id, match_played.id)
+                      
