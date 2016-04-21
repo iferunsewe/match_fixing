@@ -57,7 +57,7 @@
   position: relative;
   margin-top: -50px;
   height: 50px;
-  clear:both;} 
+  clear:both;}
 
 select.date-select {
     float: left;
@@ -65,7 +65,6 @@ select.date-select {
 }
 
 .welcome-header{
-    padding-left: 5% !important;
     width: 100%;
     height: 10%;
     background: linear-gradient(
@@ -136,12 +135,17 @@ select.date-select {
 }
 
 .welcome-header ul li .dropdown:hover .dropdown-content {
+    width: 100%;
     display: block;
 }
 
 .welcome-header.container-fluid{
     height: 100%;
     padding: 1%;
+}
+
+#not-logged-in-nav-container{
+    padding-left: 5%;
 }
 
 .welcome-header.container-fluid .collapse.navbar-collapse{
@@ -155,14 +159,15 @@ select.date-select {
 }
 
 .sub-navbar.welcome-header{
-    padding-left: 5%;
-    width: 100%;
+    width: 50%;
+    margin: 0 auto;
     height: 43%;
 }
 
 .sub-navbar.welcome-header ul.navbar-nav{
-    margin-left: 35.5%;
-    margin-top: 1%;
+    margin-top: 2%;
+    width: 100%;
+    height: 50%;
 }
 
 .btn-black{
