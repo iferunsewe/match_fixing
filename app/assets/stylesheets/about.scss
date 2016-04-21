@@ -55,7 +55,7 @@ input:-webkit-autofill:focus {
 
   .logo-box{
     padding-top: 20px;
-    position: relative;
+    position: static;
     background-color: black;
     height: 50%;
     background-image: url('/assets/logo.jpg');
