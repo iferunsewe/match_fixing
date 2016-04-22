@@ -14,8 +14,8 @@
                 = comment
 
   .row.ratings-row.text-center.no-margin{:style => "color:white;"}
-    - if @team.players != [] && @team.ratings.sum(:stars) > 0 && @team.average_rating(@team) != 0
-      -(1..@team.average_rating(@team)).each do |i|
+    - if @team.ratings.sum(:stars) > 0 && @team.average_rating != 0
+      -(1..@team.average_rating).each do |i|
         = image_tag('gold-star.png', class: 'small-star')
     - else
       %h1

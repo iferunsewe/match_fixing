@@ -95,8 +95,8 @@
                   =link_to @player.team.name, team_path( @player.team), {:class => 'link-override'}
                   %br/
                   %span
-                    - if @player.team.ratings.sum(:stars) > 0 && @player.team.average_rating(@player.team) != 0
-                      -(1..@player.team.average_rating(@player.team)).each do |i|
+                    - if @player.team.ratings.sum(:stars) > 0 && @player.team.average_rating != 0
+                      -(1..@player.team.average_rating).each do |i|
                         %i.fa.fa-star
                     - else
                       %p Not Rated Yet
